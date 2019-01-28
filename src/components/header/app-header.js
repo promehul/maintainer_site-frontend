@@ -107,7 +107,7 @@ class AppHeader extends Component {
                                         {isBrowser ? (
                                             <React.Fragment>
                                                 <Link
-                                                    to={`${PATHNAME}blog/`}
+                                                    to={`${PATHNAME}blog`}
                                                     styleName="styles.link-color"
                                                     onClick={this.handleSwitch}
                                                 >
@@ -119,7 +119,7 @@ class AppHeader extends Component {
                                                     </button>
                                                 </Link>
                                                 <Link
-                                                    to={`${PATHNAME}projects/`}
+                                                    to={`${PATHNAME}projects`}
                                                     styleName="styles.link-color"
                                                     onClick={this.handleSwitch}
                                                 >
@@ -131,7 +131,7 @@ class AppHeader extends Component {
                                                     </button>
                                                 </Link>
                                                 <Link
-                                                    to={`${PATHNAME}team/`}
+                                                    to={`${PATHNAME}team`}
                                                     styleName="styles.link-color"
                                                     onClick={this.handleSwitch}
                                                 >
@@ -145,7 +145,7 @@ class AppHeader extends Component {
                                                 {this.props.isAuthed.auth && (
                                                     <React.Fragment>
                                                         <Link
-                                                            to={`${PATHNAME}add_member_details/`}
+                                                            to={`${PATHNAME}add_member_details`}
                                                             styleName="styles.link-color"
                                                             onClick={
                                                                 this
@@ -160,7 +160,7 @@ class AppHeader extends Component {
                                                             </button>
                                                         </Link>
                                                         <Link
-                                                            to={`${PATHNAME}add_project_details/`}
+                                                            to={`${PATHNAME}add_project_details`}
                                                             styleName="styles.link-color"
                                                             onClick={
                                                                 this

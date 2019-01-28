@@ -8,7 +8,6 @@ import { requestInfoData } from "../actions/apiInfoCall"
 import { toggleSidebar } from "../actions/toggleSidebar"
 import { requestMaintainerAccess } from "../actions/apiAuthCall"
 
-import { NoMatch } from "formula_one"
 import ScrollToTop from "./scroll-to-top"
 import AppHeader from "../components/header/app-header"
 import MainPage from "../components/main/main-page"
@@ -63,15 +62,6 @@ class App extends Component {
             <ScrollToTop>
                 <Switch>
                     <Route
-                        path="/:url*"
-                        exact
-                        strict
-                        render={props => (
-                            <Redirect to={`${props.location.pathname}/`} />
-                        )}
-                    />
-
-                    <Route
                         exact
                         path={`${match.path}`}
                         component={routeProps => (
@@ -94,25 +84,22 @@ class App extends Component {
                         path={`${match.path}team/:handle`}
                         component={TeamIndividualView}
                     />
-                    {this.props.isAuthed.loaded && (
-                        <React.Fragment>
-                            {this.props.isAuthed.auth && (
-                                <React.Fragment>
-                                    <Route
-                                        path={`${
-                                            match.path
-                                        }add_project_details`}
-                                        component={AddProjectDetails}
-                                    />
-                                    <Route
-                                        path={`${match.path}add_member_details`}
-                                        component={AddMemberDetails}
-                                    />
-                                </React.Fragment>
-                            )}
-                            <Route component={NoMatch} />
-                        </React.Fragment>
+                    {this.props.isAuthed.auth && (
+                        <Switch>
+                            <Route
+                                exact
+                                path={`${match.path}add_project_details/`}
+                                component={AddProjectDetails}
+                            />
+                            <Route
+                                exact
+                                path={`${match.path}add_member_details/`}
+                                component={AddMemberDetails}
+                            />
+                            <Route render={props => <Redirect to="/404" />} />
+                        </Switch>
                     )}
+                    <Route render={props => <Redirect to="/404" />} />
                 </Switch>
             </ScrollToTop>
         )
@@ -122,7 +109,8 @@ class App extends Component {
             apiInfoData.contactLoaded &&
             apiInfoData.socialLoaded &&
             apiInfoData.footerLoaded &&
-            apiInfoData.projectLoaded
+            apiInfoData.projectLoaded &&
+            this.props.isAuthed.loaded
         ) {
             return (
                 <div styleName="blocks.container">

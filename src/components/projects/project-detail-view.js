@@ -18,12 +18,10 @@ class ProjectDetailView extends Component {
         const URL = `/api/maintainer_site/projects/${slug}`
 
         axios.get(URL).then(res => {
-            this.setState(
-                {
-                    projects: res.data,
-                },
-                () => {}
-            )
+            this.setState({
+                projects: res.data,
+            })
+            console.log(res)
         })
     }
 
