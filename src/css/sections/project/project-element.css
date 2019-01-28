@@ -4,13 +4,17 @@
 
 .background {
     position: absolute;
-    transform: translateY(50%);
+    transform: translate(40%, 50%);
     left: 0;
     height: 100%;
-    color: #f8d16c;
+    color: rgba(248, 209, 108, 1);
     font-size: 15em;
     font-family: "TypoPRO Bebas Neue";
     user-select: none;
+}
+
+.text {
+    transform: translateX(-5%);
 }
 
 .link {
