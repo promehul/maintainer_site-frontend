@@ -9,10 +9,10 @@ import {
   Header,
   TextArea,
   Segment,
-  Label,
   Loader,
   Modal,
   Image,
+  Message,
 } from 'semantic-ui-react'
 
 import styles from '../../css/team/add-member-details.css'
@@ -71,6 +71,7 @@ class AddMemberDetails extends Component {
       prevUploadedFileN: null,
       errorHandle: false,
       errorShortBio: false,
+      errorMessage: [],
       errorUrl: false,
       techSkillsOptions: [],
       socialLinksOptions: [],
@@ -285,6 +286,16 @@ class AddMemberDetails extends Component {
         })
         .catch(function(response) {
           //handle error
+          window.scrollTo(0,0)
+          let errorMessage = [];
+          Object.keys(response.response.data).map((field) => {
+            const errors = response.response.data[field];
+            errors.map(err => {
+              errorMessage = [...errorMessage, `${field}: ${err}`]
+            }
+            )
+          })
+          that.setState({ errorMessage })
           if (response.response.data.handle != null) {
             that.setState({ errorHandle: true })
           }
@@ -343,6 +354,7 @@ class AddMemberDetails extends Component {
     }
 
     if (this.state.loaded) {
+      const { errorHandle, errorShortBio, errorMessage } = this.state
       return (
         <div>
           <Container styleName="common.margin">
@@ -351,6 +363,13 @@ class AddMemberDetails extends Component {
                 ? 'Add Member Details'
                 : 'Modify Member Details'}
             </Header>
+            {( errorHandle || errorShortBio) && (
+              <Message
+                error
+                header='There were some errors with your submission'
+                list={errorMessage}
+              />
+            )}
             <Form>
               <Form.Field required>
                 <label>Handle Name</label>
@@ -363,11 +382,6 @@ class AddMemberDetails extends Component {
                   }}
                   value={this.state.handle}
                 />
-                {this.state.errorHandle && (
-                  <Label color="red" pointing>
-                    This Handle already exists
-                  </Label>
-                )}
               </Form.Field>
 
               <Form.Field
@@ -382,11 +396,6 @@ class AddMemberDetails extends Component {
                 }}
                 value={this.state.shortBio}
               />
-              {this.state.errorShortBio && (
-                <Label color="red" pointing>
-                  Maximum 255 characters allowed
-                </Label>
-              )}
             </Form>
 
             <Segment attached="top" styleName="styles.headingBox">
@@ -414,11 +423,6 @@ class AddMemberDetails extends Component {
                     name="url"
                     placeholder="Add URL ..."
                   />
-                  {/* {this.state.errorUrl && (
-                    <Label color="red" pointing>
-                      Enter a valid URL
-                    </Label>
-                  )} */}
                 </Form.Field>
 
                 <Form.Field>
@@ -646,7 +650,7 @@ class AddMemberDetails extends Component {
                 positive
                 styleName="common.submit-button"
               >
-                {this.state.method === 'patch' ? 
+                {this.state.method === 'patch' ?
                   'Update Member' : 'Add Member'}
               </Button>
             </Form>
