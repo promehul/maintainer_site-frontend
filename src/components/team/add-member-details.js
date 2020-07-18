@@ -70,9 +70,8 @@ class AddMemberDetails extends Component {
       prevUploadedFileD: null,
       prevUploadedFileN: null,
       errorHandle: false,
-      errorShortBio: false,
       errorMessage: [],
-      errorUrl: false,
+      error: false,
       techSkillsOptions: [],
       socialLinksOptions: [],
       loaded: false,
@@ -266,8 +265,7 @@ class AddMemberDetails extends Component {
       }
 
       const that = this
-      that.setState({ errorHandle: false })
-      that.setState({ errorShortBio: false })
+      that.setState({ error: false })
       axios({
         method: this.state.method,
         url: this.state.URL,
@@ -295,13 +293,10 @@ class AddMemberDetails extends Component {
             }
             )
           })
-          that.setState({ errorMessage })
-          if (response.response.data.handle != null) {
-            that.setState({ errorHandle: true })
-          }
-          if (response.response.data.shortBiography != null) {
-            that.setState({ errorShortBio: true })
-          }
+          that.setState({
+            errorMessage,
+            error: true,
+          })
         })
     }
   }
@@ -354,7 +349,7 @@ class AddMemberDetails extends Component {
     }
 
     if (this.state.loaded) {
-      const { errorHandle, errorShortBio, errorMessage } = this.state
+      const { error, errorMessage } = this.state
       return (
         <div>
           <Container styleName="common.margin">
@@ -363,7 +358,7 @@ class AddMemberDetails extends Component {
                 ? 'Add Member Details'
                 : 'Modify Member Details'}
             </Header>
-            {( errorHandle || errorShortBio) && (
+            { error && (
               <Message
                 error
                 header='There were some errors with your submission'
