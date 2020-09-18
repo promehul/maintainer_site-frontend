@@ -5,12 +5,10 @@ export const BLOG_ERROR_OCCURED = 'BLOG_ERROR_OCCURED'
 
 const requestBlogData = url => {
   return dispatch => {
-    axios
-      .get(`${url}`)
-      .then(
-        response => dispatch(receiveBlogData(url, response)),
-        error => dispatch(errorOccured(url, error))
-      )
+    axios.get(`${url}`).then(
+      response => dispatch(receiveBlogData(url, response)),
+      error => dispatch(errorOccured(url, error))
+    )
   }
 }
 
