@@ -45,7 +45,7 @@ class Blog extends Component {
         return (
           <Container styleName="common.margin">
             <Segment basic padded textAlign="center">
-              {`This group doesn't have any blogs as of now. Check back later.`}
+              This group doesn't have any blogs as of now. Check back later.
             </Segment>
           </Container>
         )
