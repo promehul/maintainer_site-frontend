@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { Card, Container, Segment, Icon, Loader } from 'semantic-ui-react'
+import React, { Component } from "react"
+import { Card, Container, Segment, Icon, Loader } from "semantic-ui-react"
 
-import BlogDetail from './blog-post-card'
-import { urlApiBlog } from '../../urls'
-import { MEDIUM_URL } from '../../consts'
+import BlogDetail from "./blog-post-card"
+import { urlApiBlog } from "../../urls"
+import { MEDIUM_URL } from "../../consts"
 
-import common from '../../css/page-common-styles.css'
+import common from "../../css/page-common-styles.css"
 
 class Blog extends Component {
   componentDidMount() {
@@ -26,18 +26,14 @@ class Blog extends Component {
               ))}
             </Card.Group>
             <Segment basic padded textAlign="center">
-              {MEDIUM_PUBLICATION && MEDIUM_PUBLICATION !== '' ? (
-                <Icon
-                  name="medium"
-                  size="large"
-                  link={true}
-                  onClick={() =>
-                    window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')
-                  }
-                />
-              ) : (
-                `This group doesn't have any blogs as of now. Check back later.`
-              )}
+              <Icon
+                name="medium"
+                size="large"
+                link={true}
+                onClick={() =>
+                  window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, "_blank")
+                }
+              />
             </Segment>
           </Container>
         )
