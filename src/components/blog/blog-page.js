@@ -1,11 +1,10 @@
-import React, { Component } from "react"
-import { Card, Container, Segment, Icon, Loader } from "semantic-ui-react"
+import React, { Component } from 'react'
+import { Card, Container, Segment, Icon, Loader } from 'semantic-ui-react'
 
-import BlogDetail from "./blog-post-card"
-import { urlApiBlog } from "../../urls"
-import { MEDIUM_URL } from "../../consts"
+import BlogDetail from './blog-post-card'
+import { urlApiBlog } from '../../urls'
+import { MEDIUM_URL } from '../../consts'
 
-import common from "../../css/page-common-styles.css"
 
 class Blog extends Component {
   componentDidMount() {
