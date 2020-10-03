@@ -44,7 +44,7 @@ class FooterSection extends Component {
       return (
         <footer styleName="styles.container" onClick={this.handleClickCounter}>
           <Container>{`© ${date.getFullYear()} ${
-            this.props.info.name
+            this.props.info?this.props.info.name:'-'
           }`}</Container>
         </footer>
       )
