@@ -151,7 +151,7 @@ class App extends Component {
           <AppHeader
             handleClick={this.handleShow}
             onClick={this.handleHide}
-            title={apiInfoData.footerData?apiInfoData.footerData.name:null}
+            title={apiInfoData.footerData && apiInfoData.footerData.name}
             dummy={[]}
           />
           {isBrowser ? (
