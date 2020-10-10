@@ -59,7 +59,16 @@ const requestProjectSectionData = (projectUrl) => {
         dispatch(receiveProjectData(projectUrl, projectRes))
       })
       .catch(error => {
-        console.log(error)
+        dispatch(
+          errorOccured(
+            error,
+            locationUrl,
+            contactUrl,
+            socialUrl,
+            footerUrl,
+            projectUrl
+          )
+        )
       })
   }
 }
