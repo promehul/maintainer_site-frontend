@@ -88,10 +88,6 @@ export function urlApiSocialLink() {
   return `${urlApiBase()}social_link/`
 }
 
-export function urlApiPersonalToMedia() {
-  return `${urlApiBase()}personal_to_media/`
-}
-
 export function urlApiNetworkToMedia() {
   return `${urlApiBase()}network_to_media/`
 }
