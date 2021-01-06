@@ -22,7 +22,7 @@ import {
   urlApiProjects,
   urlAppProjects,
   urlFileManager,
-  urlApiPersonalToMedia,
+  urlApiNetworkToMedia,
 } from '../../urls'
 import { IMAGE_STYLE, headers } from '../../consts'
 
@@ -211,15 +211,16 @@ class AddProjectDetails extends Component {
     let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
         width=1000px,height=500px,left=100px,top=100px`
     window.open(urlFileManager(), 'title', params)
-    window.addEventListener('message', (event) => {
-      const { path } = event.data
+    window.addEventListener('message', event => {
+      const { path, filemanager_name } = event.data
       const data = {
         path,
+        filemanager_name,
       }
-      if(path) {
+      if (path) {
         axios({
           method: 'post',
-          url: urlApiPersonalToMedia(),
+          url: urlApiNetworkToMedia(),
           data: data,
           headers: { ...headers, 'Content-Type': 'application/json' },
         }).then(response => {
@@ -227,7 +228,7 @@ class AddProjectDetails extends Component {
           callback(path)
         })
       }
-    })    
+    })
   }
 
   render() {
