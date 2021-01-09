@@ -31,7 +31,7 @@ export function urlAppAddProjectDetails() {
 }
 
 export function urlFileManager() {
-  return '/file-manager/default'
+  return '/file-manager/default?mode=integration'
 }
 
 // Back-end routes
