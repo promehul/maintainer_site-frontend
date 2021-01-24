@@ -22,7 +22,6 @@ const requestInfoData = (
         axios.get(`${contactUrl}`),
         axios.get(`${socialUrl}`),
         axios.get(`${footerUrl}`),
-        axios.get(`${projectUrl}`),
       ])
       .then(
         axios.spread(
@@ -31,14 +30,12 @@ const requestInfoData = (
             contactRes,
             socialRes,
             footerRes,
-            projectRes,
             error
           ) => {
             dispatch(receiveInfoLocationData(locationUrl, locationRes)),
               dispatch(receiveInfoContactData(contactUrl, contactRes)),
               dispatch(receiveInfoSocialData(socialUrl, socialRes)),
               dispatch(receiveFooterData(footerUrl, footerRes)),
-              dispatch(receiveProjectData(projectUrl, projectRes)),
               dispatch(
                 errorOccured(
                   error,
@@ -52,6 +49,27 @@ const requestInfoData = (
           }
         )
       )
+  }
+}
+
+const requestProjectSectionData = (projectUrl) => {
+  return dispatch => {
+    axios.get(`${projectUrl}`)
+      .then(projectRes => {
+        dispatch(receiveProjectData(projectUrl, projectRes))
+      })
+      .catch(error => {
+        dispatch(
+          errorOccured(
+            error,
+            locationUrl,
+            contactUrl,
+            socialUrl,
+            footerUrl,
+            projectUrl
+          )
+        )
+      })
   }
 }
 
@@ -102,4 +120,4 @@ const errorOccured = (
   error,
 })
 
-export { requestInfoData }
+export { requestInfoData, requestProjectSectionData }

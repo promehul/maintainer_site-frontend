@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { isBrowser } from 'react-device-detect'
 import { Loader } from 'semantic-ui-react'
-import { requestInfoData } from '../actions/apiInfoCall'
+import { requestInfoData, requestProjectSectionData } from '../actions/apiInfoCall'
 import { toggleSidebar } from '../actions/sidebarClick'
 import { requestMaintainerAccess } from '../actions/apiAuthCall'
 
@@ -63,8 +63,8 @@ class App extends Component {
       URL_CONTACT,
       URL_SOCIAL,
       URL_MAINTAINER_GROUP,
-      URL_PROJECTS,
     )
+    this.props.requestProjectSectionData(URL_PROJECTS)
     this.props.requestMaintainerAccess(AUTH_URL)
   }
 
@@ -144,10 +144,6 @@ class App extends Component {
     )
 
     if (
-      apiInfoData.locationLoaded &&
-      apiInfoData.contactLoaded &&
-      apiInfoData.socialLoaded &&
-      apiInfoData.footerLoaded &&
       apiInfoData.projectLoaded
     ) {
       return (
@@ -155,7 +151,7 @@ class App extends Component {
           <AppHeader
             handleClick={this.handleShow}
             onClick={this.handleHide}
-            title={apiInfoData.footerData.name}
+            title={apiInfoData.footerData && apiInfoData.footerData.name}
             dummy={[]}
           />
           {isBrowser ? (
@@ -207,6 +203,9 @@ const mapDispatchToProps = dispatch => {
           projectUrl
         )
       )
+    },
+    requestProjectSectionData: (projectUrl) => {
+      dispatch(requestProjectSectionData(projectUrl))
     },
     toggleSidebar: (visible, style) => {
       dispatch(toggleSidebar(visible, style))
