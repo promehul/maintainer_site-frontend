@@ -5,6 +5,7 @@ import ProjectSection from './sections/project/project-section'
 import BlogSection from './sections/blog/blog-section'
 import InfoSection from './sections/info/info-section'
 import CultureCodeSection from './sections/static/culture-code/culture-code-section'
+import DoAndDontSection from './sections/static/do-and-dont/do-and-dont-section'
 
 class MainPage extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class MainPage extends Component {
       <div>
         <MainSection />
         <CultureCodeSection />
+        <DoAndDontSection />
         <ProjectSection project={projectData.results.slice(0, 4)} />
         <BlogSection />
         <InfoSection
@@ -32,6 +34,7 @@ class MainPage extends Component {
           social={socialData}
           about={footerData}
         />
+        
       </div>
     )
   }
