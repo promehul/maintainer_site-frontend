@@ -4,6 +4,7 @@ import MainSection from './sections/header/main-section'
 import ProjectSection from './sections/project/project-section'
 import BlogSection from './sections/blog/blog-section'
 import InfoSection from './sections/info/info-section'
+import CultureCodeSection from './sections/static/culture-code/culture-code-section'
 
 class MainPage extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class MainPage extends Component {
     return (
       <div>
         <MainSection />
+        <CultureCodeSection />
         <ProjectSection project={projectData.results.slice(0, 4)} />
         <BlogSection />
         <InfoSection

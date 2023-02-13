@@ -1,0 +1,85 @@
+.container {
+    background-color: #DEE8FF;
+    text-align: left;
+    width: 100vw;
+}
+
+.sub-container{
+    padding-top: 4rem;
+    padding-bottom: 10rem;
+}
+.heading{
+    color: #171818;
+    font-weight: 700;
+    font-family: Archivo;
+}
+
+.icons1{
+    padding: 8px 8px;
+    border: 1 solid #7D69FF;
+    border-radius: 50%;
+    background-color: rgba(125, 105, 255, 0.33);
+    margin-right: 1rem;
+}
+
+.icons2{
+    padding: 8px 8px;
+    border: 1 solid rgba(221, 92, 147, 0.33);
+    border-radius: 50%;
+    background-color: rgba(221, 92, 147, 0.33);
+    margin-right: 1rem;
+}
+
+.icons3{
+    padding: 8px 8px;
+    border: 1 solid  rgba(231, 75, 74, 0.33);
+    border-radius: 50%;
+    background-color:  rgba(231, 75, 74, 0.33);
+    margin-right: 1rem;
+}
+
+.icons4{
+    padding: 8px 8px;
+    border: 1 solid rgba(254, 189, 84, 0.33);
+    border-radius: 50%;
+    background-color: rgba(254, 189, 84, 0.33);
+    margin-right: 1rem;
+}
+
+.icons5{
+    padding: 8px 8px;
+    border: 1 solid rgba(112, 199, 142, 0.33);
+    border-radius: 50%;
+    background-color: rgba(112, 199, 142, 0.33);
+    margin-right: 1rem;
+}
+
+.icons6{
+    padding: 8px 8px;
+    border: 1 solid rgba(106, 176, 251, 0.33);
+    border-radius: 50%;
+    background-color: rgba(106, 176, 251, 0.33);
+    margin-right: 1rem;
+}
+
+.sub-heading{
+    font-weight: 600;
+    font-size: 2rem;
+    font-family: Archivo;
+    color: #171818;
+}
+
+.sub-text{
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: OpenSans;
+    color : #7D7D7D
+}
+
+.content{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
