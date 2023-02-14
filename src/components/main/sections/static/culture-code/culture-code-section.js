@@ -7,44 +7,44 @@ const CultureCodeSection = () =>{
     <div styleName="styles.container">
         <Container styleName="styles.sub-container" padded="vertically">
             <h4 styleName="styles.heading" >Our Culture code</h4>
-            <Grid columns={2}>
-                <Grid.Row >
+            <Grid columns={2} >
+                <Grid.Row verticalAlign='top'>
                     <Grid.Column>
                     <div styleName="styles.content">
                         <span styleName="styles.icons1 styles.icons">
-                        <Icon name="handshake" color="violet" size='huge'></Icon>
+                        <Icon name="handshake" color="violet" size='big'></Icon>
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
                             One team, One family
                             </div>
                             <div styleName="styles.sub-text">
-                            we work as a team and live as a family celebrating success and facing failures together 
+                            we work as a team and live as a family celebrating dfdsfsdfdsfsd dfsdfsdf sfsdfsf fdsfsdfsd fsdfsdfsdfsdf sfsdfsdfsdfdsf sfsdfdsfsdfsd sdfsdfsddfsdf sdfsdfsdfsf sfsdfsdfdsf
                             </div>
                         </div>
                     </div>
                     </Grid.Column>
-                    <Grid.Column>
+                    <Grid.Column >
                     <div styleName="styles.content">
                         <span styleName="styles.icons4 styles.icons">
-                        <Icon name="handshake" color="yellow" size='huge'></Icon>
+                        <Icon name="star" color="yellow" size='big'></Icon>
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
-                            One team, One family
+                            One Team ,One family
                             </div>
                             <div styleName="styles.sub-text">
-                            we work as a team and live as a family celebrating success and facing failures together 
+                            we work as a team and live as a family and support each other as well as grow
                             </div>
                         </div>
                     </div>
                     </Grid.Column>
                 </Grid.Row>
-                <Grid.Row >
+                <Grid.Row verticalAlign='top'>
                     <Grid.Column>
                     <div styleName="styles.content">
                         <span styleName="styles.icons2 styles.icons">
-                        <Icon name="handshake" color="pink" size="huge"></Icon>
+                        <Icon name="handshake" color="pink" size="big"></Icon>
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
@@ -63,7 +63,7 @@ const CultureCodeSection = () =>{
                     <Grid.Column>
                     <div styleName="styles.content">
                         <span styleName="styles.icons5 styles.icons">
-                        <Icon name="handshake" color="green" size='huge'></Icon>
+                        <Icon name="ban" color="green" size='big'></Icon>
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
@@ -76,11 +76,11 @@ const CultureCodeSection = () =>{
                     </div> 
                     </Grid.Column>
                 </Grid.Row>
-                <Grid.Row>
+                <Grid.Row verticalAlign='top'>
                     <Grid.Column>
                     <div styleName="styles.content">
                         <span styleName="styles.icons3 styles.icons">
-                        <Icon name="handshake" color="orange" size='huge'></Icon>
+                        <Icon name="book" color="orange" size='big'></Icon>
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
@@ -95,7 +95,7 @@ const CultureCodeSection = () =>{
                     <Grid.Column>
                     <div styleName="styles.content">
                         <span styleName="styles.icons6 styles.icons">
-                        <Icon name="handshake" color="blue" size='huge'></Icon>
+                        <Icon name="bath" color="blue" size='big'></Icon>
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">

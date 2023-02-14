@@ -15,19 +15,19 @@ const DoAndDontSection=()=>{
                     </Grid.Column>
                     <Grid.Column>
                         <div styleName="styles.heading">
-                        We Don't
+                        We Don't 
                         </div>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>
                     <div styleName="styles.sub-heading">
-                            One team, One family 
+                            One team, One family yes we area a family if you have a doubt we don't care ;)
                         </div>
                     </Grid.Column>
                     <Grid.Column>
                     <div styleName="styles.sub-heading">
-                            Work hard, Party harder
+                            Work hard, Party harder then go home coz we are good kids :)
                         </div>
                     </Grid.Column>
                 </Grid.Row>
