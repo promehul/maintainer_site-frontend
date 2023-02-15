@@ -23,7 +23,8 @@ import ProjectDetailView from '../containers/project/projectIndividualLoader'
 import Sidebar from '../containers/sidebar'
 import NoMatch from './404/404'
 
-import AppFooter from '../components/footer/app-footer'
+// import AppFooter from '../components/footer/app-footer'
+import AppFooter from '../components/footer/app-footer2'
 
 import {
   // Back-end routes
