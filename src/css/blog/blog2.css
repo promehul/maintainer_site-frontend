@@ -1,0 +1,11 @@
+.blog
+{
+    width: fit-content;
+    display: block;
+}
+.authorDetails {
+    float: left;
+}
+.blogDetails {
+    float: right;
+}

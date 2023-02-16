@@ -2,7 +2,7 @@
     background-color: #171818;
     text-align: left;
     height: fit-content;
-    padding-bottom: 0.7em;
+    padding: 0.7rem 1.3rem;
 }
 
 .icons{
@@ -38,7 +38,7 @@ hr{
     font-family: "Archivo";
     font-weight: 600;
     color: #fff;
-    padding-top: 30px;
+    padding-top: 0.4rem;
 }
 
 .footer-text-content {

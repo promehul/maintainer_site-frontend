@@ -37,7 +37,8 @@ class Blog extends Component {
             </Segment>
           </Container>
         )
-      } else {
+      } else
+      {
         return (
           <Container styleName="common.margin">
             <Segment basic padded textAlign="center">

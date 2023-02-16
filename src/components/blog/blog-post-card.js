@@ -7,7 +7,8 @@ import { backgroundImageStyle } from '../../consts'
 import styles from '../../css/blog/blog.css'
 
 
-const BlogDetail = ({ info }) => {
+const BlogDetail = ({ info }) =>
+{
   return (
     <Card target="_blank" href={info.link}>
       <div style={backgroundImageStyle(info.thumbnail)} />

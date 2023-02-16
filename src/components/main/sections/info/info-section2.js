@@ -36,7 +36,6 @@ const InfoSection = ({ location, contact, social, about }) => (
               <div styleName="styles.footer-text">Follow Us</div>
             </h5>
             <div>
-              {console.log(social)}
               {social.links.map(profile => (
                     <div styleName="styles.icons2" key={profile.id}>
                       <Icon
