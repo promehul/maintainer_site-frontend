@@ -26,15 +26,22 @@ class Blog extends Component
         const tagWiseBlogs = this.props.apiBlogData.data;
         return (
           <>
-            <h2>Blogs</h2>
-            <Container >
-              <Grid columns={2}>
-                <Grid columns={2} style={{ width: "59vw" }}>
+            <Container>
+              <div styleName="styles.heading">
+                <h1 style={{ fontWeight: 700, fontSize: '3rem', fontFamily: 'Poppins' }}>Blogs</h1>
+              </div>
+              <Grid columns={2} style={{ width: "100%", margin: 0 }} stackable>
+                <Grid columns={2} styleName="common.margin styles.horizontalGrid" style={{ width: "66.67%" }}>
                   {tagWiseBlogs.slice(0, 2).map((tag, index) => (
-                    <Fragment key={index}>
-                      <h5>
-                        {tag["category"]}
-                      </h5>
+                    <Fragment key={index} >
+                      <div styleName="styles.blog" style={{ padding: 0 }} >
+                        <div styleName="styles.category">
+                          {tag["category"]}
+                        </div>
+                        <div styleName="styles.category-btn">
+                          View More
+                        </div>
+                      </div>
                       <Grid.Row>
                         {tag["blogsList"].slice(0, 2).map((info, id) => (
                           <BlogDetail info={info} key={id} />
@@ -43,10 +50,15 @@ class Blog extends Component
                     </Fragment>
                   ))}
                 </Grid>
-                <Grid columns={1} style={{ width: "30vw" }}>
-                  <h5>
-                    {tagWiseBlogs[2]["category"]}
-                  </h5>
+                <Grid columns={1} style={{ width: "33.33%", marginLeft: "auto", marginTop: 0 }} styleName="styles.horizontalGrid">
+                  <div styleName="styles.blog" style={{ padding: 0 }}>
+                    <div styleName="styles.category">
+                      {tagWiseBlogs[2]["category"]}
+                    </div>
+                    <div styleName="styles.category-btn">
+                      View More
+                    </div>
+                  </div>
                   <Grid.Row >
                     {tagWiseBlogs[2]["blogsList"].slice(0, 2).map((info, id) => (
                       <BlogDetail info={info} key={id} />
