@@ -11,7 +11,9 @@ const BlogDetail = ({ info }) =>
     return (
         <Grid.Column style={{
             padding: "1.3rem 1.8rem 3.7rem 0", margin: "0",
-        }} styleName="styles.blogGrid">
+        }} styleName="styles.blogGrid"
+            onClick={() => window.open(info["link"])}
+        >
             <div className="blog" style={backgroundImageStyle(info.thumbnail)} />
             <div styleName='styles.blogHead'>
                 <div className="author">{info.author}</div>

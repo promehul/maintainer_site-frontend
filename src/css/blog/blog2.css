@@ -25,6 +25,10 @@
     float: right;
 }
 
+.blogGrid{
+    cursor: pointer;
+}
+
 @media (max-width: 590px) {
   .blogGrid {
     width: 100% !important;

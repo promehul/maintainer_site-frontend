@@ -1,10 +1,19 @@
 .container {
+    border-top: 1px solid #F0F0F0;
     background-color: #171818;
     text-align: left;
     height: fit-content;
     padding: 0.7rem 1.3rem;
 }
 
+.icons:hover{
+    background-color: #95A6C4;
+    border: none;
+}
+.icons:hover .icon{
+    color: #171818 !important;
+
+}
 .icons{
     display: inline-block;
     padding: 8px 7px 7px 10px;
@@ -12,16 +21,18 @@
     border: 1px solid white;
     margin-right: 12px;
     color: white;
+    cursor: pointer;
 }
 
 .icons2
 {
     display: inline-block;
-    padding: 6px 11px;
+    padding: 7px 11px;
     border-radius: 60%;
     border: 1px solid white;
     margin-right: 12px;
     color: white;
+    cursor: pointer;
 }
 
 hr{
