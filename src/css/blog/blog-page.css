@@ -41,8 +41,6 @@ h4{
 .heading{
   margin: 3rem 0 1rem 0 ;
   line-height: 72px;
-  font-family: 'Poppins';
-  font-weight: 700;
 }
 
 @media (max-width: 990px) {
