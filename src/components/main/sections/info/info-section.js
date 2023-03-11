@@ -1,20 +1,13 @@
 import React from 'react'
 import { Grid, Container, Icon } from 'semantic-ui-react'
-import { Popup } from 'semantic-ui-react';
-import { useState } from 'react';
+import { Popup } from 'semantic-ui-react'
+import { useState, useEffect } from 'react'
 import styles from '../../../../css/sections/info/info-section.css'
 
 const InfoSection = ({ location, contact, social, about }) => {
-  const [copyPopup, setCopyPopup] = useState(false)
 
-  const showCopiedPopup = (textToCopy) => {
-    setCopyPopup(true);
-    navigator.clipboard.writeText(textToCopy)
-  }
-  const popUpStyle = !copyPopup ? {
+  const popUpStyle = {
     fontWeight: '500', fontFamily: 'Archivo', fontSize: '1.5rem', color: "#95A6C4", backgroundColor: 'transparent', border: 'none', padding: 0
-  } : {
-      /* color: "#95A6C4", backgroundColor: 'transparent', border: 'none', */ fontSize: '0.9rem', padding: '7px',
   }
 
   return (
@@ -31,37 +24,73 @@ const InfoSection = ({ location, contact, social, about }) => {
               </p>
             </div>
             <br />
-            <div className='iconsBar'>
+            <div styleName='styles.iconsBar'>
               <Popup
-                position='bottom center'
-                content={copyPopup ? "Copied to Clipboard" : contact.primaryPhoneNumber}
-                basic
-                style={popUpStyle}
+                position='top center'
+                content="Copied to Clipboard"
+                on="click"
+                closeOnTriggerMouseLeave="true"
+                hideOnScroll
                 trigger={
-                  <div styleName="styles.icons" onClick={() => showCopiedPopup(contact.primaryPhoneNumber)} onMouseLeave={() => { setCopyPopup(false) }}>
-                    <Icon styleName="styles.icon" inverted name="phone" flipped="horizontally" />
+                  <div style={{ width: '2rem' }}>
+                    <Popup
+                      position='bottom center'
+                      content={contact.primaryPhoneNumber}
+                      basic
+                      style={popUpStyle}
+                      on="hover"
+                      trigger={
+                        <div styleName="styles.icons" onClick={() => showCopiedPopup(contact.primaryPhoneNumber)} >
+                          <Icon styleName="styles.icon" inverted name="phone" flipped="horizontally" />
+                        </div>
+                      }
+                    />
                   </div>
                 }
               />
               <Popup
-                position='bottom center'
-                content={copyPopup ? "Copied to Clipboard" : contact.emailAddress}
-                basic
-                style={popUpStyle}
+                position='top center'
+                content="Copied to Clipboard"
+                on="click"
+                closeOnTriggerMouseLeave="true"
+                hideOnScroll
                 trigger={
-                  <div styleName="styles.icons" onClick={() => showCopiedPopup(contact.emailAddress)} onMouseLeave={() => { setCopyPopup(false) }}>
-                    <Icon styleName="styles.icon" inverted name="envelope" />
+                  <div style={{ width: '2rem' }}>
+                    <Popup
+                      position='bottom center'
+                      content={contact.emailAddress}
+                      basic
+                      style={popUpStyle}
+                      on="hover"
+                      trigger={
+                        <div styleName="styles.icons" onClick={() => showCopiedPopup(contact.emailAddress)} >
+                          <Icon styleName="styles.icon" inverted name="envelope" />
+                        </div>
+                      }
+                    />
                   </div>
                 }
               />
               <Popup
-                position='bottom center'
-                content={copyPopup ? "Copied to Clipboard" : location.address}
-                basic
-                style={popUpStyle}
+                position='top center'
+                content="Copied to Clipboard"
+                on="click"
+                closeOnTriggerMouseLeave="true"
+                hideOnScroll
                 trigger={
-                  <div styleName="styles.icons" onClick={() => showCopiedPopup(location.address)} onMouseLeave={() => { setCopyPopup(false) }}>
-                    <Icon styleName="styles.icon" inverted name="map marker alternate" />
+                  <div style={{ width: '2rem' }}>
+                    <Popup
+                      position='bottom center'
+                      content={location.address}
+                      basic
+                      style={popUpStyle}
+                      on="hover"
+                      trigger={
+                        <div styleName="styles.icons" onClick={() => showCopiedPopup(location.address)} >
+                          <Icon styleName="styles.icon" inverted name="map marker alternate" />
+                        </div>
+                      }
+                    />
                   </div>
                 }
               />
