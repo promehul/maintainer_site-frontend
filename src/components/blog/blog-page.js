@@ -50,13 +50,12 @@ class Blog extends Component {
       if (this.props.apiBlogData.data && this.props.apiBlogData.data.length) {
         let MEDIUM_PUBLICATION = this.props.apiInfoData.footerData.mediumSlug
         const tagWiseBlogs = this.props.apiBlogData.data;
-        if (isMobile) {
+        if (!isMobile) {
           tagWiseBlogs.sort((a, b) => {
             if (a.category < b.category) return 1;
             if (a.category > b.category) return -1;
             return 0;
           });
-          console.log(tagWiseBlogs)
         }
 
 

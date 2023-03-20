@@ -10,6 +10,9 @@ const InfoSection = ({ location, contact, social, about }) => {
     fontWeight: '500', fontFamily: 'Archivo', fontSize: '1.5rem', color: "#95A6C4", backgroundColor: 'transparent', border: 'none', padding: 0
   }
 
+  const showCopiedPopup = (copyToText) => {
+    navigator.clipboard.writeText(copyToText)
+  }
   return (
     <div styleName="styles.container">
       <Container>
@@ -29,10 +32,10 @@ const InfoSection = ({ location, contact, social, about }) => {
                 position='top center'
                 content="Copied to Clipboard"
                 on="click"
-                closeOnTriggerMouseLeave="true"
+                closeOnTriggerMouseLeave={true}
                 hideOnScroll
                 trigger={
-                  <div style={{ width: '2rem' }}>
+                  <div >
                     <Popup
                       position='bottom center'
                       content={contact.primaryPhoneNumber}
@@ -52,10 +55,10 @@ const InfoSection = ({ location, contact, social, about }) => {
                 position='top center'
                 content="Copied to Clipboard"
                 on="click"
-                closeOnTriggerMouseLeave="true"
+                closeOnTriggerMouseLeave={true}
                 hideOnScroll
                 trigger={
-                  <div style={{ width: '2rem' }}>
+                  <div >
                     <Popup
                       position='bottom center'
                       content={contact.emailAddress}
@@ -75,10 +78,10 @@ const InfoSection = ({ location, contact, social, about }) => {
                 position='top center'
                 content="Copied to Clipboard"
                 on="click"
-                closeOnTriggerMouseLeave="true"
+                closeOnTriggerMouseLeave={true}
                 hideOnScroll
                 trigger={
-                  <div style={{ width: '2rem' }}>
+                  <div >
                     <Popup
                       position='bottom center'
                       content={location.address}

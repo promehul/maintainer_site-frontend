@@ -17,8 +17,6 @@
 
 .iconsBar{
     display: flex;
-    justify-content: space-between;
-    width: 20%;
 }
 .icons{
     display: inline-block;
