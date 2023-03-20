@@ -22,7 +22,7 @@ class MainPage extends Component {
     return (
       <div>
         <MainSection />
-        <ProjectSection project={projectData.results.slice(0, 4)} />
+        <ProjectSection project={projectData.results} />
         <BlogSection />
         <InfoSection
           location={locationData}

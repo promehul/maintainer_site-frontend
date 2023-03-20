@@ -1,0 +1,15 @@
+.container {
+    padding: 4rem 1rem 6rem 1rem;
+}
+
+.app{
+    transition: opacity 7s linear;
+}
+.logo{
+    width: 40px;
+    height: 34px;
+}
+.midRow{
+    display: flex !important;
+    justify-content: space-between !important;
+}
