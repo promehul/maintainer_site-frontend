@@ -6,6 +6,12 @@
   margin-bottom: 2em;
 }
 
+.projectHead{
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: Archivo;
+  color: #EDEEF5
+}
 .heading{
     line-height: 72px;
     display: flex;
@@ -15,6 +21,6 @@
 
 .view-btn{
     color: #6B6B76;
-    font-family: 'Open Sans';
+    font-family: Open Sans;
     cursor: pointer;
 }

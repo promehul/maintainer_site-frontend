@@ -12,12 +12,8 @@ const MAINTAGLINE = "The work that makes a huge difference for IITR junta."
 const TitleBox = (props) => {
     const { tagLine } = props
     return (
-        <Grid.Column style={{ padding: 0, width: TITLE_BOX_WIDTH }}>
-            <div
-                style={{
-                    color: 'white', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Archivo', fontWeight: '500', fontSize: '2.6rem', lineHeight: '2.7rem', padding: '4rem',
-                }}
-            >
+        <Grid.Column styleName="styles.noPadding" style={{ width: TITLE_BOX_WIDTH }}>
+            <div styleName="styles.tagLine">
                 {tagLine}
             </div>
         </Grid.Column>
@@ -51,26 +47,18 @@ class AppBox extends Component {
         const appBgColor = projectData.slug ? appBg[projectData.slug] : ''
         return (
             <Grid.Column
-                style={{
-                    padding: 0, border: '3px solid #1E1E1E',
-                }} >
-                <Container
-                    styleName="styles.app"
-                    style={{
-                        height: '11rem', display: 'flex', alignItems: 'center', justifyContent: 'center', background: boxBgColor, cursor: 'pointer', margin: 0, borderRadius: '4px', backdropFilter: 'blur(18px)', color: '#F6F7FC', // border: '1px solid #222125',
-                    }}
-                    onMouseEnter={onMouseEnter}
-                    onMouseLeave={onMouseLeave}
-                >
+                styleName="styles.gridLayout">
+                <Container styleName="styles.app" style={{ background: boxBgColor, }} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                     {projectData.title ?
-                        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-                            <div style={{ padding: '15px', borderRadius: '50%', backgroundColor: appBgColor }}>
+                        <div styleName="styles.appDetails">
+                            <div style={{ backgroundColor: appBgColor }} styleName="styles.logoDiv">
                                 <img src={projectData.image}
                                     styleName="styles.logo" />
                             </div>
-                            <div style={{ fontFamily: 'Archivo', fontWeight: '500', fontSize: '1.2rem', marginTop: '12px', textAlign: 'center' }}>{projectData.title}</div>
+                            <div styleName="styles.appTitle">{projectData.title}</div>
                         </div>
-                        : ''}
+                        : ''
+                    }
                 </Container>
             </Grid.Column >
         )
@@ -133,12 +121,7 @@ class GridLayout extends Component {
         const apps = []
         for (let i = 0; i < BOX_COUNT; i++) {
             apps.push(
-                <AppBox
-                    key={i}
-                    id={i}
-                    projectData={projectGrids[i]}
-                    onMouseEnter={(e) => this.handleAppHover(e, projectGrids[i])}
-                    onMouseLeave={(e) => this.resetTagLine(projectGrids[i])}
+                <AppBox key={i} id={i} projectData={projectGrids[i]} onMouseEnter={(e) => this.handleAppHover(e, projectGrids[i])} onMouseLeave={(e) => this.resetTagLine(projectGrids[i])}
                 />
             )
         }
@@ -153,16 +136,16 @@ class GridLayout extends Component {
                                 </Grid.Column>
                             ))}
                         </Grid.Row>
-                        <Grid.Row styleName="styles.midRow" style={{ padding: 0 }}>
-                            <Grid.Column style={{ padding: 0, width: APP_BOX_WIDTH }} >
+                        <Grid.Row styleName="styles.midRow styles.noPadding">
+                            <Grid.Column styleName="styles.noPadding" style={{ width: APP_BOX_WIDTH }} >
                                 {apps.slice(7, 9).map((app) => (
-                                    <Grid.Row style={{ padding: 0 }}>
+                                    <Grid.Row styleName="styles.noPadding">
                                         {app}
                                     </Grid.Row>
                                 ))}
                             </Grid.Column>
                             <TitleBox tagLine={this.state.tagLine} />
-                            <Grid.Column style={{ padding: 0, width: APP_BOX_WIDTH }}>
+                            <Grid.Column styleName="styles.noPadding" style={{ width: APP_BOX_WIDTH }}>
                                 {apps.slice(9, 11).map((app) => (
                                     <Grid.Row style={{ padding: 0 }} >
                                         {app}
@@ -170,9 +153,9 @@ class GridLayout extends Component {
                                 ))}
                             </Grid.Column>
                         </Grid.Row>
-                        <Grid.Row style={{ padding: 0 }}>
+                        <Grid.Row styleName="styles.noPadding">
                             {apps.slice(11, 18).map((app) => (
-                                <Grid.Column style={{ padding: 0 }}>
+                                <Grid.Column styleName="styles.noPadding">
                                     {app}
                                 </Grid.Column>
                             ))}

@@ -17,7 +17,13 @@ h4{
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #8C8C8C;
-    padding: 0;
+    padding: 0 !important;
+}
+
+.blogHead{
+    font-weight: 700;
+    font-size: 3.45rem;
+    font-family: Archivo;
 }
 .gridContainer{
     display: flex;
@@ -30,11 +36,11 @@ h4{
     font-weight: 700;
     text-transform: capitalize;
     padding-bottom: 1.2rem;
-    font-family: 'Archivo';
+    font-family: Archivo;
 }
 
 .category-btn{
-    font-family: 'Open Sans';
+    font-family: Open Sans;
     cursor: pointer;
 }
 

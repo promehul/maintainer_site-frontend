@@ -11,19 +11,19 @@ import common from '../../css/page-common-styles.css'
 
 class Blog extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       windowWidth: window.innerWidth,
       column: 1,
-    };
-    this.handleResize = this.handleResize.bind(this);
+    }
+    this.handleResize = this.handleResize.bind(this)
   }
 
   handleResize() {
     this.setState({
       windowWidth: window.innerWidth,
-    });
+    })
     if (this.state.windowWidth >= '590' && this.state.windowWidth <= '990') {
       this.setState({
         column: 2
@@ -38,24 +38,24 @@ class Blog extends Component {
   componentDidMount() {
     const URL = urlApiBlog()
     this.props.requestBlogData(URL)
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener('resize', this.handleResize)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('resize', this.handleResize)
   }
 
   render() {
     if (this.props.apiBlogData.loaded) {
       if (this.props.apiBlogData.data && this.props.apiBlogData.data.length) {
         let MEDIUM_PUBLICATION = this.props.apiInfoData.footerData.mediumSlug
-        const tagWiseBlogs = this.props.apiBlogData.data;
+        const tagWiseBlogs = this.props.apiBlogData.data
         if (!isMobile) {
           tagWiseBlogs.sort((a, b) => {
-            if (a.category < b.category) return 1;
-            if (a.category > b.category) return -1;
-            return 0;
-          });
+            if (a.category < b.category) return 1
+            if (a.category > b.category) return -1
+            return 0
+          })
         }
 
 

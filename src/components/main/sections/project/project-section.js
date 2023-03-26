@@ -11,7 +11,7 @@ const ProjectSection = ({ project }) => {
         <div styleName="styles.container">
             <Container>
                 <div styleName="styles.heading">
-                    <div style={{ fontWeight: 700, fontSize: '3rem', fontFamily: 'Archivo', color: '#EDEEF5' }}>
+                    <div styleName="styles.projectHead">
                         Projects
                     </div>
                     <Link to={urlAppProjects()}>
