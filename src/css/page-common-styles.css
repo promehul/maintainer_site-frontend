@@ -3,6 +3,12 @@
   margin-bottom: 1.4em;
 }
 
+.container {
+  background-color: #DEE8FF;
+  padding: 2rem 1rem 1rem 1rem;
+  width: 100%;
+}
+
 .previous-upload-button {
   margin-bottom: 1.4em !important;
 }
