@@ -1,11 +1,12 @@
 import React from 'react'
-import { Grid, Container, Icon,Header } from 'semantic-ui-react'
+import { Grid, Container, Icon,Header, Responsive } from 'semantic-ui-react'
 import styles from '../../../../../css/sections/static/culture-code/culture-code-section.css'
 
 const CultureCodeSection = () =>{
     return (
     <div styleName="styles.container">
         <Container styleName="styles.sub-container" padded="vertically">
+            <Responsive minWidth={1000}>
             <h4 styleName="styles.heading" >Our Culture code</h4>
             <Grid columns={2} >
                 <Grid.Row verticalAlign='top'>
@@ -19,7 +20,7 @@ const CultureCodeSection = () =>{
                             One team, One family
                             </div>
                             <div styleName="styles.sub-text">
-                            we work as a team and live as a family celebrating dfdsfsdfdsfsd dfsdfsdf sfsdfsf fdsfsdfsd fsdfsdfsdfsdf sfsdfsdfsdfdsf sfsdfdsfsdfsd sdfsdfsddfsdf sdfsdfsdfsf sfsdfsdfdsf
+                            we work as a team and live as a family celebrating success and facing failures together
                             </div>
                         </div>
                     </div>
@@ -31,11 +32,11 @@ const CultureCodeSection = () =>{
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
-                            One Team ,One family
+                            Work hard, Party harder
                             </div>
-                            <div styleName="styles.sub-text">
-                            we work as a team and live as a family and support each other as well as grow
-                            </div>
+                            <p styleName="styles.sub-text">
+                            we work as a team and live as a family celebrating success and facing failures together
+                            </p>
                         </div>
                     </div>
                     </Grid.Column>
@@ -51,11 +52,7 @@ const CultureCodeSection = () =>{
                             Make a Difference Every Day
                             </div>
                             <div styleName="styles.sub-text">
-                            we work as a team and live as 
-                            a family 
-                            celebrating success  and facing '
-                            failures 
-                            together \
+                            we work as a team and live as a family celebrating success and facing failures together
                             </div>
                         </div>
                     </div> 
@@ -67,7 +64,7 @@ const CultureCodeSection = () =>{
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
-                            One team, One family
+                            Do the right thing 
                             </div>
                             <div styleName="styles.sub-text">
                             we work as a team and live as a family celebrating success and facing failures together 
@@ -84,7 +81,7 @@ const CultureCodeSection = () =>{
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
-                            One team, One family
+                            Stay humble and learn together.
                             </div>
                             <div styleName="styles.sub-text">
                             we work as a team and live as a family celebrating success and facing failures together 
@@ -99,7 +96,7 @@ const CultureCodeSection = () =>{
                         </span>
                         <div>
                             <div styleName="styles.sub-heading">
-                            One team, One family
+                            Lead by institute, driven by IITR junta
                             </div>
                             <div styleName="styles.sub-text">
                             we work as a team and live as a family celebrating success and facing failures together  
@@ -109,39 +106,104 @@ const CultureCodeSection = () =>{
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            {/* <div styleName="styles.row">
-                <div styleName="styles.content-parent">
-                <div styleName="styles.content">
-                        <div styleName="styles.icons6 styles.icons" >
-                        <Icon name="handshake" color="blue" ></Icon>
-                        </div>
+            </Responsive>
+            <Responsive maxWidth={1000}>
+                <Grid.Column>
+                    <Grid.Row>
+                    <h4 styleName="styles.heading" >Our Culture code</h4>
+                    </Grid.Row>
+                    <Grid.Row horizontalAlign="center" >
+                    <div styleName="styles.content">
+                        <span styleName="styles.icons1 styles.icons">
+                        <Icon name="handshake" color="violet" size='big'></Icon>
+                        </span>
                         <div>
                             <div styleName="styles.sub-heading">
                             One team, One family
                             </div>
                             <div styleName="styles.sub-text">
-                            we work as a team and live as a family celebrating success and facing failures together  fsdfsdfdsfsdfsdfdsfsdfsdfsdfdsfsdfdsfdsfsdffsdfsdfsdfdsf   
+                            we work as a team and live as a family celebrating success and facing failures together
                             </div>
                         </div>
-                    </div> 
-                </div>
-                <div styleName="styles.content-parent">
-                <div styleName="styles.content">
-                        <div styleName="styles.icons6 styles.icons" >
-                        <Icon name="handshake" color="blue" ></Icon>
-                        </div>
+                    </div>
+                    </Grid.Row>
+                    <Grid.Row>
+                    <div styleName="styles.content">
+                        <span styleName="styles.icons4 styles.icons">
+                        <Icon name="star" color="yellow" size='big'></Icon>
+                        </span>
                         <div>
                             <div styleName="styles.sub-heading">
-                            One team, One family
+                            Work hard, Party harder
+                            </div>
+                            <p styleName="styles.sub-text">
+                            we work as a team and live as a family celebrating success and facing failures together
+                            </p>
+                        </div>
+                    </div>
+                    </Grid.Row>
+                    <Grid.Row>
+                    <div styleName="styles.content">
+                        <span styleName="styles.icons2 styles.icons">
+                        <Icon name="handshake" color="pink" size="big"></Icon>
+                        </span>
+                        <div>
+                            <div styleName="styles.sub-heading">
+                            Make a Difference Every Day
                             </div>
                             <div styleName="styles.sub-text">
-                            we work as a team and live as a family celebrating success and facing failures together  fsdfsdfdsfsdfsdfdsfsdfsdfsdfdsfsdfdsfdsfsdffsdfsdfsdfdsf   
+                            we work as a team and live as a family celebrating success and facing failures together
                             </div>
                         </div>
                     </div> 
-                </div>
-            </div> */}
-            
+                    </Grid.Row>
+                    <Grid.Row>
+                    <div styleName="styles.content">
+                        <span styleName="styles.icons5 styles.icons">
+                        <Icon name="ban" color="green" size='big'></Icon>
+                        </span>
+                        <div>
+                            <div styleName="styles.sub-heading">
+                            Do the right thing 
+                            </div>
+                            <div styleName="styles.sub-text">
+                            we work as a team and live as a family celebrating success and facing failures together
+                            </div>
+                        </div>
+                    </div> 
+                    </Grid.Row>
+                    <Grid.Row>
+                    <div styleName="styles.content">
+                        <span styleName="styles.icons3 styles.icons">
+                        <Icon name="book" color="orange" size='big'></Icon>
+                        </span>
+                        <div>
+                            <div styleName="styles.sub-heading">
+                            Stay humble and learn together.
+                            </div>
+                            <div styleName="styles.sub-text">
+                            we work as a team and live as a family celebrating success and facing failures together 
+                            </div>
+                        </div>
+                    </div> 
+                    </Grid.Row>
+                    <Grid.Row>
+                    <div styleName="styles.content">
+                        <span styleName="styles.icons6 styles.icons">
+                        <Icon name="bath" color="blue" size='big'></Icon>
+                        </span>
+                        <div>
+                            <div styleName="styles.sub-heading">
+                            Lead by institute, driven by IITR junta
+                            </div>
+                            <div styleName="styles.sub-text">
+                            we work as a team and live as a family celebrating success and facing failures together  
+                            </div>
+                        </div>
+                    </div> 
+                    </Grid.Row>
+                </Grid.Column>
+            </Responsive>
         </Container>
     </div>
     )
