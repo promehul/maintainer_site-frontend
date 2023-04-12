@@ -64,7 +64,7 @@ class Sidebar extends Component {
                     styleName="styles.sidebar-button"
                     onClick={this.handleClick}
                   >
-                    Team
+                    Members
                   </button>
                 </Link>
                 <Link

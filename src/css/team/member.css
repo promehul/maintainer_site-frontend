@@ -1,0 +1,64 @@
+.text-break {
+    word-wrap: break-word;
+}
+
+.memberName{
+  font-family: 'Poppins';
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+}
+.memberProfile{
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    right: 6px;
+    background: rgba(227, 235, 254, 0.7);
+    backdrop-filter: blur(3px);
+    border-radius: 8px !important;
+    /* z-index: 1000; */
+}
+
+.roleSVG{
+    position: absolute;
+    background: rgba(227, 235, 254, 0.7);
+    border-radius: 50% !important;
+    top: 14px;
+    right: 15px;
+    padding: 7px;
+    z-index: 1000;
+}
+.name{
+    font-family: 'Poppins';
+    font-size: 1.8rem;
+    color: #171818;
+    padding: 10px;
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.designation{
+    color: #171818;
+    font-family: 'Open Sans';
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    padding: 0 10px 10px 10px;
+}
+
+.memberImage{
+    border-radius: 12px;
+}
+.card{
+    border-radius: 12px  !important;
+    width: 21rem;
+    position: relative;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+.flipped{
+    transform: rotateY(180deg);
+}

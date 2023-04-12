@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { backgroundImageStyle } from '../../consts'
 
-import styles from '../../css/team/team-member.css'
+import styles from '../../css/team/member.css'
 
 const AlumniMember = ({ info, roleOptions, designationOptions }) => {
   return (

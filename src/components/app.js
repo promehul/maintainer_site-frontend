@@ -11,7 +11,7 @@ import { requestMaintainerAccess } from '../actions/apiAuthCall'
 import ScrollToTop from './scroll-to-top'
 import AppHeader from '../containers/header/appHeader'
 import MainPage from '../components/main/main-page'
-import Team from '../containers/team/teamPageLoader'
+import Member from '../containers/team/teamPageLoader'
 import TeamIndividualView from './team-individual-view'
 
 import Alumni from '../containers/alumni/alumniPageLoader'
@@ -26,21 +26,21 @@ import NoMatch from './404/404'
 import AppFooter from '../components/footer/app-footer'
 
 import {
-// Back-end routes
-urlApiLocation,
-urlApiContact,
-urlApiSocial,
-urlApiMaintainerGroup,
-urlApiProjects,
-urlApiLoggedMaintainer,
-// Front-end routes
-urlAppAddMemberDetails,
-urlAppAddProjectDetails,
-urlAppAlumni,
-urlAppBase,
-urlAppBlog,
-urlAppProjects,
-urlAppTeam,
+  // Back-end routes
+  urlApiLocation,
+  urlApiContact,
+  urlApiSocial,
+  urlApiMaintainerGroup,
+  urlApiProjects,
+  urlApiLoggedMaintainer,
+  // Front-end routes
+  urlAppAddMemberDetails,
+  urlAppAddProjectDetails,
+  urlAppAlumni,
+  urlAppBase,
+  urlAppBlog,
+  urlAppProjects,
+  urlAppTeam,
 } from '../urls'
 
 import blocks from '../css/app.css'
@@ -97,7 +97,7 @@ class App extends Component {
           />
           <Route exact path={urlAppBlog()} component={Blog} />
           <Route exact path={urlAppProjects()} component={Projects} />
-          <Route exact path={urlAppTeam()} component={Team} />
+          <Route exact path={urlAppTeam()} component={Member} />
           <Route exact path={urlAppAlumni()} component={Alumni} />
           <Route
             exact

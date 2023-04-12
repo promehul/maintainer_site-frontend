@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { requestTeamData } from '../../actions/apiTeamCall'
-import Team from '../../components/team/team-page'
+import Member from '../../components/team/member-page'
 
 const mapStateToProps = state => {
   return {
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Team)
+)(Member)

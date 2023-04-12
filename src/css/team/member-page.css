@@ -1,0 +1,47 @@
+.head{
+    margin: 1rem 0;
+    text-align: center;
+}
+.heading{
+    font-family: 'Archivo';
+    font-size: 3.1rem;
+    font-weight: 600;
+    color: #171818;
+}
+
+.subheading{
+    font-family: Poppins;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 30px;
+    margin-top: 0;
+    /* text-align: left; */
+}
+.options{
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    font-weight: 600 !important;
+}
+.active{
+    color: #171818;
+    font-weight: 600;
+
+}
+
+.inactive{
+    color: #17181899 !important;
+}
+
+.members{
+    margin: 5.4em 9em 0 6em;
+}
+
+@media (max-width: 1204px) {
+  .memberColumn {
+    margin-left: 2rem !important;
+  }
+}
+
+.ui.vertical.text.menu {
+    margin: 0 !important;
+}

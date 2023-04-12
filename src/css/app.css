@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700');
 @import url('https://cdn.jsdelivr.net/npm/@typopro/web-bebas-neue@3.7.5/TypoPRO-BebasNeue.css');
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&family=Open+Sans:wght@600&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Open+Sans:wght@400;600&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 .container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
+  background-color: #E3EBFE;
 }
 
 .content-div {

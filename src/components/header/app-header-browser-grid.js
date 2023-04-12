@@ -99,7 +99,7 @@ class AppHeaderBrowser extends Component {
                 name="team"
                 styleName={`browserStyles.${this.handleNavStyle()}`}
               >
-                Team
+                Members
               </button>
             </NavLink>
             <NavLink
