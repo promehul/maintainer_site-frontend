@@ -26,21 +26,21 @@ import NoMatch from './404/404'
 import AppFooter from '../components/footer/app-footer'
 
 import {
-  // Back-end routes
-  urlApiLocation,
-  urlApiContact,
-  urlApiSocial,
-  urlApiMaintainerGroup,
-  urlApiProjects,
-  urlApiLoggedMaintainer,
-  // Front-end routes
-  urlAppAddMemberDetails,
-  urlAppAddProjectDetails,
-  urlAppAlumni,
-  urlAppBase,
-  urlAppBlog,
-  urlAppProjects,
-  urlAppTeam,
+// Back-end routes
+urlApiLocation,
+urlApiContact,
+urlApiSocial,
+urlApiMaintainerGroup,
+urlApiProjects,
+urlApiLoggedMaintainer,
+// Front-end routes
+urlAppAddMemberDetails,
+urlAppAddProjectDetails,
+urlAppAlumni,
+urlAppBase,
+urlAppBlog,
+urlAppProjects,
+urlAppTeam,
 } from '../urls'
 
 import blocks from '../css/app.css'

@@ -1,12 +1,12 @@
 .container {
     width: 100%;
-    background-color: #263146;
+    background-color: #171818;
     color: #ffffff;
-    padding-top: 1em;
     padding-bottom: 1em;
     min-height: 6%;
     display: flex;
     align-items: center;
+    padding: 0.7rem 1.3rem 1.75rem 1.3rem;
 }
 
 .heart {
@@ -15,7 +15,7 @@
 
 .label {
     background-color: #f8d16c !important;
-    color: #263146 !important;
+    color: #171818 !important;
 }
 
 .center {

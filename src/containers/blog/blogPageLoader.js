@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 
 import { requestBlogData } from '../../actions/apiBlogCall'
-import Blog from '../../components/blog/blog-page'
-
+import BlogSection from '../../components/main/sections/blog/blog-section'
 const mapStateToProps = state => {
   return {
     apiBlogData: state.apiBlogData,
@@ -21,4 +20,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Blog)
+)(BlogSection)

@@ -1,32 +1,64 @@
 .container {
-    background-color: #293b52;
+    border-top: 1px solid #F0F0F0;
+    background-color: #171818;
     text-align: left;
-    width: 100vw;
+    height: fit-content;
+    padding: 0.7rem 1.3rem;
+}
+
+.icons:hover{
+    background-color: #95A6C4;
+    border: none;
+}
+.icons:hover .icon{
+    color: #171818 !important;
+
+}
+
+.iconsBar{
+    display: flex;
+}
+.icons{
+    display: inline-block;
+    padding: 8px 7px 7px 10px;
+    border-radius: 60%;
+    border: 1px solid white;
+    margin-right: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.icons2
+{
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 60%;
+    border: 1px solid white;
+    margin-right: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+hr{
+    margin-top: 55px;
+}
+
+.column2
+{
+    margin-left: auto;  
 }
 .footer-text {
     font-size: 1.5rem;
     line-height: 2;
-    font-family: "TypoPRO Bebas Neue";
+    font-family: "Archivo";
+    font-weight: 600;
     color: #fff;
-    padding-top: 28px;
+    padding-top: 0.4rem;
 }
+
 .footer-text-content {
-    color: #ddd;
-    line-height: 1.7;
-}
-.f-link {
-    margin-left: 12px;
-    color: #f8d16c;
-}
-
-.social-links {
-    color: #ffffff;
-    margin-right: 1.3em;
-    font-size: 17px;
-}
-
-.social-links:hover {
-    color: #f8d16c;
+    color: #DEE8FF;;
+    line-height: 1.5;
 }
 
 h5 {

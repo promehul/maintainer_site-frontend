@@ -1,7 +1,26 @@
 .container {
-  background-color: #ffffff;
+  background-color: #171818;
 }
 
 .image {
   margin-bottom: 2em;
+}
+
+.projectHead{
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: Archivo;
+  color: #EDEEF5
+}
+.heading{
+    line-height: 72px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3.6rem;
+}
+
+.view-btn{
+    color: #6B6B76;
+    font-family: Open Sans;
+    cursor: pointer;
 }

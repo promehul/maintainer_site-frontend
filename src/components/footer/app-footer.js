@@ -43,31 +43,32 @@ class FooterSection extends Component {
       let date = new Date()
       return (
         <footer styleName="styles.container" onClick={this.handleClickCounter}>
-          <Container>{`© ${date.getFullYear()} ${
-            this.props.info.name
-          }`}</Container>
+          <Container>{`© ${date.getFullYear()} ${this.props.info.name
+            }. All Rights Reserved`}</Container>
         </footer>
       )
     } else {
       return (
-        <footer styleName="styles.container" styleName="styles.center">
-          <Container textAlign="center">
-            {this.state.iconVisible && (
-              <Popup
-                content="Meet the team"
-                position="top center"
-                trigger={
-                  <Icon
-                    name="heart"
-                    styleName="styles.heart"
-                    onClick={this.handleEasterEggDispatch}
-                  />
-                }
-              />
-            )}
-            {this.state.creatorVisible && <Creators />}
-          </Container>
-        </footer>
+        <div styleName="styles.container">
+          <footer styleName="styles.center">
+            <Container textAlign="center">
+              {this.state.iconVisible && (
+                <Popup
+                  content="Meet the team"
+                  position="top center"
+                  trigger={
+                    <Icon
+                      name="heart"
+                      styleName="styles.heart"
+                      onClick={this.handleEasterEggDispatch}
+                    />
+                  }
+                />
+              )}
+              {this.state.creatorVisible && <Creators />}
+            </Container>
+          </footer>
+        </div>
       )
     }
   }

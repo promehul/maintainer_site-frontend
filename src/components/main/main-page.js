@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import MainSection from './sections/header/main-section'
 import ProjectSection from './sections/project/project-section'
-import BlogSection from './sections/blog/blog-section'
+import BlogSection from '../../containers/blog/blogPageLoader'
 import InfoSection from './sections/info/info-section'
 
 class MainPage extends Component {
@@ -22,7 +22,7 @@ class MainPage extends Component {
     return (
       <div>
         <MainSection />
-        <ProjectSection project={projectData.results.slice(0, 4)} />
+        <ProjectSection project={projectData.results} />
         <BlogSection />
         <InfoSection
           location={locationData}
