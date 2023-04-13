@@ -102,18 +102,6 @@ class AppHeaderBrowser extends Component {
                 Members
               </button>
             </NavLink>
-            <NavLink
-              to={`${urlAppAlumni()}`}
-              styleName="browserStyles.link-color"
-              activeStyle={ACTIVE_NAV_STYLE}
-            >
-              <button
-                name="team"
-                styleName={`browserStyles.${this.handleNavStyle()}`}
-              >
-                Alumni
-              </button>
-            </NavLink>
             {this.props.auth && (
               <React.Fragment>
                 <NavLink

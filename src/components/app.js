@@ -11,10 +11,9 @@ import { requestMaintainerAccess } from '../actions/apiAuthCall'
 import ScrollToTop from './scroll-to-top'
 import AppHeader from '../containers/header/appHeader'
 import MainPage from '../components/main/main-page'
-import Member from '../containers/team/teamPageLoader'
+import Member from '../containers/member/memberPageLoader'
 import TeamIndividualView from './team-individual-view'
 
-import Alumni from '../containers/alumni/alumniPageLoader'
 import AddMemberDetails from './team/add-member-details'
 import AddProjectDetails from './projects/add-project-details'
 import Blog from '../containers/blog/blogPageLoader'
@@ -98,7 +97,6 @@ class App extends Component {
           <Route exact path={urlAppBlog()} component={Blog} />
           <Route exact path={urlAppProjects()} component={Projects} />
           <Route exact path={urlAppTeam()} component={Member} />
-          <Route exact path={urlAppAlumni()} component={Alumni} />
           <Route
             exact
             path={`${urlAppProjects()}/:slug`}

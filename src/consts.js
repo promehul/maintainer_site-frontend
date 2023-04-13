@@ -29,8 +29,7 @@ export const IMAGE_STYLE = {
   maxWidth: '100%',
 }
 
-export const backgroundImageStyle = image =>
-{
+export const backgroundImageStyle = image => {
   return {
     width: '100%',
     height: '200px',
@@ -38,6 +37,18 @@ export const backgroundImageStyle = image =>
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     borderRadius: '7px'
+  }
+}
+
+export const memberImageStyle = image => {
+  return {
+    width: '100%',
+    height: '373px',
+    backgroundImage: `url('${image}')`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    borderRadius: '12px',
+    transition: 'transform 1s linear',
   }
 }
 

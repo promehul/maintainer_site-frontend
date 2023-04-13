@@ -67,19 +67,6 @@ class Sidebar extends Component {
                     Members
                   </button>
                 </Link>
-                <Link
-                  to={`${urlAppAlumni()}`}
-                  styleName="styles.link-color"
-                  onClick={this.handleHide}
-                >
-                  <button
-                    name="alumni"
-                    styleName="styles.sidebar-button"
-                    onClick={this.handleClick}
-                  >
-                    Alumni
-                  </button>
-                </Link>
                 {this.props.isAuthed.auth && (
                   <React.Fragment>
                     <Link

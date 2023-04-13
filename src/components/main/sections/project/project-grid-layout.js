@@ -131,7 +131,7 @@ class GridLayout extends Component {
                     <Grid columns={7}>
                         <Grid.Row style={{ padding: 0 }}>
                             {apps.slice(0, 7).map((app) => (
-                                <Grid.Column style={{ padding: 0 }}>
+                                <Grid.Column key={app.id} style={{ padding: 0 }}>
                                     {app}
                                 </Grid.Column>
                             ))}
@@ -139,7 +139,7 @@ class GridLayout extends Component {
                         <Grid.Row styleName="styles.midRow styles.noPadding">
                             <Grid.Column styleName="styles.noPadding" style={{ width: APP_BOX_WIDTH }} >
                                 {apps.slice(7, 9).map((app) => (
-                                    <Grid.Row styleName="styles.noPadding">
+                                    <Grid.Row key={app.id} styleName="styles.noPadding">
                                         {app}
                                     </Grid.Row>
                                 ))}
@@ -147,7 +147,7 @@ class GridLayout extends Component {
                             <TitleBox tagLine={this.state.tagLine} />
                             <Grid.Column styleName="styles.noPadding" style={{ width: APP_BOX_WIDTH }}>
                                 {apps.slice(9, 11).map((app) => (
-                                    <Grid.Row style={{ padding: 0 }} >
+                                    <Grid.Row key={app.id} style={{ padding: 0 }} >
                                         {app}
                                     </Grid.Row>
                                 ))}
@@ -155,7 +155,7 @@ class GridLayout extends Component {
                         </Grid.Row>
                         <Grid.Row styleName="styles.noPadding">
                             {apps.slice(11, 18).map((app) => (
-                                <Grid.Column styleName="styles.noPadding">
+                                <Grid.Column key={app.id} styleName="styles.noPadding">
                                     {app}
                                 </Grid.Column>
                             ))}

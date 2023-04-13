@@ -1,16 +1,22 @@
 import { connect } from 'react-redux'
 
+import { requestTeamData } from '../../actions/apiTeamCall'
 import { requestAlumniData } from '../../actions/apiAlumniCall'
-import Alumni from '../../components/alumni/alumni-page'
+
+import Member from '../../components/team/member-page'
 
 const mapStateToProps = state => {
   return {
+    apiTeamData: state.apiTeamData,
     apiAlumniData: state.apiAlumniData,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    requestTeamData: url => {
+      dispatch(requestTeamData(url))
+    },
     requestAlumniData: (url, page, replace) => {
       dispatch(requestAlumniData(url, page, replace))
     },
@@ -20,4 +26,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Alumni)
+)(Member)
