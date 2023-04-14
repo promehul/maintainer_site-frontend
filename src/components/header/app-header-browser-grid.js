@@ -11,6 +11,7 @@ import {
   urlAppAlumni,
   urlAppAddMemberDetails,
   urlAppAddProjectDetails,
+  urlAppMember,
 } from '../../urls'
 
 import logoStyles from '../../css/header/app-header-logo.css'
@@ -91,7 +92,7 @@ class AppHeaderBrowser extends Component {
               </button>
             </NavLink>
             <NavLink
-              to={`${urlAppTeam()}`}
+              to={`${urlAppMember()}`}
               styleName="browserStyles.link-color"
               activeStyle={ACTIVE_NAV_STYLE}
             >

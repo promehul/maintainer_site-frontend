@@ -8,7 +8,7 @@ import { urlStaticBase } from '../../urls'
 
 import styles from '../../css/team/member.css'
 
-const MemberCard = ({ info, roleOptions, designationOptions, linkOptions }) => {
+const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member }) => {
 
     const [flipped, setFlipped] = useState(false)
     const [firstChange, setFirstChange] = useState(false)
@@ -28,7 +28,7 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions }) => {
     }, [flipped])
 
     return (
-        <Link to={info.informalHandle}>
+        <Link to={"../" + member + "/" + info.informalHandle}>
             <div styleName="styles.card"
                 onMouseLeave={flipProfile}
                 onMouseEnter={flipProfile}

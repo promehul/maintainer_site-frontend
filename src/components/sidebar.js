@@ -9,6 +9,7 @@ import {
   urlAppAlumni,
   urlAppAddMemberDetails,
   urlAppAddProjectDetails,
+  urlAppMember,
 } from '../urls'
 
 class Sidebar extends Component {
@@ -55,7 +56,7 @@ class Sidebar extends Component {
                   </button>
                 </Link>
                 <Link
-                  to={`${urlAppTeam()}`}
+                  to={`${urlAppMember()}`}
                   styleName="styles.link-color"
                   onClick={this.handleHide}
                 >

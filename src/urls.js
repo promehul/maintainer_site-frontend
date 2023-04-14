@@ -18,6 +18,10 @@ export function urlAppTeam() {
   return `${urlAppBase()}/team`
 }
 
+export function urlAppMember() {
+  return `${urlAppBase()}/members`
+}
+
 export function urlAppAlumni() {
   return `${urlAppBase()}/alumni`
 }

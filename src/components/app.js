@@ -40,6 +40,7 @@ import {
   urlAppBlog,
   urlAppProjects,
   urlAppTeam,
+  urlAppMember,
 } from '../urls'
 
 import blocks from '../css/app.css'
@@ -96,7 +97,7 @@ class App extends Component {
           />
           <Route exact path={urlAppBlog()} component={Blog} />
           <Route exact path={urlAppProjects()} component={Projects} />
-          <Route exact path={urlAppTeam()} component={Member} />
+          <Route exact path={urlAppMember()} component={Member} />
           <Route
             exact
             path={`${urlAppProjects()}/:slug`}

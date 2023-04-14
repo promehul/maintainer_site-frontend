@@ -70,6 +70,7 @@ class Member extends Component {
                             key={info.handle}
                             roleOptions={teamRoleOptions}
                             designationOptions={teamDesignationOptions}
+                            member="team"
                         // linkOptions={linkOptions}
                         />
                     ))}
@@ -87,6 +88,7 @@ class Member extends Component {
                                     key={info.handle}
                                     roleOptions={alumniRoleOptions}
                                     designationOptions={alumniDesignationOptions}
+                                    member="alumni"
                                 // linkOptions={linkOptions}
                                 />
                             ))}

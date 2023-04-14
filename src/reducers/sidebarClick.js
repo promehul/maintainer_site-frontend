@@ -7,6 +7,7 @@ import {
   urlAppAlumni,
   urlAppAddMemberDetails,
   urlAppAddProjectDetails,
+  urlAppMember,
 } from '../urls'
 
 const sidebarVisible = (
@@ -34,10 +35,8 @@ const sidebarVisible = (
         name = 'blog'
       } else if (window.location.pathname === `${urlAppProjects()}/`) {
         name = 'projects'
-      } else if (window.location.pathname === `${urlAppTeam()}/`) {
+      } else if (window.location.pathname === `${urlAppMember()}/`) {
         name = 'team'
-      } else if (window.location.pathname === `${urlAppAlumni()}/`) {
-        name = 'alumni'
       } else if (
         window.location.pathname === `${urlAppAddMemberDetails()}/`
       ) {
