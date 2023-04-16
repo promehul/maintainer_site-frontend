@@ -150,9 +150,7 @@ class App extends Component {
       apiInfoData.projectLoaded
     ) {
       return (
-        <div div styleName="blocks.container" style={{
-          backgroundColor: this.props.setTheme.theme === 'formal' ? '#E3EBFE' : '#1E1E1E'
-        }}>
+        <div div styleName="blocks.container">
           <AppHeader
             handleClick={this.handleShow}
             onClick={this.handleHide}

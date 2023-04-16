@@ -143,7 +143,10 @@ class MemberIndividualView extends Component {
       }
       const image = (formalTheme) ? this.state.memberDetails.formalImage : this.state.memberDetails.childhoodImage
       return (
-        <div>
+        <div style={{
+          minHeight: '100vh',
+          backgroundColor: currentTheme === 'formal' ? '#E3EBFE' : '#1E1E1E'
+        }}>
           <Container styleName="common.margin">
             <Grid stackable styleName="styles.grid">
               <Grid.Column textAlign="left" width={4}>
