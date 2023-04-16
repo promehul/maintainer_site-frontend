@@ -16,3 +16,44 @@
 .submit-button {
   display: block !important;
 }
+
+.f-link{
+  transition: all 0.3s;
+  font-size: 1.8rem;
+  display: inline-block;
+  border-radius: 2px;
+  margin: 0.2em 0.6em 0 0;
+  padding: 0.57em 0.28em 0.4em 0.4em;
+  border-radius: 50%;
+  background-color: #67676754;
+}
+
+.chip{
+  display: inline-block;
+  padding: 6px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 2rem;
+}
+
+div[site="github"]{
+    background-color: #67676754;
+}
+div[styleName="f-link"] > i[class^="fab fa-"] {
+  font-size: 18px;
+  color: #fff;
+}
+
+div[styleName="f-link"][site="github"] {
+  background-color: #24292e;
+}
+
+div[site="instagram"] {
+  color: #e1306c;
+  background-color: #DD5C9354;
+}
+
+div[site="facebook"] {
+  color: #6AB0FB;
+  background-color:#6AB0FB54;
+}

@@ -1,0 +1,132 @@
+.pro-image {
+    display: flex;
+    min-height: 15rem;
+    max-width: 19.4em;
+}
+
+.techSkills{
+    font-family: 'Poppins';
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1.3rem;
+}
+.image {
+    width: 250px;
+}
+
+.role-designation {
+    color: rgba(0, 0, 0, 0.4);
+    margin-top: -2%;
+    padding-bottom: 1em;
+}
+
+.short-biography {
+    margin-top: 1%;
+    font-family: 'Open Sans';
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    line-height: 1.8rem;
+}
+
+.social-links {
+    margin: 2.8% 0 4.2% 0;
+    cursor: pointer;
+}
+
+
+.f-link:hover {
+    color: #f8d16c;
+    background-color: #293b52;
+}
+.divider {
+    padding-bottom: 1em;
+}
+.header {
+    padding-bottom: 1em !important;
+}
+.grid {
+    padding-bottom: 1em !important;
+}
+
+.options {
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    font-weight: 600 !important;
+}
+
+.active{
+    font-weight: 600;
+    transition: 10s linear ease-out;
+}
+
+.tabChange{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.tabChangeShow{
+  opacity: 0;
+}
+
+.container {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.container.fade-out {
+  opacity: 0;
+}
+
+.fullName{
+    display: inline-block;
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 2.3rem;
+    line-height: 3rem;
+    text-align: left;
+}
+
+.fav{
+    font-family: 'Open Sans';
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.favRow{
+    display: inline-block;
+    width: 9rem !important;
+    padding: 0.8rem 0 0 0 !important;
+}
+
+.avatar{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #acacac;
+    margin-right: 0.5rem;
+}
+
+.personality{
+    display: inline-flex;
+    border: 1px solid #DEE8FF;
+    margin: 1.4rem;
+    border-radius: 3.4rem;
+    padding: 0.7rem 1.3rem 0.7rem 0.8rem;
+}
+
+.personalityType{
+    display: inline-flex; 
+    align-items: center;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+}
