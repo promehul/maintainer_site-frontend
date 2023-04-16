@@ -7,6 +7,7 @@ import apiAlumniData from './apiAlumniData'
 import apiInfoData from './apiInfoData'
 import sidebarVisible from './sidebarClick'
 import isAuthed from './apiAuth'
+import setTheme from './setTheme'
 
 const rootReducers = combineReducers({
   apiBlogData,
@@ -16,6 +17,7 @@ const rootReducers = combineReducers({
   apiInfoData,
   sidebarVisible,
   isAuthed,
+  setTheme,
 })
 
 export default rootReducers

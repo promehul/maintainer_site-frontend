@@ -12,7 +12,7 @@ import ScrollToTop from './scroll-to-top'
 import AppHeader from '../containers/header/appHeader'
 import MainPage from '../components/main/main-page'
 import Member from '../containers/member/memberPageLoader'
-import TeamIndividualView from './team-individual-view'
+import TeamIndividualPageLoader from '../containers/member/memberIndividualPageLoader'
 
 import AddMemberDetails from './team/add-member-details'
 import AddProjectDetails from './projects/add-project-details'
@@ -106,12 +106,12 @@ class App extends Component {
           <Route
             exact
             path={`${urlAppTeam()}/:handle`}
-            render={props => <TeamIndividualView {...props} isActive={true} />}
+            render={props => <TeamIndividualPageLoader {...props} isActive={true} />}
           />
           <Route
             exact
             path={`${urlAppAlumni()}/:handle`}
-            render={props => <TeamIndividualView {...props} isActive={false} />}
+            render={props => <TeamIndividualPageLoader {...props} isActive={false} />}
           />
           {this.props.isAuthed.loaded && (
             <Switch>
@@ -150,29 +150,32 @@ class App extends Component {
       apiInfoData.projectLoaded
     ) {
       return (
-        <div styleName="blocks.container">
+        <div div styleName="blocks.container" style={{
+          backgroundColor: this.props.setTheme.theme === 'formal' ? '#E3EBFE' : '#1E1E1E'
+        }}>
           <AppHeader
             handleClick={this.handleShow}
             onClick={this.handleHide}
             title={apiInfoData.footerData.name}
             dummy={[]}
           />
-          {isBrowser ? (
-            <React.Fragment>
-              <div styleName="blocks.content-div">
-                <Switcher />
-              </div>
-              <AppFooter info={apiInfoData.footerData} />
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <div styleName="blocks.content-div" onClick={this.handleHide}>
-                <Switcher />
-              </div>
-              <Sidebar />
-              <AppFooter info={apiInfoData.footerData} />
-            </React.Fragment>
-          )}
+          {
+            isBrowser ? (
+              <React.Fragment>
+                <div styleName="blocks.content-div">
+                  <Switcher />
+                </div>
+                <AppFooter info={apiInfoData.footerData} />
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <div styleName="blocks.content-div" onClick={this.handleHide}>
+                  <Switcher />
+                </div>
+                <Sidebar />
+                <AppFooter info={apiInfoData.footerData} />
+              </React.Fragment>
+            )}
         </div>
       )
     } else {
@@ -185,6 +188,7 @@ const mapStateToProps = state => {
   return {
     apiInfoData: state.apiInfoData,
     isAuthed: state.isAuthed,
+    setTheme: state.setTheme,
   }
 }
 
