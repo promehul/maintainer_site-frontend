@@ -12,10 +12,10 @@ export default class CultureCodeSection extends React.Component {
                         <h4 styleName="styles.heading" >Our Culture code</h4>
                         <Grid columns={2} >
                             <Grid.Row verticalAlign='top'>
-                                <Grid.Column>
+                                <Grid.Column verticalAlign='middle'>
                                     <div styleName="styles.content">
-                                        <span styleName="styles.icons1 styles.icons">
-                                            <Icon name="handshake" color="violet" size='big'></Icon>
+                                        <span styleName="styles.icons">
+                                            <img src="http://localhost:61000/static/maintainer_site/culture-icons/handshake-icon.svg" styleName="styles.images"/>
                                         </span>
                                         <div>
                                             <div styleName="styles.sub-heading">
@@ -27,10 +27,10 @@ export default class CultureCodeSection extends React.Component {
                                         </div>
                                     </div>
                                 </Grid.Column>
-                                <Grid.Column >
+                                <Grid.Column verticalAlign='middle'>
                                     <div styleName="styles.content">
-                                        <span styleName="styles.icons4 styles.icons">
-                                            <Icon name="star" color="yellow" size='big'></Icon>
+                                        <span styleName="styles.icons">
+                                        <img src="http://localhost:61000/static/maintainer_site/culture-icons/star-icon.svg" styleName="styles.images"/>
                                         </span>
                                         <div>
                                             <div styleName="styles.sub-heading">
@@ -44,10 +44,10 @@ export default class CultureCodeSection extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row verticalAlign='top'>
-                                <Grid.Column>
+                                <Grid.Column verticalAlign='middle'>
                                     <div styleName="styles.content">
-                                        <span styleName="styles.icons2 styles.icons">
-                                            <Icon name="handshake" color="pink" size="big"></Icon>
+                                        <span styleName="styles.icons">
+                                        <img src="http://localhost:61000/static/maintainer_site/culture-icons/application-icon.svg" styleName="styles.images"/>
                                         </span>
                                         <div>
                                             <div styleName="styles.sub-heading">
@@ -59,10 +59,10 @@ export default class CultureCodeSection extends React.Component {
                                         </div>
                                     </div>
                                 </Grid.Column>
-                                <Grid.Column>
+                                <Grid.Column verticalAlign='middle'>
                                     <div styleName="styles.content">
-                                        <span styleName="styles.icons5 styles.icons">
-                                            <Icon name="ban" color="green" size='big'></Icon>
+                                        <span styleName="styles.icons">
+                                        <img src="http://localhost:61000/static/maintainer_site/culture-icons/read-icon.svg" styleName="styles.images"/> 
                                         </span>
                                         <div>
                                             <div styleName="styles.sub-heading">
@@ -76,10 +76,10 @@ export default class CultureCodeSection extends React.Component {
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row verticalAlign='top'>
-                                <Grid.Column>
+                                <Grid.Column verticalAlign='middle'>
                                     <div styleName="styles.content">
-                                        <span styleName="styles.icons3 styles.icons">
-                                            <Icon name="book" color="orange" size='big'></Icon>
+                                        <span styleName="styles.icons">
+                                        <img src="http://localhost:61000/static/maintainer_site/culture-icons/brainstorming-icon.svg" styleName="styles.images"/> 
                                         </span>
                                         <div>
                                             <div styleName="styles.sub-heading">
@@ -91,10 +91,10 @@ export default class CultureCodeSection extends React.Component {
                                         </div>
                                     </div>
                                 </Grid.Column>
-                                <Grid.Column>
+                                <Grid.Column verticalAlign='middle'>
                                     <div styleName="styles.content">
-                                        <span styleName="styles.icons6 styles.icons">
-                                            <Icon name="bath" color="blue" size='big'></Icon>
+                                        <span styleName="styles.icons">
+                                        <img src="http://localhost:61000/static/maintainer_site/culture-icons/bank-icon.svg" styleName="styles.images"/> 
                                         </span>
                                         <div>
                                             <div styleName="styles.sub-heading">
@@ -116,8 +116,8 @@ export default class CultureCodeSection extends React.Component {
                             </Grid.Row>
                             <Grid.Row horizontalAlign="center" >
                                 <div styleName="styles.content">
-                                    <span styleName="styles.icons1 styles.icons">
-                                        <Icon name="handshake" color="violet" size='big'></Icon>
+                                    <span styleName="styles.icons">
+                                    <img src="http://localhost:61000/static/maintainer_site/culture-icons/handshake-icon.svg" styleName="styles.images"/> 
                                     </span>
                                     <div>
                                         <div styleName="styles.sub-heading">
@@ -131,8 +131,8 @@ export default class CultureCodeSection extends React.Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <div styleName="styles.content">
-                                    <span styleName="styles.icons4 styles.icons">
-                                        <Icon name="star" color="yellow" size='big'></Icon>
+                                    <span styleName="styles.icons">
+                                    <img src="http://localhost:61000/static/maintainer_site/culture-icons/star-icon.svg" styleName="styles.images"/> 
                                     </span>
                                     <div>
                                         <div styleName="styles.sub-heading">
@@ -146,8 +146,8 @@ export default class CultureCodeSection extends React.Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <div styleName="styles.content">
-                                    <span styleName="styles.icons2 styles.icons">
-                                        <Icon name="handshake" color="pink" size="big"></Icon>
+                                    <span styleName="styles.icons">
+                                    <img src="http://localhost:61000/static/maintainer_site/culture-icons/application-icon.svg" styleName="styles.images"/> 
                                     </span>
                                     <div>
                                         <div styleName="styles.sub-heading">
@@ -161,8 +161,8 @@ export default class CultureCodeSection extends React.Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <div styleName="styles.content">
-                                    <span styleName="styles.icons5 styles.icons">
-                                        <Icon name="ban" color="green" size='big'></Icon>
+                                    <span styleName="styles.icons">
+                                    <img src="http://localhost:61000/static/maintainer_site/culture-icons/read-icon.svg" styleName="styles.images"/> 
                                     </span>
                                     <div>
                                         <div styleName="styles.sub-heading">
@@ -176,8 +176,8 @@ export default class CultureCodeSection extends React.Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <div styleName="styles.content">
-                                    <span styleName="styles.icons3 styles.icons">
-                                        <Icon name="book" color="orange" size='big'></Icon>
+                                    <span styleName="styles.icons">
+                                    <img src="http://localhost:61000/static/maintainer_site/culture-icons/brainstorming-icon.svg" styleName="styles.images"/> 
                                     </span>
                                     <div>
                                         <div styleName="styles.sub-heading">
@@ -191,8 +191,8 @@ export default class CultureCodeSection extends React.Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <div styleName="styles.content">
-                                    <span styleName="styles.icons6 styles.icons">
-                                        <Icon name="bath" color="blue" size='big'></Icon>
+                                    <span styleName="styles.icons">
+                                    <img src="http://localhost:61000/static/maintainer_site/culture-icons/bank-icon.svg" styleName="styles.images"/> 
                                     </span>
                                     <div>
                                         <div styleName="styles.sub-heading">
