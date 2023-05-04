@@ -24,7 +24,7 @@
 .short-biography {
     margin-top: 1%;
     font-family: 'Open Sans';
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-align: left;
     line-height: 1.8rem;
@@ -129,4 +129,22 @@
     line-height: 20px;
     letter-spacing: 0em;
     text-align: left;
+}
+
+.margin{
+  /* margin-top: 5.4em;
+  margin-bottom: 1.4em; */
+  margin: 5.4em 4.5em 1.4em;
+}
+
+.profile{
+    flex-grow: 2;
+}
+
+.toggle{
+    margin-left: 20px;
+}
+
+.backArrow{
+    margin-right: 16.5em;
 }

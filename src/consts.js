@@ -43,7 +43,7 @@ export const backgroundImageStyle = image => {
 export const memberImageStyle = image => {
   return {
     width: '100%',
-    height: '373px',
+    height: '26em',
     backgroundImage: `url('${image}')`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',

@@ -115,13 +115,12 @@ class Member extends Component {
         //       .children.links.child.children.site.choices
         //   : []
 
-        console.log(this.state)
         const { activeTab } = this.state;
 
         if (this.props.apiTeamData.loaded && this.props.apiAlumniData.loaded) {
             return (
                 <>
-                    <div styleName="styles.members">
+                    <div styleName="common.sectionMargin">
                         <Grid columns={2}>
                             <Grid.Row>
                                 <Grid.Column width={3}>
