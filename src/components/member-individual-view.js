@@ -152,7 +152,9 @@ class MemberIndividualView extends Component {
               </div>
               <div styleName="styles.profile">
                 <Grid stackable styleName="styles.grid">
-                  <Grid.Column textAlign="left" width={4}>
+                  <Grid.Column textAlign="left" style={{
+                    minWidth: '21rem'
+                  }}>
                     <div styleName="styles.pro-image">
                       <div style={memberImageStyle(image)} />
                     </div>

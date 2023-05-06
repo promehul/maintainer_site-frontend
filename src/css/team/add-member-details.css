@@ -17,3 +17,73 @@
     word-break: break-all;
     padding: 0.5em;
 }
+
+.head{
+    font-family: 'Archivo';
+    font-size: 2.3rem;
+    font-weight: 600;
+}
+
+.heading{
+    display: flex;
+    justify-content: space-between;
+}
+
+.labels{
+    margin-left: 1px !important;
+    font-family: 'Open Sans';
+    font-size: 1.2rem !important;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+}
+
+.projectBtn{
+    background-color: transparent !important;
+    color: #000000 !important;
+    font-family: 'Open Sans' !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    border: 1px solid #000000 !important;
+}
+.profileColumn{
+    width: 21.3rem !important;
+}
+
+.profileColumn > div{
+    margin-bottom: 20px;
+}
+.inputs{
+    font-family: 'Open Sans' !important;
+    font-size: 1rem !important;
+    font-weight: 400;
+    text-align: left;
+    background: #D5DEF2 !important;
+    border-radius: 0.7rem !important;
+    border: none !important;
+}
+
+.inputs::placeholder{
+    color: #777777 !important;
+}
+
+.submit-btn{
+    background: #171818 !important;
+    display: block !important;
+    color: white !important;
+}
+
+/* .ui.form .field > .inputs {
+    background-color: aqua !important;
+    margin: 0 0 1.4em !important;
+} */
+
+.url{
+    width: 85%;
+    overflow: auto;
+}
+
+.icons{
+    color: #F8395B;
+}
