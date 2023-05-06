@@ -1,6 +1,10 @@
 .project-container {
     display: flex !important; /* Can someone get rid of this 'important' :( */
     flex-direction: column;
+    align-items: center;
+    /* margin-top: 5.4em;    */
+    margin: 5.4em 0 0 0;
+    background: radial-gradient(100% 130.3% at 100% 94.53%, rgba(112, 199, 142, 0.33) 0%, rgba(112, 199, 142, 0) 100%), radial-gradient(100% 130.3% at 0% 94.53%, rgba(221, 92, 147, 0.33) 0%, rgba(221, 92, 147, 0) 100%), #E3EBFE;
     flex-grow: 1;
     flex-shrink: 0;
 }
@@ -8,4 +12,16 @@
 .project-group-container {
     flex-grow: 1;
     flex-shrink: 0;
+}
+
+.head{
+    font-family: 'Archivo';
+    font-size: 3.15rem;
+    font-weight: 700;
+    margin: 2.5rem 0 7.2rem 0 !important;
+    text-align: center;
+}
+
+.project-grid{
+    text-align: center;
 }

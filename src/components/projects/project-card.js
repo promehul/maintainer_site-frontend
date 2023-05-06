@@ -8,16 +8,32 @@ import { urlAppProjects } from '../../urls'
 import styles from '../../css/projects/project-card.css'
 
 const ProjectDetail = ({ info }) => {
-  return (
-    <Card as={Link} to={`${urlAppProjects()}/${info.slug}`}>
-      <div style={backgroundImageStyle(info.image)} />
-      <Card.Content textAlign="center">
-        <Card.Header styleName="styles.text-break">{info.title}</Card.Header>
-        <Card.Description styleName="styles.text-break">
-          {info.shortDescription}
-        </Card.Description>
-      </Card.Content>
-    </Card>
-  )
+    return (
+        <Link to={`${urlAppProjects()}/${info.slug}`}>
+            <div styleName="styles.project-card" appSlug={info.slug}>
+                <div styleName="styles.logo" >
+                    <img styleName="styles.logoImg" src={info.image} />
+                </div>
+                <div styleName="styles.title">
+                    {info.title}
+                </div>
+                <div styleName="styles.shortDesc">
+                    {info.shortDescription}
+                </div>
+                <div styleName="styles.viewBtn">
+                    View More
+                </div>
+            </div>
+        </Link>
+        // <Card as={Link} to={`${urlAppProjects()}/${info.slug}`}>
+        //     <div style={backgroundImageStyle(info.image)} />
+        //     <Card.Content textAlign="center">
+        //         <Card.Header styleName="styles.text-break">{info.title}</Card.Header>
+        //         <Card.Description styleName="styles.text-break">
+        //             {info.shortDescription}
+        //         </Card.Description>
+        //     </Card.Content>
+        // </Card>
+    )
 }
 export default ProjectDetail

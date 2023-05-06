@@ -1,3 +1,109 @@
+
 .text-break {
     word-wrap: break-word;
+}
+
+.project-card{
+    align-items: center;
+    width: 266px;
+    /* height: 371px; */
+    padding-top: 1.5rem;
+    height: fit-content;
+    background: rgba(249, 251, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 0.3rem;
+    margin: 0 1.5rem 2rem 0;
+}
+
+.logo {
+    margin: 0 auto;
+    width: 40%;
+    height: 30%;
+    padding: 2.1rem 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.logoImg {
+    width: 43%;
+    height: 43%;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.project-card > :first-child{
+    background: rgba(50, 71, 102, 0.2);
+}
+.project-card > :last-child{
+    color: #324766;
+    background: rgba(50, 71, 102, 0.2);
+}
+
+div[appSlug="chakra"] > :first-child {
+    background: rgba(50, 71, 102, 0.2);
+}
+div[appSlug="chakra"] > :last-child {
+    color: #324766;
+    background: rgba(50, 71, 102, 0.2);
+}
+
+div[appSlug="iitr_website"] > :first-child {
+    background: rgba(42, 138, 203, 0.33);
+}
+div[appSlug="iitr_website"] > :last-child {
+    color: #2A8ACB;
+    background: rgba(42, 138, 203, 0.2);
+}
+
+div[appSlug="placement_online"] > :first-child {
+    background: rgba(195, 215, 255, 0.33);
+}
+div[appSlug="placement_online"] > :last-child {
+    color: #74A1FE;
+    background: rgba(195, 215, 255, 0.33);
+}
+
+div[appSlug="slambook"] > :first-child {
+    background: rgba(246, 147, 149, 0.33);
+}
+div[appSlug="slambook"] > :last-child {
+    color: #F69395;
+    background: rgba(246, 147, 149, 0.33);
+}
+
+.title{
+    margin: 1.5rem auto;
+    width: 60%;
+    font-family: 'Archivo';
+    font-size: 1.5rem;
+    color: #171818;
+    font-weight: 500;
+    text-align: center;
+}
+
+.shortDesc{
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #171818;
+}
+
+.viewBtn{
+    display: inline-block;
+    font-family: 'Open Sans';
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(195, 215, 255, 0.33);
+    border-radius: 2rem;    
+    width: 40%;
+    padding: 0.5rem 1.75rem;
+    margin: 1.5rem 0 2.2rem 0;
 }
