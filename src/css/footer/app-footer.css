@@ -3,10 +3,6 @@
     background-color: #171818;
     color: #ffffff;
     padding-bottom: 1em;
-    min-height: 6%;
-    display: flex;
-    align-items: center;
-    padding: 0.7rem 1.3rem 1.75rem 1.3rem;
 }
 
 .heart {
@@ -21,4 +17,36 @@
 .center {
     display: flex;
     justify-content: center;
+    text-align: center;
+}
+
+.grpInfo{
+    font-size: 1.4rem;
+    margin-left: 14.55rem;
+    padding: 1rem 0;
+    line-height: 2.5rem;
+}
+
+@media (max-width: 1760px) {
+  .grpInfo{
+    margin-left: 11.4rem;
+  }
+}
+
+@media (max-width: 1650px) {
+  .grpInfo{
+    margin-left: 7.35rem;
+  }
+}
+
+@media (max-width: 1550px) {
+  .grpInfo{
+    margin: 0 3.4rem 0 3.8rem;
+  }
+}
+
+@media (max-width: 768px){
+    .grpInfo{
+        padding-top: 0;
+    }
 }

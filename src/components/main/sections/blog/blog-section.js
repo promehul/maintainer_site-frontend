@@ -75,7 +75,7 @@ class BlogSection extends Component {
                       </div>
                       <div styleName="styles.category-btn"
                         onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
-                        View More
+                        View more
                       </div>
                     </div>
                     <Grid.Row styleName="styles.verticalCategory">
@@ -93,7 +93,7 @@ class BlogSection extends Component {
                   </div>
                   <div styleName="styles.category-btn"
                     onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
-                    View More
+                    View more
                   </div>
                 </div>
                 <Grid.Row styleName="styles.horizontalCategory">

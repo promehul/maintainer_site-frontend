@@ -32,7 +32,7 @@ export const IMAGE_STYLE = {
 export const backgroundImageStyle = image => {
   return {
     width: '100%',
-    height: '200px',
+    height: '16.2rem',
     backgroundImage: `url('${image}')`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',

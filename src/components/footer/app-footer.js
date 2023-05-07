@@ -42,16 +42,15 @@ class FooterSection extends Component {
     if (this.state.clickCounter < 2) {
       let date = new Date()
       return (
-        <footer styleName="styles.container" onClick={this.handleClickCounter}>
-          <Container>{`© ${date.getFullYear()} ${this.props.info.name
-            }. All Rights Reserved`}</Container>
-        </footer>
+        <div styleName="styles.container" onClick={this.handleClickCounter}>
+          <div styleName="styles.grpInfo">{`© ${date.getFullYear()} ${this.props.info.name}. All Rights Reserved`}</div>
+        </div>
       )
     } else {
       return (
         <div styleName="styles.container">
           <footer styleName="styles.center">
-            <Container textAlign="center">
+            <div>
               {this.state.iconVisible && (
                 <Popup
                   content="Meet the team"
@@ -66,7 +65,7 @@ class FooterSection extends Component {
                 />
               )}
               {this.state.creatorVisible && <Creators />}
-            </Container>
+            </div>
           </footer>
         </div>
       )

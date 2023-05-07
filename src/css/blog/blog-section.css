@@ -26,6 +26,12 @@ h4{
     font-size: 3.45rem;
     font-family: 'Archivo';
 }
+
+.heading{
+  margin: 6.2rem 0 2.15rem 0 ;
+  line-height: 72px;
+}
+
 .gridContainer{
     display: flex;
     flex-direction: column;
@@ -36,7 +42,7 @@ h4{
     font-size: 2.3rem;
     font-weight: 700;
     text-transform: capitalize;
-    padding-bottom: 1.2rem;
+    padding-bottom: 1.7rem;
     font-family: 'Archivo';
 }
 
@@ -48,17 +54,18 @@ h4{
     font-size: 1.1rem;
 }
 
-.heading{
-  margin: 3rem 0 1rem 0 ;
-  line-height: 72px;
-}
-
 .verticalCategory > *{
     margin-bottom: 7.6rem !important;
 }
 
 .verticalCategory > * > div{
+    padding-right: 3.4rem;
+}
+.verticalCategory > * > div:first-child{
     padding-right: 4.3rem;
+}
+.horizontalCategory > * > div{
+    padding-right: 1.6rem;
 }
 .horizontalCategory > *{
     margin-bottom: 2rem !important;
@@ -72,7 +79,7 @@ h4{
     }
 
     .horizontalCategory > * > div{
-    padding-right: 4.3rem;
+    padding-right: 3.4rem;
 }
 }
 
