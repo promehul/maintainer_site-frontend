@@ -1,8 +1,10 @@
 .blog
 {
-    width: fit-content;
+    /* width: fit-content; */
     display: block;
     cursor: pointer;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 .blogHead{
     display: flex;
@@ -23,8 +25,17 @@
 .authorDetails {
     float: left;
 }
+
+.blogInfo{
+    width: 100%;
+}
 .blogDetails {
     float: right;
+}
+
+.blogGrid{
+    padding: 0 !important;
+    margin-top: 2.1rem !important;
 }
 
 @media (max-width: 590px) {

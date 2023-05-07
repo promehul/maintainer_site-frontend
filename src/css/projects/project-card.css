@@ -11,7 +11,7 @@
     height: fit-content;
     background: rgba(249, 251, 255, 0.6);
     backdrop-filter: blur(12px);
-    border-radius: 0.3rem;
+    border-radius: 0.6rem;
     margin: 0 1.5rem 2rem 0;
 }
 

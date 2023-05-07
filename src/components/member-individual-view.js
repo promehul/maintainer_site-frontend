@@ -256,28 +256,30 @@ class MemberIndividualView extends Component {
                     styleName={!projectTab ? 'styles.options styles.active' : 'styles.options'}
                   />
                 </Menu>
-                {Boolean(this.state.memberProjects.length) && (
-                  <React.Fragment>
-                    <Transition.Group animation="fade" duration={500}>
-                      {projectTab && (
-                        <div style={{ display: 'inline-block' }}>
-                          <Card.Group itemsPerRow={4} doubling stackable centered>
-                            {this.state.memberProjects.map((info, index) => (
-                              <ProjectDetail info={info} key={info.slug} />
-                            ))}
-                          </Card.Group>
-                        </div>
-                      )}
-                      {!projectTab && (
-                        <div style={{ display: 'inline-block' }}>
-                          <Card.Group itemsPerRow={4} doubling stackable centered>
-                            Blogs
-                          </Card.Group>
-                        </div>
-                      )}
-                    </Transition.Group>
-                  </React.Fragment>
-                )}
+                <div styleName="styles.tabs">
+                  {Boolean(this.state.memberProjects.length) && (
+                    <React.Fragment>
+                      <Transition.Group animation="fade" duration={500}>
+                        {projectTab && (
+                          <div styleName="styles.projectCardTab">
+                            <Card.Group itemsPerRow={4} doubling stackable centered>
+                              {this.state.memberProjects.map((info, index) => (
+                                <ProjectDetail info={info} key={info.slug} />
+                              ))}
+                            </Card.Group>
+                          </div>
+                        )}
+                        {!projectTab && (
+                          <div style={{ display: 'inline-block' }}>
+                            <Card.Group itemsPerRow={4} doubling stackable centered>
+                              Blogs
+                            </Card.Group>
+                          </div>
+                        )}
+                      </Transition.Group>
+                    </React.Fragment>
+                  )}
+                </div>
               </div>
               <div styleName="styles.toggle">
                 <ToggleBtn

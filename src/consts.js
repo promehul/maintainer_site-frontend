@@ -36,7 +36,7 @@ export const backgroundImageStyle = image => {
     backgroundImage: `url('${image}')`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    borderRadius: '7px'
+    borderRadius: '1.1rem'
   }
 }
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Container, Grid, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import styles from '../../../../css/sections/project/project-grid-layout.css'
 import { urlApiProjects } from '../../../../urls'
 
-const TITLE_BOX_WIDTH = '71.35%'
+const TITLE_BOX_WIDTH = '71.2%'
+
 const APP_BOX_WIDTH = '14.28%'
 const BOX_COUNT = 18
 const TOGGLE_INTERVAL_MS = 2000
@@ -12,7 +13,9 @@ const MAINTAGLINE = "The work that makes a huge difference for IITR junta."
 const TitleBox = (props) => {
     const { tagLine } = props
     return (
-        <Grid.Column styleName="styles.noPadding" style={{ width: TITLE_BOX_WIDTH }}>
+        <Grid.Column styleName="styles.noPadding styles.tagLineGrid"
+            style={{ width: TITLE_BOX_WIDTH }}
+        >
             <div styleName="styles.tagLine">
                 {tagLine}
             </div>
@@ -47,8 +50,8 @@ class AppBox extends Component {
         const appBgColor = projectData.slug ? appBg[projectData.slug] : ''
         return (
             <Grid.Column
-                styleName="styles.gridLayout">
-                <Container styleName="styles.app" style={{ background: boxBgColor, }} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                styleName="styles.gridBox">
+                <div styleName="styles.app" style={{ background: boxBgColor, }} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                     {projectData.title ?
                         <div styleName="styles.appDetails">
                             <div style={{ backgroundColor: appBgColor }} styleName="styles.logoDiv">
@@ -59,7 +62,7 @@ class AppBox extends Component {
                         </div>
                         : ''
                     }
-                </Container>
+                </div>
             </Grid.Column >
         )
     }
@@ -126,42 +129,40 @@ class GridLayout extends Component {
             )
         }
         return (
-            <div styleName="styles.container">
-                <Container>
-                    <Grid columns={7}>
-                        <Grid.Row style={{ padding: 0 }}>
-                            {apps.slice(0, 7).map((app) => (
-                                <Grid.Column key={app.id} style={{ padding: 0 }}>
-                                    {app}
-                                </Grid.Column>
-                            ))}
-                        </Grid.Row>
-                        <Grid.Row styleName="styles.midRow styles.noPadding">
-                            <Grid.Column styleName="styles.noPadding" style={{ width: APP_BOX_WIDTH }} >
-                                {apps.slice(7, 9).map((app) => (
-                                    <Grid.Row key={app.id} styleName="styles.noPadding">
-                                        {app}
-                                    </Grid.Row>
-                                ))}
+            <div>
+                <Grid columns={7} styleName="styles.container">
+                    <Grid.Row style={{ padding: 0 }} styleName="styles.firstRow">
+                        {apps.slice(0, 7).map((app) => (
+                            <Grid.Column key={app.id} style={{ padding: 0 }}>
+                                {app}
                             </Grid.Column>
-                            <TitleBox tagLine={this.state.tagLine} />
-                            <Grid.Column styleName="styles.noPadding" style={{ width: APP_BOX_WIDTH }}>
-                                {apps.slice(9, 11).map((app) => (
-                                    <Grid.Row key={app.id} style={{ padding: 0 }} >
-                                        {app}
-                                    </Grid.Row>
-                                ))}
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row styleName="styles.noPadding">
-                            {apps.slice(11, 18).map((app) => (
-                                <Grid.Column key={app.id} styleName="styles.noPadding">
+                        ))}
+                    </Grid.Row>
+                    <Grid.Row styleName="styles.midRow styles.noPadding">
+                        <Grid.Column styleName="styles.noPadding styles.middleLeftRow" style={{ width: APP_BOX_WIDTH }} >
+                            {apps.slice(7, 9).map((app) => (
+                                <Grid.Row key={app.id} styleName="styles.noPadding">
                                     {app}
-                                </Grid.Column>
+                                </Grid.Row>
                             ))}
-                        </Grid.Row>
-                    </Grid>
-                </Container>
+                        </Grid.Column>
+                        <TitleBox tagLine={this.state.tagLine} />
+                        <Grid.Column styleName="styles.noPadding styles.middleRightRow" style={{ width: APP_BOX_WIDTH }}>
+                            {apps.slice(9, 11).map((app) => (
+                                <Grid.Row key={app.id} style={{ padding: 0 }} >
+                                    {app}
+                                </Grid.Row>
+                            ))}
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row styleName="styles.noPadding styles.lastRow" >
+                        {apps.slice(11, 18).map((app) => (
+                            <Grid.Column key={app.id} styleName="styles.noPadding">
+                                {app}
+                            </Grid.Column>
+                        ))}
+                    </Grid.Row>
+                </Grid>
             </div>
         )
     }

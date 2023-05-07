@@ -1,0 +1,95 @@
+h1{
+    padding-bottom: 15px;
+    font-size: 2.6rem;
+}
+
+h4{
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.container{
+    justify-content: space-between;
+    margin: 0 12.4rem 0 14.65rem !important;
+    transition: 'transform 1s linear';
+}
+.blog{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #8C8C8C;
+    padding: 0 !important;
+}
+
+.blogHead{
+    font-weight: 700;
+    font-size: 3.45rem;
+    font-family: 'Archivo';
+}
+.gridContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.category{
+    padding: 0;
+    font-size: 2.3rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    padding-bottom: 1.2rem;
+    font-family: 'Archivo';
+}
+
+.category-btn{
+    font-family: 'Open Sans';
+    cursor: pointer;
+    padding-right: 0.9rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.heading{
+  margin: 3rem 0 1rem 0 ;
+  line-height: 72px;
+}
+
+.verticalCategory > *{
+    margin-bottom: 7.6rem !important;
+}
+
+.verticalCategory > * > div{
+    padding-right: 4.3rem;
+}
+.horizontalCategory > *{
+    margin-bottom: 2rem !important;
+}
+
+@media (max-width: 990px) {
+    .horizontalGrid{
+        width: 100% !important;
+        margin: 0 !important; 
+        padding: 0 !important;
+    }
+
+    .horizontalCategory > * > div{
+    padding-right: 4.3rem;
+}
+}
+
+@media (max-width: 1760px) {
+  .container{
+    margin: 0 11.7rem !important;
+  }
+}
+
+@media (max-width: 1650px) {
+  .container{
+    margin: 0 7.7rem !important;
+  }
+}
+
+@media (max-width: 1550px) {
+  .container{
+    margin: 0 4rem !important;
+  }
+}

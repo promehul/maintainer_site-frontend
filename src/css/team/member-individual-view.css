@@ -61,6 +61,11 @@
     transition: 10s linear ease-out;
 }
 
+.projectCardTab{
+    display: inline-block;
+    text-align: center;
+}
+
 .tabChange{
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
@@ -139,6 +144,11 @@
 
 .profile{
     flex-grow: 2;
+}
+
+.tabs{
+    padding-top: 2.3rem;
+    text-align: center;
 }
 
 .toggle{

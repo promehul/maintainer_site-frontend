@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Image, Grid, Segment } from 'semantic-ui-react'
-import { urlStaticBase, urlAppProjects } from '../../../../urls'
+import { urlAppProjects } from '../../../../urls'
 import GridLayout from './project-grid-layout'
 import styles from '../../../../css/sections/project/project-main.css'
 import common from '../../../../css/sections/common-styles.css'
@@ -9,19 +8,21 @@ import common from '../../../../css/sections/common-styles.css'
 const ProjectSection = ({ project }) => {
     return (
         <div styleName="styles.container">
-            <Container>
+            <div styleName="styles.projectSection">
                 <div styleName="styles.heading">
                     <div styleName="styles.projectHead">
                         Projects
                     </div>
                     <Link to={urlAppProjects()}>
                         <div styleName="styles.view-btn">
-                            View More
+                            View more
                         </div>
                     </Link>
                 </div>
-                <GridLayout projectData={project} />
-            </Container>
+                <div styleName="styles.grid">
+                    <GridLayout projectData={project} />
+                </div>
+            </div>
         </div>
     )
 }
