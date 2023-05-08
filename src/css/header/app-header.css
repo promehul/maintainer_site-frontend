@@ -7,10 +7,7 @@
     position: fixed;
     z-index: 1200; /* Semantic changed z-index to 1190 on hovering over card. */
     width: 100vw;
-}
-
-.container-margin {
-    margin: 0.5em 0 0.5em 0;
+    background-color: #DEE8FF;
 }
 
 .container-transparent-general {

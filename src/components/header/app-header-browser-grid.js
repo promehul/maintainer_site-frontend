@@ -2,138 +2,87 @@ import React, { Component } from 'react'
 import { Grid } from 'semantic-ui-react'
 import { Link, NavLink } from 'react-router-dom'
 
-import {
-  urlStaticBase,
-  urlAppBase,
-  urlAppBlog,
-  urlAppProjects,
-  urlAppTeam,
-  urlAppAlumni,
-  urlAppAddMemberDetails,
-  urlAppAddProjectDetails,
-  urlAppMember,
-} from '../../urls'
+import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlAppAddProjectDetails, urlAppMember, } from '../../urls'
 
-import logoStyles from '../../css/header/app-header-logo.css'
 import browserStyles from '../../css/header/app-header-browser-grid.css'
 
-const ACTIVE_NAV_STYLE = {
-  borderBottom: '2.5px solid #000000',
+const COMMON_ACTIVE_STYLE = {
+  borderBottom: '1px solid',
 }
+
+const ACTIVE_STYLE = {
+  projects: {
+    ...COMMON_ACTIVE_STYLE,
+    borderColor: '#45C57A',
+    color: '#45C57A',
+  },
+  blogs: {
+    ...COMMON_ACTIVE_STYLE,
+    borderColor: '#DD5C93',
+    color: '#DD5C93',
+  },
+  members: {
+    ...COMMON_ACTIVE_STYLE,
+    borderColor: '#FFA109',
+    color: '#FFA109',
+  },
+  culture: {
+    ...COMMON_ACTIVE_STYLE,
+    borderColor: '#7D69FF',
+    color: '#7D69FF',
+  },
+};
 
 class AppHeaderBrowser extends Component {
   constructor(props) {
     super(props)
   }
 
-  handleLogoStyle = () => {
-    if (window.scrollY > 0) {
-      return 'maintainer-logo-after-scroll-main'
-    } else {
-      if (window.location.pathname === `${urlAppBase()}/`) {
-        return 'maintainer-logo-before-scroll-main'
-      } else {
-        return 'maintainer-logo-after-scroll-main'
-      }
-    }
-  }
-
-  handleNavStyle = () => {
-    if (window.scrollY > 0) {
-      return 'link-after-scroll-main'
-    } else {
-      if (window.location.pathname === `${urlAppBase()}/`) {
-        return 'link-before-scroll-main'
-      } else {
-        return 'link-after-scroll-main'
-      }
-    }
-  }
-
   render() {
     return (
-      <Grid columns={2} verticalAlign="middle">
-        {' '}
-        <Grid.Column>
-          <Link to={`${urlAppBase()}`} styleName="logoStyles.link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              styleName={`logoStyles.${this.handleLogoStyle()}`}
-              viewBox="0 0 100 100"
-            >
-              <use xlinkHref={`${urlStaticBase()}logo.svg#maintainer_logo`} />
-            </svg>
+      <div styleName="browserStyles.navBar browserStyles.noPadding">
+        <div styleName="browserStyles.btn browserStyles.grpName" verticalAlign="center">
+          <Link to={`${urlAppBase()}`}>
+            IMG
           </Link>
-        </Grid.Column>
-        <Grid.Column>
-          <div styleName="browserStyles.button">
-            <NavLink
-              to={`${urlAppBlog()}`}
-              styleName="browserStyles.link-color"
-              activeStyle={ACTIVE_NAV_STYLE}
-            >
-              <button
-                name="blog"
-                styleName={`browserStyles.${this.handleNavStyle()}`}
-              >
-                Blog
-              </button>
+        </div>
+        <div styleName="browserStyles.linksCol browserStyles.noPadding">
+          <div name="projects" styleName="browserStyles.btn">
+            <NavLink to={`${urlAppProjects()}`} activeStyle={ACTIVE_STYLE.projects}>
+              Projects
             </NavLink>
-            <NavLink
-              to={`${urlAppProjects()}`}
-              styleName="browserStyles.link-color"
-              activeStyle={ACTIVE_NAV_STYLE}
-            >
-              <button
-                name="projects"
-                styleName={`browserStyles.${this.handleNavStyle()}`}
-              >
-                Projects
-              </button>
-            </NavLink>
-            <NavLink
-              to={`${urlAppMember()}`}
-              styleName="browserStyles.link-color"
-              activeStyle={ACTIVE_NAV_STYLE}
-            >
-              <button
-                name="team"
-                styleName={`browserStyles.${this.handleNavStyle()}`}
-              >
-                Members
-              </button>
-            </NavLink>
-            {this.props.auth && (
-              <React.Fragment>
-                <NavLink
-                  to={`${urlAppAddMemberDetails()}`}
-                  styleName="browserStyles.link-color"
-                  activeStyle={ACTIVE_NAV_STYLE}
-                >
-                  <button
-                    name="add_member"
-                    styleName={`browserStyles.${this.handleNavStyle()}`}
-                  >
-                    * Member
-                  </button>
-                </NavLink>
-                <NavLink
-                  to={`${urlAppAddProjectDetails()}`}
-                  styleName="browserStyles.link-color"
-                  activeStyle={ACTIVE_NAV_STYLE}
-                >
-                  <button
-                    name="add_project"
-                    styleName={`browserStyles.${this.handleNavStyle()}`}
-                  >
-                    * Project
-                  </button>
-                </NavLink>
-              </React.Fragment>
-            )}
           </div>
-        </Grid.Column>
-      </Grid>
+          <div name="blog" styleName="browserStyles.btn">
+            <NavLink to={`${urlAppBlog()}`} activeStyle={ACTIVE_STYLE.blogs}>
+              Blogs
+            </NavLink>
+          </div>
+          <div name="members" styleName="browserStyles.btn">
+            <NavLink to={`${urlAppMember()}`} activeStyle={ACTIVE_STYLE.members}>
+              Members
+            </NavLink>
+          </div>
+          <div name="culture" styleName="browserStyles.btn">
+            <NavLink /* to={`${urlAppMember()}`} */ to={`${urlAppBase()}`} activeStyle={ACTIVE_STYLE.culture} >
+              Life at IMG
+            </NavLink>
+          </div>
+          {this.props.auth && (
+            <React.Fragment>
+              <div name="add_member" styleName="browserStyles.btn" >
+                <NavLink to={`${urlAppAddMemberDetails()}`} activeStyle={ACTIVE_STYLE} >
+                  * Member
+                </NavLink>
+              </div>
+              <div name="add_project" styleName="browserStyles.btn" >
+                <NavLink to={`${urlAppAddProjectDetails()}`} activeStyle={ACTIVE_STYLE} >
+                  * Project
+                </NavLink>
+              </div>
+            </React.Fragment>
+          )}
+        </div>
+      </div>
     )
   }
 }

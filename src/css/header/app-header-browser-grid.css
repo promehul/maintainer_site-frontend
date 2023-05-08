@@ -1,77 +1,52 @@
-.button {
+.navBar{
     display: flex;
-    flex-direction: row;
-    height: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    white-space: nowrap;
+    margin: 0 4.2rem 0 4.65rem !important;
+    height: 4.4rem;
+    justify-content: space-between;
+    height: fit-content;
 }
 
-.link-color {
-    color: #000000;
-}
-
-.link-color:hover {
-    color: #000000;
-}
-
-.link {
-    background-color: transparent;
-    text-transform: uppercase;
-    padding: 0.5em 1em;
-    font-family: "TypoPRO Bebas Neue";
-    font-size: 1.4rem;
+a{
     cursor: pointer;
-    border: none;
-    outline: none;
+}
+.grpName a{
+    color: #171818;
 }
 
-.link:focus {
-    outline: 0;
+.linksCol a{
+    color: #535353;
 }
 
-.link:hover {
-    opacity: 0.8;
+.linksCol > div{
+    display: inline-block;
+    margin-left: 6rem;
+}
+.grpName{
+    /* display: inline-block; */
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
-.link-before-scroll-main {
+.noPadding{
+    padding: 0 !important;
+}
+
+.btn a {
+  display: inline-block;
+}
+
+.btn{
     background-color: transparent;
-    color: #263146;
-    text-transform: uppercase;
-    padding: 0.5em 1em;
-    font-family: "TypoPRO Bebas Neue";
-    font-size: 1.4rem;
+    padding: 1.15em 0;
+    font-family: 'Archivo';
+    font-weight: 500;
+    color: #535353;
+    font-size: 1.25rem;
     transition: color 0.3s;
-    cursor: pointer;
     border: none;
     outline: none;
 }
 
-.link-before-scroll-main:focus {
-    outline: 0;
-}
-
-.link-before-scroll-main:hover {
-    opacity: 0.8;
-}
-
-.link-after-scroll-main {
-    background-color: transparent;
-    color: #000000;
-    text-transform: uppercase;
-    padding: 0.5em 1em;
-    font-family: "TypoPRO Bebas Neue";
-    font-size: 1.4rem;
-    transition: color 0.3s;
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
-.link-after-scroll-main:focus {
-    outline: 0;
-}
-
-.link-after-scroll-main:hover {
-    opacity: 0.8;
+div[name="culture"]{
+    color: #7D69FF;
 }
