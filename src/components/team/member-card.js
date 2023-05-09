@@ -12,29 +12,42 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
 
     const [flipped, setFlipped] = useState(false)
     const [firstChange, setFirstChange] = useState(false)
+    const [isAnimating, setIsAnimating] = useState(false)
+    const [isBluff, setIsBluff] = useState(false)
     const [profile, setProfile] = useState(info.formalImage)
+
     const flipProfile = () => {
-        setFirstChange(true)
+        setIsBluff(false)
+        setFirstChange(true);
+        if (isAnimating) {
+            setIsBluff(true)
+        }
         setFlipped(!flipped)
     }
 
     useEffect(() => {
-        if (firstChange) {
+        if (firstChange && !isBluff) {
+            setIsAnimating(true);
             const timeoutId = setTimeout(() => {
-                setProfile(profile === info.formalImage ? info.childhoodImage : info.formalImage)
-            }, 500)
+                setProfile((prevProfile) =>
+                    prevProfile === info.formalImage ? info.childhoodImage : info.formalImage
+                );
+                setIsAnimating(false)
+            }, 500);
             return () => clearTimeout(timeoutId)
+        } else if (isBluff) {
+            setIsAnimating(false)
         }
-    }, [flipped])
+    }, [flipped, isBluff])
 
     return (
-        <Link to={"../" + member + "/" + info.informalHandle}>
-            <div styleName="styles.card"
-                onMouseLeave={flipProfile}
-                onMouseEnter={flipProfile}
-                style={{
-                    position: 'relative', transformStyle: 'preserve-3d', transform: flipped ? 'rotateY(180deg)' : 'none', transition: 'transform 1s linear',
-                }}>
+        <div styleName="styles.card"
+            onMouseLeave={flipProfile}
+            onMouseEnter={flipProfile}
+            style={{
+                position: 'relative', transformStyle: 'preserve-3d', transform: flipped ? 'rotateY(180deg)' : 'none', transition: 'transform 1s linear',
+            }}>
+            <Link to={"../" + member + "/" + info.informalHandle}>
                 {!flipped && (
                     <div styleName="styles.roleSVG" style={{
                         position: 'absolute',
@@ -68,8 +81,8 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
                     </div>
                 </div>
                 <div style={memberImageStyle(profile)} />
-            </div>
-        </Link>
+            </Link>
+        </div>
     )
 }
 

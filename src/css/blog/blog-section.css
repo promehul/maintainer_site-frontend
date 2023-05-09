@@ -71,6 +71,30 @@ h4{
     margin-bottom: 2rem !important;
 }
 
+
+@media (max-width: 1760px) {
+    .container{
+        margin: 0 11.7rem !important;
+    }
+}
+
+@media (max-width: 1650px) {
+  .container{
+    margin: 0 7.7rem !important;
+}
+}
+
+@media (max-width: 1550px) {
+  .container{
+    margin: 0 4rem !important;
+  }
+
+  .horizontalCategory > * > div, .verticalCategory > * > div{
+    padding-right: 3rem !important;
+  }
+
+}
+
 @media (max-width: 990px) {
     .horizontalGrid{
         width: 100% !important;
@@ -83,20 +107,14 @@ h4{
 }
 }
 
-@media (max-width: 1760px) {
-  .container{
-    margin: 0 11.7rem !important;
+@media (max-width: 750px) {
+    .horizontalCategory > * > div, .verticalCategory > * > div{
+    padding-right: 1.5rem !important;
   }
 }
 
-@media (max-width: 1650px) {
-  .container{
-    margin: 0 7.7rem !important;
-  }
-}
-
-@media (max-width: 1550px) {
-  .container{
-    margin: 0 4rem !important;
+@media (max-width: 590px) {
+    .horizontalCategory > * > div, .verticalCategory > * > div{
+    padding-right: 0 !important;
   }
 }

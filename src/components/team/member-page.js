@@ -122,22 +122,22 @@ class Member extends Component {
                 <>
                     <div styleName="common.sectionMargin">
                         <Grid columns={2}>
-                            <Grid.Row>
-                                <Grid.Column width={3}>
+                            <Grid.Row styleName="common.noPadding">
+                                <Grid.Column styleName="styles.tabChangeCol">
                                 </Grid.Column>
-                                <Grid.Column width={12}>
+                                <Grid.Column style={{ width: '70%' }}>
                                     <div styleName="styles.head">
                                         <h3 styleName="styles.heading">
                                             Meet the wizards
                                         </h3>
-                                        <h4 styleName="styles.subheading">
+                                        <div styleName="styles.subheading">
                                             These are the people that make the magic happen.
-                                        </h4>
+                                        </div>
                                     </div>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column width={3} textAlign="left">
+                                <Grid.Column styleName="styles.tabChangeCol" textAlign="left">
                                     <Menu vertical text
                                         style={{ position: 'fixed', height: '100vh' }}>
                                         <Menu.Item
@@ -155,8 +155,11 @@ class Member extends Component {
                                     </Menu>
                                 </Grid.Column>
 
-                                <Grid.Column width={12} textAlign="center">
+                                <Grid.Column style={{ width: '70%' }} textAlign="center">
                                     <Card.Group itemsPerRow={4} stackable doubling>
+                                        {this.renderContent()}
+                                        {this.renderContent()}
+                                        {this.renderContent()}
                                         {this.renderContent()}
                                     </Card.Group>
                                 </Grid.Column>

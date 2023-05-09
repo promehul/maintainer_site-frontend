@@ -18,27 +18,7 @@ class AppHeader extends Component {
     window.addEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll = () => {
-    if (window.scrollY > 0) {
-      this.setState({
-        containerStyle: 'container-white-general',
-      })
-    } else {
-      this.setState({
-        containerStyle: 'container-transparent-general',
-      })
-    }
-  }
 
-  handleContainerStyle = () => {
-    if (window.scrollY > 0) {
-      return 'container-white-general'
-    } else if (this.state.containerStyle !== 'container') {
-      return 'container-transparent-general'
-    } else {
-      return 'container'
-    }
-  }
 
   pageHead = () => {
     return this.props.title
@@ -74,19 +54,17 @@ class AppHeader extends Component {
           <meta name="robots" content="index,follow" />
         </Helmet>
         <div styleName="styles.position">
-          <div styleName={`styles.${this.handleContainerStyle()}`}>
-            <Container styleName="styles.container-margin">
-              {isBrowser ? (
-                <AppHeaderBrowser auth={this.props.isAuthed.auth} />
-              ) : (
-                <AppHeaderMobile
-                  auth={this.props.isAuthed.auth}
-                  visible={this.props.sidebarVisible.visible}
-                  name={this.props.sidebarVisible.name}
-                  click={this.props.handleClick}
-                />
-              )}
-            </Container>
+          <div styleName="styles.container">
+            {isBrowser ? (
+              <AppHeaderBrowser auth={this.props.isAuthed.auth} />
+            ) : (
+              <AppHeaderMobile
+                auth={this.props.isAuthed.auth}
+                visible={this.props.sidebarVisible.visible}
+                name={this.props.sidebarVisible.name}
+                click={this.props.handleClick}
+              />
+            )}
           </div>
         </div>
       </React.Fragment>

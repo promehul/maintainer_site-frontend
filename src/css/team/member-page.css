@@ -1,35 +1,44 @@
 .head{
-    margin: 1rem 0;
+    margin: 5.3rem 0 3.5rem 0;
     text-align: center;
 }
 .heading{
     font-family: 'Archivo';
-    font-size: 3.1rem;
+    font-size: 2.9rem;
     font-weight: 600;
     color: #171818;
+    margin-bottom: 0.7rem;
 }
 
 .subheading{
-    font-family: Poppins;
-    font-size: 1.4rem;
+    font-family: 'Archivo';
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 30px;
     margin-top: 0;
-    /* text-align: left; */
 }
 .options{
-    font-family: 'Poppins';
-    font-size: 1.5rem;
+    font-family: 'Archivo';
+    font-size: 1.7rem;
     font-weight: 600 !important;
+    margin: 1.5rem 0 !important;
 }
 .active{
     color: #171818;
     font-weight: 600;
-
 }
 
 .inactive{
     color: #17181899 !important;
+}
+
+.tabChangeCol{
+    width: 21.5% !important;
+    margin-top: 9rem !important;
+}
+
+.tabCol{
+    width: 70% !important;
 }
 
 @media (max-width: 1204px) {
