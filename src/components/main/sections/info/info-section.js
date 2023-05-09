@@ -2,6 +2,8 @@ import React from 'react'
 import { Grid, Container, Icon } from 'semantic-ui-react'
 import { Popup } from 'semantic-ui-react'
 import { useState, useEffect } from 'react'
+
+import common from '../../../../css/page-common-styles.css'
 import styles from '../../../../css/sections/info/info-section.css'
 
 const InfoSection = ({ location, contact, social, about }) => {
@@ -15,8 +17,8 @@ const InfoSection = ({ location, contact, social, about }) => {
   }
   return (
     <div styleName="styles.container">
-      <Grid styleName="styles.infoSection styles.noPadding" columns={2} padded="vertically" stackable>
-        <Grid.Column styleName="styles.noPadding" computer={7} tablet={10} mobile={9} style={{ padding: 0 }}>
+      <Grid styleName="styles.infoSection common.noPadding" columns={2} padded="vertically" stackable>
+        <Grid.Column styleName="common.noPadding" computer={7} tablet={10} mobile={9} style={{ padding: 0 }}>
           <div>
             <h5>
               <div styleName="styles.footer-text">Information Management Group</div>
@@ -98,7 +100,7 @@ const InfoSection = ({ location, contact, social, about }) => {
           </div>
         </Grid.Column>
 
-        <Grid.Column floated='right' tablet={5} mobile={5} styleName="styles.column2 styles.noPadding">
+        <Grid.Column floated='right' tablet={5} mobile={5} styleName="styles.column2 common.noPadding">
           <div>
             <h5>
               <div styleName="styles.footer-text">Follow Us</div>

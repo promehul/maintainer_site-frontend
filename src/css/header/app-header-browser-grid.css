@@ -27,10 +27,6 @@ a{
     font-weight: 600;
 }
 
-.noPadding{
-    padding: 0 !important;
-}
-
 .btn a {
   display: inline-block;
 }

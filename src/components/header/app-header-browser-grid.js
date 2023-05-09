@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlAppAddProjectDetails, urlAppMember, } from '../../urls'
 
 import browserStyles from '../../css/header/app-header-browser-grid.css'
+import common from '../../css/page-common-styles.css'
 
 const COMMON_ACTIVE_STYLE = {
   borderBottom: '1px solid',
@@ -40,13 +41,13 @@ class AppHeaderBrowser extends Component {
 
   render() {
     return (
-      <div styleName="browserStyles.navBar browserStyles.noPadding">
+      <div styleName="browserStyles.navBar common.noPadding">
         <div styleName="browserStyles.btn browserStyles.grpName" verticalAlign="center">
           <Link to={`${urlAppBase()}`}>
             IMG
           </Link>
         </div>
-        <div styleName="browserStyles.linksCol browserStyles.noPadding">
+        <div styleName="browserStyles.linksCol common.noPadding">
           <div name="projects" styleName="browserStyles.btn">
             <NavLink to={`${urlAppProjects()}`} activeStyle={ACTIVE_STYLE.projects}>
               Projects

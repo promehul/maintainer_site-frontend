@@ -29,6 +29,7 @@
     padding: 7px;
     z-index: 1000;
 }
+
 .name{
     font-family: 'Archivo';
     font-size: 1.5rem;
@@ -47,7 +48,6 @@
     font-size: 1rem;
     font-weight: 400;
     text-align: left;
-    /* padding: 0 10px 10px 10px; */
     padding: 0.5rem;
     padding-top: 0;
 }
@@ -59,11 +59,28 @@
     border-radius: 12px  !important;
     width: 19.7rem !important;
     position: relative;
-    /* margin-right: 2.5rem; */
-    margin-right: 2.4rem;
-    margin-bottom: 2rem;
 }
 
-.flipped{
-    transform: rotateY(180deg);
+.card{
+    position: relative;
 }
+
+.card .informal{
+    transform: rotateY(90deg);
+    position: absolute;
+    transition: all ease-in 0.5s;
+}
+.flippedCard .informal{
+    transform: rotateY(0deg) !important;
+    transition-delay: 0.5s;
+}
+
+.card .formal{
+    transition: all ease-in 0.5s;
+    transition-delay: 0.5s;
+
+}
+.flippedCard .formal{
+    transform: rotateY(90deg) !important;
+    transition-delay: 0s;
+} 

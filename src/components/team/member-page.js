@@ -121,11 +121,11 @@ class Member extends Component {
             return (
                 <>
                     <div styleName="common.sectionMargin">
-                        <Grid columns={2}>
-                            <Grid.Row styleName="common.noPadding">
+                        <Grid columns={2} styles="styles.grid">
+                            <Grid.Row styleName="common.noPadding" >
                                 <Grid.Column styleName="styles.tabChangeCol">
                                 </Grid.Column>
-                                <Grid.Column style={{ width: '70%' }}>
+                                <Grid.Column styleName="styles.tabCol">
                                     <div styleName="styles.head">
                                         <h3 styleName="styles.heading">
                                             Meet the wizards
@@ -155,12 +155,14 @@ class Member extends Component {
                                     </Menu>
                                 </Grid.Column>
 
-                                <Grid.Column style={{ width: '70%' }} textAlign="center">
-                                    <Card.Group itemsPerRow={4} stackable doubling>
+                                <Grid.Column styleName="styles.tabCol" textAlign="center">
+                                    <Card.Group itemsPerRow={4} stackable doubling styleName="styles.memberCard">
                                         {this.renderContent()}
                                         {this.renderContent()}
                                         {this.renderContent()}
                                         {this.renderContent()}
+                                        {this.renderContent()}
+
                                     </Card.Group>
                                 </Grid.Column>
                             </Grid.Row>

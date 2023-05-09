@@ -77,10 +77,6 @@ h5 {
     margin: 0.82rem 0 0.656rem 0;
 }
 
-.noPadding{
-    padding: 0 !important;
-}
-
 @media (max-width: 1760px) {
   .infoSection{
     margin: 0 10.2rem !important;

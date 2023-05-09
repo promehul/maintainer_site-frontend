@@ -40,15 +40,14 @@ export const backgroundImageStyle = image => {
   }
 }
 
-export const memberImageStyle = image => {
+export const memberImageStyle = (image, height) => {
   return {
     width: '100%',
-    height: '26em',
+    height: `${height}`,
     backgroundImage: `url('${image}')`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     borderRadius: '12px',
-    transition: 'transform 1s linear',
   }
 }
 

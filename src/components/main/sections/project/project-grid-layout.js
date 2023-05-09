@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Grid } from 'semantic-ui-react'
+
+import common from '../../../../css/page-common-styles.css'
 import styles from '../../../../css/sections/project/project-grid-layout.css'
 import { urlApiProjects } from '../../../../urls'
 
@@ -13,7 +15,7 @@ const MAINTAGLINE = "The work that makes a huge difference for IITR junta."
 const TitleBox = (props) => {
     const { tagLine } = props
     return (
-        <Grid.Column styleName="styles.noPadding styles.tagLineGrid"
+        <Grid.Column styleName="common.noPadding styles.tagLineGrid"
             style={{ width: TITLE_BOX_WIDTH }}
         >
             <div styleName="styles.tagLine">
@@ -138,16 +140,16 @@ class GridLayout extends Component {
                             </Grid.Column>
                         ))}
                     </Grid.Row>
-                    <Grid.Row styleName="styles.midRow styles.noPadding">
-                        <Grid.Column styleName="styles.noPadding styles.middleLeftRow" style={{ width: APP_BOX_WIDTH }} >
+                    <Grid.Row styleName="styles.midRow common.noPadding">
+                        <Grid.Column styleName="common.noPadding styles.middleLeftRow" style={{ width: APP_BOX_WIDTH }} >
                             {apps.slice(7, 9).map((app) => (
-                                <Grid.Row key={app.id} styleName="styles.noPadding">
+                                <Grid.Row key={app.id} styleName="common.noPadding">
                                     {app}
                                 </Grid.Row>
                             ))}
                         </Grid.Column>
                         <TitleBox tagLine={this.state.tagLine} />
-                        <Grid.Column styleName="styles.noPadding styles.middleRightRow" style={{ width: APP_BOX_WIDTH }}>
+                        <Grid.Column styleName="common.noPadding styles.middleRightRow" style={{ width: APP_BOX_WIDTH }}>
                             {apps.slice(9, 11).map((app) => (
                                 <Grid.Row key={app.id} style={{ padding: 0 }} >
                                     {app}
@@ -155,9 +157,9 @@ class GridLayout extends Component {
                             ))}
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row styleName="styles.noPadding styles.lastRow" >
+                    <Grid.Row styleName="common.noPadding styles.lastRow" >
                         {apps.slice(11, 18).map((app) => (
-                            <Grid.Column key={app.id} styleName="styles.noPadding">
+                            <Grid.Column key={app.id} styleName="common.noPadding">
                                 {app}
                             </Grid.Column>
                         ))}

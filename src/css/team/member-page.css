@@ -34,11 +34,23 @@
 
 .tabChangeCol{
     width: 21.5% !important;
-    margin-top: 9rem !important;
+    margin-top: 8.3rem !important;
 }
 
 .tabCol{
-    width: 70% !important;
+    width: 78.5% !important;
+    margin-bottom: 1rem !important;
+}
+
+.memberCard{
+    display: flex;
+    gap: 2.6rem;
+    width: 100% !important;
+    /* justify-content: space-between; */
+}
+
+.grid{
+    margin-bottom: 2rem;
 }
 
 @media (max-width: 1204px) {
