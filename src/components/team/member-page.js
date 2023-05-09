@@ -158,11 +158,6 @@ class Member extends Component {
                                 <Grid.Column styleName="styles.tabCol" textAlign="center">
                                     <Card.Group itemsPerRow={4} stackable doubling styleName="styles.memberCard">
                                         {this.renderContent()}
-                                        {this.renderContent()}
-                                        {this.renderContent()}
-                                        {this.renderContent()}
-                                        {this.renderContent()}
-
                                     </Card.Group>
                                 </Grid.Column>
                             </Grid.Row>

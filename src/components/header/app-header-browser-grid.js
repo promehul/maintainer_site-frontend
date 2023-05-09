@@ -32,7 +32,7 @@ const ACTIVE_STYLE = {
     borderColor: '#7D69FF',
     color: '#7D69FF',
   },
-};
+}
 
 class AppHeaderBrowser extends Component {
   constructor(props) {

@@ -100,7 +100,7 @@ class MemberIndividualView extends Component {
   }
 
   handleItemClick = (e, { name }) => {
-    this.setState({ activeTab: name });
+    this.setState({ activeTab: name })
   }
 
   renderContent = () => {

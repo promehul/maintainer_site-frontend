@@ -22,8 +22,32 @@
     padding: 9rem;
 }
 
+.tagLine {
+    opacity: 1;
+}
+
+.changed {
+    animation: fadeIn 0.7s;
+}
+
+.default {
+    opacity: 1;
+    animation: fadeInOut 0.5s;
+}
+
 .gridBox{
     padding: 0 !important;
+}
+
+div:has(> .presentApp){
+    position: relative;
+    z-index: 1 !important;
+    transition: transform ease-in-out 0.6s;
+}
+
+div:has(> .presentApp):hover{
+    transform: scale(1.15);
+    z-index: 1000 !important;
 }
 
 .firstRow > *:not(:first-child), .lastRow > *:not(:first-child){
@@ -80,4 +104,27 @@
 .midRow{
     display: flex !important;
     justify-content: space-between !important;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.75;
+  }
+  50%{
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.25;
+  }
+  50%{
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
+  }
 }

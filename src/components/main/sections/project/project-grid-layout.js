@@ -13,12 +13,13 @@ const TOGGLE_INTERVAL_MS = 2000
 const MAINTAGLINE = "The work that makes a huge difference for IITR junta."
 
 const TitleBox = (props) => {
-    const { tagLine } = props
+    const { tagLine, tagLineChanged } = props
     return (
         <Grid.Column styleName="common.noPadding styles.tagLineGrid"
             style={{ width: TITLE_BOX_WIDTH }}
         >
-            <div styleName="styles.tagLine">
+            <div styleName={tagLineChanged ? "styles.tagLine styles.changed" : "styles.tagLine styles.default"}
+            >
                 {tagLine}
             </div>
         </Grid.Column>
@@ -51,19 +52,20 @@ class AppBox extends Component {
         const boxBgColor = projectData.slug ? titleToColorMap[projectData.slug] : '#171818'
         const appBgColor = projectData.slug ? appBg[projectData.slug] : ''
         return (
-            <Grid.Column
-                styleName="styles.gridBox">
-                <div styleName="styles.app" style={{ background: boxBgColor, }} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                    {projectData.title ?
-                        <div styleName="styles.appDetails">
-                            <div style={{ backgroundColor: appBgColor }} styleName="styles.logoDiv">
-                                <img src={projectData.image}
-                                    styleName="styles.logo" />
+            <Grid.Column styleName="styles.gridBox" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                <div styleName="styles.app" style={{ background: boxBgColor, }}>
+                    <div styleName={projectData.title ? "styles.presentApp" : ""} >
+                        {projectData.title ?
+                            <div styleName="styles.appDetails">
+                                <div style={{ backgroundColor: appBgColor }} styleName="styles.logoDiv">
+                                    <img src={projectData.image}
+                                        styleName="styles.logo" />
+                                </div>
+                                <div styleName="styles.appTitle">{projectData.title}</div>
                             </div>
-                            <div styleName="styles.appTitle">{projectData.title}</div>
-                        </div>
-                        : ''
-                    }
+                            : ''
+                        }
+                    </div>
                 </div>
             </Grid.Column >
         )
@@ -88,16 +90,17 @@ class GridLayout extends Component {
         this.state = {
             projectGrids,
             tagLine: MAINTAGLINE,
+            tagLineChanged: false,
         }
     }
 
-    handleAppHover = (e, projectData) => {
+    handleAppHover = (projectData) => {
         if (projectData.shortDescription != null)
-            this.setState({ ...this.state.projectGrids, tagLine: projectData.shortDescription })
+            this.setState({ ...this.state.projectGrids, tagLine: projectData.shortDescription, tagLineChanged: true })
     }
 
     resetTagLine = () => {
-        this.setState({ ...this.state.projectGrids, tagLine: MAINTAGLINE })
+        this.setState({ ...this.state.projectGrids, tagLine: MAINTAGLINE, tagLineChanged: false })
     }
 
 
@@ -126,7 +129,7 @@ class GridLayout extends Component {
         const apps = []
         for (let i = 0; i < BOX_COUNT; i++) {
             apps.push(
-                <AppBox key={i} id={i} projectData={projectGrids[i]} onMouseEnter={(e) => this.handleAppHover(e, projectGrids[i])} onMouseLeave={(e) => this.resetTagLine(projectGrids[i])}
+                <AppBox key={i} id={i} projectData={projectGrids[i]} onMouseEnter={() => this.handleAppHover(projectGrids[i])} onMouseLeave={() => this.resetTagLine(projectGrids[i])}
                 />
             )
         }
@@ -148,7 +151,7 @@ class GridLayout extends Component {
                                 </Grid.Row>
                             ))}
                         </Grid.Column>
-                        <TitleBox tagLine={this.state.tagLine} />
+                        <TitleBox tagLine={this.state.tagLine} tagLineChanged={this.state.tagLineChanged} />
                         <Grid.Column styleName="common.noPadding styles.middleRightRow" style={{ width: APP_BOX_WIDTH }}>
                             {apps.slice(9, 11).map((app) => (
                                 <Grid.Row key={app.id} style={{ padding: 0 }} >

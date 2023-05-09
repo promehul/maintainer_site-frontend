@@ -18,11 +18,11 @@ class Projects extends Component {
 
     componentDidMount() {
         this.props.requestProjectData(`${urlApiProjects()}?page=${1}`)
-        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll)
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', this.handleScroll)
     }
 
     componentDidUpdate(prevProps) {
@@ -35,10 +35,10 @@ class Projects extends Component {
     }
 
     handleScroll = () => {
-        const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
+        const { scrollHeight, scrollTop, clientHeight } = document.documentElement
         if (scrollTop + clientHeight >= scrollHeight) {
-            const nextPage = this.state.current + 1;
-            this.paginating(nextPage);
+            const nextPage = this.state.current + 1
+            this.paginating(nextPage)
         }
     }
 
@@ -77,13 +77,15 @@ class Projects extends Component {
                 >
                     <div styleName="styles.project-group-container">
                         <h2 styleName="styles.head">Projects</h2>
-                        <Container styleName="styles.project-grid">
-                            <Card.Group itemsPerRow={4} stackable doubling>
+                        <div styleName="styles.project-grid">
+                            <div styleName="styles.projectGrp">
                                 {this.state.projectData.map(info => (
-                                    <ProjectDetail info={info} key={info.slug} />
+                                    <>
+                                        <ProjectDetail info={info} key={info.slug} />
+                                    </>
                                 ))}
-                            </Card.Group>
-                        </Container>
+                            </div>
+                        </div>
                     </div>
                 </div >
             )
