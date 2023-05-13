@@ -1,0 +1,135 @@
+.blog{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+.details{
+    width: 100%;
+    padding: 0 2.7rem;
+    flex-grow: 2;
+}
+.blogImage
+{
+    width: 44% !important;
+    cursor: pointer;
+}
+.blogHead{
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: 'Open Sans';
+}
+
+.title{
+    font-weight: 600;
+    font-size: 2.4rem;
+    font-family: 'Archivo';
+    cursor: pointer;
+    margin: 1.1rem 0 0.8rem;
+    line-height: 3rem;
+}
+
+.description{
+    margin-top: 0rem;
+    font-family: 'Open Sans';
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    color: #8D8D8D;
+    font-weight: 600;
+    text-align: left;
+
+}
+
+.otherDetails{
+    margin-top: 1.2rem;
+    display: flex;
+}
+
+.tags > div{
+    margin-right: 0.7rem;
+}
+
+.time{
+    margin-right: 1.4rem !important;
+    display: inline-block;
+    font-family: 'Open Sans';
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.tags{
+
+}
+
+.chips:nth-child(1){
+    background-color: rgba(221, 92, 147, 0.33) !important;
+    color: #DD5C93 !important;
+}
+
+.chips:nth-child(2){
+    background-color: rgba(125, 105, 255, 0.33) !important;
+    color: #7D69FF !important;
+}
+
+.chips{
+    font-family: 'Inter';
+    font-weight: 400;
+    border: none;
+    font-size: 0.95rem !important;
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0.5rem 0.9rem;
+}
+
+@media (max-width: 590px) {
+  .blogGrid {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 1650px) {
+    .blogImage{
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 1330px) {
+    .blogImage{
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .blogImage{
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .blog{
+        flex-direction: column;
+    }
+    .details{
+        padding-left: 0;
+        padding-top: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .otherDetails{
+        flex-direction: column;
+    }
+    .details{
+        padding-right: 0;
+    }
+    .tags{
+        margin-top: 1rem;
+    }
+}

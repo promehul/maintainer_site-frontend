@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import MainSection from './sections/header/main-section'
 import ProjectSection from './sections/project/project-section'
-import BlogSection from '../../containers/blog/blogPageLoader'
+import { BlogSectionMainPage } from '../../containers/blog/blogPageLoader'
 import InfoSection from './sections/info/info-section'
 
 class MainPage extends Component {
@@ -23,7 +23,7 @@ class MainPage extends Component {
       <div>
         <MainSection />
         <ProjectSection project={projectData.results} />
-        <BlogSection />
+        <BlogSectionMainPage />
         <InfoSection
           location={locationData}
           contact={contactData}

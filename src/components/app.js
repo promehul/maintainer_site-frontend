@@ -16,7 +16,7 @@ import TeamIndividualPageLoader from '../containers/member/memberIndividualPageL
 
 import AddMemberDetails from './team/add-member-details'
 import AddProjectDetails from './projects/add-project-details'
-import Blog from '../containers/blog/blogPageLoader'
+import { Blogs } from '../containers/blog/blogPageLoader'
 import Projects from '../containers/project/projectPageLoader'
 import ProjectDetailView from '../containers/project/projectIndividualLoader'
 import Sidebar from '../containers/sidebar'
@@ -95,7 +95,7 @@ class App extends Component {
               <MainPage {...routeProps} {...this.props} />
             )}
           />
-          <Route exact path={urlAppBlog()} component={Blog} />
+          <Route exact path={urlAppBlog()} component={Blogs} />
           <Route exact path={urlAppProjects()} component={Projects} />
           <Route exact path={urlAppMember()} component={Member} />
           <Route
@@ -150,7 +150,7 @@ class App extends Component {
       apiInfoData.projectLoaded
     ) {
       return (
-        <div div styleName="blocks.container">
+        <div styleName="blocks.container">
           <AppHeader
             handleClick={this.handleShow}
             onClick={this.handleHide}
