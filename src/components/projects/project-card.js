@@ -2,7 +2,6 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-import { backgroundImageStyle } from '../../consts'
 import { urlAppProjects } from '../../urls'
 
 import styles from '../../css/projects/project-card.css'

@@ -121,7 +121,6 @@ const InfoSection = ({ location, contact, social, about }) => {
           </div>
         </Grid.Column>
       </Grid>
-      {/* <hr /> */}
     </div >
   )
 }

@@ -1,3 +1,31 @@
+.card{
+    border-radius: 12px  !important;
+    width: 15rem !important;
+    position: relative;
+    flex: 0 0 calc(25% - 27px);
+}
+
+.card .informal{
+    transform: rotateY(90deg);
+    position: absolute;
+    transition: all ease-in 0.4s;
+}
+
+.flippedCard .informal{
+    transform: rotateY(0deg) !important;
+    transition-delay: 0.4s;
+}
+
+.card .formal{
+    transition: all ease-in 0.4s;
+    transition-delay: 0.4s;
+}
+
+.flippedCard .formal{
+    transform: rotateY(90deg) !important;
+    transition-delay: 0s;
+} 
+
 .text-break {
     word-wrap: break-word;
 }
@@ -17,7 +45,6 @@
     background: rgba(227, 235, 254, 0.7);
     backdrop-filter: blur(3px);
     border-radius: 8px !important;
-    /* z-index: 1000; */
 }
 
 .roleSVG{
@@ -55,32 +82,21 @@
 .memberImage{
     border-radius: 12px;
 }
-.card{
-    border-radius: 12px  !important;
-    width: 19.7rem !important;
-    position: relative;
-}
 
-.card{
-    position: relative;
-}
+@media (max-width: 1450px) {
+ .card {
+   flex: 0 0 calc(33.3% - 20px);
+ }
+}   
 
-.card .informal{
-    transform: rotateY(90deg);
-    position: absolute;
-    transition: all ease-in 0.5s;
-}
-.flippedCard .informal{
-    transform: rotateY(0deg) !important;
-    transition-delay: 0.5s;
-}
+@media (max-width: 1100px) {
+  .card {
+    flex: 0 0 calc(50% - 20px);
+  }
+}  
 
-.card .formal{
-    transition: all ease-in 0.5s;
-    transition-delay: 0.5s;
-
-}
-.flippedCard .formal{
-    transform: rotateY(90deg) !important;
-    transition-delay: 0s;
-} 
+@media (max-width: 900px) {
+  .card {
+    flex: 0 0 calc(100% - 20px);
+  }
+}  

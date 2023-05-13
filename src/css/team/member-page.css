@@ -1,28 +1,68 @@
-.head{
-    margin: 5.3rem 0 3.5rem 0;
-    text-align: center;
-}
-.heading{
-    font-family: 'Archivo';
-    font-size: 2.9rem;
-    font-weight: 600;
-    color: #171818;
-    margin-bottom: 0.7rem;
+.margin{
+    margin: 4.5rem 11rem 2rem 7rem;
 }
 
-.subheading{
-    font-family: 'Archivo';
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 30px;
-    margin-top: 0;
+.head, .heading, .subheading, .options {
+  font-family: 'Archivo';
+  text-align: center;
 }
-.options{
-    font-family: 'Archivo';
-    font-size: 1.7rem;
-    font-weight: 600 !important;
-    margin: 1.5rem 0 !important;
+
+.head{
+    margin: 5.2rem 0 3.5rem 0;
 }
+
+.heading {
+  font-size: 2.9rem;
+  font-weight: 600;
+  color: #171818;
+  margin-bottom: 0.7rem;
+}
+
+.subheading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.options {
+  font-size: 1.7rem;
+  font-weight: 600 !important;
+  margin: 1.5rem 0 !important;
+  text-align: left;
+}
+
+.memberCard {
+  display: flex;
+  width: 100%;
+  gap: 2.3rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-right: 23rem;
+  align-content: center;
+  text-align: center;
+}
+
+.grid{
+    margin-right: 10rem !important;
+}
+.tabChangeCol {
+    
+  width: 22.5% !important;
+  /* margin-top: 10.5rem !important; */
+  margin-top: 18rem; 
+}
+
+.tabCol {
+  flex-grow: 1;
+  margin-bottom: 1rem !important;
+}
+
+@media (max-width: 1750px) {
+  .margin {
+    margin-right: 5rem !important;
+  }
+}
+
 .active{
     color: #171818;
     font-weight: 600;
@@ -30,35 +70,4 @@
 
 .inactive{
     color: #17181899 !important;
-}
-
-.tabChangeCol{
-    width: 21.5% !important;
-    margin-top: 8.3rem !important;
-}
-
-.tabCol{
-    width: 78.5% !important;
-    margin-bottom: 1rem !important;
-}
-
-.memberCard{
-    display: flex;
-    gap: 2.6rem;
-    width: 100% !important;
-    /* justify-content: space-between; */
-}
-
-.grid{
-    margin-bottom: 2rem;
-}
-
-@media (max-width: 1204px) {
-  .memberColumn {
-    margin-left: 2rem !important;
-  }
-}
-
-.ui.vertical.text.menu {
-    margin: 0 !important;
 }

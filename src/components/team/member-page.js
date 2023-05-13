@@ -120,47 +120,41 @@ class Member extends Component {
         if (this.props.apiTeamData.loaded && this.props.apiAlumniData.loaded) {
             return (
                 <>
-                    <div styleName="common.sectionMargin">
+                    <div styleName="styles.margin">
                         <Grid columns={2} styles="styles.grid">
-                            <Grid.Row styleName="common.noPadding" >
-                                <Grid.Column styleName="styles.tabChangeCol">
-                                </Grid.Column>
-                                <Grid.Column styleName="styles.tabCol">
-                                    <div styleName="styles.head">
-                                        <h3 styleName="styles.heading">
-                                            Meet the wizards
-                                        </h3>
-                                        <div styleName="styles.subheading">
-                                            These are the people that make the magic happen.
-                                        </div>
-                                    </div>
-                                </Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row>
-                                <Grid.Column styleName="styles.tabChangeCol" textAlign="left">
-                                    <Menu vertical text
-                                        style={{ position: 'fixed', height: '100vh' }}>
-                                        <Menu.Item
-                                            name='team'
-                                            active={activeTab === 'team'}
-                                            onClick={this.handleItemClick}
-                                            styleName={activeTab === 'team' ? 'styles.options styles.active' : 'styles.options styles.inactive'}
-                                        />
-                                        <Menu.Item
-                                            name='alumni'
-                                            active={activeTab === 'alumni'}
-                                            onClick={this.handleItemClick}
-                                            styleName={activeTab === 'alumni' ? 'styles.options styles.active' : 'styles.options styles.inactive'}
-                                        />
-                                    </Menu>
-                                </Grid.Column>
+                            <Grid.Column styleName="styles.tabChangeCol">
+                                <Menu vertical text
+                                    style={{ position: 'fixed', height: '100vh' }}>
+                                    <Menu.Item
+                                        name='team'
+                                        active={activeTab === 'team'}
+                                        onClick={this.handleItemClick}
+                                        styleName={activeTab === 'team' ? 'styles.options styles.active' : 'styles.options styles.inactive'}
+                                    />
+                                    <Menu.Item
+                                        name='alumni'
+                                        active={activeTab === 'alumni'}
+                                        onClick={this.handleItemClick}
+                                        styleName={activeTab === 'alumni' ? 'styles.options styles.active' : 'styles.options styles.inactive'
+                                        }
+                                    />
+                                </Menu>
+                            </Grid.Column>
 
-                                <Grid.Column styleName="styles.tabCol" textAlign="center">
-                                    <Card.Group itemsPerRow={4} stackable doubling styleName="styles.memberCard">
-                                        {this.renderContent()}
-                                    </Card.Group>
-                                </Grid.Column>
-                            </Grid.Row>
+                            <Grid.Column styleName="styles.tabCol">
+                                <div styleName="styles.head">
+                                    <h3 styleName="styles.heading">
+                                        Meet the wizards
+                                    </h3>
+                                    <div styleName="styles.subheading">
+                                        These are the people that make the magic happen.
+                                    </div>
+                                </div>
+
+                                <div styleName="styles.memberCard">
+                                    {this.renderContent()}
+                                </div>
+                            </Grid.Column>
                         </Grid>
                     </div>
                 </>

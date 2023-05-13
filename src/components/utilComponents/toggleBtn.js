@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import { Image } from 'semantic-ui-react'
+
 import styles from "../../css/utilComponents/toggleBtn.css"
+
+import { urlStaticBase } from '../../urls'
 
 class ToggleBtn extends Component {
     constructor(props) {
@@ -34,6 +38,9 @@ class ToggleBtn extends Component {
                         left: formalTheme ? '0.3rem' : '2.6rem'
                     }}
                 >
+                    <Image
+                        src={`${urlStaticBase()}radio.svg`}
+                    />
                 </div>
             </div>
         )

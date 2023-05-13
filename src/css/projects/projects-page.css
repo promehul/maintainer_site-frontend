@@ -41,19 +41,31 @@
 
 @media (max-width: 1830px) {
   .project-grid{
-    margin: 0 20rem;
+    margin: 0 23rem;
   }
 }
 
 @media (max-width: 1700px) {
   .project-grid{
-    margin: 0 15rem;
+    margin: 0 19rem;
+  }
+}
+
+@media (max-width: 1710px) {
+  .project-grid{
+    margin: 0 17rem;
+  }
+}
+
+@media (max-width: 1600px) {
+  .project-grid{
+    margin: 0 14rem;
   }
 }
 
 @media (max-width: 1500px) {
   .project-grid{
-    margin: 0 7rem;
+    margin: 0 10rem;
   }
 }
 

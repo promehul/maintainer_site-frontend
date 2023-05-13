@@ -5,8 +5,8 @@
 
 .project-card{
     align-items: center;
-    width: 266px;
-    /* height: 371px; */
+    max-width: 18.7rem;
+    min-width: 16rem !important;
     padding-top: 1.5rem;
     height: fit-content;
     background: rgba(249, 251, 255, 0.6);

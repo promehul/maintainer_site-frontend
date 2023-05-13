@@ -53,7 +53,10 @@ class AppBox extends Component {
         const appBgColor = projectData.slug ? appBg[projectData.slug] : ''
         return (
             <Grid.Column styleName="styles.gridBox" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                <div styleName="styles.app" style={{ background: boxBgColor, }}>
+                <div
+                    styleName={projectData.title ? "styles.app styles.entering" : "styles.app"}
+                    style={{ background: boxBgColor, }}
+                >
                     <div styleName={projectData.title ? "styles.presentApp" : ""} >
                         {projectData.title ?
                             <div styleName="styles.appDetails">
@@ -96,7 +99,8 @@ class GridLayout extends Component {
 
     handleAppHover = (projectData) => {
         if (projectData.shortDescription != null)
-            this.setState({ ...this.state.projectGrids, tagLine: projectData.shortDescription, tagLineChanged: true })
+            if (projectData.shortDescription != this.state.tagLine)
+                this.setState({ ...this.state.projectGrids, tagLine: projectData.shortDescription, tagLineChanged: true })
     }
 
     resetTagLine = () => {

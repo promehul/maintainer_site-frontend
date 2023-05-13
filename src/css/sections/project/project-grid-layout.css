@@ -46,7 +46,8 @@ div:has(> .presentApp){
 }
 
 div:has(> .presentApp):hover{
-    transform: scale(1.15);
+    transform: scale(1.15) !important;
+    transition: transform ease-in 0.5s !important;
     z-index: 1000 !important;
 }
 
@@ -127,4 +128,20 @@ div:has(> .presentApp):hover{
   100% {
     opacity: 1;
   }
+}
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.entering {
+    animation: appear 0.5s ease forwards;
 }

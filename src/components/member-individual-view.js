@@ -1,20 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Route } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import {
   Card,
-  Image,
-  Header,
-  Container,
   Icon,
-  Segment,
-  Divider,
-  Grid,
-  Reveal,
   Transition,
   Loader,
   Menu,
-  Radio,
 } from 'semantic-ui-react'
 
 import ProjectDetail from './projects/project-card'
@@ -25,11 +17,14 @@ import {
   urlApiAlumniDetails,
   urlApiMaintainerProject,
   urlApiHit,
+  urlAppMember,
 } from '../urls'
 import { headers, memberImageStyle } from '../consts'
 
+import projectStyles from '../css/projects/projects-page.css'
 import common from '../css/page-common-styles.css'
 import styles from '../css/team/member-individual-view.css'
+
 import ToggleBtn from './utilComponents/toggleBtn'
 
 class MemberIndividualView extends Component {
@@ -107,8 +102,8 @@ class MemberIndividualView extends Component {
     if (this.state.projectTab) {
       return (
         <>
-          {this.state.memberProjects.map((info, index) => (
-            <ProjectDetail /* key={index} */ info={info} key={info.slug} />
+          {this.state.memberProjects.map((info) => (
+            <ProjectDetail info={info} key={info.slug} />
           ))}
         </>)
     }
@@ -137,157 +132,129 @@ class MemberIndividualView extends Component {
 
       const image = (formalTheme) ? this.state.memberDetails.formalImage : this.state.memberDetails.childhoodImage
       return (
-        <div style={{
-          minHeight: '100vh',
-          backgroundColor: currentTheme === 'formal' ? '#E3EBFE' : '#1E1E1E'
-        }}>
-          <div styleName="styles.margin">
-            <div style={{ display: "flex" }}>
-              <div styleName="styles.backArrow">
-                <Icon name='arrow left' size='big'
-                  style={{
-                    color: !formalTheme ? '#DEE8FF' : ''
-                  }}
-                />
-              </div>
-              <div styleName="styles.profile">
-                <Grid stackable styleName="styles.grid">
-                  <Grid.Column textAlign="left" style={{
-                    width: '10rem'
-                  }}>
-                    <div styleName="styles.pro-image">
-                      <div style={memberImageStyle(image, '26rem')} />
+        <div
+          styleName="styles.container" style={{
+            display: "flex",
+            backgroundColor: currentTheme === 'formal' ? '#DEE8FF' : '#1E1E1E'
+          }}>
+          <div styleName="styles.backArrow">
+            <Link to={urlAppMember()}>
+              <Icon name='arrow left' size='big'
+                style={{
+                  color: !formalTheme ? '#DEE8FF' : '#171818'
+                }}
+              />
+            </Link>
+          </div>
+          <div styleName="styles.profile">
+            <div stackable styleName="styles.grid">
+              <div styleName="styles.pro-image" style={memberImageStyle(image, '24.2rem')} />
+              <div style={{
+                color: formalTheme ? '#171818' : '#DEE8FF',
+              }} styleName="styles.memberDetails">
+                <div styleName="styles.fullName">
+                  {this.state.memberDetails.maintainer.person.fullName}
+                </div>
+                {!formalTheme && (
+                  <div styleName="styles.personality">
+                    <div styleName="styles.avatar"></div>
+                    <div styleName="styles.personalityType">
+                      <span>{this.state.memberDetails.personalityType}</span>
                     </div>
-                  </Grid.Column>
-                  <Grid.Column width={11} style={{
-                    paddingLeft: '3em',
-                    color: formalTheme ? '#171818' : '#DEE8FF',
-                  }}>
-                    <div styleName="styles.fullName">
-                      {this.state.memberDetails.maintainer.person.fullName}
-                    </div>
-                    {!formalTheme && (
-                      <div styleName="styles.personality">
-                        <div styleName="styles.avatar"></div>
-                        <div styleName="styles.personalityType">
-                          <span>{this.state.memberDetails.personalityType}</span>
-                        </div>
-                      </div>
-                    )}
+                  </div>
+                )}
 
-                    {/* <div styleName="styles.role-designation">
-                    {roleOptions.map(
-                      (role, index) =>
-                        this.state.memberDetails.maintainer.role ===
-                        role.value && (
-                          <React.Fragment key={index}>
-                            {`${role.displayName} | `}{' '}
-                          </React.Fragment>
-                        )
-                    )}
-                    {designationOptions.map(
-                      (designation, index) =>
-                        this.state.memberDetails.maintainer.designation ===
-                        designation.value && (
-                          <React.Fragment key={index}>
-                            {designation.displayName}
-                          </React.Fragment>
-                        )
-                    )}
-                  </div> */}
-                    <div styleName="styles.short-biography">
-                      {formalTheme ? this.state.memberDetails.formalBiography : this.state.memberDetails.informalBiography}
-                    </div>
-                    <div styleName="styles.social-links">
-                      {this.state.memberDetails.socialInformation[0] &&
-                        this.state.memberDetails.socialInformation[0].links.map(
-                          (profile, index) => (
-                            <div styleName="common.f-link" key={index}
-                              site={profile.siteLogo.toLowerCase()}
-                            >
-                              <Icon
-                                title={profile.url}
-                                name={profile.siteLogo.toLowerCase()}
-                                onClick={() => window.open(profile.url)}
-                              />
-                            </div>
-                          )
-                        )}
-                    </div>
-                    <div styleName="styles.techSkills">{formalTheme ? "Tech Skills" : "Favourites"}
-                      {formalTheme ? <TechSkillsCard array={tempArr} /> :
-                        <div styleName="styles.fav">
-                          <div>
-                            <span styleName="styles.favRow">Web Series</span>
-                            {this.state.memberDetails.favouriteSeries.split(" ").map(series => (
-                              <div key={series.id} styleName="common.darkModeChip">{series}</div>
-                            ))}
-                          </div>
-                          <div>
-                            <span styleName="styles.favRow">Sports</span>
-                            {this.state.memberDetails.favouriteSports.split(" ").map(sport => (
-                              <div key={sport.id} styleName="common.darkModeChip">{sport}</div>
-                            ))}
-                          </div>
+                <div styleName="styles.social-links">
+                  {this.state.memberDetails.socialInformation[0] &&
+                    this.state.memberDetails.socialInformation[0].links.map(
+                      (profile, index) => (
+                        <div styleName="common.f-link" key={index}
+                          site={profile.siteLogo.toLowerCase()}
+                        >
+                          <Icon
+                            title={profile.url}
+                            name={profile.siteLogo.toLowerCase()}
+                            onClick={() => window.open(profile.url)}
+                          />
                         </div>
-                      }
+                      )
+                    )}
+                </div>
+                <div styleName="styles.short-biography">
+                  {formalTheme ? this.state.memberDetails.formalBiography : this.state.memberDetails.informalBiography}
+                </div>
+                <div styleName="styles.techSkills">{formalTheme ? "Tech Skills" : "Favourites"}
+                  {formalTheme ? <TechSkillsCard array={tempArr} /> :
+                    <div styleName="styles.fav">
+                      <div>
+                        <span styleName="styles.favRow">Web Series</span>
+                        {this.state.memberDetails.favouriteSeries.split(" ").map(series => (
+                          <div key={series.id} styleName="common.darkModeChip">{series}</div>
+                        ))}
+                      </div>
+                      <div>
+                        <span styleName="styles.favRow">Sports</span>
+                        {this.state.memberDetails.favouriteSports.split(" ").map(sport => (
+                          <div key={sport.id} styleName="common.darkModeChip">{sport}</div>
+                        ))}
+                      </div>
                     </div>
-                  </Grid.Column>
-                </Grid>
-                <Menu text pointing secondary>
-                  <Menu.Item
-                    style={{
-                      color: formalTheme ? '#171818' : '#DEE8FF',
-                      borderBottom: projectTab && formalTheme ? "3px solid #171818" : projectTab && !formalTheme ? '3px solid #DEE8FF' : '',
-                    }}
-                    name='project'
-                    active={projectTab}
-                    onClick={this.handleItemClick}
-                    styleName={projectTab ? 'styles.options styles.active' : 'styles.options'}
-                  />
-                  <Menu.Item
-                    style={{
-                      color: formalTheme ? '#171818' : '#DEE8FF',
-                      borderBottom: !projectTab && formalTheme ? "3px solid #171818" : !projectTab && !formalTheme ? '3px solid #DEE8FF' : '',
-                    }}
-                    name='blog'
-                    active={!projectTab}
-                    onClick={this.handleItemClick}
-                    styleName={!projectTab ? 'styles.options styles.active' : 'styles.options'}
-                  />
-                </Menu>
-                <div styleName="styles.tabs">
-                  {Boolean(this.state.memberProjects.length) && (
-                    <React.Fragment>
-                      <Transition.Group animation="fade" duration={500}>
-                        {projectTab && (
-                          <div styleName="styles.projectCardTab">
-                            <Card.Group itemsPerRow={4} doubling stackable centered>
-                              {this.state.memberProjects.map((info, index) => (
-                                <ProjectDetail info={info} key={info.slug} />
-                              ))}
-                            </Card.Group>
-                          </div>
-                        )}
-                        {!projectTab && (
-                          <div style={{ display: 'inline-block' }}>
-                            <Card.Group itemsPerRow={4} doubling stackable centered>
-                              Blogs
-                            </Card.Group>
-                          </div>
-                        )}
-                      </Transition.Group>
-                    </React.Fragment>
-                  )}
+                  }
                 </div>
               </div>
-              <div styleName="styles.toggle">
-                <ToggleBtn
-                  setTheme={this.props.setTheme}
-                  formalTheme={this.props.currentTheme === 'formal'}
+            </div>
+            <div styleName="styles.memberInputs">
+              <Menu text pointing secondary>
+                <Menu.Item
+                  style={{
+                    color: formalTheme ? '#171818' : '#DEE8FF',
+                    borderBottom: projectTab && formalTheme ? "3px solid #171818" : projectTab && !formalTheme ? '3px solid #DEE8FF' : '',
+                  }}
+                  name='project'
+                  active={projectTab}
+                  onClick={this.handleItemClick}
+                  styleName={projectTab ? 'styles.options styles.active' : 'styles.options'}
                 />
+                <Menu.Item
+                  style={{
+                    color: formalTheme ? '#171818' : '#DEE8FF',
+                    borderBottom: !projectTab && formalTheme ? "3px solid #171818" : !projectTab && !formalTheme ? '3px solid #DEE8FF' : '',
+                  }}
+                  name='blog'
+                  active={!projectTab}
+                  onClick={this.handleItemClick}
+                  styleName={!projectTab ? 'styles.options styles.active' : 'styles.options'}
+                />
+              </Menu>
+              <div styleName="styles.tabs">
+                {Boolean(this.state.memberProjects.length) && (
+                  <React.Fragment>
+                    <Transition.Group animation="fade" duration={500}>
+                      {projectTab && (
+                        <div styleName="styles.projectGrp">
+                          {this.state.memberProjects.map(info => (
+                            <ProjectDetail info={info} key={info.slug} />
+                          ))}
+                        </div>
+                      )}
+                      {!projectTab && (
+                        <div style={{ display: 'inline-block' }}>
+                          <Card.Group itemsPerRow={4} doubling stackable centered>
+                            Blogs
+                          </Card.Group>
+                        </div>
+                      )}
+                    </Transition.Group>
+                  </React.Fragment>
+                )}
               </div>
             </div>
+          </div>
+          <div styleName="styles.toggle">
+            <ToggleBtn
+              setTheme={this.props.setTheme}
+              formalTheme={this.props.currentTheme === 'formal'}
+            />
           </div>
         </div>
 

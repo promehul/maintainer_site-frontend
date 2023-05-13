@@ -1,18 +1,34 @@
-.pro-image {
+.container{
+    padding: 7.1em 4.5em 2.1em;
+}
+
+.grid {
     display: flex;
+    padding-bottom: 1em !important;
+    width: 100% !important;
+}
+
+.profile{
+  flex-grow: 1;
+}
+
+.pro-image {
     min-height: 15rem;
+    gap: 3rem !important;
     max-width: 19.4em;
+    min-width: 19em;
+}
+
+.memberDetails{
+    margin: 0 10.5rem 0 4.5rem;
 }
 
 .techSkills{
-    font-family: 'Poppins';
+    font-family: 'Archivo';
     font-size: 1.3rem;
     font-weight: 700;
     text-align: left;
     line-height: 1.3rem;
-}
-.image {
-    width: 250px;
 }
 
 .role-designation {
@@ -22,7 +38,7 @@
 }
 
 .short-biography {
-    margin-top: 1%;
+    margin-bottom: 2.5rem;
     font-family: 'Open Sans';
     font-size: 1.1rem;
     font-weight: 600;
@@ -31,64 +47,38 @@
 }
 
 .social-links {
-    margin: 2.8% 0 4.2% 0;
+    margin: 1.5rem 0 1.7rem;
     cursor: pointer;
 }
 
-
-.f-link:hover {
-    color: #f8d16c;
-    background-color: #293b52;
-}
-.divider {
-    padding-bottom: 1em;
-}
-.header {
-    padding-bottom: 1em !important;
-}
-.grid {
-    padding-bottom: 1em !important;
-}
-
 .options {
+    padding-bottom: 1.2rem !important;
     font-family: 'Poppins';
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 600 !important;
 }
 
 .active{
     font-weight: 600;
     transition: 10s linear ease-out;
+    border-bottom: 2px solid #171818 !important;
 }
 
-.projectCardTab{
-    display: inline-block;
+.tabs{
+    padding-top: 2.3rem;
     text-align: center;
 }
 
-.tabChange{
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.tabChangeShow{
-  opacity: 0;
-}
-
-.container {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.container.fade-out {
-  opacity: 0;
+.memberInputs{
+    margin-top: 4.5rem;
+    width: 87% !important;
 }
 
 .fullName{
     display: inline-block;
-    font-family: 'Poppins';
+    font-family: 'Archivo';
     font-weight: 700;
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     line-height: 3rem;
     text-align: left;
 }
@@ -136,23 +126,138 @@
     text-align: left;
 }
 
-.margin{
-  margin: 4.5em 4.5em 1.4em;
-}
-
-.profile{
-    flex-grow: 2;
-}
-
-.tabs{
-    padding-top: 2.3rem;
-    text-align: center;
-}
-
 .toggle{
-    margin-left: 20px;
+    margin-left: 1.3rem;
 }
 
 .backArrow{
     margin-right: 16.5em;
+}
+
+.projectGrp{
+    columns: 4;
+    gap: 3.5rem;
+}
+
+.projectGrp > * > div{
+    break-inside: avoid;
+}
+
+.projectGrp > * > div {
+    margin-bottom: 2.4rem;
+}
+
+@media (max-width: 1600px) {  
+  .backArrow{
+    margin-right: 9em;
+  }
+
+  .memberInputs{
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 1500px) {
+  .memberDetails{
+      margin-right: 3rem;
+  }
+}
+
+@media (max-width: 1370px) {
+  .backArrow{
+    margin-right: 5em;
+  }
+}
+
+@media (max-width: 1300px) {
+  .projectGrp{
+    columns: 3;
+  }
+}
+
+@media (max-width: 1080px) {
+  .backArrow{
+    margin-right: 4rem;
+  }
+  .memberDetails{
+    margin-right: 0;
+    margin-left: 3rem;
+  }
+  .profile{
+    flex-grow: 0;
+  }
+}
+
+@media (max-width: 1150px) {
+  .projectGrp{
+    columns: 2;
+  }
+  .container{
+    padding: 4.1em 1em 2.1em;
+   }
+}
+
+@media (max-width: 910px) {
+  .backArrow{
+    margin-right: 1.5rem;
+  }
+  .memberDetails{
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .projectGrp{
+    columns: 1;
+  }
+  .tabs{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 700px) {
+  .container{
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    order: 1;
+   }
+  .toggle{
+      align-self: flex-end;
+      position: absolute;
+   }
+   .backArrow{
+      position: absolute;
+      align-self: flex-start;
+    }
+   .profile{
+    margin-top: 3.5rem;
+    padding: 0 1.3rem;
+   }
+}
+
+@media (max-width: 590px) {
+  .grid{
+    flex-direction: column;
+  }
+  .tabs{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+  .pro-image{
+    margin: auto;
+  }
+  .memberDetails{
+    margin: 0;
+    margin-top: 2rem;
+    padding-left: 1.1rem;
+   }
+}
+
+@media (max-width: 350px){
+   .container{
+    padding: 4.1em 0 2.1em;
+   }
 }
