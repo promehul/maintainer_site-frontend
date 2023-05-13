@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Card, Container, Menu, Loader, Segment, Grid, Visibility } from 'semantic-ui-react'
+import { Menu, Loader, Segment, Grid, Visibility } from 'semantic-ui-react'
 
 import MemberCard from './member-card'
 import { urlApiTeam, urlApiAlumni } from '../../urls'
@@ -64,38 +64,34 @@ class Member extends Component {
         if (activeTab === 'team') {
             return (
                 <>
-                    {this.props.apiTeamData.data.map(info => (
-                        <MemberCard
-                            info={info}
-                            key={info.handle}
-                            roleOptions={teamRoleOptions}
-                            designationOptions={teamDesignationOptions}
-                            member="team"
-                        // linkOptions={linkOptions}
-                        />
-                    ))}
+                    {this.props.apiTeamData.data.length > 0 ?
+                        this.props.apiTeamData.data.map(info => (
+                            <MemberCard
+                                info={info}
+                                key={info.handle}
+                                roleOptions={teamRoleOptions}
+                                designationOptions={teamDesignationOptions}
+                                member="team"
+                            />
+                        )) : null}
                 </>
             )
         }
         else {
             return (
                 <>
-                    {this.props.apiAlumniData.data.length > 0 ? (
-                        <React.Fragment>
-                            {this.props.apiAlumniData.data.map(info => (
-                                <MemberCard
-                                    info={info}
-                                    key={info.handle}
-                                    roleOptions={alumniRoleOptions}
-                                    designationOptions={alumniDesignationOptions}
-                                    member="alumni"
-                                // linkOptions={linkOptions}
-                                />
-                            ))}
-                        </React.Fragment>
-                    ) : null
+                    {this.props.apiAlumniData.data.length > 0 ?
+                        this.props.apiAlumniData.data.map(info => (
+                            <MemberCard
+                                info={info}
+                                key={info.handle}
+                                roleOptions={alumniRoleOptions}
+                                designationOptions={alumniDesignationOptions}
+                                member="alumni"
+                            />
+                        ))
+                        : null
                     }
-                    < Visibility once={false} onBottomVisible={this.handleUpdate} />
                 </>
             );
         }
@@ -120,7 +116,24 @@ class Member extends Component {
         if (this.props.apiTeamData.loaded && this.props.apiAlumniData.loaded) {
             return (
                 <>
-                    <div styleName="styles.margin">
+                    <div styleName="styles.container">
+                        <div styleName="styles.horizontalTabChange">
+                            <Menu text>
+                                <Menu.Item
+                                    name='team'
+                                    active={activeTab === 'team'}
+                                    onClick={this.handleItemClick}
+                                    styleName={activeTab === 'team' ? 'styles.options styles.active' : 'styles.options styles.inactive'}
+                                />
+                                <Menu.Item
+                                    name='alumni'
+                                    active={activeTab === 'alumni'}
+                                    onClick={this.handleItemClick}
+                                    styleName={activeTab === 'alumni' ? 'styles.options styles.active' : 'styles.options styles.inactive'
+                                    }
+                                />
+                            </Menu>
+                        </div>
                         <Grid columns={2} styles="styles.grid">
                             <Grid.Column styleName="styles.tabChangeCol">
                                 <Menu vertical text
@@ -150,7 +163,6 @@ class Member extends Component {
                                         These are the people that make the magic happen.
                                     </div>
                                 </div>
-
                                 <div styleName="styles.memberCard">
                                     {this.renderContent()}
                                 </div>
