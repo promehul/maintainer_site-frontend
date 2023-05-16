@@ -13,8 +13,6 @@ import InfoSection from '../main/sections/info/info-section'
 
 class Blog extends Component {
     constructor(props) {
-        console.log("******")
-        console.log(props)
         super(props)
     }
 

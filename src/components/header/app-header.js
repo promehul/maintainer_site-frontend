@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { Container } from 'semantic-ui-react'
 import { isBrowser } from 'react-device-detect'
 
-import AppHeaderBrowser from './app-header-browser-grid'
+import { BrowserHeader } from '../../containers/member/informalThemeLoader'
 import AppHeaderMobile from './app-header-mobile-grid'
 import { urlStaticBase } from '../../urls'
 
@@ -56,7 +56,7 @@ class AppHeader extends Component {
         <div styleName="styles.position">
           <div styleName="styles.container">
             {isBrowser ? (
-              <AppHeaderBrowser auth={this.props.isAuthed.auth} />
+              <BrowserHeader auth={this.props.isAuthed.auth} />
             ) : (
               <AppHeaderMobile
                 auth={this.props.isAuthed.auth}

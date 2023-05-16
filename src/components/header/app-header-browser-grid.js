@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Grid } from 'semantic-ui-react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, withRouter } from 'react-router-dom'
 
 import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlAppAddProjectDetails, urlAppMember, } from '../../urls'
 
 import browserStyles from '../../css/header/app-header-browser-grid.css'
 import common from '../../css/page-common-styles.css'
+import { urlAppTeam } from '../../urls'
+import { urlAppAlumni } from '../../urls'
 
 const COMMON_ACTIVE_STYLE = {
   borderBottom: '1px solid',
@@ -30,7 +32,6 @@ const ACTIVE_STYLE = {
   culture: {
     ...COMMON_ACTIVE_STYLE,
     borderColor: '#7D69FF',
-    color: '#7D69FF',
   },
 }
 
@@ -39,11 +40,25 @@ class AppHeaderBrowser extends Component {
     super(props)
   }
 
+  isActiveMember = () => {
+    const { location } = this.props;
+    const memberUrls = [urlAppTeam(), urlAppMember(), urlAppAlumni()]
+    return memberUrls.some(url => location.pathname.includes(url))
+  }
+
   render() {
+    const currentTheme = this.props.currentTheme
+    const formalTheme = currentTheme === 'formal'
     return (
-      <div styleName="browserStyles.navBar common.noPadding">
+      <div styleName="browserStyles.navBar"
+        style={{
+          backgroundColor: currentTheme === 'formal' ? '#DEE8FF' : '#101111',
+        }}
+      >
         <div styleName="browserStyles.btn browserStyles.grpName" verticalAlign="center">
-          <Link to={`${urlAppBase()}`}>
+          <Link to={`${urlAppBase()}`}
+            style={{ color: !formalTheme ? '#DEE8FF' : '#171818' }}
+          >
             IMG
           </Link>
         </div>
@@ -59,24 +74,28 @@ class AppHeaderBrowser extends Component {
             </NavLink>
           </div>
           <div name="members" styleName="browserStyles.btn">
-            <NavLink to={`${urlAppMember()}`} activeStyle={ACTIVE_STYLE.members}>
+            <NavLink to={`${urlAppMember()}`} activeStyle={ACTIVE_STYLE.members}
+              isActive={this.isActiveMember}
+            >
               Members
             </NavLink>
           </div>
           <div name="culture" styleName="browserStyles.btn">
-            <NavLink /* to={`${urlAppMember()}`} */ to={`${urlAppBase()}`} activeStyle={ACTIVE_STYLE.culture} >
+            <NavLink /* to={`${urlAppMember()}`} */ to={`${urlAppBase()}`}
+              style={{ color: '#7D69FF', }}
+              activeStyle={ACTIVE_STYLE.culture} exact >
               Life at IMG
             </NavLink>
           </div>
           {this.props.auth && (
             <React.Fragment>
               <div name="add_member" styleName="browserStyles.btn" >
-                <NavLink to={`${urlAppAddMemberDetails()}`} activeStyle={ACTIVE_STYLE} >
+                <NavLink to={`${urlAppAddMemberDetails()}`} activeStyle={ACTIVE_STYLE.members} >
                   * Member
                 </NavLink>
               </div>
               <div name="add_project" styleName="browserStyles.btn" >
-                <NavLink to={`${urlAppAddProjectDetails()}`} activeStyle={ACTIVE_STYLE} >
+                <NavLink to={`${urlAppAddProjectDetails()}`} activeStyle={ACTIVE_STYLE.projects} >
                   * Project
                 </NavLink>
               </div>
@@ -88,4 +107,4 @@ class AppHeaderBrowser extends Component {
   }
 }
 
-export default AppHeaderBrowser
+export default withRouter(AppHeaderBrowser)

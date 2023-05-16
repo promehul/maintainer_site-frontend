@@ -1,6 +1,6 @@
 .navBar{
     display: flex;
-    margin: 0 4.2rem 0 4.65rem !important;
+    padding: 0 4.2rem 0 4.65rem !important;
     height: 4.4rem;
     justify-content: space-between;
     height: fit-content;
