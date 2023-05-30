@@ -1,75 +1,239 @@
 import React, { Component } from 'react'
+import { Responsive, Menu, Icon, Sidebar } from 'semantic-ui-react'
+import { Link, NavLink, withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
-import { Container } from 'semantic-ui-react'
-import { isBrowser } from 'react-device-detect'
+import axios from 'axios'
 
-import { BrowserHeader } from '../../containers/member/informalThemeLoader'
-import AppHeaderMobile from './app-header-mobile-grid'
-import { urlStaticBase } from '../../urls'
+import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlApiLoggedMaintainer, urlStaticBase, urlAppMember, urlAppTeam, urlAppAlumni } from '../../urls'
 
+import common from '../../css/page-common-styles.css'
 import styles from '../../css/header/app-header.css'
 
-class AppHeader extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      hamburgerStyle: 'hamburger',
-    }
-    window.addEventListener('scroll', this.handleScroll)
-  }
-
-
-
-  pageHead = () => {
-    return this.props.title
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <Helmet>
-          <title>{this.pageHead()}</title>
-          <link rel="icon" href={`${urlStaticBase()}favicon/favicon.ico`} />
-          {/* Open graph */}
-          <meta property="og:title" content={this.pageHead()} />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:description"
-            content="We are a student group, which cultivates technical innovation and drives the development of software systems and niche applications which empathize with the residents of IIT Roorkee."
-          />
-          <meta
-            property="og:image"
-            content={`${urlStaticBase()}thumbnail.png`}
-          />
-          {/* SEO */}
-          <meta name="author" content="Information Management Group" />
-          <meta
-            name="description"
-            content="We are a student group, which cultivates technical innovation and drives the development of software systems and niche applications which empathize with the residents of IIT Roorkee."
-          />
-          <meta
-            name="keywords"
-            content="img, information management group, img iit roorkee, imgiitr"
-          />
-          <meta name="robots" content="index,follow" />
-        </Helmet>
-        <div styleName="styles.position">
-          <div styleName="styles.container">
-            {isBrowser ? (
-              <BrowserHeader auth={this.props.isAuthed.auth} />
-            ) : (
-              <AppHeaderMobile
-                auth={this.props.isAuthed.auth}
-                visible={this.props.sidebarVisible.visible}
-                name={this.props.sidebarVisible.name}
-                click={this.props.handleClick}
-              />
-            )}
-          </div>
-        </div>
-      </React.Fragment>
-    )
-  }
+const COMMON_ACTIVE_STYLE = {
+    borderBottom: '1px solid',
 }
 
-export default AppHeader
+const ACTIVE_STYLE = {
+    projects: {
+        ...COMMON_ACTIVE_STYLE,
+        borderColor: '#45C57A',
+        color: '#45C57A',
+    },
+    blogs: {
+        ...COMMON_ACTIVE_STYLE,
+        borderColor: '#DD5C93',
+        color: '#DD5C93',
+    },
+    members: {
+        ...COMMON_ACTIVE_STYLE,
+        borderColor: '#FFA109',
+        color: '#FFA109',
+    },
+    culture: {
+        ...COMMON_ACTIVE_STYLE,
+        borderColor: '#7D69FF',
+    },
+}
+class AppHeader extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            sidebarVisible: false,
+            member: null,
+            error: null,
+        }
+        this.ref = React.createRef()
+    }
+
+    componentDidMount() {
+        const url = urlApiLoggedMaintainer()
+        axios.get(url).then(res => {
+            this.setState({ ...this.state, member: res.data })
+        }).catch(err => {
+            this.setState({ ...this.state, error: err.message })
+        })
+    }
+
+    pageHead = () => {
+        return this.props.title
+    }
+
+    isActiveMember = () => {
+        const { location } = this.props
+        const memberUrls = [urlAppTeam(), urlAppMember(), urlAppAlumni()]
+        return memberUrls.some(url => location.pathname.includes(url))
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.location !== this.props.location) {
+            if (prevProps.currentTheme === 'informal') {
+                this.props.setTheme('formal')
+            }
+        }
+    }
+
+    handleToggleSidebar = () => {
+        this.setState((prevState) => ({
+            sidebarVisible: !prevState.sidebarVisible,
+        }))
+    }
+
+    render() {
+        const currentTheme = this.props.currentTheme
+        const formalTheme = currentTheme === 'formal'
+        console.log(this.props)
+
+        return (
+            <React.Fragment>
+                <Helmet>
+                    <title>{this.pageHead()}</title>
+                    <link rel="icon" href={`${urlStaticBase()}favicon/favicon.ico`} />
+                    {/* Open graph */}
+                    <meta property="og:title" content={this.pageHead()} />
+                    <meta property="og:type" content="website" />
+                    <meta
+                        property="og:description"
+                        content="We are a student group, which cultivates technical innovation and drives the development of software systems and niche applications which empathize with the residents of IIT Roorkee."
+                    />
+                    <meta
+                        property="og:image"
+                        content={`${urlStaticBase()}thumbnail.png`}
+                    />
+                    {/* SEO */}
+                    <meta name="author" content="Information Management Group" />
+                    <meta
+                        name="description"
+                        content="We are a student group, which cultivates technical innovation and drives the development of software systems and niche applications which empathize with the residents of IIT Roorkee."
+                    />
+                    <meta
+                        name="keywords"
+                        content="img, information management group, img iit roorkee, imgiitr"
+                    />
+                    <meta name="robots" content="index,follow" />
+                </Helmet>
+                <Responsive maxWidth={900} styleName="styles.container">
+                    <div styleName="styles.navBar"
+                        style={{
+                            backgroundColor: currentTheme === 'formal' ? '#DEE8FF' : '#101111',
+                        }}
+                    >
+                        <div styleName="styles.btn styles.grpName" verticalAlign="center">
+                            <Link to={`${urlAppBase()}`}
+                                style={{ color: !formalTheme ? '#DEE8FF' : '#171818' }}
+                            >
+                                IMG
+                            </Link>
+                        </div>
+                        <div styleName="styles.hamburger styles.btn" verticalAlign="center" onClick={this.handleToggleSidebar}
+                            ref={this.ref}>
+                            <Icon name="bars" />
+                        </div>
+                        <Sidebar
+                            as={Menu}
+                            animation="overlay"
+                            direction="left"
+                            visible={this.state.sidebarVisible}
+                            vertical
+                            onHide={() => {
+                                if (this.ref.current && !this.ref.current.contains(event.target))
+                                    this.setState({ sidebarVisible: false })
+                            }}
+                            inverted
+                            style={{ backgroundColor: formalTheme ? '#DEE8FF' : '#101111' }}
+                        >
+                            <div styleName="styles.sidebarLinks common.noPadding">
+                                <div name="projects" styleName="styles.btn">
+                                    <NavLink to={`${urlAppProjects()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} activeStyle={ACTIVE_STYLE.projects}>
+                                        Projects
+                                    </NavLink>
+                                </div>
+                                <div name="blog" styleName="styles.btn">
+                                    <NavLink to={`${urlAppBlog()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} activeStyle={ACTIVE_STYLE.blogs}>
+                                        Blogs
+                                    </NavLink>
+                                </div>
+                                <div name="members" styleName="styles.btn">
+                                    <NavLink to={`${urlAppMember()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} activeStyle={ACTIVE_STYLE.members}
+                                        isActive={this.isActiveMember}
+                                    >
+                                        Members
+                                    </NavLink>
+                                </div>
+                                <div name="culture" styleName="styles.btn">
+                                    <NavLink styleName={formalTheme ? "styles.links" : "styles.darkLinks"} to={`${urlAppBase()}`}
+                                        style={{ color: '#7D69FF', }}
+                                        activeStyle={ACTIVE_STYLE.culture} exact >
+                                        Life at IMG
+                                    </NavLink>
+                                </div>
+                                {(this.state.member && this.props.isAuthed.auth) && (
+                                    <div name="add_member" styleName="styles.btn" >
+                                        <NavLink to={`${urlAppAddMemberDetails()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} activeStyle={ACTIVE_STYLE.members} >
+                                            Profile
+                                        </NavLink>
+                                    </div>)}
+                            </div>
+                        </Sidebar>
+                    </div>
+                </Responsive>
+                <Responsive minWidth={900}>
+                    <div styleName="styles.container">
+
+                        <div styleName="styles.navBar"
+                            style={{
+                                backgroundColor: currentTheme === 'formal' ? '#DEE8FF' : '#101111',
+                            }}
+                        >
+                            <div styleName="styles.btn styles.grpName" verticalAlign="center">
+                                <Link to={`${urlAppBase()}`}
+                                    style={{ color: !formalTheme ? '#DEE8FF' : '#171818' }}
+                                >
+                                    IMG
+                                </Link>
+                            </div>
+                            <div styleName="styles.rightCol">
+                                <div styleName="styles.linksCol common.noPadding">
+                                    <div name="projects" styleName="styles.btn">
+                                        <NavLink to={`${urlAppProjects()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} activeStyle={ACTIVE_STYLE.projects}>
+                                            Projects
+                                        </NavLink>
+                                    </div>
+                                    <div name="blog" styleName="styles.btn">
+                                        <NavLink to={`${urlAppBlog()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} activeStyle={ACTIVE_STYLE.blogs}>
+                                            Blogs
+                                        </NavLink>
+                                    </div>
+                                    <div name="members" styleName="styles.btn">
+                                        <NavLink to={`${urlAppMember()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} activeStyle={ACTIVE_STYLE.members}
+                                            isActive={this.isActiveMember}
+                                        >
+                                            Members
+                                        </NavLink>
+                                    </div>
+                                    <div name="culture" styleName="styles.btn">
+                                        <NavLink styleName={formalTheme ? "styles.links" : "styles.darkLinks"} to={`${urlAppBase()}`}
+                                            style={{ color: '#7D69FF', }}
+                                            activeStyle={ACTIVE_STYLE.culture} exact >
+                                            Life at IMG
+                                        </NavLink>
+                                    </div>
+                                </div>
+                                {(this.state.member && this.props.isAuthed.auth) && (
+                                    <React.Fragment>
+                                        <div name="profile" styleName="styles.profileImg">
+                                            <NavLink to={`${urlAppAddMemberDetails()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} >
+                                                <img src={this.state.member[0].maintainer.person.displayPicture} styleName="styles.profile" />
+                                            </NavLink>
+                                        </div>
+                                    </React.Fragment>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </Responsive>
+            </React.Fragment >
+        )
+    }
+}
+
+export default withRouter(AppHeader)

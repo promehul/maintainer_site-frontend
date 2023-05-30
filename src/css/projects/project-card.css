@@ -5,7 +5,7 @@
 
 .project-card{
     align-items: center;
-    max-width: 18.7rem;
+    max-width: 17.7rem;
     min-width: 16rem !important;
     padding-top: 1.5rem;
     height: fit-content;
@@ -18,7 +18,7 @@
     margin: 0 auto;
     width: 40%;
     height: 30%;
-    padding: 2.1rem 0.3rem;
+    padding: 1.7rem 0.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,11 +86,10 @@ div[appSlug="slambook"] > :last-child {
 
 .shortDesc{
     font-family: 'Open Sans';
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
     text-align: center;
+    padding: 0 2rem;
     color: #171818;
 }
 

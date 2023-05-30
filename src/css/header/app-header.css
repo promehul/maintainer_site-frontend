@@ -1,51 +1,92 @@
-.position {
-    display: flex;
-    justify-content: center;
-}
-
 .container {
     position: fixed;
     z-index: 1200; /* Semantic changed z-index to 1190 on hovering over card. */
     width: 100vw;
-    background-color: #DEE8FF;
+    background-color: #DEE8FF !important;
 }
 
-.container-transparent-general {
-    position: fixed;
-    z-index: 1200; /* Semantic changed z-index to 1190 on hovering over card. */
-    width: 100vw;
-    animation: scroll-container-to-transparent-general 0.4s forwards;
+.navBar{
+    display: flex;
+    padding: 0 4.2rem 0 4.65rem !important;
+    height: 4.4rem;
+    justify-content: space-between;
 }
 
-.container-white-general {
-    position: fixed;
-    top: 0;
-    z-index: 1200; /* Semantic changed z-index to 1190 on hovering over card. */
-    width: 100vw;
-    fill: #000000;
-    animation: scroll-container-to-white-general 0.4s forwards;
+a{
+    cursor: pointer;
+}
+.grpName a{
+    color: #171818;
 }
 
-@keyframes scroll-container-to-white-general {
-    from {
-        background-color: transparent;
-        box-shadow: none;
-    }
-    to {
-        background-color: #ffffff;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-            0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    }
+.links{
+    color: #535353;
 }
 
-@keyframes scroll-container-to-transparent-general {
-    from {
-        background-color: #ffffff;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-            0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    }
-    to {
-        background-color: transparent;
-        box-shadow: none;
+.darkLinks{
+    color: #DEE8FF;
+}
+
+.sidebarLinks{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.hamburger{
+    font-size: 1.8rem !important;
+    padding: 1.5rem 0!important;
+    cursor: pointer;
+}
+
+.rightCol{
+    display: flex;
+    justify-content: space-between;
+}
+
+.linksCol > div{
+    display: inline-block;
+    margin-right: 6rem;
+}
+.grpName{
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.btn a {
+  display: inline-block;
+}
+
+.btn{
+    background-color: transparent;
+    padding: 1.15em 0;
+    font-family: 'Archivo';
+    font-weight: 500;
+    color: #535353;
+    font-size: 1.25rem;
+    transition: color 0.3s;
+    border: none;
+    outline: none;
+}
+
+.profile{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: block;
+    border: 1px solid #686868;
+}
+
+.profileImg{
+    margin: auto;
+}
+
+div[name="culture"]{
+    color: #7D69FF;
+}
+
+@media (max-width: 500px) {
+    .navBar{
+        padding: 0 2rem !important;
     }
 }

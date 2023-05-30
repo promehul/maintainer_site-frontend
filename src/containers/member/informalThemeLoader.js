@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { setTheme } from '../../actions/setTheme'
 
 import MemberIndividualView from '../../components/member-individual-view'
-import AddMemberDetails from '../../components/team/add-member-details2'
-import AppHeaderBrowser from '../../components/header/app-header-browser-grid'
+import AddMemberDetails from '../../components/team/add-member-details2.js'
+
 
 const mapStateToProps = state => {
     return {
@@ -20,12 +20,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const BrowserHeader = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    undefined, { pure: false }
-)(AppHeaderBrowser)
-
 const MemberView = connect(
     mapStateToProps,
     mapDispatchToProps,
@@ -37,4 +31,4 @@ const MemberDetails = connect(
 )(AddMemberDetails)
 
 
-export { MemberView, MemberDetails, BrowserHeader }
+export { MemberView, MemberDetails }
