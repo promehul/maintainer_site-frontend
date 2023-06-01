@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Container, Icon,Header, Responsive,Image, ImageGroup } from 'semantic-ui-react'
-import CarousalImageCard from './carousal-section-image-card'
-import CarousalMenu from './carousal-section-menu'
+import CarousalMenu from './carousal-section-image-card'
 import styles from '../../../../css/sections/carousel/carousel-section.css'
 import image1 from './group-pic.png'
 import image2 from './group-pic1.png'
@@ -28,7 +27,7 @@ export default class CarouselSection extends React.Component {
                 <Container styleName="styles.sub-container">
                     <Grid columns={2}>
                         <Grid.Column width={6} >
-                            <CarousalMenu onImageChange={(index)=>{this.handleImageChange(index)}} imageList={this.state.imageList}/>
+                            <CarousalMenu onImageChange={(index)=>{this.handleImageChange(index)}} imageList={this.state.imageList} />
                         </Grid.Column>  
                         <Grid.Column width={10} verticalAlign='middle'>
                         <Grid.Row >

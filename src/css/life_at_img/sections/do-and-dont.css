@@ -1,0 +1,40 @@
+.container{
+    background-color: #171818;
+    text-align: left;
+    width: 100vw;
+    z-index: -1;
+    font-family: 'Archivo';
+    font-weight: 500;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.sub-container{
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+
+}
+
+.we-are-heading{
+    background: linear-gradient(90deg, #DEE8FF 0%, rgba(222, 232, 255, 0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.heading{
+    -webkit-background-clip: "text";
+    background-clip: "text";
+    color: "transparent";
+    font-family: "Archivo";
+    font-style: "normal";
+    font-weight: 700;
+    font-size: "2.4rem";
+    padding: "2rem";
+}
+
+.right-align{
+    display: flex;
+    justify-content: flex-end;
+}

@@ -15,6 +15,7 @@ import Team from '../containers/team/teamPageLoader'
 import TeamIndividualView from './team-individual-view'
 
 import Alumni from '../containers/alumni/alumniPageLoader'
+import LifeAtImg from './lift-at-img/life-at-img-page'
 import AddMemberDetails from './team/add-member-details'
 import AddProjectDetails from './projects/add-project-details'
 import Blog from '../containers/blog/blogPageLoader'
@@ -41,6 +42,7 @@ import {
   urlAppBlog,
   urlAppProjects,
   urlAppTeam,
+  urlLifeAtImg,
 } from '../urls'
 
 import blocks from '../css/app.css'
@@ -99,6 +101,7 @@ class App extends Component {
           <Route exact path={urlAppProjects()} component={Projects} />
           <Route exact path={urlAppTeam()} component={Team} />
           <Route exact path={urlAppAlumni()} component={Alumni} />
+          <Route exact path={urlLifeAtImg()} component={LifeAtImg} />
           <Route
             exact
             path={`${urlAppProjects()}/:slug`}

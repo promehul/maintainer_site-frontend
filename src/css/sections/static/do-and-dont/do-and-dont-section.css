@@ -3,22 +3,135 @@
     text-align: left;
     width: 100vw;
     color : #DEE8FF;
+    z-index: -1;
+    font-family: 'Archivo';
+    font-weight: 500;
 }
 
 .sub-container{
     padding-top: 4rem;
-    padding-bottom: 10rem;
+    padding-bottom: 8rem;
+
 }
 
 .heading{
     font-weight: 700;
     padding: 2rem 0;
     font-size: 2.64rem;
+    font-weight: 700;
 }
 
 .sub-heading{
     font-weight: 500;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     font-size: 1.98rem;
     line-height: 2.5rem;
 }
+
+.sub-heading-underline{
+  font-weight: 500;
+  padding: 1.5rem 0;
+  font-size: 1.98rem;
+  line-height: 2.5rem;
+}
+
+.sub-heading-underline:hover .underline{
+  color: yellow;
+  background-image: url("./underline.svg") !important;
+  background-position: bottom ;
+  z-index:2;
+  opacity:0.8;
+  border: 1px solid red;
+}
+
+/* .underline{
+  color: yellow;
+  background-image: url("./underline.svg") !important;
+  background-position: bottom ;
+  z-index:2;
+  opacity:0.8;
+  border: 1px solid red;
+} */
+
+
+
+/* .underline:hover {
+  background-image: url("/underline.svg");
+  background-position: center bottom ;
+  z-index:2;
+  opacity:1;
+} */
+
+.circle-sketch-highlight{
+    color: yellow;
+}
+  
+  .circle-sketch-highlight:hover:before{
+    content:"";
+    z-index:2;
+    left:-0.5em;
+    top:-1em;
+    border-width:2px;
+    border-style:solid;
+    border-color:red;
+    position:absolute;
+    border-right-color:transparent;
+    border-top: transparent;
+    border-bottom: transparent;
+    border-left: transparent;
+    width:50px;
+    height:1em;
+    transform:rotate(2deg);
+    opacity:1;
+    border-radius:50%;
+    padding:0.1em 0.25em;
+  }
+  
+  .circle-sketch-highlight:hover:after{
+    content:"";
+    z-index:2;
+    left:-0.5em;    
+    top:-1em;
+    padding:0.1em 0.25em;
+    border-width:2px;
+    border-style:solid;
+    border-color:red;
+    border-left-color:transparent;
+    border-top-color:transparent;
+    position:absolute;
+    width:50px;
+    height:1em;
+    transform:rotate(-1deg);
+    opacity:1;
+    border-radius:50%;
+  }
+
+  .position-specifier{
+    position: relative;
+  }
+
+
+  .i5:hover .change{
+    color: #E74B4A;
+  }
+
+
+  .grow-image{
+    visibility: hidden;
+  }
+
+  .i5:hover .grow-image{
+    visibility: visible;
+  }
+
+  .i1:hover .change{
+    color:  #7D69FF;
+  }
+
+  .i3:hover .change{
+    color:  #FEBD54;
+  }
+
+  .i11:hover .change{
+    color: #6AB0FB;
+  }
