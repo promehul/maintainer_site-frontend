@@ -35,7 +35,8 @@
 .darkModeChip{
   display: inline-block;
   padding: 0.5rem 1.4rem;
-  margin: 10px;
+  margin: 0.8rem;
+  margin-left: 0;
   border: 1px solid #E3EBFE;
   border-radius: 2rem;
   font-family: 'Open Sans';
@@ -51,7 +52,7 @@
   padding: 0.5rem 1.4rem;
   margin: 16px;
   margin-left: 0;
-  border: 1px solid #171818;
+  border: 1px solid #171818 !important;
   border-radius: 2rem;
   font-family: 'Open Sans';
   font-size: 1.1rem;

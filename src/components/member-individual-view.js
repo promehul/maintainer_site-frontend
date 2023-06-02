@@ -134,7 +134,6 @@ class MemberIndividualView extends Component {
       return (
         <div
           styleName="styles.container" style={{
-            display: "flex",
             backgroundColor: currentTheme === 'formal' ? '#DEE8FF' : '#1E1E1E'
           }}>
           <div styleName="styles.backArrow">
@@ -148,7 +147,7 @@ class MemberIndividualView extends Component {
           </div>
           <div styleName="styles.profile">
             <div stackable styleName="styles.grid">
-              <div styleName="styles.pro-image" style={memberImageStyle(image, '24.2rem')} />
+              <div styleName="styles.pro-image" style={memberImageStyle(image, '27.2rem')} />
               <div style={{
                 color: formalTheme ? '#171818' : '#DEE8FF',
               }} styleName="styles.memberDetails">
@@ -163,7 +162,6 @@ class MemberIndividualView extends Component {
                     </div>
                   </div>
                 )}
-
                 <div styleName="styles.social-links">
                   {this.state.memberDetails.socialInformation[0] &&
                     this.state.memberDetails.socialInformation[0].links.map(
@@ -183,20 +181,31 @@ class MemberIndividualView extends Component {
                 <div styleName="styles.short-biography">
                   {formalTheme ? this.state.memberDetails.formalBiography : this.state.memberDetails.informalBiography}
                 </div>
-                <div styleName="styles.techSkills">{formalTheme ? "Tech Skills" : "Favourites"}
-                  {formalTheme ? <TechSkillsCard array={tempArr} /> :
+                <div styleName="styles.techSkills">
+                  <div>{formalTheme ? "Tech Skills" : "Favourites"}</div>
+                  {formalTheme ?
+                    <div>
+                      {tempArr.map(techSkill => techSkill.split(",").map(skill => <TechSkillsCard skill={skill} />))}
+                    </div>
+                    :
                     <div styleName="styles.fav">
-                      <div>
-                        <span styleName="styles.favRow">Web Series</span>
+                      <div styleName="styles.favType">
+                        <div styleName="styles.favRow">Web Series</div>
                         {this.state.memberDetails.favouriteSeries.split(" ").map(series => (
-                          <div key={series.id} styleName="common.darkModeChip">{series}</div>
+                          <div styleName="styles.values">
+                            <div key={series.id} styleName="common.darkModeChip">{series}</div>
+                          </div>
                         ))}
                       </div>
-                      <div>
-                        <span styleName="styles.favRow">Sports</span>
-                        {this.state.memberDetails.favouriteSports.split(" ").map(sport => (
-                          <div key={sport.id} styleName="common.darkModeChip">{sport}</div>
-                        ))}
+                      <div styleName="styles.favType">
+                        <div styleName="styles.favRow">Sports</div>
+                        <div>
+                          {this.state.memberDetails.favouriteSports.split(" ").map(sport => (
+                            <div styleName="styles.values">
+                              <div key={sport.id} styleName="common.darkModeChip">{sport}</div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   }
@@ -208,7 +217,7 @@ class MemberIndividualView extends Component {
                 <Menu.Item
                   style={{
                     color: formalTheme ? '#171818' : '#DEE8FF',
-                    borderBottom: projectTab && formalTheme ? "3px solid #171818" : projectTab && !formalTheme ? '3px solid #DEE8FF' : '',
+                    borderColor: projectTab && formalTheme ? "#171818" : projectTab && !formalTheme ? '#DEE8FF' : '',
                   }}
                   name='project'
                   active={projectTab}

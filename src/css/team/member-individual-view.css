@@ -1,4 +1,5 @@
 .container{
+    display: flex;
     min-height: 100vh;
     padding: 7.1em 4.5em 2.1em;
 }
@@ -11,6 +12,7 @@
 
 .profile{
   flex-grow: 1;
+  width: 100%;
 }
 
 .pro-image {
@@ -21,6 +23,7 @@
 }
 
 .memberDetails{
+  width: 100%;
     margin: 0 10.5rem 0 4.5rem;
 }
 
@@ -29,7 +32,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     text-align: left;
-    line-height: 1.3rem;
+    line-height: 1.8rem;
 }
 
 .role-designation {
@@ -62,7 +65,7 @@
 .active{
     font-weight: 600;
     transition: 10s linear ease-out;
-    border-bottom: 2px solid #171818 !important;
+    border-bottom: 2px solid !important;
 }
 
 .tabs{
@@ -78,9 +81,10 @@
 .fullName{
     display: inline-block;
     font-family: 'Archivo';
+    margin-right: 1.4rem;
     font-weight: 700;
     font-size: 2.5rem;
-    line-height: 3rem;
+    line-height: 4rem;
     text-align: left;
 }
 
@@ -88,42 +92,48 @@
     font-family: 'Open Sans';
     font-size: 1.1rem;
     font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0em;
+    /* line-height: 20px; */
     text-align: left;
+}
+
+.favType{
+  display: grid;
+  grid-template-columns: 8rem auto;
 }
 
 .favRow{
     display: inline-block;
-    width: 9rem !important;
+    margin-bottom: 1.2rem;
     padding: 0.8rem 0 0 0 !important;
+}
+
+.values{
+  display: inline-block;
 }
 
 .avatar{
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     background-color: #acacac;
-    margin-right: 0.5rem;
+    margin-right: 0.8rem;
 }
 
 .personality{
     display: inline-flex;
     border: 1px solid #DEE8FF;
-    margin: 1.4rem;
     border-radius: 3.4rem;
-    padding: 0.7rem 1.3rem 0.7rem 0.8rem;
+    padding: 0.4rem 1.3rem 0.4rem 0.4rem;
 }
 
 .personalityType{
     display: inline-flex; 
     align-items: center;
     font-family: 'Open Sans';
-    font-size: 15px;
+    font-size: 1.1rem;
     font-weight: 600;
-    line-height: 20px;
-    letter-spacing: 0em;
+    line-height: 2rem;
     text-align: left;
 }
 
@@ -194,8 +204,12 @@
     columns: 2;
   }
   .container{
-    padding: 4.1em 1em 2.1em;
+    padding: 6.1em 1em 2.1em;
    }
+  .toggle{
+    margin-right: 0.5rem;
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 910px) {
@@ -259,6 +273,10 @@
 
 @media (max-width: 350px){
    .container{
-    padding: 4.1em 0 2.1em;
+    padding: 5.1em 0 2.1em;
+   }
+   .profile{
+    margin-top: 3.5rem;
+    padding: 0;
    }
 }
