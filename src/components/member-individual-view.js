@@ -18,6 +18,7 @@ import {
   urlApiMaintainerProject,
   urlApiHit,
   urlAppMember,
+  urlApiMaintainerBlog,
 } from '../urls'
 import { headers, memberImageStyle } from '../consts'
 
@@ -26,6 +27,7 @@ import common from '../css/page-common-styles.css'
 import styles from '../css/team/member-individual-view.css'
 
 import ToggleBtn from './utilComponents/toggleBtn'
+import BlogDetail from './blog/blog-post-card'
 
 class MemberIndividualView extends Component {
   constructor(props) {
@@ -37,6 +39,7 @@ class MemberIndividualView extends Component {
       options: [],
       role: '',
       memberProjects: [],
+      memberBlogs: [],
       designation: '',
       error: false,
     }
@@ -75,6 +78,7 @@ class MemberIndividualView extends Component {
             loaded: true,
           })
           this.requestForProjects(memberRes.data.maintainer.id)
+          this.requestForBlogs(memberRes.data.informalHandle)
         })
       )
       .catch(error => {
@@ -84,7 +88,7 @@ class MemberIndividualView extends Component {
       })
   }
 
-  requestForProjects(id) {
+  requestForProjects = (id) => {
     URL = urlApiMaintainerProject(id)
     axios.get(URL).then(res => {
       this.setState({
@@ -94,25 +98,18 @@ class MemberIndividualView extends Component {
     })
   }
 
-  handleItemClick = (e, { name }) => {
-    this.setState({ activeTab: name })
+  requestForBlogs = (handleName) => {
+    URL = urlApiMaintainerBlog() + handleName
+    axios.get(URL).then(res => {
+      this.setState({
+        memberBlogs: res.data,
+        loaded: true,
+      })
+    })
   }
 
-  renderContent = () => {
-    if (this.state.projectTab) {
-      return (
-        <>
-          {this.state.memberProjects.map((info) => (
-            <ProjectDetail info={info} key={info.slug} />
-          ))}
-        </>)
-    }
-    else
-      return (
-        <>
-          Blogs here
-        </>
-      )
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeTab: name })
   }
 
   render() {
@@ -162,6 +159,9 @@ class MemberIndividualView extends Component {
                     </div>
                   </div>
                 )}
+                <div styleName="styles.short-biography">
+                  {formalTheme ? this.state.memberDetails.formalBiography : this.state.memberDetails.informalBiography}
+                </div>
                 <div styleName="styles.social-links">
                   {this.state.memberDetails.socialInformation[0] &&
                     this.state.memberDetails.socialInformation[0].links.map(
@@ -178,33 +178,30 @@ class MemberIndividualView extends Component {
                       )
                     )}
                 </div>
-                <div styleName="styles.short-biography">
-                  {formalTheme ? this.state.memberDetails.formalBiography : this.state.memberDetails.informalBiography}
-                </div>
                 <div styleName="styles.techSkills">
                   <div>{formalTheme ? "Tech Skills" : "Favourites"}</div>
                   {formalTheme ?
                     <div>
-                      {tempArr.map(techSkill => techSkill.split(",").map(skill => <TechSkillsCard skill={skill} />))}
+                      {tempArr.map(skill => <TechSkillsCard skill={skill} />)}
                     </div>
                     :
                     <div styleName="styles.fav">
                       <div styleName="styles.favType">
                         <div styleName="styles.favRow">Web Series</div>
-                        {this.state.memberDetails.favouriteSeries.split(" ").map(series => (
-                          <div styleName="styles.values">
+                        <div styleName="styles.values">
+                          {this.state.memberDetails.favouriteSeries.split(",").map(series => (
                             <div key={series.id} styleName="common.darkModeChip">{series}</div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
                       <div styleName="styles.favType">
                         <div styleName="styles.favRow">Sports</div>
                         <div>
-                          {this.state.memberDetails.favouriteSports.split(" ").map(sport => (
-                            <div styleName="styles.values">
+                          <div styleName="styles.values">
+                            {this.state.memberDetails.favouriteSports.split(",").map(sport => (
                               <div key={sport.id} styleName="common.darkModeChip">{sport}</div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -247,10 +244,12 @@ class MemberIndividualView extends Component {
                         </div>
                       )}
                       {!projectTab && (
-                        <div style={{ display: 'inline-block' }}>
-                          <Card.Group itemsPerRow={4} doubling stackable centered>
-                            Blogs
-                          </Card.Group>
+                        <div>
+                          <div styleName="styles.blogGrp">
+                            {this.state.memberBlogs.map((info) => (
+                              <BlogDetail info={info} author={this.state.memberDetails.maintainer.person.fullName} />
+                            ))}
+                          </div>
                         </div>
                       )}
                     </Transition.Group>

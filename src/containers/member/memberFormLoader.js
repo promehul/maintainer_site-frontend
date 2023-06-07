@@ -5,6 +5,7 @@ import { setTheme } from '../../actions/setTheme'
 
 import AddMemberDetails from '../../components/team/add-update-member/member-form'
 import ImageUploadCropper from '../../components/utilComponents/imageUploadCropper'
+import BlogUpdateModal from '../../components/blog/update-blog-modal'
 
 const mapStateToProps = state => {
     return {
@@ -29,4 +30,7 @@ const MemberDetails = connect(mapStateToProps, mapDispatchToProps)(AddMemberDeta
 
 const ImageUploader = connect(mapStateToProps, mapDispatchToProps)(ImageUploadCropper)
 
-export { MemberDetails, ImageUploader }
+const BlogModal = connect(mapStateToProps, mapDispatchToProps)
+    (BlogUpdateModal)
+
+export { MemberDetails, ImageUploader, BlogModal }

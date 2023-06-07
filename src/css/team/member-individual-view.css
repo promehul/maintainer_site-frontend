@@ -147,15 +147,21 @@
 
 .projectGrp{
     columns: 4;
-    gap: 3.5rem;
+    gap: 2.5rem;
 }
 
-.projectGrp > * > div{
+.projectGrp > * > div, .projectGrp > div{
     break-inside: avoid;
 }
 
-.projectGrp > * > div {
+.projectGrp > div {
     margin-bottom: 2.4rem;
+}
+
+.blogGrp{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  gap: 2rem;
 }
 
 @media (max-width: 1600px) {  
@@ -200,9 +206,6 @@
 }
 
 @media (max-width: 1150px) {
-  .projectGrp{
-    columns: 2;
-  }
   .container{
     padding: 6.1em 1em 2.1em;
    }
@@ -221,10 +224,13 @@
   }
 }
 
-@media (max-width: 750px) {
+@media(max-width: 860px){
   .projectGrp{
-    columns: 1;
+    columns: 2;
   }
+}
+
+@media (max-width: 750px) {
   .tabs{
     display: flex;
     align-content: center;
@@ -269,6 +275,9 @@
     margin-top: 2rem;
     padding-left: 1.1rem;
    }
+  .projectGrp{
+    columns: 1;
+  }
 }
 
 @media (max-width: 350px){

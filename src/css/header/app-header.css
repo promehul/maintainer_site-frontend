@@ -7,7 +7,7 @@
 
 .navBar{
     display: flex;
-    padding: 0 4.2rem 0 4.65rem !important;
+    padding: 0 4.2rem !important;
     height: 4.4rem;
     justify-content: space-between;
 }
@@ -46,7 +46,13 @@ a{
 
 .linksCol > div{
     display: inline-block;
+}
+.linksCol > div:not(:last-child){
     margin-right: 6rem;
+}
+
+.noMargin{
+    margin: 0 !important;
 }
 .grpName{
     font-size: 1.25rem;
@@ -79,6 +85,7 @@ a{
 
 .profileImg{
     margin: auto;
+    margin-left: 2.5rem;
 }
 
 div[name="culture"]{

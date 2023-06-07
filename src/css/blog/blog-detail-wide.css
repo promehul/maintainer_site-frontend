@@ -13,6 +13,7 @@
 {
     width: 44% !important;
     cursor: pointer;
+    aspect-ratio: 16/9;
 }
 .blogHead{
     display: flex;
@@ -112,7 +113,7 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
     .blog{
         flex-direction: column;
     }

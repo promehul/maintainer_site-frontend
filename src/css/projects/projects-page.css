@@ -18,11 +18,11 @@
     gap: 3.5rem;
 }
 
-.projectGrp > * > div{
+.projectGrp >  div{
     break-inside: avoid;
 }
 
-.projectGrp > * > div {
+.projectGrp > div {
     margin-bottom: 2.4rem;
 }
 

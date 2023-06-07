@@ -86,7 +86,7 @@ h4{
 
 @media (max-width: 1550px) {
   .container{
-    margin: 0 4rem !important;
+    margin: 0 2rem !important;
   }
 
   .horizontalCategory > * > div, .verticalCategory > * > div{
@@ -107,7 +107,20 @@ h4{
 }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 830px) {
+    .container{
+        margin: 0 8rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .blogHead{
+        padding: 1rem;
+    }
+    .container{
+        margin: 0 4rem !important;
+    }
+
     .horizontalCategory > * > div, .verticalCategory > * > div{
     padding-right: 1.5rem !important;
   }
@@ -116,6 +129,9 @@ h4{
 @media (max-width: 590px) {
     .horizontalCategory > * > div, .verticalCategory > * > div{
     padding-right: 0 !important;
+  }
+  .container{
+    margin: 0 2rem !important;
   }
 }
 

@@ -1,6 +1,6 @@
 .blog
 {
-    /* width: fit-content; */
+    aspect-ratio: 16/9;
     display: block;
     cursor: pointer;
     padding: 0 !important;
@@ -17,6 +17,7 @@
 
 .title{
     font-size: 1.8rem;
+    text-align: left;
     font-weight: 600;
     line-height: 32px;
     font-family: 'Archivo';
@@ -38,7 +39,7 @@
     margin-top: 2.1rem !important;
 }
 
-@media (max-width: 590px) {
+@media (max-width: 830px) {
   .blogGrid {
     width: 100% !important;
   }

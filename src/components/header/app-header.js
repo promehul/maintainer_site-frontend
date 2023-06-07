@@ -4,7 +4,11 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import axios from 'axios'
 
-import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlApiLoggedMaintainer, urlStaticBase, urlAppMember, urlAppTeam, urlAppAlumni } from '../../urls'
+import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlApiLoggedMaintainer, urlStaticBase, urlAppMember, urlAppTeam, urlAppAlumni, whoAmI } from '../../urls'
+import {
+    getThemeObject,
+    DefaultDP
+} from 'formula_one'
 
 import common from '../../css/page-common-styles.css'
 import styles from '../../css/header/app-header.css'
@@ -41,6 +45,7 @@ class AppHeader extends Component {
             sidebarVisible: false,
             member: null,
             error: null,
+            newMaintainerInfo: false,
         }
         this.ref = React.createRef()
     }
@@ -48,6 +53,13 @@ class AppHeader extends Component {
     componentDidMount() {
         const url = urlApiLoggedMaintainer()
         axios.get(url).then(res => {
+            if (res.data.length === 0) {
+                axios.get(whoAmI()).then(res => {
+                    this.setState({ ...this.state, member: res.data, newMaintainerInfo: true })
+                }).catch(err => {
+                    this.setState({ ...this.state, error: err.message })
+                })
+            }
             this.setState({ ...this.state, member: res.data })
         }).catch(err => {
             this.setState({ ...this.state, error: err.message })
@@ -73,15 +85,14 @@ class AppHeader extends Component {
     }
 
     handleToggleSidebar = () => {
-        this.setState((prevState) => ({
-            sidebarVisible: !prevState.sidebarVisible,
+        this.setState((currentState) => ({
+            sidebarVisible: !currentState.sidebarVisible,
         }))
     }
 
     render() {
         const currentTheme = this.props.currentTheme
         const formalTheme = currentTheme === 'formal'
-        console.log(this.props)
 
         return (
             <React.Fragment>
@@ -126,7 +137,7 @@ class AppHeader extends Component {
                         </div>
                         <div styleName="styles.hamburger styles.btn" verticalAlign="center" onClick={this.handleToggleSidebar}
                             ref={this.ref}>
-                            <Icon name="bars" />
+                            <Icon name="bars" styleName="styles.noMargin" />
                         </div>
                         <Sidebar
                             as={Menu}
@@ -218,15 +229,34 @@ class AppHeader extends Component {
                                         </NavLink>
                                     </div>
                                 </div>
-                                {(this.state.member && this.props.isAuthed.auth) && (
-                                    <React.Fragment>
+                                {(this.state.member && this.props.isAuthed.auth && this.state.member.length > 0)
+                                    ? (
                                         <div name="profile" styleName="styles.profileImg">
-                                            <NavLink to={`${urlAppAddMemberDetails()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"} >
+                                            <NavLink to={`${urlAppAddMemberDetails()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"}>
                                                 <img src={this.state.member[0].maintainer.person.displayPicture} styleName="styles.profile" />
                                             </NavLink>
                                         </div>
-                                    </React.Fragment>
-                                )}
+                                    )
+                                    : (this.state.newMaintainerInfo && this.props.isAuthed.auth)
+                                        ? (
+                                            <div name="profile" styleName="styles.profileImg">
+                                                <NavLink to={`${urlAppAddMemberDetails()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"}>
+                                                    {this.state.member && this.state.member.displayPicture !== '' && this.state.member.displayPicture
+                                                        ? <Image
+                                                            avatar
+                                                            src={this.state.member['displayPicture']}
+                                                            alt={this.state.member && this.state.member['fullName'][0]}
+                                                            style={{ background: getThemeObject().hexCode }}
+                                                        />
+                                                        : <span>
+                                                            <DefaultDP name={this.state.member && this.state.member.fullName}
+                                                                gravatarHash={this.state.member.gravatarHash} dummy={{}} />
+                                                        </span>
+                                                    }
+                                                </NavLink>
+                                            </div>
+                                        )
+                                        : null}
                             </div>
                         </div>
                     </div>
