@@ -8,6 +8,7 @@ const uploadImage = (state = initialState, action) => {
             console.log(action.payload)
             return {
                 uploadedImage: {
+                    ...state.uploadedImage,
                     [action.payload.id]: {
                         croppedImage: action.payload.croppedImage,
                         croppedImageSrc: action.payload.croppedImageSrc

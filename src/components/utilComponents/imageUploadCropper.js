@@ -1,12 +1,10 @@
 import React, { Component, createRef, Fragment } from 'react'
-import { Modal } from 'semantic-ui-react'
-
+import { Button, Icon, Modal } from 'semantic-ui-react'
+import getCroppedImg from '../get-cropped-image'
 import { CustomCropper } from 'formula_one'
-import { Button, Icon } from 'semantic-ui-react'
+import { IMAGE_STYLE } from '../../consts'
 
 import styles from '../../css/utilComponents/imageUploadCropper.css'
-import { IMAGE_STYLE } from '../../consts'
-import getCroppedImg from '../get-cropped-image'
 
 class ImageUploadCropper extends Component {
     constructor(props) {
@@ -22,7 +20,7 @@ class ImageUploadCropper extends Component {
                 y: 0,
                 width: 50,
                 height: 50,
-                aspect: undefined,
+                aspect: this.props.aspect,
             },
             croppedImageSrc: null,
             imageName: "No image selected",
@@ -81,7 +79,6 @@ class ImageUploadCropper extends Component {
             croppedImage: file,
             croppedImageSrc: croppedImage
         }, () => {
-            console.log(this.props)
             const { croppedImage, croppedImageSrc } = this.state
             this.props.uploadImage(croppedImage, croppedImageSrc, this.props.id)
             this.props.close(this.props.id)
@@ -114,7 +111,9 @@ class ImageUploadCropper extends Component {
                     onClose={() => { this.props.close(this.props.id) }}
                 >
                     <Modal.Header>
-                        Add Image
+                        <div styleName="styles.header">
+                            Add Image
+                        </div>
                     </Modal.Header>
                     <Modal.Content image>
                         <div styleName="styles.uploadModal" >
@@ -139,7 +138,7 @@ class ImageUploadCropper extends Component {
                                             />
                                         </Fragment>
                                     )
-                                    : <Icon name='cloud upload' size='huge' />
+                                    : <Icon name='cloud upload' color='blue' size='huge' />
                                 }
                             </div>
                             <div styleName="styles.imageStatus">
@@ -161,12 +160,11 @@ class ImageUploadCropper extends Component {
                     </Modal.Content>
                     <Modal.Actions>
                         <Button
-                            positive
+                            color='blue'
                             type="submit"
                             onClick={(e) => {
                                 this.showPreview()
                             }}
-                        // name={formalTheme ? 'uploadFormalImage' : 'uploadChildhoodImage'}
                         >
                             Add Image
                         </Button>

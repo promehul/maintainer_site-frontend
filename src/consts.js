@@ -1,4 +1,5 @@
 import { getCookie } from 'formula_one'
+import { urlStaticBase } from './urls'
 
 export const PATHNAME = '/maintainer_site/'
 
@@ -32,7 +33,7 @@ export const IMAGE_STYLE = {
 export const backgroundImageStyle = image => {
   return {
     width: '100%',
-    height: '16.2rem',
+    minHeight: '16.2rem',
     backgroundImage: `url('${image}')`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -50,6 +51,37 @@ export const memberImageStyle = (image, height) => {
     borderRadius: '12px',
   }
 }
+
+export const validateLink = (link) => {
+  const linkRegex = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w.]*)*\/?$/i
+  return linkRegex.test(link)
+}
+
+const personalityTypes = [
+  'Adventurer',
+  'Advocate',
+  'Architect',
+  'Campaigner',
+  'Commander',
+  'Consul',
+  'Debater',
+  'Defender',
+  'Entertainer',
+  'Entrepreneur',
+  'Executive',
+  'Logician',
+  'Logistician',
+  'Mediatator',
+  'Protagonist',
+  'Virtuoso',
+]
+
+export const personalityTypeOptions = personalityTypes.map((personalityType) => ({
+  key: personalityType.toLowerCase(),
+  text: personalityType,
+  value: personalityType.toLowerCase(),
+  image: { src: `${urlStaticBase()}/personality_types/${personalityType}.png` },
+}))
 
 export const headers = {
   'X-CSRFToken': getCookie('csrftoken'),

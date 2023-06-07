@@ -80,9 +80,7 @@ class Projects extends Component {
                         <div styleName="styles.project-grid">
                             <div styleName="styles.projectGrp">
                                 {this.state.projectData.map(info => (
-                                    <>
-                                        <ProjectDetail info={info} key={info.slug} />
-                                    </>
+                                    <ProjectDetail info={info} key={info.slug} />
                                 ))}
                             </div>
                         </div>

@@ -12,7 +12,8 @@ import ScrollToTop from './scroll-to-top'
 import AppHeader from '../containers/header/appHeader'
 import MainPage from '../components/main/main-page'
 import Member from '../containers/member/memberPageLoader'
-import { MemberView, MemberDetails } from '../containers/member/informalThemeLoader'
+import MemberIndividualView from '../containers/member/informalThemeLoader'
+import { MemberDetails } from '../containers/member/memberFormLoader'
 
 import AddProjectDetails from './projects/add-project-details'
 import { Blogs } from '../containers/blog/blogPageLoader'
@@ -105,12 +106,12 @@ class App extends Component {
           <Route
             exact
             path={`${urlAppTeam()}/:handle`}
-            render={props => <MemberView {...props} isActive={true} />}
+            render={props => <MemberIndividualView {...props} isActive={true} />}
           />
           <Route
             exact
             path={`${urlAppAlumni()}/:handle`}
-            render={props => <MemberView {...props} isActive={false} />}
+            render={props => <MemberIndividualView {...props} isActive={false} />}
           />
           {this.props.isAuthed.loaded && (
             <Switch>

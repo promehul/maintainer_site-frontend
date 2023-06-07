@@ -22,20 +22,13 @@
 .iconBox{
     border-radius: 0.6rem;
     margin: 0.3rem;
-    padding: 0.5rem 0rem 0rem 0.2rem;
+    padding: 1rem 0rem 0rem 0.3rem;
     background-color: rgba(248, 248, 248, 0.7);
     color: #171818;
 }
 
 .icons{
     font-size: 2.3rem !important;
-}
-
-div:has(> .icons[site="ins"]){
-    background-color: rgba(221, 92, 147, 0.33);
-}
-.icons[site="ins"]{
-    color: #F8395B;
 }
 
 .delBox{
@@ -72,6 +65,10 @@ div:has(> .icons[site="ins"]){
     margin-left: 1.3rem;
 }
 
+.profileToggle{
+    display: none;
+}
+
 .head{
     margin-right: 1.5rem;
     font-family: 'Archivo';
@@ -80,10 +77,13 @@ div:has(> .icons[site="ins"]){
     line-height: 1.2em;
 }
 
-.heading{
+.profileHead{
     display: flex;
     justify-content: space-between;
-    justify-content: space-between;
+}
+
+.heading{
+    display: flex;
     padding-bottom: 2.5rem;
 }
 
@@ -100,6 +100,7 @@ label::after{
     display: none !important;
 }
 .projectBtn{
+    display: block !important;
     padding: 0.7rem 1.1rem !important;
     background-color: transparent !important;
     font-family: 'Open Sans' !important;
@@ -111,10 +112,39 @@ label::after{
     border-radius: 0.6rem !important;
 }
 
-.lightModeChip{
+.lightModeChip, .darkModeChip{
+    border: 1px solid #171818;
     margin-bottom: 0 !important;
+    position: relative;
 }
 
+.lightModeChip:hover > .deleteBtn, .darkModeChip:hover > .deleteBtn{
+    display: block !important;
+}
+
+.deleteBtn {
+  display: none !important;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.blogDisplayImage{
+    width: fit-content;
+    margin-bottom: 1.7rem;
+}
+
+.blogInput{
+    font-family: 'Open Sans' !important;
+    font-size: 1.1rem !important;
+    font-weight: 400;
+    text-align: left;
+    box-shadow: 0 0 transparent,0 0 transparent,0 0 15px rgba(0,0,0,.1);
+    border-radius: 0.7rem !important;
+    border: none !important;
+    padding: 1rem 0.8rem !important;
+}
 .grid{
     display: flex;
     justify-content: space-between;
@@ -123,12 +153,23 @@ label::after{
 
 .form{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     width: 73%;
 }
 
+.memberData{
+    display: flex;
+}
+
+.imgForm{
+    display: flex;
+    justify-content: space-between;
+}
+
 .profileColumn{
-    width: 17.1rem !important;
-    padding-top: 6.5rem !important;
+    min-width: 17.1rem !important;
+    max-width: 17.2rem !important;
 }
 
 .dataColumn{
@@ -150,15 +191,28 @@ label::after{
     font-weight: 400;
     text-align: left;
     background: #D5DEF2 !important;
-    border-radius: 0.7rem !important;
+    border-radius: 0.9rem !important;
     border: none !important;
     padding: 1rem 0.8rem !important;
+}
+
+.favInput{
+    display: inline-block;
+    width: 80% !important;
+}
+
+.favDropdown{
+    display: inline-block;
+    width: fit-content !important;
+    font-family: 'Open Sans' !important;
+    padding: 0.6rem;
+    padding-right: 1.5rem;
 }
 
 .darkInputs{
     color: #DEE8FF !important;
 }
-.inputs::placeholder{
+.inputs::placeholder, .ui.dropdown:not(.button)>.default.text{
     color: #777777 !important;
 }
 
@@ -167,7 +221,6 @@ label::after{
 }
 .submit-btn{
     background: #171818 !important;
-    display: block !important;
     color: white !important;
 }
 
@@ -182,40 +235,32 @@ a{
 }
 
 @media (max-width: 1330px) {
-  .form{
-    width: 90% !important;
-  }
+    .form{
+        width: 90% !important;
+    }
 }
 
 @media (max-width: 1150px) {
-  .container{
-    padding-left: 6rem;
-   }
-  .toggle{
-    margin-right: 0.5rem;
-  }
+    .container{
+        padding-left: 6rem;
+    }
+    .toggle{
+        margin-right: 0.5rem;
+    }
 }
 
 @media (max-width: 1040px) {
-  .container{
-    padding-left: 2.2rem;
-   }
+    .container{
+        padding-left: 2.2rem;
+    }
 }
 
-@media (max-width: 1000px) {
-    .dataColumn{
-        width: 60% !important;
-        padding-left: 2rem !important;
-   }
-}
 
 @media (max-width: 760px) {
     .grid{
         flex-direction: column-reverse;
         width: 100% !important;
         justify-content: space-between;
-        /* position: relative; */
-        /* order: 1; */
     }
     .form{
         width: auto !important;
@@ -224,42 +269,49 @@ a{
         margin-left: auto;
         margin-bottom: 1.5rem;
     }
-    /* 
-  .toggle{
-      align-self: flex-end;
-      position: absolute;
-   }
-   */
-   .profileColumn{
-    /* margin-top: 3.5rem;
-    padding: 0 1.3rem; */
-    /* min-width: initial !important; */
-   } 
+    .dataColumn{
+        padding-left: 1.4rem !important;
+    }
 }
 
-@media (max-width: 620px) {
-  .form{
+@media (max-width: 600px) {
+  .memberData{
+    flex-direction: column;
+  }
+  .heading{
     flex-direction: column;
   }
   .dataColumn{
     width: 100% !important;
     padding: 0 !important;
   }
+  .toggle{
+    display: none;
+  }
+  .profileToggle{
+    display: block;
+}
   .profileColumn{
     padding-top: 0 !important;
-  }
+}
 }
 
 @media (max-width: 450px){
    .container{
-    padding: 6.7em 1.3em 2.1em 1em;
+        padding: 6.7em 1.3em 2.1em 1em;
    }
    .linksBox{
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+   }
+   .profileColumn{
+        margin: 0 auto;
    }
 }
 
-@media (max-width: 300px){
+@media (max-width: 320px){
+    .profileColumn{
+        margin: 0 !important;
+    }
    .container{
     padding-right: 3.6em;
    }

@@ -40,6 +40,10 @@ export function urlFileManager() {
 
 // Back-end routes
 
+export function whoAmI() {
+  return `../kernel/who_am_i`
+}
+
 export function urlApiBase() {
   return '/api/maintainer_site/'
 }
@@ -61,6 +65,10 @@ export function urlApiLoggedMaintainer() {
 }
 export function urlApiBlog() {
   return `${urlApiBase()}blog/`
+}
+
+export function urlApiMaintainerBlog() {
+  return `${urlApiBase()}maintainer_blog/`
 }
 
 export function urlApiProjects() {
