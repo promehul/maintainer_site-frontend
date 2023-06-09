@@ -6,7 +6,7 @@ import { ImageUploader } from '../../containers/member/memberFormLoader'
 import { backgroundImageStyle, headers } from '../../consts'
 import { urlApiMaintainerBlog } from '../../urls'
 
-import style from '../../css/team/add-member-details.css'
+import style from '../../css/team/member-form.css'
 
 class BlogUpdateModal extends Component {
     constructor(props) {

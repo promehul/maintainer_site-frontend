@@ -1,7 +1,7 @@
 import React from 'react'
 
 import LinkData from './link'
-import styles from '../../../css/team/add-member-details.css'
+import styles from '../../../css/team/member-form.css'
 
 class LinkList extends React.Component {
   render() {

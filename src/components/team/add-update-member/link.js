@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Modal, Image, Button, Form } from 'semantic-ui-react'
 
-import style from '../../../css/team/add-member-details.css'
+import style from '../../../css/team/member-form.css'
 
 import { BlogModal } from '../../../containers/member/memberFormLoader'
 

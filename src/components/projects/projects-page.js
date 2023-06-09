@@ -13,7 +13,7 @@ class Projects extends Component {
         this.state = {
             current: 1,
             projectData: [],
-        };
+        }
     }
 
     componentDidMount() {

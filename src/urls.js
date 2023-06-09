@@ -113,3 +113,9 @@ export function urlApiHit() {
 export function urlStaticBase() {
   return `/static/maintainer_site/`
 }
+
+// external route
+
+export function urlPersonalityTest() {
+  return `https://www.16personalities.com/free-personality-test`
+}

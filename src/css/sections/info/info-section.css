@@ -3,11 +3,11 @@
     background-color: #171818;
     text-align: left;
     height: fit-content;
-    padding: 4rem 1.3rem 0 1.3rem;
 }
 
 .infoSection{
-    margin: 0 12.4rem 0 13.25rem !important;
+    padding-top: 3rem !important;
+    margin: 0 14.75rem !important;
     transition: 'transform 1s linear';
     border-bottom: 1px solid #F0F0F0;
 }
@@ -79,29 +79,55 @@ h5 {
 
 @media (max-width: 1760px) {
   .infoSection{
-    margin: 0 10.2rem !important;
+    margin: 0 12rem !important;
   }
 }
 
 @media (max-width: 1650px) {
   .infoSection{
-    margin: 0 6.1rem !important;
+    margin: 0 7.6rem !important;
   }
 }
 
 @media (max-width: 1550px) {
   .infoSection{
-    margin: 0px 2.5rem !important;
+    margin: 0px 2.2rem !important;
+    padding-top: 1rem !important;
+  }
+}
+
+@media (max-width: 830px) {
+  .infoSection{
+    margin: 0 4.3rem !important;
   }
 }
 
 @media (max-width: 768px) {
-  .infoSection{
-    padding: 0px 1.7rem !important;
-    border-bottom: none;
+  .container{
+    padding: 0 4rem !important;
   }
+  .container{
+    padding-top: 0rem !important;
+  }
+}
 
-  .icons2Bar{
-    border-bottom: 1px solid #F0F0F0;
+@media (max-width: 500px) {
+  .container{
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .container{
+    padding: 0 1rem !important;
+  }
+  .infoSection{
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 300px) {
+  .container{
+    padding: 0 !important;
   }
 }

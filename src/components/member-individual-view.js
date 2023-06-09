@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link, Route } from 'react-router-dom'
 import {
-  Card,
   Icon,
   Transition,
   Loader,
   Menu,
+  Image,
 } from 'semantic-ui-react'
 
 import ProjectDetail from './projects/project-card'
@@ -19,6 +19,7 @@ import {
   urlApiHit,
   urlAppMember,
   urlApiMaintainerBlog,
+  urlStaticBase,
 } from '../urls'
 import { headers, memberImageStyle } from '../consts'
 
@@ -153,9 +154,11 @@ class MemberIndividualView extends Component {
                 </div>
                 {!formalTheme && (
                   <div styleName="styles.personality">
-                    <div styleName="styles.avatar"></div>
+                    <div styleName="styles.avatar">
+                      <Image src={`${urlStaticBase()}personality_types/${this.state.memberDetails.personalityType}.png`} />
+                    </div>
                     <div styleName="styles.personalityType">
-                      <span>{this.state.memberDetails.personalityType}</span>
+                      <span>{this.state.memberDetails.personalityType.replace(/^\w/, (c) => c.toUpperCase())}</span>
                     </div>
                   </div>
                 )}

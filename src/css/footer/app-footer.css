@@ -2,7 +2,6 @@
     width: 100%;
     background-color: #171818;
     color: #ffffff;
-    padding: 1em 0;
 }
 
 .heart {
@@ -22,8 +21,9 @@
 
 .grpInfo{
     font-size: 1.4rem;
-    margin-left: 14.55rem;
+    margin: 0 14.55rem;
     line-height: 2.5rem;
+    padding: 1em 0;
 }
 
 @media (max-width: 1760px) {
@@ -40,12 +40,24 @@
 
 @media (max-width: 1550px) {
   .grpInfo{
-    margin: 0 3.4rem 0 3.8rem;
+    margin: 0 2.3rem;
   }
 }
 
-@media (max-width: 768px){
-    .grpInfo{
-        padding-top: 0; 
-    }
+@media (max-width: 768px) {
+  .grpInfo{
+    margin: 0 4.3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .grpInfo{
+    margin: 0 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .grpInfo{
+    margin: 0 1.2rem;
+  }
 }

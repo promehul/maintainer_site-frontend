@@ -196,17 +196,37 @@ label::after{
     padding: 1rem 0.8rem !important;
 }
 
-.favInput{
-    display: inline-block;
-    width: 80% !important;
+.favChoice{
+    display: grid;
+    grid-template-columns: max-content auto;
 }
 
 .favDropdown{
-    display: inline-block;
-    width: fit-content !important;
     font-family: 'Open Sans' !important;
-    padding: 0.6rem;
-    padding-right: 1.5rem;
+    padding: 0.3rem 0;
+    padding-right: 1rem;
+    color: #171818 !important;
+}
+
+.favourites{
+    margin-top: 0.5rem;
+}
+
+div[name="favourites"]{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.favInput{
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+div[name="favourites"] > div:first-child{
+    margin-right: 1.2rem;
+}
+.dropdown icon {
+  display: none;
 }
 
 .darkInputs{
@@ -232,6 +252,12 @@ label::after{
 
 a{
     color: #171818;
+}
+
+.personality{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: auto max-content;
 }
 
 @media (max-width: 1330px) {

@@ -39,7 +39,7 @@ class Member extends Component {
     }
 
     handleItemClick = (e, { name }) => {
-        this.setState({ activeTab: name });
+        this.setState({ activeTab: name })
     }
 
     renderContent = () => {
@@ -93,9 +93,9 @@ class Member extends Component {
                         : null
                     }
                 </>
-            );
+            )
         }
-        return null;
+        return null
     }
     render() {
         const teamRoleOptions = this.props.apiTeamData.loaded
@@ -111,7 +111,7 @@ class Member extends Component {
         //       .children.links.child.children.site.choices
         //   : []
 
-        const { activeTab } = this.state;
+        const { activeTab } = this.state
 
         if (this.props.apiTeamData.loaded && this.props.apiAlumniData.loaded) {
             return (

@@ -7,7 +7,7 @@ import {
 } from 'semantic-ui-react'
 
 import {
-    urlApiLoggedMaintainer, urlApiSocialLink, urlAppTeam, urlAppAlumni, urlAppAddProjectDetails, urlApiMaintainerBlog,
+    urlApiLoggedMaintainer, urlApiSocialLink, urlAppTeam, urlAppAlumni, urlAppAddProjectDetails, urlApiMaintainerBlog, urlPersonalityTest,
 } from '../../../urls'
 
 import { backgroundImageStyle, headers, memberImageStyle, personalityTypeOptions, validateLink } from '../../../consts'
@@ -15,7 +15,7 @@ import { ImageUploader } from '../../../containers/member/memberFormLoader'
 import ToggleBtn from '../../utilComponents/toggleBtn'
 import LinkList from './linkList'
 
-import styles from '../../../css/team/add-member-details.css'
+import styles from '../../../css/team/member-form.css'
 import common from '../../../css/page-common-styles.css'
 
 class AddMemberDetails extends Component {
@@ -37,7 +37,7 @@ class AddMemberDetails extends Component {
             sports: { array: [], entry: '' },
             webSeries: { array: [], entry: '' },
             socialLinks: { array: [], site: '', url: '' },
-            favorites: {
+            favourites: {
                 selectedOption: 'sports',
             },
 
@@ -109,6 +109,23 @@ class AddMemberDetails extends Component {
                                 },
                                 prevUploadedChildhood: this.state.profile[0].childhoodImage,
                                 prevUploadedFormal: this.state.profile[0].formalImage,
+                                nickName: this.state.profile[0].nickName,
+                                shortFunBio: this.state.profile[0].informalBiography,
+                                personalityType: this.state.profile[0].personalityType,
+                                wantToBe: this.state.profile[0].wantToBe,
+                                sports: {
+                                    array: this.state.profile[0].favouriteSports
+                                        ? this.state.profile[0].favouriteSports.split(',')
+                                        : [],
+                                    entry: '',
+                                },
+                                webSeries: {
+                                    array: this.state.profile[0].favouriteSeries
+                                        ? this.state.profile[0].favouriteSeries.split(',')
+                                        : [],
+                                    entry: '',
+                                },
+
                             })
                         }
                         axios.get(urlApiSocialLink()).then(res => {
@@ -213,7 +230,7 @@ class AddMemberDetails extends Component {
     }
 
     handleFavChange = (e, { value }) => {
-        this.setState({ favorites: { ...this.state.favorites, selectedOption: value } }, () => {
+        this.setState({ favourites: { ...this.state.favourites, selectedOption: value } }, () => {
         })
     }
 
@@ -222,6 +239,10 @@ class AddMemberDetails extends Component {
         this.setState(currentState => ({
             [category]: { ...currentState[category], entry: e.target.value }
         }))
+    }
+
+    handlePersonalityTypeChange = (event, data) => {
+        this.setState({ personalityType: data.value })
     }
 
     addEntry = (category) => {
@@ -300,6 +321,28 @@ class AddMemberDetails extends Component {
         }
     }
 
+    finishUpdate = (that, isAlumni, handleName) => {
+        if (isAlumni)
+            that.props.history.push(`${urlAppAlumni()}/${handleName}`)
+        else
+            that.props.history.push(`${urlAppTeam()}/${handleName}`)
+    }
+
+    handleUpdate = () => {
+        const formalTheme = this.props.currentTheme === 'formal'
+        if (this.state.newBlog.url && !this.state.newBlog.updated) {
+            this.handleBlogUpdate()
+                .then(() => {
+                    if (formalTheme)
+                        this.handleFormalUpdate()
+                    else
+                        this.handleInformalUpdate()
+                })
+        }
+        else {
+            formalTheme ? this.handleFormalUpdate() : this.handleInformalUpdate()
+        }
+    }
 
     handleFormalUpdate = () => {
         if (this.state.newBlog.url && !this.state.newBlog.updated)
@@ -341,10 +384,7 @@ class AddMemberDetails extends Component {
                 })
                     .then(function (response) {
                         const isAlumni = response.data.isAlumni
-                        if (isAlumni)
-                            that.props.history.push(`${urlAppAlumni()}/${handleName}`)
-                        else
-                            that.props.history.push(`${urlAppTeam()}/${handleName}`)
+                        that.finishUpdate(that, isAlumni, handleName)
                     })
                     .catch(function (response) {
                         if (response.response.data.handleName != null) {
@@ -355,22 +395,6 @@ class AddMemberDetails extends Component {
                         }
                     })
             }
-        }
-    }
-
-    handleUpdate = () => {
-        const formalTheme = this.props.currentTheme === 'formal'
-        if (this.state.newBlog.url && !this.state.newBlog.updated) {
-            this.handleBlogUpdate()
-                .then(() => {
-                    if (formalTheme)
-                        this.handleFormalUpdate()
-                    else
-                        this.handleInformalUpdate()
-                })
-        }
-        else {
-            formalTheme ? this.handleFormalUpdate() : this.handleInformalUpdate()
         }
     }
 
@@ -403,6 +427,8 @@ class AddMemberDetails extends Component {
             formData.append('informal_biography', shortFunBio)
             formData.append('favourite_series', webSeries.array)
             formData.append('favourite_sports', sports.array)
+            formData.append('personality_type', personalityType)
+            formData.append('want_to_be', wantToBe)
 
             if (newUploadedChildhood && newUploadedChildhood.type)
                 if (newUploadedChildhood.type.substring(0, 5) == 'image')
@@ -417,12 +443,7 @@ class AddMemberDetails extends Component {
             })
                 .then(function (response) {
                     const isAlumni = response.data.isAlumni
-                    if (isAlumni) {
-                        that.props.history.push(`${urlAppAlumni()} / ${handleName}`)
-                    }
-                    else {
-                        that.props.history.push(`${urlAppTeam()} / ${handleName}`)
-                    }
+                    that.finishUpdate(that, isAlumni, handleName)
                 })
         }
     }
@@ -465,7 +486,7 @@ class AddMemberDetails extends Component {
         const linkListOptions = {}
         const currentTheme = this.props.currentTheme
         const formalTheme = currentTheme === 'formal'
-        const selectedFavOption = this.state.favorites.selectedOption
+        const selectedFavOption = this.state.favourites.selectedOption
 
         for (let i = 0; i < this.state.socialLinksOptions.length; i++) {
             let icon = this.state.socialLinksOptions[i].displayName.toLowerCase()
@@ -527,7 +548,7 @@ class AddMemberDetails extends Component {
                                                 ? memberImageStyle(this.state.uploadChildhoodImage.croppedImageSrc, '24.4rem')
                                                 : !this.state.prevUploadedChildhood
                                                     ? { display: 'none' }
-                                                    : memberImageStyle(this.state.prevUploadedFormal, '24.4rem')
+                                                    : memberImageStyle(this.state.prevUploadedChildhood, '24.4rem')
                                     }
                                     />
                                     <div styleName="styles.imgForm">
@@ -845,11 +866,11 @@ class AddMemberDetails extends Component {
                                                     >
                                                         Favorites
                                                     </label>
-                                                    {/* <div>
+                                                    <div styleName="styles.favChoice">
                                                         <Dropdown
-                                                            floating
-                                                            styleName="styles.favDropdown"
-                                                            name="favorites"
+                                                            styleName="styles.favDropdown styles.inputs"
+                                                            inline
+                                                            name="favourites"
                                                             defaultValue='sports'
                                                             options={this.favOptions}
                                                             onChange={this.handleFavChange}
@@ -866,59 +887,34 @@ class AddMemberDetails extends Component {
                                                             }}
                                                             onKeyDown={(e) => {
                                                                 if (e.key === 'Enter') {
-                                                                    this.addEntry(e.target.name)
-                                                                }
-                                                            }}
-                                                        />
-                                                    </div> */}
-                                                    <div style={{ display: 'flex' }}>
-                                                        <Dropdown
-                                                            floating
-                                                            styleName="styles.favDropdown"
-                                                            name="favorites"
-                                                            defaultValue='sports'
-                                                            options={this.favOptions}
-                                                            onChange={this.handleFavChange}
-                                                        />
-                                                        <input
-                                                            styleName="styles.inputs styles.favInput"
-                                                            labelPosition='left'
-                                                            placeholder={selectedFavOption === 'sports' ? "Sport you love..." : "Series you love..."}
-                                                            name={selectedFavOption === 'sports' ? "sports" : "webSeries"}
-                                                            value={this.state[selectedFavOption].entry}
-                                                            onChange={(e) => {
-                                                                e.persist()
-                                                                this.handleEntryChange(e)
-                                                            }}
-                                                            onKeyDown={(e) => {
-                                                                if (e.key === 'Enter') {
+                                                                    e.preventDefault()
                                                                     this.addEntry(e.target.name)
                                                                 }
                                                             }}
                                                         />
                                                     </div>
-
-
-                                                    {selectedFavOption === 'sports'
-                                                        ? this.state.sports.array.map((sport, index) => (
-                                                            <div key={index} styleName="styles.darkModeChip common.darkModeChip">
-                                                                {sport}
-                                                                <Icon name='close'
-                                                                    styleName="styles.deleteBtn"
-                                                                    onClick={() => this.deleteEntry(selectedFavOption, index)}
-                                                                />
-                                                            </div>
-                                                        ))
-                                                        :
-                                                        this.state.webSeries.array.map((series, index) => (
-                                                            <div key={index} styleName="styles.darkModeChip common.darkModeChip">
-                                                                {series}
-                                                                <Icon name='close'
-                                                                    styleName="styles.deleteBtn"
-                                                                    onClick={() => this.deleteEntry(selectedFavOption, index)}
-                                                                />
-                                                            </div>
-                                                        ))}
+                                                    <div styleName="styles.favourites">
+                                                        {selectedFavOption === 'sports'
+                                                            ? this.state.sports.array.map((sport, index) => (
+                                                                <div key={index} styleName="styles.darkModeChip common.darkModeChip">
+                                                                    {sport}
+                                                                    <Icon name='close'
+                                                                        styleName="styles.deleteBtn"
+                                                                        onClick={() => this.deleteEntry(selectedFavOption, index)}
+                                                                    />
+                                                                </div>
+                                                            ))
+                                                            :
+                                                            this.state.webSeries.array.map((series, index) => (
+                                                                <div key={index} styleName="styles.darkModeChip common.darkModeChip">
+                                                                    {series}
+                                                                    <Icon name='close'
+                                                                        styleName="styles.deleteBtn"
+                                                                        onClick={() => this.deleteEntry(selectedFavOption, index)}
+                                                                    />
+                                                                </div>
+                                                            ))}
+                                                    </div>
                                                 </Form.Field>
                                                 <Form.Field required styleName="styles.labels">
                                                     <label
@@ -926,12 +922,24 @@ class AddMemberDetails extends Component {
                                                     >
                                                         Personality Type
                                                     </label>
-                                                    <Dropdown
-                                                        placeholder='Select your personality'
-                                                        fluid
-                                                        selection
-                                                        options={personalityTypeOptions}
-                                                    />
+                                                    <div styleName="styles.personality">
+                                                        <Dropdown
+                                                            style={selectedFavOption === 'sports' ? { minWidth: '8rem' } : { minWidth: '11rem' }}
+                                                            styleName="styles.inputs"
+                                                            placeholder='Select your personality'
+                                                            selection
+                                                            onChange={this.handlePersonalityTypeChange}
+                                                            options={personalityTypeOptions}
+                                                            value={this.state.personalityType}
+                                                            name="personality"
+                                                        />
+                                                        <Button
+                                                            onClick={() => window.open(urlPersonalityTest())}
+                                                            styleName="styles.projectBtn styles.submit-btn"
+                                                        >
+                                                            Take the Test
+                                                        </Button>
+                                                    </div>
                                                 </Form.Field>
                                             </>
 

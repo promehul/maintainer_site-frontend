@@ -6,7 +6,7 @@
 .project-card{
     align-items: center;
     max-width: 17.7rem;
-    min-width: 16rem !important;
+    min-width: 17rem !important;
     padding-top: 1.5rem;
     height: fit-content;
     background: rgba(249, 251, 255, 0.6);
@@ -89,7 +89,7 @@ div[appSlug="slambook"] > :last-child {
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
-    padding: 0 2rem;
+    padding: 0 1.4rem;
     color: #171818;
 }
 

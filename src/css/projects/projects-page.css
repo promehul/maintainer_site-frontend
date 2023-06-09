@@ -131,3 +131,9 @@
     justify-content: center;
   }
 }
+
+@media (min-width: 2270px) {
+  .projectGrp{
+    columns: 5;
+  }
+}

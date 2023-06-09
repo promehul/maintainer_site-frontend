@@ -9,7 +9,7 @@ import { urlApiMaintainerBlog } from '../../urls'
 
 class BlogDetail extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             modelData: null,
         }

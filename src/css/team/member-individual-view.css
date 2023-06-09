@@ -92,7 +92,6 @@
     font-family: 'Open Sans';
     font-size: 1.1rem;
     font-weight: 400;
-    /* line-height: 20px; */
     text-align: left;
 }
 
@@ -164,6 +163,12 @@
   gap: 2rem;
 }
 
+@media (max-width: 1700px) {
+  .projectGrp{
+    gap: 4.5rem;
+  }
+}
+
 @media (max-width: 1600px) {  
   .backArrow{
     margin-right: 9em;
@@ -215,6 +220,13 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .projectGrp{
+    columns: 2;
+    padding: 0 5rem;
+  }
+}
+
 @media (max-width: 910px) {
   .backArrow{
     margin-right: 1.5rem;
@@ -224,9 +236,9 @@
   }
 }
 
-@media(max-width: 860px){
+@media(max-width: 820px){
   .projectGrp{
-    columns: 2;
+    padding: 0;
   }
 }
 

@@ -71,16 +71,16 @@ const personalityTypes = [
   'Executive',
   'Logician',
   'Logistician',
-  'Mediatator',
+  'Mediator',
   'Protagonist',
-  'Virtuoso',
+  'Vistuoso',
 ]
 
 export const personalityTypeOptions = personalityTypes.map((personalityType) => ({
   key: personalityType.toLowerCase(),
   text: personalityType,
   value: personalityType.toLowerCase(),
-  image: { src: `${urlStaticBase()}/personality_types/${personalityType}.png` },
+  image: { src: `${urlStaticBase()}personality_types/${personalityType.toLowerCase()}.png` },
 }))
 
 export const headers = {
