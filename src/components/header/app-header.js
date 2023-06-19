@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Responsive, Menu, Icon, Sidebar } from 'semantic-ui-react'
+import { Responsive, Menu, Icon, Sidebar, Image } from 'semantic-ui-react'
 import { Link, NavLink, withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import axios from 'axios'
@@ -229,34 +229,33 @@ class AppHeader extends Component {
                                         </NavLink>
                                     </div>
                                 </div>
-                                {(this.state.member && this.props.isAuthed.auth && this.state.member.length > 0)
-                                    ? (
+                                {this.props.isAuthed.auth &&
+                                    <div name="profile" styleName="styles.profileImg">
                                         <div name="profile" styleName="styles.profileImg">
                                             <NavLink to={`${urlAppAddMemberDetails()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"}>
-                                                <img src={this.state.member[0].maintainer.person.displayPicture} styleName="styles.profile" />
+                                                {(this.state.member && this.state.member.length > 0)
+                                                    ? this.state.member[0].maintainer.person.displayPicture
+                                                        ? <Image src={this.state.member[0].maintainer.person.displayPicture} styleName="styles.profile" />
+                                                        : <span>
+                                                            <DefaultDP name={this.state.member && this.state.member[0].maintainer.person.fullName}
+                                                                gravatarHash={this.state.member[0].maintainer.person.gravatarHash} dummy={{}} />
+                                                        </span>
+                                                    : this.state.newMaintainerInfo
+                                                        ? this.state.member && this.state.member.displayPicture !== '' && this.state.member.displayPicture
+                                                            ? <Image
+                                                                avatar
+                                                                src={this.state.member['displayPicture']}
+                                                                alt={this.state.member && this.state.member['fullName'][0]}
+                                                                style={{ background: getThemeObject().hexCode }}
+                                                            />
+                                                            : <span>
+                                                                <DefaultDP name={this.state.member && this.state.member.fullName}
+                                                                    gravatarHash={this.state.member.gravatarHash} dummy={{}} />
+                                                            </span>
+                                                        : null}
                                             </NavLink>
                                         </div>
-                                    )
-                                    : (this.state.newMaintainerInfo && this.props.isAuthed.auth)
-                                        ? (
-                                            <div name="profile" styleName="styles.profileImg">
-                                                <NavLink to={`${urlAppAddMemberDetails()}`} styleName={formalTheme ? "styles.links" : "styles.darkLinks"}>
-                                                    {this.state.member && this.state.member.displayPicture !== '' && this.state.member.displayPicture
-                                                        ? <Image
-                                                            avatar
-                                                            src={this.state.member['displayPicture']}
-                                                            alt={this.state.member && this.state.member['fullName'][0]}
-                                                            style={{ background: getThemeObject().hexCode }}
-                                                        />
-                                                        : <span>
-                                                            <DefaultDP name={this.state.member && this.state.member.fullName}
-                                                                gravatarHash={this.state.member.gravatarHash} dummy={{}} />
-                                                        </span>
-                                                    }
-                                                </NavLink>
-                                            </div>
-                                        )
-                                        : null}
+                                    </div>}
                             </div>
                         </div>
                     </div>

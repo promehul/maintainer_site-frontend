@@ -69,7 +69,6 @@
 }
 
 .tabs{
-    padding-top: 2.3rem;
     text-align: center;
 }
 
@@ -159,7 +158,7 @@
 
 .blogGrp{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
   gap: 2rem;
 }
 
@@ -183,17 +182,14 @@
   .memberDetails{
       margin-right: 3rem;
   }
+    .projectGrp{
+    columns: 3;
+  }
 }
 
 @media (max-width: 1370px) {
   .backArrow{
     margin-right: 5em;
-  }
-}
-
-@media (max-width: 1300px) {
-  .projectGrp{
-    columns: 3;
   }
 }
 
@@ -240,13 +236,8 @@
   .projectGrp{
     padding: 0;
   }
-}
-
-@media (max-width: 750px) {
-  .tabs{
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  .blogGrp > * {
+    margin: 0 auto;
   }
 }
 @media (max-width: 700px) {
@@ -274,10 +265,8 @@
   .grid{
     flex-direction: column;
   }
-  .tabs{
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  .projectGrp > *{
+    margin: 0 auto;
   }
   .pro-image{
     margin: auto;
@@ -292,6 +281,12 @@
   }
 }
 
+@media (max-width: 390px){
+   .blogGrp{
+    grid-template-columns: none;
+   }
+  }
+
 @media (max-width: 350px){
    .container{
     padding: 5.1em 0 2.1em;
@@ -299,5 +294,8 @@
    .profile{
     margin-top: 3.5rem;
     padding: 0;
+   }
+   .blogGrp{
+    padding: 0 1.5rem 0 0.5rem;
    }
 }

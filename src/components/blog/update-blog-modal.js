@@ -134,6 +134,14 @@ class BlogUpdateModal extends Component {
                                     value={this.state.readTime}
                                 />
                             </Form.Field>
+                            <Form.Field required styleName="style.labels">
+                                <label>Link</label>
+                                <input
+                                    disabled
+                                    name="link"
+                                    value={this.props.data.url}
+                                />
+                            </Form.Field>
                             <ImageUploader
                                 aspect={16 / 9}
                                 open={this.state.updateBlogImage.open}

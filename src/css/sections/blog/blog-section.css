@@ -1,9 +1,140 @@
-.container {
-  background-color: #DEE8FF;
-  padding: 2rem 1rem 1rem 1rem;
-  width: 100%;
+h1{
+    padding-bottom: 15px;
+    font-size: 2.6rem;
 }
 
-.description {
-  font-size: 16px;
+h4{
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.container{
+    justify-content: space-between;
+    margin: 0 12.4rem 0 14.65rem !important;
+    transition: 'transform 1s linear';
+}
+.blog{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #8C8C8C;
+    padding: 0 !important;
+}
+
+.blogHead{
+    font-weight: 700;
+    font-size: 3.45rem;
+    font-family: 'Archivo';
+}
+
+.heading{
+  margin: 6.2rem 0 2.15rem 0 ;
+  line-height: 72px;
+}
+
+.gridContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.category{
+    padding: 0;
+    font-size: 2.3rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    padding-bottom: 1.7rem;
+    font-family: 'Archivo';
+}
+
+.category-btn{
+    font-family: 'Open Sans';
+    cursor: pointer;
+    padding-right: 0.9rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.horizontalCategory > *{
+    margin-bottom: 7.6rem !important;
+}
+
+.horizontalCategory > * > div{
+    padding-right: 3.4rem;
+    max-width: none !important;
+}
+.verticalCategory > * > div{
+    padding-right: 1.6rem;
+}
+.verticalCategory > *{
+    margin-bottom: 2rem !important;
+}
+
+
+@media (max-width: 1760px) {
+    .container{
+        margin: 0 11.7rem !important;
+    }
+}
+
+@media (max-width: 1650px) {
+  .container{
+    margin: 0 7.7rem !important;
+}
+}
+
+@media (max-width: 1550px) {
+  .container{
+    margin: 0 2rem !important;
+  }
+
+  .verticalCategory > * > div, .horizontalCategory > * > div{
+    padding-right: 3rem !important;
+  }
+
+}
+
+@media (max-width: 990px) {
+    .horizontalGrid{
+        width: 100% !important;
+        margin: 0 !important; 
+        padding: 0 !important;
+    }
+
+    .verticalCategory > * > div{
+    padding-right: 3.4rem;
+}
+}
+
+@media (max-width: 830px) {
+    .container{
+        margin: 0 8rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .blogHead{
+        padding: 1rem;
+    }
+    .container{
+        margin: 0 4rem !important;
+    }
+
+    .verticalCategory > * > div, .horizontalCategory > * > div{
+    padding-right: 1.5rem !important;
+  }
+}
+
+@media (max-width: 590px) {
+    .verticalCategory > * > div, .horizontalCategory > * > div{
+    padding-right: 0 !important;
+  }
+  .container{
+    margin: 0 2rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .container{
+    margin: 0 0.5rem !important;
+  }
 }

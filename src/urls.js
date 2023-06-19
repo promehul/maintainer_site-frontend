@@ -41,7 +41,7 @@ export function urlFileManager() {
 // Back-end routes
 
 export function whoAmI() {
-  return `../kernel/who_am_i`
+  return `/kernel/who_am_i`
 }
 
 export function urlApiBase() {

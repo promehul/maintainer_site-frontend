@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Container, Grid } from 'semantic-ui-react'
+import { Card, Container, Grid, Loader } from 'semantic-ui-react'
 
 import { backgroundImageStyle, headers } from '../../consts'
 import { urlApiMaintainerBlog } from '../../urls'
@@ -12,7 +12,9 @@ class BlogDetailWide extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            loaded: false,
             modelData: null,
+            error: null,
         }
     }
 
@@ -30,7 +32,14 @@ class BlogDetailWide extends React.Component {
         })
             .then(response => {
                 this.setState({
-                    modelData: response.data
+                    modelData: response.data,
+                    loaded: true,
+                })
+            })
+            .catch(error => {
+                this.setState({
+                    error: error,
+                    loaded: true,
                 })
             })
     }
@@ -51,42 +60,47 @@ class BlogDetailWide extends React.Component {
                 ? "5"
                 : modelData.readTime
 
-        return (
-            <div styleName="styles.blog">
-                <div
-                    styleName="styles.blogImage"
-                    style={backgroundImageStyle(thumbnail)}
-                    onClick={() => window.open(info['link'])}
-                />
-                <div styleName="styles.details">
-                    <div styleName="styles.blogHead">
-                        <div>{author ? author : info.author}</div>
-                    </div>
+        if (this.state.loaded) {
+            return (
+                <div styleName="styles.blog">
                     <div
-                        styleName="styles.title"
-                        onClick={() => window.open(info["link"])}
-                    >
-                        {info.title}
-                    </div>
-                    <div
-                        styleName="styles.description"
-                        onClick={() => window.open(info["link"])}
-                    >
-                        {info.description}
-                    </div>
-                    <div styleName="styles.otherDetails">
-                        <div styleName="styles.time">{readTime} min read</div>
-                        <div styleName="styles.tags">
-                            {info.categories.slice(0, 2).map((category) => (
-                                <div styleName="common.lightModeChip styles.chips">
-                                    {category}
-                                </div>
-                            ))}
+                        styleName="styles.blogImage"
+                        style={backgroundImageStyle(thumbnail)}
+                        onClick={() => window.open(info['link'])}
+                    />
+                    <div styleName="styles.details">
+                        <div styleName="styles.blogHead">
+                            <div>{author ? author : info.author}</div>
+                        </div>
+                        <div
+                            styleName="styles.title"
+                            onClick={() => window.open(info["link"])}
+                        >
+                            {info.title}
+                        </div>
+                        <div
+                            styleName="styles.description"
+                            onClick={() => window.open(info["link"])}
+                        >
+                            {info.description}
+                        </div>
+                        <div styleName="styles.otherDetails">
+                            <div styleName="styles.time">{readTime} min read</div>
+                            <div styleName="styles.tags">
+                                {info.categories.slice(0, 2).map((category) => (
+                                    <div styleName="common.lightModeChip styles.chips">
+                                        {category}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else {
+            return <Loader active size="large" />
+        }
     }
 }
 

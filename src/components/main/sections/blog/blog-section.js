@@ -6,7 +6,7 @@ import { urlApiBlog } from '../../../../urls'
 import { MEDIUM_URL } from '../../../../consts'
 import { isMobile } from 'react-device-detect'
 
-import styles from '../../../../css/blog/blog-section.css'
+import styles from '../../../../css/sections/blog/blog-section.css'
 import common from '../../../../css/page-common-styles.css'
 class BlogSection extends Component {
   constructor(props) {
@@ -78,7 +78,7 @@ class BlogSection extends Component {
                         View more
                       </div>
                     </div>
-                    <Grid.Row styleName="styles.verticalCategory">
+                    <Grid.Row styleName="styles.horizontalCategory">
                       {tag["blogsList"].slice(0, 2).map((info, id) => (
                         <BlogDetail info={info} key={id} />
                       ))}
@@ -96,7 +96,7 @@ class BlogSection extends Component {
                     View more
                   </div>
                 </div>
-                <Grid.Row styleName="styles.horizontalCategory">
+                <Grid.Row styleName="styles.verticalCategory">
                   {tagWiseBlogs[2]["blogsList"].slice(0, 2).map((info, id) => (
                     <BlogDetail info={info} key={id} />
                   ))}

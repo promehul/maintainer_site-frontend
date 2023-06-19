@@ -19,7 +19,7 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
         >
             <div styleName={flipped ? "styles.flippedCard" : ""}>
                 <Link to={"../" + member + "/" + info.informalHandle}>
-                    <div style={memberImageStyle(info.childhoodImage, '25.9rem')} styleName="styles.informal">
+                    <div style={memberImageStyle(info.childhoodImage || info.formalImage)} styleName="styles.informal styles.profile">
                         <div styleName="styles.roleSVG">
                             {roleOptions.map(
                                 role =>
@@ -80,7 +80,7 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
                                 </div>
                             </div>
                         </div>
-                        <div style={memberImageStyle(info.formalImage, '25.9rem')} />
+                        <div styleName="styles.profile" style={memberImageStyle(info.formalImage || info.childhoodImage)} />
                     </div>
                 </Link>
             </div>

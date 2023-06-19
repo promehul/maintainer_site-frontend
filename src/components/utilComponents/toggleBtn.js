@@ -28,7 +28,7 @@ class ToggleBtn extends Component {
             <div
                 styleName="styles.bar"
                 style={{
-                    backgroundColor: formalTheme ? '#D5DEF2' : '#6F6F6F',
+                    backgroundColor: formalTheme ? '#D5DEF2' : '#D5DEF2',
                 }}
                 onClick={(e) => { this.changeTheme(formalTheme) }}
             >

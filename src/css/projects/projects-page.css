@@ -132,6 +132,12 @@
   }
 }
 
+@media (max-width: 325px) {
+  .project-grid{
+    margin: 0 3rem 0 2rem;
+  }
+}
+
 @media (min-width: 2270px) {
   .projectGrp{
     columns: 5;

@@ -44,7 +44,6 @@ class MemberIndividualView extends Component {
       designation: '',
       error: false,
     }
-    this.requestForProjects = this.requestForProjects.bind(this)
   }
 
   youChoseMe = handle => {
@@ -94,6 +93,7 @@ class MemberIndividualView extends Component {
     axios.get(URL).then(res => {
       this.setState({
         memberProjects: res.data,
+        activeTab: res.data.length ? 'project' : 'blog',
         loaded: true,
       })
     })
@@ -117,18 +117,13 @@ class MemberIndividualView extends Component {
     const currentTheme = this.props.currentTheme
     const formalTheme = currentTheme === 'formal'
     const projectTab = this.state.activeTab === 'project'
-    const roleOptions = this.state.loaded
-      ? this.state.options.actions.PUT.maintainer.children.role.choices
-      : []
-    const designationOptions = this.state.loaded
-      ? this.state.options.actions.PUT.maintainer.children.designation.choices
-      : []
     if (this.state.loaded) {
-      let temp = this.state.memberDetails.technicalSkills
+      let { memberDetails, memberBlogs, memberProjects } = this.state
+      let temp = memberDetails.technicalSkills
       let technicalSkills = temp ? temp : ''
       let tempArr = technicalSkills ? technicalSkills.split(',') : []
 
-      const image = (formalTheme) ? this.state.memberDetails.formalImage : this.state.memberDetails.childhoodImage
+      const image = (formalTheme) ? memberDetails.formalImage : memberDetails.childhoodImage
       return (
         <div
           styleName="styles.container" style={{
@@ -144,30 +139,38 @@ class MemberIndividualView extends Component {
             </Link>
           </div>
           <div styleName="styles.profile">
-            <div stackable styleName="styles.grid">
+            <div styleName="styles.grid">
               <div styleName="styles.pro-image" style={memberImageStyle(image, '27.2rem')} />
               <div style={{
                 color: formalTheme ? '#171818' : '#DEE8FF',
               }} styleName="styles.memberDetails">
                 <div styleName="styles.fullName">
-                  {this.state.memberDetails.maintainer.person.fullName}
+                  {memberDetails.maintainer.person.fullName}
                 </div>
-                {!formalTheme && (
-                  <div styleName="styles.personality">
+
+                {(!formalTheme && memberDetails.personalityType !== null && memberDetails.personalityType !== undefined) &&
+                  (<div styleName="styles.personality">
                     <div styleName="styles.avatar">
-                      <Image src={`${urlStaticBase()}personality_types/${this.state.memberDetails.personalityType}.png`} />
+                      <Image src={`${urlStaticBase()}personality_types/${memberDetails.personalityType}.png`} />
                     </div>
                     <div styleName="styles.personalityType">
-                      <span>{this.state.memberDetails.personalityType.replace(/^\w/, (c) => c.toUpperCase())}</span>
+                      <span>{memberDetails.personalityType.replace(/^\w/, (c) => c.toUpperCase())}</span>
                     </div>
                   </div>
-                )}
-                <div styleName="styles.short-biography">
-                  {formalTheme ? this.state.memberDetails.formalBiography : this.state.memberDetails.informalBiography}
-                </div>
+                  )}
+                {memberDetails.formalBiography && formalTheme &&
+                  <div styleName="styles.short-biography">
+                    {memberDetails.formalBiography}
+                  </div>
+                }
+                {memberDetails.informalBiography && !formalTheme &&
+                  <div styleName="styles.short-biography">
+                    {memberDetails.informalBiography}
+                  </div>
+                }
                 <div styleName="styles.social-links">
-                  {this.state.memberDetails.socialInformation[0] &&
-                    this.state.memberDetails.socialInformation[0].links.map(
+                  {memberDetails.socialInformation[0] &&
+                    memberDetails.socialInformation[0].links.map(
                       (profile, index) => (
                         <div styleName="common.f-link" key={index}
                           site={profile.siteLogo.toLowerCase()}
@@ -182,93 +185,110 @@ class MemberIndividualView extends Component {
                     )}
                 </div>
                 <div styleName="styles.techSkills">
-                  <div>{formalTheme ? "Tech Skills" : "Favourites"}</div>
-                  {formalTheme ?
-                    <div>
-                      {tempArr.map(skill => <TechSkillsCard skill={skill} />)}
-                    </div>
-                    :
-                    <div styleName="styles.fav">
-                      <div styleName="styles.favType">
-                        <div styleName="styles.favRow">Web Series</div>
-                        <div styleName="styles.values">
-                          {this.state.memberDetails.favouriteSeries.split(",").map(series => (
-                            <div key={series.id} styleName="common.darkModeChip">{series}</div>
-                          ))}
-                        </div>
+                  {formalTheme && tempArr && tempArr.length > 0 && (
+                    <>
+                      <div>Tech Skills</div>
+                      <div>
+                        {tempArr.map(skill => <TechSkillsCard skill={skill} />)}
                       </div>
-                      <div styleName="styles.favType">
-                        <div styleName="styles.favRow">Sports</div>
-                        <div>
-                          <div styleName="styles.values">
-                            {this.state.memberDetails.favouriteSports.split(",").map(sport => (
-                              <div key={sport.id} styleName="common.darkModeChip">{sport}</div>
-                            ))}
+                    </>
+                  )}
+
+                  {!formalTheme && (memberDetails.favouriteSeries || memberDetails.favouriteSports) && (
+                    <>
+                      <div>Favourites</div>
+                      <div styleName="styles.fav">
+                        {memberDetails.favouriteSeries && (
+                          <div styleName="styles.favType">
+                            <div styleName="styles.favRow">Web Series</div>
+                            <div styleName="styles.values">
+                              {memberDetails.favouriteSeries.split(",").map(series => (
+                                <div key={series.id} styleName="common.darkModeChip">{series}</div>
+                              ))}
+                            </div>
                           </div>
-                        </div>
+                        )}
+
+                        {memberDetails.favouriteSports && (
+                          <div styleName="styles.favType">
+                            <div styleName="styles.favRow">Sports</div>
+                            <div styleName="styles.values">
+                              {memberDetails.favouriteSports.split(",").map(sport => (
+                                <div key={sport.id} styleName="common.darkModeChip">{sport}</div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  }
+                    </>
+                  )}
+
                 </div>
+
               </div>
             </div>
             <div styleName="styles.memberInputs">
-              <Menu text pointing secondary>
-                <Menu.Item
-                  style={{
-                    color: formalTheme ? '#171818' : '#DEE8FF',
-                    borderColor: projectTab && formalTheme ? "#171818" : projectTab && !formalTheme ? '#DEE8FF' : '',
-                  }}
-                  name='project'
-                  active={projectTab}
-                  onClick={this.handleItemClick}
-                  styleName={projectTab ? 'styles.options styles.active' : 'styles.options'}
-                />
-                <Menu.Item
-                  style={{
-                    color: formalTheme ? '#171818' : '#DEE8FF',
-                    borderBottom: !projectTab && formalTheme ? "3px solid #171818" : !projectTab && !formalTheme ? '3px solid #DEE8FF' : '',
-                  }}
-                  name='blog'
-                  active={!projectTab}
-                  onClick={this.handleItemClick}
-                  styleName={!projectTab ? 'styles.options styles.active' : 'styles.options'}
-                />
-              </Menu>
-              <div styleName="styles.tabs">
-                {Boolean(this.state.memberProjects.length) && (
-                  <React.Fragment>
-                    <Transition.Group animation="fade" duration={500}>
-                      {projectTab && (
-                        <div styleName="styles.projectGrp">
-                          {this.state.memberProjects.map(info => (
-                            <ProjectDetail info={info} key={info.slug} />
-                          ))}
-                        </div>
-                      )}
-                      {!projectTab && (
-                        <div>
-                          <div styleName="styles.blogGrp">
-                            {this.state.memberBlogs.map((info) => (
-                              <BlogDetail info={info} author={this.state.memberDetails.maintainer.person.fullName} />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </Transition.Group>
-                  </React.Fragment>
-                )}
-              </div>
+              {(Boolean(memberProjects.length) || Boolean(memberBlogs.length))
+                &&
+                <>
+                  <Menu text pointing secondary>
+                    {Boolean(memberProjects.length) &&
+                      <Menu.Item
+                        style={{
+                          color: formalTheme ? '#171818' : '#DEE8FF',
+                          borderColor: projectTab && formalTheme ? "#171818" : projectTab && !formalTheme ? '#DEE8FF' : '',
+                        }}
+                        name='project'
+                        active={projectTab}
+                        onClick={this.handleItemClick}
+                        styleName={projectTab ? 'styles.options styles.active' : 'styles.options'}
+                      />}
+                    {Boolean(memberBlogs.length) &&
+                      <Menu.Item
+                        style={{
+                          color: formalTheme ? '#171818' : '#DEE8FF',
+                          borderBottom: !projectTab && formalTheme ? "3px solid #171818" : !projectTab && !formalTheme ? '3px solid #DEE8FF' : '',
+                        }}
+                        name='blog'
+                        active={!projectTab}
+                        onClick={this.handleItemClick}
+                        styleName={!projectTab ? 'styles.options styles.active' : 'styles.options'}
+                      />}
+                  </Menu>
+                  <div styleName="styles.tabs" style={projectTab ? { paddingTop: '2.3rem' } : {}}>
+                    {(
+                      <React.Fragment>
+                        <Transition.Group animation="fade" duration={500}>
+                          {projectTab ? (Boolean(memberProjects.length) &&
+                            <div styleName="styles.projectGrp">
+                              {memberProjects.map(info => (
+                                <ProjectDetail info={info} key={info.slug} />
+                              ))}
+                            </div>
+                          ) : Boolean(memberBlogs.length) &&
+                          <div>
+                            <div styleName="styles.blogGrp">
+                              {memberBlogs.map((info) => (
+                                <BlogDetail info={info} author={memberDetails.maintainer.person.fullName} />
+                              ))}
+                            </div>
+                          </div>}
+                        </Transition.Group>
+                      </React.Fragment>
+                    )}
+                  </div>
+                </>}
             </div>
           </div>
-          <div styleName="styles.toggle">
-            <ToggleBtn
-              setTheme={this.props.setTheme}
-              formalTheme={this.props.currentTheme === 'formal'}
-            />
-          </div>
-        </div>
-
+          {memberDetails.childhoodImage &&
+            <div styleName="styles.toggle">
+              <ToggleBtn
+                setTheme={this.props.setTheme}
+                formalTheme={this.props.currentTheme === 'formal'}
+              />
+            </div>
+          }
+        </div >
       )
     } else if (this.state.error) {
       return this.state.error

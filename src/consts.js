@@ -33,7 +33,6 @@ export const IMAGE_STYLE = {
 export const backgroundImageStyle = image => {
   return {
     width: '100%',
-    minHeight: '16.2rem',
     backgroundImage: `url('${image}')`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -41,7 +40,7 @@ export const backgroundImageStyle = image => {
   }
 }
 
-export const memberImageStyle = (image, height) => {
+export const memberImageStyle = (image, height = "auto") => {
   return {
     width: '100%',
     height: `${height}`,
@@ -53,7 +52,7 @@ export const memberImageStyle = (image, height) => {
 }
 
 export const validateLink = (link) => {
-  const linkRegex = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w.]*)*\/?$/i
+  const linkRegex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/i
   return linkRegex.test(link)
 }
 
@@ -81,6 +80,11 @@ export const personalityTypeOptions = personalityTypes.map((personalityType) => 
   text: personalityType,
   value: personalityType.toLowerCase(),
   image: { src: `${urlStaticBase()}personality_types/${personalityType.toLowerCase()}.png` },
+  style: {
+    color: '#D5DEF2',
+    backgroundColor: '#373838',
+    border: 'none',
+  }
 }))
 
 export const headers = {

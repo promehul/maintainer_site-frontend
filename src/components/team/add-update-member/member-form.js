@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import {
-    Form, Button, Dropdown, Label, Loader, Icon, Image, Transition
+    Form, Button, Dropdown, Message, Loader, Icon, Image, Transition, Label
 } from 'semantic-ui-react'
 
 import {
@@ -24,6 +24,7 @@ class AddMemberDetails extends Component {
         this.state = {
             URL: urlApiLoggedMaintainer(),
             method: 'post',
+            canAddInformal: true,
             loaded: false,
             profile: {},
             handleName: '',
@@ -69,11 +70,14 @@ class AddMemberDetails extends Component {
             socialLinksOptions: [],
 
             error: {
-                errorHandle: false,
-                errorNickName: false,
-                errorShortFunBio: false,
-                errorShortBio: false,
-                errorWantToBe: false,
+                handle: false,
+                nickName: false,
+                shortFunBio: false,
+                shortBio: false,
+                wantToBe: false,
+                uploadFormalImage: false,
+                uploadChildhoodImage: false,
+                personalityType: false,
             },
 
             errorUrl: false,
@@ -128,18 +132,23 @@ class AddMemberDetails extends Component {
 
                             })
                         }
+                        else {
+                            this.setState({ canAddInformal: false })
+                        }
                         axios.get(urlApiSocialLink()).then(res => {
                             this.setState({
                                 socialLinks: { ...this.state.socialLinks, array: res.data },
                                 loaded: true,
                             },
                                 () => {
-                                    axios.get(`${urlApiMaintainerBlog()}${this.state.handleName}/`).then(res => {
-                                        this.setState({
-                                            ...this.state,
-                                            oldBlogs: res.data,
+                                    if (this.state.handleName !== null && this.state.handleName !== "") {
+                                        axios.get(`${urlApiMaintainerBlog()}${this.state.handleName}/`).then(res => {
+                                            this.setState({
+                                                ...this.state,
+                                                oldBlogs: res.data,
+                                            })
                                         })
-                                    })
+                                    }
                                 })
                         })
                     })
@@ -242,7 +251,12 @@ class AddMemberDetails extends Component {
     }
 
     handlePersonalityTypeChange = (event, data) => {
-        this.setState({ personalityType: data.value })
+        this.setState({
+            ...this.state, error: {
+                ...this.state.error,
+                personalityType: false,
+            }, personalityType: data.value
+        })
     }
 
     addEntry = (category) => {
@@ -361,12 +375,13 @@ class AddMemberDetails extends Component {
             const skillsArray = skills.array
 
             if ((newUploadedFormal || prevUploadedFormal) &&
-                handleName &&
-                shortBio
+                handleName
             ) {
                 var formData = new FormData()
                 formData.append('informal_handle', handleName)
-                formData.append('formal_biography', shortBio)
+                if (shortBio !== null) {
+                    formData.append('formal_biography', shortBio);
+                }
                 formData.append('technical_skills', skillsArray)
 
                 if (newUploadedFormal && newUploadedFormal.type)
@@ -374,8 +389,7 @@ class AddMemberDetails extends Component {
                         formData.append('formal_image', newUploadedFormal)
 
                 const that = this
-                that.setState({ error: { ...this.state.error, errorHandle: false } })
-                that.setState({ error: { ...this.state.error, errorShortBio: false } })
+                that.setState({ error: { ...this.state.error, shortBio: false } })
                 axios({
                     method: this.state.method,
                     url: this.state.URL,
@@ -387,13 +401,26 @@ class AddMemberDetails extends Component {
                         that.finishUpdate(that, isAlumni, handleName)
                     })
                     .catch(function (response) {
-                        if (response.response.data.handleName != null) {
-                            that.setState({ error: { ...this.state.error, errorHandle: true } })
+                        if (response.response.data.informalHandle != null) {
+                            that.setState({ error: { ...that.state.error, handle: true } })
                         }
                         if (response.response.data.formalBiography != null) {
-                            that.setState({ error: { ...that.state.error, errorShortBio: true } })
+                            that.setState({ error: { ...that.state.error, shortBio: true } })
                         }
                     })
+            }
+            else {
+                const error = {
+                    ...this.state.error,
+                    handle: !handleName,
+                    uploadFormalImage: (
+                        !prevUploadedFormal ||
+                        (newUploadedFormal &&
+                            (!newUploadedFormal.type ||
+                                newUploadedFormal.type.substring(0, 5) !== "image"))
+                    )
+                }
+                this.setState({ error })
             }
         }
     }
@@ -411,40 +438,69 @@ class AddMemberDetails extends Component {
             prevUploadedChildhood,
         } = this.state
 
+        const fields = {
+            handle_name: handleName,
+            nick_name: nickName,
+            informal_biography: shortFunBio,
+            favourite_series: webSeries.array,
+            favourite_sports: sports.array,
+            personality_type: personalityType,
+            want_to_be: wantToBe,
+        }
         const newUploadedChildhood = uploadChildhoodImage.croppedImage ? uploadChildhoodImage.croppedImage : null
-        if ((newUploadedChildhood || prevUploadedChildhood) &&
-            handleName &&
-            nickName &&
-            shortFunBio &&
-            wantToBe &&
-            sports &&
-            webSeries &&
-            personalityType
-        ) {
-            var formData = new FormData()
-            formData.append('handle_name', handleName)
-            formData.append('nick_name', nickName)
-            formData.append('informal_biography', shortFunBio)
-            formData.append('favourite_series', webSeries.array)
-            formData.append('favourite_sports', sports.array)
-            formData.append('personality_type', personalityType)
-            formData.append('want_to_be', wantToBe)
+        if (handleName !== '' && handleName !== null) {
+            if ((newUploadedChildhood || prevUploadedChildhood) &&
+                nickName &&
+                shortFunBio &&
+                personalityType
+            ) {
+                var formData = new FormData()
+                for (const fieldName in fields) {
+                    const value = fields[fieldName]
+                    if (value !== null) {
+                        formData.append(fieldName, value)
+                    }
+                }
 
-            if (newUploadedChildhood && newUploadedChildhood.type)
-                if (newUploadedChildhood.type.substring(0, 5) == 'image')
-                    formData.append('childhood_image', newUploadedChildhood)
+                if (newUploadedChildhood && newUploadedChildhood.type)
+                    if (newUploadedChildhood.type.substring(0, 5) == 'image')
+                        formData.append('childhood_image', newUploadedChildhood)
 
-            const that = this
-            axios({
-                method: this.state.method,
-                url: this.state.URL,
-                data: formData,
-                headers: { ...headers, 'Content-Type': 'multipart/form-data' },
-            })
-                .then(function (response) {
-                    const isAlumni = response.data.isAlumni
-                    that.finishUpdate(that, isAlumni, handleName)
+                const that = this
+                axios({
+                    method: this.state.method,
+                    url: this.state.URL,
+                    data: formData,
+                    headers: { ...headers, 'Content-Type': 'multipart/form-data' },
                 })
+                    .then(function (response) {
+                        const isAlumni = response.data.isAlumni
+                        that.finishUpdate(that, isAlumni, handleName)
+                    })
+                    .catch(function (response) {
+                        console.log(response)
+                        if (response.response.data.informalBiography != null) {
+                            that.setState({ error: { ...that.state.error, shortFunBio: true } })
+                        }
+                    })
+            }
+            else {
+                const error = {
+                    ...this.state.error,
+                    nickName: !nickName,
+                    shortFunBio: !shortFunBio,
+                    personalityType: !personalityType,
+                    uploadChildhoodImage: (
+                        // !prevUploadedChildhood ||
+                        (!newUploadedChildhood || (newUploadedChildhood &&
+                            (!newUploadedChildhood.type ||
+                                newUploadedChildhood.type.substring(0, 5) !== "image")))
+                    )
+                }
+                this.setState({ error })
+            }
+        } else {
+            this.setState({ canAddInformal: true })
         }
     }
 
@@ -463,6 +519,10 @@ class AddMemberDetails extends Component {
                 open: false,
                 croppedImageSrc: this.props.uploadedImage[id].croppedImageSrc,
                 croppedImage: this.props.uploadedImage[id].croppedImage
+            },
+            error: {
+                ...currentState["error"],
+                [id]: false,
             }
         }))
     }
@@ -487,32 +547,42 @@ class AddMemberDetails extends Component {
         const currentTheme = this.props.currentTheme
         const formalTheme = currentTheme === 'formal'
         const selectedFavOption = this.state.favourites.selectedOption
+        const disableInformal = !formalTheme && !this.state.canAddInformal
 
-        for (let i = 0; i < this.state.socialLinksOptions.length; i++) {
-            let icon = this.state.socialLinksOptions[i].displayName.toLowerCase()
-            if (this.state.socialLinksOptions[i].value == 'oth') {
-                icon = 'globe'
+        if (this.state.socialLinksOptions.length > 0) {
+            for (let i = 0; i < this.state.socialLinksOptions.length; i++) {
+                let icon = this.state.socialLinksOptions[i].displayName.toLowerCase()
+                if (this.state.socialLinksOptions[i].value == 'oth') {
+                    icon = 'globe'
+                }
+                options.push({
+                    key: this.state.socialLinksOptions[i].value,
+                    icon: icon,
+                    text: this.state.socialLinksOptions[i].displayName,
+                    value: this.state.socialLinksOptions[i].value,
+                    style: {
+                        backgroundColor: '#D5DEF2',
+                        border: 'none',
+                        color: '#171818',
+                    }
+                })
+                linkListOptions[this.state.socialLinksOptions[i].value] = icon
             }
-            options.push({
-                key: this.state.socialLinksOptions[i].value,
-                icon: icon,
-                text: this.state.socialLinksOptions[i].displayName,
-                value: this.state.socialLinksOptions[i].value,
-                style: { backgroundColor: '#DEE8FF' }
-            })
-            linkListOptions[this.state.socialLinksOptions[i].value] = icon
         }
 
         if (this.state.loaded) {
             return (
                 <div styleName="styles.container"
                     style={{
-                        display: 'flex',
-                        backgroundColor: formalTheme ? '#DEE8FF' : '#1E1E1E',
-                        color: formalTheme ? '#000000' : '#DEE8FF',
+                        backgroundColor: formalTheme ? '#E3EBFE' : '#1E1E1E',
                     }}>
                     <div styleName="styles.grid">
                         <div styleName="styles.form">
+                            {disableInformal &&
+                                <Message color='red'>
+                                    First fill formal page.
+                                </Message>
+                            }
                             <div styleName="styles.heading" style={{
                                 color: !formalTheme ? '#DEE8FF' : '#171818'
                             }}>
@@ -524,10 +594,10 @@ class AddMemberDetails extends Component {
                                             : 'Your Profile'}
                                     </div>
                                     <Link to={`${urlAppAddProjectDetails()}`}>
-                                        <Button styleName="styles.projectBtn"
+                                        <Button styleName="styles.submit-btn"
                                             style={{
-                                                color: formalTheme ? '#000000' : '#DEE8FF',
-                                                borderColor: formalTheme ? '#000000' : '#DEE8FF',
+                                                color: formalTheme ? '#000000' : '#E3EBFE',
+                                                backgroundColor: formalTheme ? '#E3EBFE' : '#373838',
                                             }}>
                                             Add Project
                                         </Button>
@@ -551,26 +621,29 @@ class AddMemberDetails extends Component {
                                                     : memberImageStyle(this.state.prevUploadedChildhood, '24.4rem')
                                     }
                                     />
+                                    {(this.state.error.uploadFormalImage || this.state.error.uploadChildhoodImage)
+                                        &&
+                                        <Message size="mini" color='red'>
+                                            Image is required
+                                        </Message>}
                                     <div styleName="styles.imgForm">
-                                        <Form.Field required>
-                                            <Button styleName="styles.projectBtn"
-                                                style={{
-                                                    color: formalTheme ? '#000000' : '#DEE8FF',
-                                                    borderColor: formalTheme ? '#000000' : '#DEE8FF',
-                                                }}
-                                                onClick={this.handleOpen}
-                                                name={formalTheme ? "uploadFormalImage" : "uploadChildhoodImage"}
-                                            >
-                                                {formalTheme
-                                                    ? !this.state.prevUploadedFormal
-                                                        ? "Add photo"
-                                                        : "Change Photo"
-                                                    : !this.state.prevUploadedChildhood
-                                                        ? "Add photo"
-                                                        : "Change Photo"}
-                                            </Button>
+                                        <Button styleName="styles.submit-btn"
+                                            style={{
+                                                color: formalTheme ? '#000000' : '#E3EBFE',
+                                                backgroundColor: formalTheme ? '#E3EBFE' : '#373838',
+                                            }}
+                                            onClick={this.handleOpen}
+                                            name={formalTheme ? "uploadFormalImage" : "uploadChildhoodImage"}
+                                        >
+                                            {formalTheme
+                                                ? !this.state.prevUploadedFormal
+                                                    ? "Add photo"
+                                                    : "Change Photo"
+                                                : !this.state.prevUploadedChildhood
+                                                    ? "Add photo"
+                                                    : "Change Photo"}
+                                        </Button>
 
-                                        </Form.Field>
                                         <ImageUploader
                                             aspect={3 / 4}
                                             open={formalTheme ? this.state.uploadFormalImage.open : this.state.uploadChildhoodImage.open}
@@ -589,71 +662,90 @@ class AddMemberDetails extends Component {
                                     <Form>
                                         <Form.Field required styleName="styles.labels">
                                             <label
-                                                styleName={!formalTheme ? 'styles.darkInputs' : ''}
+                                                styleName={!formalTheme ? 'styles.darkLables' : ''}
                                             >
                                                 {formalTheme ? "Handle name" : "Nick name"}
                                             </label>
                                             <input
-                                                disabled={this.state.method === 'patch' && this.state.handleName && formalTheme
+                                                required
+                                                disabled={disableInformal
                                                     ? true
-                                                    : false}
-                                                styleName="styles.inputs"
+                                                    : this.state.method === 'patch' && this.state.handleName && formalTheme
+                                                        ? true
+                                                        : false}
+                                                styleName={`styles.inputs ${!formalTheme ? "styles.darkInputs" : ''} `}
                                                 placeholder={formalTheme ? "Handle name" : "Nick name"}
                                                 onChange={event => {
+                                                    this.setState({ error: { ...this.state.error, handle: false } })
                                                     formalTheme
-                                                        ? this.setState({ handleName: event.target.value })
-                                                        : this.setState({ nickName: event.target.value })
+                                                        ? this.setState({
+                                                            handleName: event.target.value, error: {
+                                                                ...this.state.error,
+                                                                handle: false
+                                                            }
+                                                        })
+                                                        : this.setState({
+                                                            nickName: event.target.value, error: {
+                                                                ...this.state.error,
+                                                                nickName: false
+                                                            }
+                                                        })
                                                 }}
                                                 value={formalTheme
                                                     ? this.state.handleName
                                                     : this.state.nickName}
                                             />
-                                            {this.state.error.errorHandle &&
-                                                (<Label color="red" pointing>
-                                                    This Handle already exists
-                                                </Label>)}
-                                            {this.state.errorNickName &&
-                                                (<Label color="red" pointing>
-                                                    This name is already taken
-                                                </Label>)}
+                                            {this.state.error.handle &&
+                                                (<Message size="mini" attached='bottom' color="red">
+                                                    {this.state.handleName === ""
+                                                        ? "Handle name is required and must be unique."
+                                                        : "This Handle already exists"}
+                                                </Message>)}
+                                            {this.state.error.nickName &&
+                                                ((this.state.nickName !== '' && this.state.nickName !== null)
+                                                    ? <Message size="mini" color="red" >
+                                                        This name is already taken
+                                                    </Message>
+                                                    : <Message size="mini" color="red" >
+                                                        Add a nick name
+                                                    </Message>)}
                                         </Form.Field>
 
                                         <Form.Field required styleName="styles.labels">
                                             <label
-                                                styleName={!formalTheme ? 'styles.darkInputs' : ''}
+                                                styleName={!formalTheme ? 'styles.darkLables' : ''}
                                             >
                                                 {formalTheme ? "Short Bio" : "Want to be"}
                                             </label>
                                             <input
-                                                styleName="styles.inputs"
+                                                styleName={`styles.inputs ${!formalTheme ? "styles.darkInputs" : ''} `}
                                                 placeholder={formalTheme ? "Tell us more about you..." : "What you want to be..."}
+                                                disabled={disableInformal}
                                                 onChange={event => {
                                                     this.setState(formalTheme ? { shortBio: event.target.value } : { wantToBe: event.target.value })
                                                 }}
                                                 value={formalTheme ? this.state.shortBio : this.state.wantToBe}
                                             />
-                                            {this.state.error.errorShortBio && (
-                                                <Label color="red" pointing>
+                                            {this.state.error.shortBio && (
+                                                <Message size="mini" attached='bottom' color="red" >
                                                     Maximum 255 characters allowed
-                                                </Label>
+                                                </Message>
                                             )}
-                                            {this.state.errorWantToBe && (
-                                                <Label color="red" pointing>
+                                            {this.state.error.wantToBe && (
+                                                <Message size="mini" attached='bottom' color="red" >
                                                     {/* note: */}
                                                     TBD
-                                                </Label>
+                                                </Message>
                                             )}
                                         </Form.Field>
 
                                         {formalTheme ?
                                             <Form.Field required styleName="styles.labels">
-                                                <label
-                                                    styleName={!formalTheme ? 'styles.darkInputs' : ''}
-                                                >
+                                                <label>
                                                     Tech Skills
                                                 </label>
                                                 <input
-                                                    styleName="styles.inputs"
+                                                    styleName={`styles.inputs`}
                                                     placeholder={this.state.method === 'post' ? "Add tech skill" : "Add new tech skill"}
                                                     name="skills"
                                                     value={this.state.skills.entry}
@@ -679,31 +771,34 @@ class AddMemberDetails extends Component {
                                             :
                                             <Form.Field required styleName="styles.labels">
                                                 <label
-                                                    styleName="styles.darkInputs"
+                                                    styleName="styles.darkLables"
                                                 >
                                                     Short fun bio
                                                 </label>
                                                 <input
-                                                    styleName="styles.inputs"
+                                                    styleName={`styles.inputs ${!formalTheme ? "styles.darkInputs" : ''} `}
+                                                    disabled={disableInformal}
                                                     placeholder="Some more about you"
                                                     onChange={event => {
+                                                        this.setState({ error: { ...this.state.error, shortFunBio: false } })
                                                         this.setState({ shortFunBio: event.target.value })
                                                     }}
                                                     value={this.state.shortFunBio}
                                                 />
-                                                {this.state.error.errorShortFunBio && (
-                                                    <Label color="red" pointing>
-                                                        Maximum 255 characters allowed
-                                                    </Label>
-                                                )}
+                                                {this.state.error.shortFunBio &&
+                                                    ((this.state.shortFunBio !== '' && this.state.shortFunBio !== null)
+                                                        ? <Message size="mini" color="red" >
+                                                            Maximum 255 characters are allowed
+                                                        </Message>
+                                                        : <Message size="mini" color="red" >
+                                                            Add this field
+                                                        </Message>)}
                                             </Form.Field>
                                         }
                                         {formalTheme ?
                                             <>
                                                 <Form.Field required styleName="styles.labels">
-                                                    <label
-                                                        styleName={!formalTheme ? 'styles.darkInputs' : ''}
-                                                    >
+                                                    <label>
                                                         Social links
                                                     </label>
                                                     <Dropdown
@@ -722,12 +817,12 @@ class AddMemberDetails extends Component {
                                                         value={this.state.socialLinks.site}
                                                     />
                                                     {this.state.errorSite && (
-                                                        <Label color="red" pointing>
+                                                        <Message size="mini" attached='bottom' color="red" >
                                                             The social media site has to be choosen.
-                                                        </Label>
+                                                        </Message>
                                                     )}
                                                     <input
-                                                        styleName="styles.inputs  styles.dropdownInput"
+                                                        styleName={`styles.inputs styles.dropdownInput`}
                                                         placeholder={this.state.method === 'post'
                                                             ? "Add social skill"
                                                             : "Add new social link"}
@@ -739,12 +834,12 @@ class AddMemberDetails extends Component {
                                                                 this.addLink(e)
                                                         }}
                                                     />
+                                                    {this.state.errorUrl && (
+                                                        <Message size="mini" attached='bottom' color="red" >
+                                                            Enter a valid URL
+                                                        </Message>
+                                                    )}
                                                 </Form.Field>
-                                                {this.state.errorUrl && (
-                                                    <Label color="red" pointing>
-                                                        Enter a valid URL
-                                                    </Label>
-                                                )}
                                                 {this.state.socialLinks.array.length > 0 && (
                                                     <LinkList
                                                         linkListOptions={linkListOptions}
@@ -755,13 +850,11 @@ class AddMemberDetails extends Component {
 
 
                                                 <Form.Field required styleName="styles.labels">
-                                                    <label
-                                                        styleName={!formalTheme ? 'styles.darkInputs' : ''}
-                                                    >
+                                                    <label>
                                                         Add blog link
                                                     </label>
                                                     <input
-                                                        styleName="styles.inputs"
+                                                        styleName={`styles.inputs`}
                                                         placeholder={this.state.method === 'post'
                                                             ? "Add blog link"
                                                             : "Add new blog link"}
@@ -778,9 +871,9 @@ class AddMemberDetails extends Component {
                                                         value={this.state.newBlog.url}
                                                     />
                                                     {this.state.newBlog.error && (
-                                                        <Label color="red" pointing>
+                                                        <Message size="mini" attached='bottom' color="red" >
                                                             Please enter a valid link.
-                                                        </Label>
+                                                        </Message>
                                                     )}
                                                 </Form.Field>
 
@@ -790,7 +883,7 @@ class AddMemberDetails extends Component {
                                                             Title of the blog
                                                         </label>
                                                         <input
-                                                            styleName="styles.inputs"
+                                                            styleName={`styles.inputs ${!formalTheme ? "styles.darkInputs" : ''} `}
                                                             onChange={event => {
                                                                 this.setState({
                                                                     newBlog: {
@@ -810,7 +903,7 @@ class AddMemberDetails extends Component {
                                                             Read time
                                                         </label>
                                                         <input
-                                                            styleName="styles.inputs"
+                                                            styleName={`styles.inputs ${!formalTheme ? "styles.darkInputs" : ''} `}
                                                             placeholder="Read time in minutes"
                                                             onChange={event => {
                                                                 this.setState({
@@ -841,6 +934,7 @@ class AddMemberDetails extends Component {
                                                         close={this.closeModal}
                                                     />
                                                 </Transition>
+
                                                 <Transition visible={this.state.newBlog.readTime} animation='fade up' duration={2000}>
                                                     <Button styleName="styles.projectBtn"
                                                         style={{ marginBottom: '2rem' }}
@@ -862,7 +956,7 @@ class AddMemberDetails extends Component {
                                             <>
                                                 <Form.Field required styleName="styles.labels">
                                                     <label
-                                                        styleName={!formalTheme ? 'styles.darkInputs' : ''}
+                                                        styleName={!formalTheme ? 'styles.darkLables' : ''}
                                                     >
                                                         Favorites
                                                     </label>
@@ -876,10 +970,10 @@ class AddMemberDetails extends Component {
                                                             onChange={this.handleFavChange}
                                                         />
                                                         <input
-                                                            styleName="styles.inputs styles.favInput"
-                                                            labelPosition='left'
+                                                            disabled={disableInformal}
                                                             placeholder={selectedFavOption === 'sports' ? "Sport you love..." : "Series you love..."}
                                                             name={selectedFavOption === 'sports' ? "sports" : "webSeries"}
+                                                            styleName={`styles.inputs styles.favInput ${!formalTheme ? "styles.darkInputs" : ''} `}
                                                             value={this.state[selectedFavOption].entry}
                                                             onChange={(e) => {
                                                                 e.persist()
@@ -918,14 +1012,18 @@ class AddMemberDetails extends Component {
                                                 </Form.Field>
                                                 <Form.Field required styleName="styles.labels">
                                                     <label
-                                                        styleName='styles.darkInputs'
+                                                        styleName='styles.darkLables'
                                                     >
                                                         Personality Type
                                                     </label>
                                                     <div styleName="styles.personality">
                                                         <Dropdown
-                                                            style={selectedFavOption === 'sports' ? { minWidth: '8rem' } : { minWidth: '11rem' }}
-                                                            styleName="styles.inputs"
+                                                            style={{
+                                                                backgroundColor: !formalTheme ? '#373838' : '#D5DEF2',
+                                                                minWidth: selectedFavOption === 'sports' ? '8rem' : '11rem'
+                                                            }}
+                                                            disabled={disableInformal}
+                                                            styleName="styles.personalityDropdown"
                                                             placeholder='Select your personality'
                                                             selection
                                                             onChange={this.handlePersonalityTypeChange}
@@ -935,11 +1033,20 @@ class AddMemberDetails extends Component {
                                                         />
                                                         <Button
                                                             onClick={() => window.open(urlPersonalityTest())}
-                                                            styleName="styles.projectBtn styles.submit-btn"
+                                                            styleName="styles.submit-btn"
+                                                            style={{
+                                                                color: formalTheme ? '#000000' : '#E3EBFE',
+                                                                backgroundColor: formalTheme ? '#E3EBFE' : '#373838',
+                                                            }}
                                                         >
                                                             Take the Test
                                                         </Button>
                                                     </div>
+                                                    {this.state.error.personalityType && (
+                                                        <Message size="mini" color="red" >
+                                                            Fill this field
+                                                        </Message>
+                                                    )}
                                                 </Form.Field>
                                             </>
 
@@ -948,7 +1055,11 @@ class AddMemberDetails extends Component {
                                     </Form>
                                     <Button
                                         onClick={this.handleUpdate}
-                                        styleName="styles.projectBtn styles.submit-btn"
+                                        style={{
+                                            backgroundColor: formalTheme ? '#171818' : '#E3EBFE',
+                                            color: formalTheme ? '#E3EBFE' : '#171818'
+                                        }}
+                                        styleName="styles.submit-btn"
                                     >
                                         {this.state.method === 'patch' ?
                                             'Update Member' : 'Add Member'}

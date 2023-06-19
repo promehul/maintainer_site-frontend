@@ -127,6 +127,12 @@ h4{
   }
 }
 
+@media (max-width: 768px) {
+  .head{
+    margin-top: 8.3rem;
+  }
+}
+
 @media (max-width: 700px) {
   .margin{
     margin: 0 5rem !important;

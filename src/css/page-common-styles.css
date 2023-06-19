@@ -37,7 +37,9 @@
   padding: 0.5rem 1.4rem;
   margin: 0.8rem;
   margin-left: 0;
-  border: 1px solid #E3EBFE !important;
+  background: #373838;
+  color: #E3EBFE;
+  border: 1px solid #171818;
   border-radius: 2rem;
   font-family: 'Open Sans';
   font-size: 1.1rem;
