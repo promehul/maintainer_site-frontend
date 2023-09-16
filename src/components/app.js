@@ -13,7 +13,7 @@ import AppHeader from '../containers/header/appHeader'
 import MainPage from '../components/main/main-page'
 import Member from '../containers/member/memberPageLoader'
 import MemberIndividualView from '../containers/member/informalThemeLoader'
-import { MemberDetails } from '../containers/member/memberFormLoader'
+import { MemberDetails, ProjectDetails } from '../containers/member/memberFormLoader'
 
 import AddProjectDetails from './projects/add-project-details'
 import { Blogs } from '../containers/blog/blogPageLoader'
@@ -120,7 +120,7 @@ class App extends Component {
                   <Route
                     exact
                     path={urlAppAddProjectDetails()}
-                    component={AddProjectDetails}
+                    component={ProjectDetails}
                   />
                   <Route
                     exact
@@ -130,7 +130,7 @@ class App extends Component {
                   <Route
                     exact
                     path={`${urlAppAddProjectDetails()}/:slug`}
-                    component={AddProjectDetails}
+                    component={ProjectDetails}
                   />
                   <Route component={NoMatch} />
                 </Switch>

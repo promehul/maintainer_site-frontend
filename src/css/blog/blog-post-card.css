@@ -37,7 +37,6 @@
 .blogGrid{
     padding: 0 !important;
     margin-top: 2.1rem !important;
-    max-width: 30rem;
 }
 
 @media (max-width: 830px) {

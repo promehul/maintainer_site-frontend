@@ -162,6 +162,10 @@
   gap: 2rem;
 }
 
+.blogGrp > * > div{
+  max-width: 30rem;
+}
+
 @media (max-width: 1700px) {
   .projectGrp{
     gap: 4.5rem;

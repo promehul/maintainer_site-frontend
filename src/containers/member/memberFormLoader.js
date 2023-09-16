@@ -6,6 +6,7 @@ import { setTheme } from '../../actions/setTheme'
 import AddMemberDetails from '../../components/team/add-update-member/member-form'
 import ImageUploadCropper from '../../components/utilComponents/imageUploadCropper'
 import BlogUpdateModal from '../../components/blog/update-blog-modal'
+import AddProjectDetails from '../../components/projects/add-update-project-details'
 
 const mapStateToProps = state => {
     return {
@@ -30,7 +31,8 @@ const MemberDetails = connect(mapStateToProps, mapDispatchToProps)(AddMemberDeta
 
 const ImageUploader = connect(mapStateToProps, mapDispatchToProps)(ImageUploadCropper)
 
-const BlogModal = connect(mapStateToProps, mapDispatchToProps)
-    (BlogUpdateModal)
+const BlogModal = connect(mapStateToProps, mapDispatchToProps)(BlogUpdateModal)
 
-export { MemberDetails, ImageUploader, BlogModal }
+const ProjectDetails = connect(mapStateToProps, mapDispatchToProps)(AddProjectDetails)
+
+export { MemberDetails, ImageUploader, BlogModal, ProjectDetails }

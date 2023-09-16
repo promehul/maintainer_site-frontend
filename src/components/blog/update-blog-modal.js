@@ -148,7 +148,11 @@ class BlogUpdateModal extends Component {
                                 id={this.state.updateBlogImage.id}
                                 close={this.closeModal}
                             />
-                            <Button styleName="style.projectBtn"
+                            <Button styleName="style.submit-btn"
+                                style={{
+                                    backgroundColor: '#171818',
+                                    color: '#E3EBFE'
+                                }}
                                 onClick={this.handleOpen}
                                 name={"updateBlogImage"}
                             >
@@ -158,7 +162,12 @@ class BlogUpdateModal extends Component {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button styleName="style.submit-btn" onClick={() => { this.handleBlogUpdate(data.guid); this.props.onClose() }}>
+                    <Button styleName="style.submit-btn"
+                        style={{
+                            backgroundColor: '#171818',
+                            color: '#E3EBFE'
+                        }}
+                        onClick={() => { this.handleBlogUpdate(data.guid); this.props.onClose() }}>
                         Update blog details
                     </Button>
                 </Modal.Actions>
