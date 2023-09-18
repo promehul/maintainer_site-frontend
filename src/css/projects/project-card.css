@@ -13,6 +13,10 @@
     backdrop-filter: blur(12px);
     border-radius: 0.6rem;
 }
+.project-card[profile="informal"]{
+    background: rgba(40, 40, 40, 0.9);
+    color: rgba(222, 232, 255, 1);
+}
 
 .logo {
     margin: 0 auto;
@@ -42,10 +46,17 @@
     background: rgba(50, 71, 102, 0.2);
 }
 
-div[appSlug="chakra"] > :first-child {
+div[appSlug="chakra"]  > :first-child {
     background: rgba(50, 71, 102, 0.2);
 }
-div[appSlug="chakra"] > :last-child {
+div[appSlug="chakra"]  > :last-child {
+    color: #324766;
+    background: rgba(50, 71, 102, 0.2);
+}
+div[profile="informal"][appSlug="chakra"]  > :first-child {
+    background: #17191D54;
+}
+div[profile="informal"][appSlug="chakra"]  > :last-child {
     color: #324766;
     background: rgba(50, 71, 102, 0.2);
 }
@@ -66,6 +77,10 @@ div[appSlug="placement_online"] > :last-child {
     background: rgba(195, 215, 255, 0.33);
 }
 
+div[appSlug="people_search"] > :first-child {
+    background: rgb(55 57 114);
+}
+
 div[appSlug="slambook"] > :first-child {
     background: rgba(246, 147, 149, 0.33);
 }
@@ -79,7 +94,7 @@ div[appSlug="slambook"] > :last-child {
     width: 60%;
     font-family: 'Archivo';
     font-size: 1.5rem;
-    color: #171818;
+    /* color: #171818; */
     font-weight: 500;
     text-align: center;
 }
@@ -90,7 +105,7 @@ div[appSlug="slambook"] > :last-child {
     font-weight: 400;
     text-align: center;
     padding: 0 1.4rem;
-    color: #171818;
+    /* color: #171818; */
 }
 
 .viewBtn{
@@ -104,4 +119,13 @@ div[appSlug="slambook"] > :last-child {
     width: 35%;
     padding: 0.3rem 1rem;
     margin: 1.5rem 0 2.2rem 0;
+}
+
+.viewBtn[profile="informal"]{
+    background: rgba(23, 24, 24, 0.33);
+    color: white;
+}
+
+.viewBtn[profile="informal"] a{
+    color: rgba(116, 161, 254, 1);
 }

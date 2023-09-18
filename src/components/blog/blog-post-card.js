@@ -37,7 +37,7 @@ class BlogDetail extends React.Component {
         }
     }
     render() {
-        const { info, author } = this.props
+        const { info, author, profile } = this.props
         const { modelData } = this.state
         const isModelData = info.hasOwnProperty("displayImage") && info.hasOwnProperty("readTime")
 
@@ -59,7 +59,7 @@ class BlogDetail extends React.Component {
 
         return (
             <Grid.Column styleName="styles.blogGrid">
-                <div styleName="styles.blogInfo">
+                <div styleName="styles.blogInfo" profile={profile}>
                     <div
                         styleName="styles.blog"
                         style={backgroundImageStyle(thumbnail)}

@@ -262,14 +262,14 @@ class MemberIndividualView extends Component {
                           {projectTab ? (Boolean(memberProjects.length) &&
                             <div styleName="styles.projectGrp">
                               {memberProjects.map(info => (
-                                <ProjectDetail info={info} key={info.slug} />
+                                <ProjectDetail info={info} key={info.slug} profile={this.props.currentTheme} />
                               ))}
                             </div>
                           ) : Boolean(memberBlogs.length) &&
                           <div>
                             <div styleName="styles.blogGrp">
                               {memberBlogs.map((info) => (
-                                <BlogDetail info={info} author={memberDetails.maintainer.person.fullName} />
+                                <BlogDetail info={info} author={memberDetails.maintainer.person.fullName} profile={this.props.currentTheme} />
                               ))}
                             </div>
                           </div>}

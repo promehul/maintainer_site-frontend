@@ -60,7 +60,6 @@ h4{
 
 .horizontalCategory > * > div{
     padding-right: 3.4rem;
-    max-width: none !important;
 }
 .verticalCategory > * > div{
     padding-right: 1.6rem;

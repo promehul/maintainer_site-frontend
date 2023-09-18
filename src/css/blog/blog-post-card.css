@@ -30,6 +30,10 @@
 .blogInfo{
     width: 100%;
 }
+.blogInfo[profile="informal"]{
+    color: rgba(222, 232, 255, 1);
+}
+
 .blogDetails {
     float: right;
 }

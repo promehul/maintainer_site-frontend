@@ -424,11 +424,6 @@ class AddProjectDetails extends Component {
                                                 onEditorChange={this.handleEditorChange}
                                             />
                                             <Segment basic />
-                                            {(this.state.members == false)
-                                                &&
-                                                <Message size="mini" color='red'>
-                                                    Atleast one member must be chosen.
-                                                </Message>}
                                             {this.state.maintainers.length > 0 && (
                                                 <Form.Dropdown
                                                     styleName="styles.labels"
@@ -461,7 +456,7 @@ class AddProjectDetails extends Component {
                                         styleName="styles.submit-btn"
                                     >
                                         {this.state.method === 'patch' ?
-                                            'Update Member' : 'Add Member'}
+                                            'Update Project' : 'Add Project'}
                                     </Button>
                                 </div>
                             </div>

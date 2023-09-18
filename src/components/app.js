@@ -15,7 +15,7 @@ import Member from '../containers/member/memberPageLoader'
 import MemberIndividualView from '../containers/member/informalThemeLoader'
 import { MemberDetails, ProjectDetails } from '../containers/member/memberFormLoader'
 
-import AddProjectDetails from './projects/add-project-details'
+import AddProjectDetails from './projects/add-update-project-details'
 import { Blogs } from '../containers/blog/blogPageLoader'
 import Projects from '../containers/project/projectPageLoader'
 import ProjectDetailView from '../containers/project/projectIndividualLoader'
