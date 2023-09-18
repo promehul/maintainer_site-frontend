@@ -69,6 +69,10 @@ div:has(> .presentApp):hover{
     border-bottom: 0.45rem solid #222125;
 }
 
+.middleRightRow > :last-child{
+  height: 50.1%;
+}
+
 @keyframes disappear {
   from {
     opacity: 1;

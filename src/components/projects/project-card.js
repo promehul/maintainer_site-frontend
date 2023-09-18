@@ -6,9 +6,9 @@ import { urlAppProjects } from '../../urls'
 
 import styles from '../../css/projects/project-card.css'
 
-const ProjectDetail = ({ info }) => {
+const ProjectDetail = ({ info, profile }) => {
     return (
-        <div styleName="styles.project-card" appSlug={info.slug}>
+        <div styleName="styles.project-card" appSlug={info.slug} profile={profile}>
             <div styleName="styles.logo" >
                 <img styleName="styles.logoImg" src={info.image} />
             </div>
@@ -18,7 +18,7 @@ const ProjectDetail = ({ info }) => {
             <div styleName="styles.shortDesc">
                 {info.shortDescription}
             </div>
-            <div styleName="styles.viewBtn">
+            <div styleName="styles.viewBtn" profile={profile}>
                 <Link to={`${urlAppProjects()}/${info.slug}`}>
                     View More
                 </Link>
