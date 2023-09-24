@@ -37,7 +37,7 @@
 
 .sub-heading-underline:hover .underline{
   color: yellow;
-  background-image: url("./underline.svg") !important;
+  background-image: url("") !important;
   background-position: bottom ;
   z-index:2;
   opacity:0.8;

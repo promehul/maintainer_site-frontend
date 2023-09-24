@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import styles from '../../../../css/life_at_img/sections/do-and-dont.css'
 import { Container } from 'semantic-ui-react'
 
 
 const DoAndDontSection=()=>{
-    const dojson =[
+    const weAreJson =[
         "One team, One family",
         "Make a Difference Every Day",
         "Stay humble and learn together",
@@ -13,93 +13,61 @@ const DoAndDontSection=()=>{
         "Lead by institute, driven by IITR junta"
     ]
     
-    const dontjson=[
+    const weAreNotJson=[
         "One team, One family",
         "Make a Difference Every Day",
         "Stay humble and learn together",
         "Word hard, Party harder",
         "Do the right thing",
-        "Lead by institute, driven by IITR junta"
+        "Hello"
     ]
-    
-    const weAreHeadingStyle= {
-        background: "linear-gradient(90deg, rgba(222, 232, 255, 0.3) 0%, rgba(222, 232, 255, 0.24) 100%)",
-        WebkitBackgroundClip: "text",
-        backgroundClip: "text",
-        color: "transparent",
-        fontFamily: "Archivo",
-        fontStyle: "normal",
-        fontWeight: 700,
-        fontSize: "2.4rem",
-        padding: "2rem",
-    }
-    
-    const weAreNotHeadingStyle={
-        background: "linear-gradient(90deg, rgba(222, 232, 255, 0.24) 0%, rgba(222, 232, 255, 0.3) 100%)",
-        WebkitBackgroundClip: "text",
-        backgroundClip: "text",
-        color: "transparent",
-        fontFamily: "Archivo",
-        fontStyle: "normal",
-        fontWeight: 700,
-        fontSize: "2.4rem",
-        padding: "2rem",
-    }
-    
-    const activeWeAreHeadingStyle={
-        background: "linear-gradient(90deg, #DEE8FF 0%, rgba(222, 232, 255, 0.8) 100%)",
-        WebkitBackgroundClip: "text",
-        backgroundClip: "text",
-        color: "transparent",
-        fontFamily: "Archivo",
-        fontStyle: "normal",
-        fontWeight: 700,
-        fontSize: "2.4rem",
-        padding: "2rem",
-    }
-    
-    const activeWeAreNotHeadingStyle={
-        background: "linear-gradient(90deg, rgba(222, 232, 255, 0.8) 0%, #DEE8FF 100%)",
-        WebkitBackgroundClip: "text",
-        backgroundClip: "text",
-        color: "transparent",
-        fontFamily: "Archivo",
-        fontStyle: "normal",
-        fontWeight: 700,
-        fontSize: "2.4rem",
-        padding: "2rem",
-    }
-    const [activeOption,setActiveOption]= React.useState(-1);
-    const handleActiveOption=(value)=>{
-        console.log(value)
-        let el= event.target
-        if(value==activeOption){
-            setActiveOption(-1);
-        }else{
-            setActiveOption(value);
-            el.style.background="linear-gradient(90deg, rgba(222, 232, 255, 0.3) 0%, rgba(222, 232, 255, 0.24) 100%)"
+    const [activeOption,setActiveOption]= React.useState(0);
+    const [displayJson,setDisplayJson]=React.useState(weAreJson);
+    const handleClick=(value)=>{
+        if(value==activeOption){}
+        else{
+            if(value==0){
+                setDisplayJson(weAreJson)
+            }else if(value==1){
+                setDisplayJson(weAreNotJson)
+            }
+            setActiveOption(value)
+
         }
     }
     return(
         <div styleName="styles.container">
             <div>
                 <Container>
-                  <div style={activeWeAreHeadingStyle} styleName="styles.heading" onClick={()=>{handleActiveOption(0)}}>
+                {activeOption==0 ? <h1 styleName="styles.heading styles.we-are-active-heading" onClick={()=>{handleClick(0)}}>
                             We Are
-                            </div> 
+                            </h1>  : <h1  styleName="styles.heading styles.we-are-heading" onClick={()=>{handleClick(0)}}>
+                            We Are
+                            </h1>
+                            }
                 </Container>
             </div>
-            <div>
-
+            <div styleName="styles.content">
+                
+                {displayJson.map((value,index)=>{
+                        return(
+                        <div styleName="styles.gradient-border styles.content" key={activeOption+value}>
+                    <h2 styleName="styles.sub-heading styles.sub-heading-animation">
+                            {value}
+                    </h2>
+                </div>
+                        )
+                    
+                })}
             </div>
             <div>
                 <Container>
                     <div styleName="styles.right-align">
-                    {activeOption==1 ? <div style={weAreNotHeadingStyle} styleName="styles.heading" onClick={()=>{handleActiveOption(1)}}>
+                    {activeOption==1 ? <h1  styleName="styles.heading styles.we-are-not-active-heading" onClick={()=>{handleClick(1)}}>
                             We Aren't
-                            </div> : <div style={activeWeAreNotHeadingStyle} styleName="styles.heading" onClick={()=>{handleActiveOption(1)}}>
+                            </h1> : <h1  styleName="styles.heading styles.we-are-not-heading" onClick={()=>{handleClick(1)}}>
                             We Aren't
-                            </div>
+                            </h1>
                             }
                     </div>
                 </Container>

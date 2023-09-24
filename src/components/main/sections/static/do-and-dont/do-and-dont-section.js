@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Container, Icon, Header, Responsive } from 'semantic-ui-react'
 import styles from '../../../../../css/sections/static/do-and-dont/do-and-dont-section.css'
-import grow from './grow.svg'
+
 export default class DoAndDontSection extends React.Component {
     render() {
         return (
@@ -52,7 +52,7 @@ export default class DoAndDontSection extends React.Component {
                                 <Grid.Column>
                                     <div styleName="styles.sub-heading styles.i5">
                                         Stay <span styleName="styles.change">humble</span> and <span styleName="styles.change">learn</span> together.
-                                        <img src={grow} styleName="styles.grow-image"/>
+                                        <img src="" styleName="styles.grow-image"/>
                                     </div>
                                 </Grid.Column>
                                 <Grid.Column>

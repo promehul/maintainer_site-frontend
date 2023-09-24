@@ -1,121 +1,56 @@
-import React from 'react'
-import { Grid, Container, Icon,Header, Responsive,Image, ImageGroup } from 'semantic-ui-react'
+import React, { useEffect, useState, useRef } from 'react';
+import { Image } from 'semantic-ui-react'
 import styles from '../../../../css/sections/carousel/carousel-section.css'
+import image1 from './group-pic.png'
+import image2 from './group-pic1.png'
+import image3 from './group-pic2.png'
+const VerticalCircularScroll = () => {
+  const scrollContainerRef = useRef(null);
+  const scrollContentRef = useRef(null);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [containerHeight, setContainerHeight] = useState(0);
+    const [imageList,setImageList]=React.useState([image1 , image2, image3, image2, image1, image3, image2, image1]);
+  useEffect(() => {
+    // Get the height of the content and container
+    const contentHeight = scrollContentRef.current.offsetHeight;
+    const containerHeight = scrollContainerRef.current.offsetHeight;
 
-export default class CarousalMenu extends React.Component {
+    setContentHeight(contentHeight);
+    setContainerHeight(containerHeight);
+  }, []);
 
-    constructor(props){
-        super(props)
-        this.state = {
-            imageList: this.props.imageList,
-            activeImageIndex: 2,
-        }
-    }
+  useEffect(() => {
+    const circularScroll = () => {
+      // Calculate the shift distance
+      const shiftDistance = Date.now() / 10 % contentHeight;
 
-    componentDidMount(){
-        let options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 1.0
-        }
-        const observer = new IntersectionObserver((entries) => {
-            for(let entry of entries){
-                if(entry.isIntersecting && entry.intersectionRatio==1){
-                    console.log(entry)
-                    console.log(entry.target.id)
-                }else if(!(entry.isIntersecting)){
-                    console.log(entry)
-                    console.log(entry.target.id)
-                }
-                // if(entry.intersectionRatio==1){
-                //     console.log(entry)
-                //     console.log(entry.target.id)
-                // }
-            }
-        },options);
-        const elements = document.querySelectorAll(".carousal-image")
-        console.log(elements)
-        console.log(typeof elements)
-        for(let element of elements){
-            observer.observe(element)
-        }
-        
-    }
-    handleImageClick=(index)=>{
-        this.setState({
-            activeImageIndex: index
-        })
-        this.props.onImageChange(index)
-    }
+      // Apply the transform to the content element
+      scrollContentRef.current.style.transform = `translateY(-${shiftDistance}px)`;
 
-    handleMouseHover = (e,index)=>{
-        this.props.onImageChange(index)
-        
-    }
+      // Request the next frame for smooth animation
+      requestAnimationFrame(circularScroll);
+    };
 
-    handleMouseLeave = (e)=>{
-        this.props.onImageChange(this.state.activeImageIndex)
-    }
+    // Start the circular scrolling animation
+    circularScroll();
+  }, [contentHeight]);
 
-    reRenderMenu = (start,end)=>{
-        const element = document.querySelectorAll(".carousal-image")
-        for(let i=0; i<element.length;i++){
-            if(i==0 && i<end){
-
-            }else{
-
-            }
-        }
-    }
-
-    render(){
-        return (
-        <div styleName="styles.carousel-menu" ref="carousel-menu"  id="carousel-menu">
-            <div styleName="styles.carousel-menu-scroll">
-        {/* {this.state.imageList.map((image, index)=>{
-            if(index == this.state.activeImageIndex){
-                return(
-                    <img src={image} 
-                    size='medium' 
-                    key={index} 
-                    ref={index} 
-                    onClick={()=>{this.handleImageClick(index)}} 
-                    styleName="styles.carousel-menu-selected-image" 
+  return (
+    <div className="scroll-container" ref={scrollContainerRef}>
+      <div className="scroll-content" ref={scrollContentRef}>
+        {imageList.map((image,index)=>{
+                  return(<img src={image}
+                    size='medium'
+                    key={index}
+                    styleName="styles.carousel-menu-selected-image"
                     className='carousal-image'
                     id={index}
-                    />
-                )
-            }
-            else if(index== 0 || index== this.state.imageList.length-1){
-                return(
-                    <img src={image} 
-                    size='medium' 
-                    key={index} 
-                    ref={index} 
-                    onClick={()=>{this.handleImageClick(index)}} 
-                    styleName="styles.carousel-menu-small-images"
-                    className='carousal-image'
-                    onMouseEnter={(e)=>{this.handleMouseHover(e,index)}} 
-                    onMouseLeave={(e)=>{this.handleMouseLeave(e)}}
-                    id={index}
-                    />
-                )
-            }
-        return(
-            <img src={image} size='small' 
-            key={index} 
-            onClick={()=>{this.handleImageClick(index)}} 
-            id={index}
-            styleName="styles.carousel-menu-images" 
-            onMouseEnter={(e)=>{this.handleMouseHover(e,index)}} 
-            onMouseLeave={(e)=>{this.handleMouseLeave(e)}}
-            className='carousal-image'
-            />
-        )
+                />)
+        })}
 
-    })} */}
+      </div>
     </div>
-    </div>
-        )
-    }
-}
+  );
+};
+
+export default VerticalCircularScroll;
