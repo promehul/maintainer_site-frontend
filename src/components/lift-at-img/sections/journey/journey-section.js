@@ -13,28 +13,28 @@ const journeyStepsInitialize = [
 
 const journeyStepContent=[
     {
-        image: "http://localhost:61000/static/maintainer_site/life_at_img/avengers.svg",
-        text: "we can write the description of the heading with illustration illustration and second line goes like this."
+        image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fphotos%2Ffantasy-beautiful-dawn-sunset-sky-3077928%2F&psig=AOvVaw0htqqIzWAL2NouWonlJQ3N&ust=1695755222204000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCKCP2866xoEDFQAAAAAdAAAAABAE",
+        text: "Explore - we can write the description of the heading with illustration illustration and second line goes like this."
     },
     {
         image: "http://localhost:61000/static/maintainer_site/life_at_img/avengers.svg",
-        text: "we can write the description of the heading with illustration illustration and second line goes like this."
+        text: "Learn - we can write the description of the heading with illustration illustration and second line goes like this."
     },
     {
         image: "http://localhost:61000/static/maintainer_site/life_at_img/avengers.svg",
-        text: "we can write the description of the heading with illustration illustration and second line goes like this."
+        text: "Apply - we can write the description of the heading with illustration illustration and second line goes like this."
     },
     {
         image: "http://localhost:61000/static/maintainer_site/life_at_img/avengers.svg",
-        text: "we can write the description of the heading with illustration illustration and second line goes like this."
+        text: "Contribute - we can write the description of the heading with illustration illustration and second line goes like this."
     },
     {
         image: "http://localhost:61000/static/maintainer_site/life_at_img/avengers.svg",
-        text: "we can write the description of the heading with illustration illustration and second line goes like this."
+        text: "Teach - we can write the description of the heading with illustration illustration and second line goes like this."
     },
     {
         image: "http://localhost:61000/static/maintainer_site/life_at_img/avengers.svg",
-        text: "we can write the description of the heading with illustration illustration and second line goes like this."
+        text: "Manage - we can write the description of the heading with illustration illustration and second line goes like this."
     },
 ]
 
@@ -49,28 +49,40 @@ const JourneySection=()=>{
                 <div styleName="styles.heading">Journey at IMG</div>
                 <Grid columns={2} verticalAlign='middle'>
                     <Grid.Column>
-                        <div styleName="styles.journey-step-container">
-                        {
-                            journeySteps.map((value,index)=>{
-                                console.log(value);
-                                if(index==activeStep){
-                                    return(
-                                        <span key={index} onClick={()=>{setActiveStep(index)}} styleName="styles.journey-step styles.active-journey-step">
+                        <div styleName="styles.horizontal-flex-container">
+                            <div styleName="styles.journey-step-container">
+                            {
+                                journeySteps.map((value,index)=>{
+                                    return (
+                                        <span 
+                                        key={index} 
+                                        onClick={()=>{setActiveStep(index)}} 
+                                        styleName={`styles.journey-step ${index==activeStep ? 'styles.active-journey-step' : 'styles.inactive-journey-step'}`}
+                                        >
                                             {value}
                                         </span>
                                     )
-                                }else{
-                                    return(
-                                        <span key={index} onClick={()=>{setActiveStep(index)}} styleName="styles.journey-step styles.inactive-journey-step">
-                                            {value}
-                                        </span>
-                                    )
-                                }
-                            })
-                        }
+                                })
+                            }
+                            </div>
+                            <div styleName="styles.vertical-slider-div">
+                                <div styleName="styles.slider-div">
+                                    {
+                                        journeySteps.map((value,index) => {
+                                            return (
+                                                <div 
+                                                key={index} 
+                                                onClick={()=>{setActiveStep(index)}} 
+                                                styleName={`styles.slider ${index==activeStep ? 'styles.active-slider' : 'styles.inactive-slider'}`}>
+                                                    {index+1}
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </Grid.Column>
-                    <Divider vertical>And</Divider>
                     <Grid.Column>
                         <Image src={journeyStepContent[activeStep].image}></Image>
                         <div styleName="styles.journey-step-description">
