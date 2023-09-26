@@ -1,0 +1,55 @@
+.container{
+    background-color:  #DEE8FF;
+    text-align: left;
+    width: 100vw;
+    z-index: -1;
+    font-family: 'Archivo';
+    font-weight: 500;
+    color:    #171818;
+
+}
+
+.sub-container{
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+
+}
+
+.heading{
+    font-family: "Archivo";
+    font-weight: 700;
+    margin-bottom: 3rem;
+    font-size: 2.4rem;
+}
+
+.card-container{
+
+}
+
+.card-heading{
+    color:  #171818;
+    font-weight: 600;
+}
+
+.card-text{
+    font-weight: 400;
+    color: rgba(23, 24, 24, 0.6);
+}
+
+.active-card-container{
+
+}
+
+.active-card-heading{
+    color:  #171818;
+    font-weight: 600;
+}
+
+.active-card-text{
+    font-weight: 400;
+    color: rgba(23, 24, 24, 0.6);
+}
+
+.card{
+    color: red;
+}

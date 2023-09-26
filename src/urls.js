@@ -34,6 +34,10 @@ export function urlFileManager() {
   return '/file-manager/default?mode=integration'
 }
 
+export function urlLifeAtImg(){
+  return `${urlAppBase()}/life_at_img`
+}
+
 // Back-end routes
 
 export function urlApiBase() {

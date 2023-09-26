@@ -1,0 +1,50 @@
+.container{
+    background-color: #171818;
+    text-align: left;
+    width: 100vw;
+    z-index: -1;
+    font-family: 'Archivo';
+    font-weight: 500;
+    color: #DEE8FF;
+    padding-top: 4rem;
+    padding-bottom: 10rem;
+}
+
+.sub-container{
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+
+}
+
+.heading{
+    font-family: "Archivo";
+    font-weight: 700;
+    margin-bottom: 3rem;
+    font-size: 2.4rem;
+}
+
+.journey-step-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.journey-step{
+    font-family: 'Archivo';
+    font-size: 1.4rem;
+    padding-top: 2.4rem;
+    cursor: pointer;
+}
+
+.active-journey-step{
+    color:  #DEE8FF;
+}
+
+.inactive-journey-step{
+    color:  rgba(222, 232, 255, 0.6);;
+}
+
+.journey-step-description{
+    text-align: right;
+    margin-left: 3rem;
+}
+
