@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { urlAppProjects } from '../../../../urls'
 import GridLayout from './project-grid-layout'
+import { Responsive } from 'semantic-ui-react'
+import { ProjectList } from '../../../../containers/project/projectPageLoader'
+
 import styles from '../../../../css/sections/project/project-main.css'
 import common from '../../../../css/sections/common-styles.css'
 
@@ -13,17 +16,22 @@ const ProjectSection = ({ project }) => {
                     <div styleName="styles.projectHead">
                         Projects
                     </div>
-                    <Link to={urlAppProjects()}>
-                        <div styleName="styles.view-btn">
-                            View more
-                        </div>
-                    </Link>
+                    <Responsive minWidth={500}>
+                        <Link to={urlAppProjects()}>
+                            <div styleName="styles.view-btn">
+                                View more
+                            </div>
+                        </Link>
+                    </Responsive>
                 </div>
-                <div styleName="styles.grid">
+                <Responsive minWidth={1400}>
                     <GridLayout projectData={project} />
-                </div>
+                </Responsive>
+                <Responsive maxWidth={1400}>
+                    <ProjectList />
+                </Responsive>
             </div>
-        </div>
+        </div >
     )
 }
 

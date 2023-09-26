@@ -51,9 +51,8 @@
   }
 }
 
-/* remove this after placing the mobile view */
-@media (max-width: 1400px) {
-  .grid{
-    display: none;
+@media (max-width: 500px) {
+  .heading {
+    justify-content: center;
   }
 }

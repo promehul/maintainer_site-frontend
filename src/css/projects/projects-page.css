@@ -34,9 +34,13 @@
     text-align: center;
 }
 
-.project-grid{
+.project-grid, .list-view{
     text-align: center;
     margin: 0 25rem;
+}
+
+.list-view{
+  padding-top: 5rem;
 }
 
 @media (max-width: 1830px) {

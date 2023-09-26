@@ -17,7 +17,7 @@ import { MemberDetails, ProjectDetails } from '../containers/member/memberFormLo
 
 import AddProjectDetails from './projects/add-update-project-details'
 import { Blogs } from '../containers/blog/blogPageLoader'
-import Projects from '../containers/project/projectPageLoader'
+import { ProjectGallery } from '../containers/project/projectPageLoader'
 import ProjectDetailView from '../containers/project/projectIndividualLoader'
 import Sidebar from '../containers/sidebar'
 import NoMatch from './404/404'
@@ -96,7 +96,7 @@ class App extends Component {
             )}
           />
           <Route exact path={urlAppBlog()} component={Blogs} />
-          <Route exact path={urlAppProjects()} component={Projects} />
+          <Route exact path={urlAppProjects()} component={ProjectGallery} />
           <Route exact path={urlAppMember()} component={Member} />
           <Route
             exact
