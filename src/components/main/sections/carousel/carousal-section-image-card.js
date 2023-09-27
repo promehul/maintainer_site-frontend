@@ -156,7 +156,7 @@ const CarouselMenu = (props) => {
                         styleName="styles.carousel-menu-small-images"
                         ref={imageRef7}
                         /> */}
-{/* 
+
                 {imageList.map((image,index)=>{
                     return(
                     <img src = {image}
@@ -172,7 +172,7 @@ const CarouselMenu = (props) => {
                         imageRefList.current.push(element)}}
                     />
                     )
-                })} */}
+                })}
                 {()=>(
                     imagesListMenu()
                     )

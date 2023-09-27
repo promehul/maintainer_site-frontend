@@ -1,3 +1,8 @@
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Container, Grid, Image, Segment, Sematic, Divider } from 'semantic-ui-react'
+
+import { urlStaticBase } from '../../../../urls'
 import React, { Component, Fragment } from 'react'
 import { Card, Container, Segment, Icon, Loader, Grid } from 'semantic-ui-react'
 
