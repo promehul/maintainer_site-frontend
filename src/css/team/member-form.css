@@ -8,7 +8,7 @@
 
 .socialBox {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     break-inside: avoid;
     word-wrap: break-word;

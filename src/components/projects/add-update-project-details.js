@@ -17,6 +17,7 @@ import {
     urlAppProjects,
     urlFileManager,
     urlApiNetworkToMedia,
+    urlApiAlumni,
 } from '../../urls'
 
 import { headers, memberImageStyle } from '../../consts'
@@ -63,13 +64,16 @@ class AddProjectDetails extends Component {
             axios.all([
                 axios.get(`${urlApiProjects()}${slug}/`),
                 axios.get(urlApiTeam()),
+                axios.get(urlApiAlumni())
             ])
-                .then(axios.spread((initialData, teamMembers) => {
+                .then(axios.spread((initialData, teamMembers, alumni) => {
                     initialData = initialData.data
-                    console.log(teamMembers.data)
+                    console.log(teamMembers)
+                    console.log(alumni)
+                    const allMembersData = [...teamMembers.data, ...alumni.data.results]
                     this.setState({
                         method: 'patch',
-                        profile: teamMembers.data,
+                        profile: allMembersData,
                         loaded: true,
                         url: `${urlApiProjects()}${slug}/`,
                         data: {
@@ -86,14 +90,24 @@ class AddProjectDetails extends Component {
                 }))
         }
         else {
-            axios.get(urlApiTeam()).then(res => {
-                this.setState({
-                    method: 'post',
-                    url: `${urlApiProjects()}`,
-                    profile: res.data,
-                    loaded: true,
-                })
-            })
+            axios.all([
+                axios.get(urlApiTeam()),
+                axios.get(urlApiAlumni()),
+            ])
+                .then(axios.spread((teamMembers, alumniData) => {
+                    const allMembersData = [...teamMembers.data, ...alumniData.data.results];
+
+                    this.setState({
+                        method: 'post',
+                        url: `${urlApiProjects()}`,
+                        profile: allMembersData,
+                        loaded: true,
+                    });
+                }))
+                .catch(error => {
+                    console.error("Error fetching data: ", error);
+                });
+
         }
     }
 
