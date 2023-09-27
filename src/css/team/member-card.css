@@ -1,0 +1,106 @@
+.card{
+    border-radius: 12px  !important;
+    width: 15rem !important;
+    position: relative;
+    flex: 0 0 calc(25% - 27px);
+}
+
+.profile{
+  aspect-ratio: 3/4;
+}
+
+.card .informal{
+    transform: rotateY(90deg);
+    position: absolute;
+    transition: all ease-in 0.4s;
+}
+
+.flippedCard .informal{
+    transform: rotateY(0deg) !important;
+    transition-delay: 0.4s;
+}
+
+.card .formal{
+    transition: all ease-in 0.4s;
+    transition-delay: 0.4s;
+}
+
+.flippedCard .formal{
+    transform: rotateY(90deg) !important;
+    transition-delay: 0s;
+} 
+
+.text-break {
+    word-wrap: break-word;
+}
+
+.memberName{
+  font-family: 'Poppins';
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+}
+.memberProfile{
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    background: rgba(227, 235, 254, 0.7);
+    backdrop-filter: blur(3px);
+    border-radius: 0.8rem !important;
+}
+
+.roleSVG{
+    position: absolute;
+    background: rgba(227, 235, 254, 0.7);
+    border-radius: 50% !important;
+    top: 14px;
+    right: 15px;
+    padding: 7px;
+    z-index: 1000;
+}
+
+.name{
+    font-family: 'Archivo';
+    font-size: 1.5rem;
+    color: #171818;
+    padding-top: 0.8rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.designation{
+    color: #171818;
+    font-family: 'Open Sans';
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    padding: 0.5rem;
+    padding-top: 0;
+}
+
+.memberImage{
+    border-radius: 12px;
+}
+
+@media (max-width: 1450px) {
+ .card {
+   flex: 0 0 calc(33.3% - 20px);
+ }
+}   
+
+@media (max-width: 1100px) {
+  .card {
+    flex: 0 0 calc(50% - 20px);
+  }
+}  
+
+@media (max-width: 900px) {
+  .card {
+    flex: 0 0 calc(100% - 20px);
+  }
+}  

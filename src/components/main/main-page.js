@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import MainSection from './sections/header/main-section'
 import ProjectSection from './sections/project/project-section'
-import BlogSection from './sections/blog/blog-section'
+import { BlogSectionMainPage } from '../../containers/blog/blogPageLoader'
 import InfoSection from './sections/info/info-section'
 import CultureCodeSection from './sections/static/culture-code/culture-code-section'
 import DoAndDontSection from './sections/static/do-and-dont/do-and-dont-section'
@@ -25,11 +25,11 @@ class MainPage extends Component {
     return (
       <div>
         <MainSection />
+        <ProjectSection project={projectData.results} />
+        <BlogSectionMainPage />
         <CarouselSection />
         <CultureCodeSection />
         <DoAndDontSection />
-        <ProjectSection project={projectData.results.slice(0, 4)} />
-        <BlogSection />
         <InfoSection
           location={locationData}
           contact={contactData}

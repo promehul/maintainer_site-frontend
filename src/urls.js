@@ -18,6 +18,10 @@ export function urlAppTeam() {
   return `${urlAppBase()}/team`
 }
 
+export function urlAppMember() {
+  return `${urlAppBase()}/members`
+}
+
 export function urlAppAlumni() {
   return `${urlAppBase()}/alumni`
 }
@@ -40,6 +44,10 @@ export function urlLifeAtImg(){
 
 // Back-end routes
 
+export function whoAmI() {
+  return `/kernel/who_am_i`
+}
+
 export function urlApiBase() {
   return '/api/maintainer_site/'
 }
@@ -61,6 +69,10 @@ export function urlApiLoggedMaintainer() {
 }
 export function urlApiBlog() {
   return `${urlApiBase()}blog/`
+}
+
+export function urlApiMaintainerBlog() {
+  return `${urlApiBase()}maintainer_blog/`
 }
 
 export function urlApiProjects() {
@@ -104,4 +116,10 @@ export function urlApiHit() {
 
 export function urlStaticBase() {
   return `/static/maintainer_site/`
+}
+
+// external route
+
+export function urlPersonalityTest() {
+  return `https://www.16personalities.com/free-personality-test`
 }

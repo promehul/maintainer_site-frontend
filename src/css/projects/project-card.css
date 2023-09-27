@@ -1,3 +1,160 @@
+
 .text-break {
     word-wrap: break-word;
+}
+
+.project-card{
+    align-items: center;
+    max-width: 17.7rem;
+    min-width: 17rem !important;
+    padding-top: 1.5rem;
+    height: fit-content;
+    background: rgba(249, 251, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 0.6rem;
+}
+.project-card[profile="informal"]{
+    background: rgba(40, 40, 40, 0.9);
+    color: rgba(222, 232, 255, 1);
+}
+
+.logo {
+    margin: 0 auto;
+    width: 40%;
+    height: 30%;
+    padding: 2rem 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.logoImg {
+    width: 43%;
+    height: 43%;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.project-card > :first-child{
+    background: rgba(50, 71, 102, 0.2);
+}
+.project-card > :last-child{
+    color: #324766;
+    background: rgba(50, 71, 102, 0.2);
+}
+
+div[appSlug="chakra"]  > :first-child {
+    background: rgba(50, 71, 102, 0.2);
+}
+div[appSlug="chakra"]  > :last-child {
+    background: rgba(50, 71, 102, 0.2);
+}
+div[appSlug="chakra"]  > :last-child a{
+    color: #324766;
+}
+/* div[profile="informal"][appSlug="chakra"]  > :first-child {
+    background: #17191D54;
+}*/
+
+div[appSlug="iitr_website"] > :first-child {
+    background: rgba(42, 138, 203, 0.33);
+}
+div[appSlug="iitr_website"] > :last-child {
+    background: rgba(42, 138, 203, 0.2);
+}
+div[appSlug="iitr_website"] > :last-child a{
+    color: rgba(42, 138, 203, 1);
+}
+
+div[appSlug="placement_online"] > :first-child {
+    background: rgba(116, 161, 254, 0.1);
+}
+div[appSlug="placement_online"] > :last-child {
+    background: rgba(116, 161, 254, 0.1);
+}
+div[appSlug="placement_online"] > :last-child a {
+    color: #74A1FE;
+}
+
+div[appSlug="noticeboard"] > :first-child {
+    background: rgba(116, 161, 254, 0.1);
+}
+div[appSlug="noticeboard"] > :last-child {
+    background: rgba(116, 161, 254, 0.1);
+}
+div[appSlug="noticeboard"] > :last-child a {
+    color: #74A1FE;
+}
+
+div[appSlug="people_search"] > :first-child {
+    background: rgba(101, 103, 255, 0.14);
+}
+div[appslug="people_search"][profile="informal"] > :first-child {
+    background: rgba(135, 136, 255, 0.5);
+}
+div[appSlug="people_search"] > :last-child {
+    background: rgba(101, 103, 255, 0.14);
+}
+div[appSlug="people_search"] > :last-child a{
+    color: rgb(55, 57, 114) !important;
+}
+div[appSlug="people_search"][profile="informal"] > :last-child a{
+    color: rgb(173 176 248) !important;
+}
+
+div[appSlug="slambook"] > :first-child {
+    background: rgba(246, 147, 149, 0.33);
+}
+div[appslug="slambook"][profile="informal"] > :first-child {
+    background: rgba(246, 147, 149, 0.1);
+}
+div[appSlug="slambook"] > :last-child {
+    background: rgba(246, 147, 149, 0.33);
+}
+div[appSlug="slambook"] > :last-child a{
+    color: rgba(246, 147, 149, 1) !important;
+}
+
+.title{
+    margin: 1.5rem auto;
+    width: 60%;
+    font-family: 'Archivo';
+    font-size: 1.5rem;
+    /* color: #171818; */
+    font-weight: 500;
+    text-align: center;
+}
+
+.shortDesc{
+    font-family: 'Open Sans';
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 0 1.4rem;
+    /* color: #171818; */
+}
+
+.viewBtn{
+    display: inline-block;
+    font-family: 'Open Sans';
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(116, 161, 254, 0.1);
+    border-radius: 2rem;    
+    width: 35%;
+    padding: 0.3rem 1rem;
+    margin: 1.5rem 0 2.2rem 0;
+}
+
+.viewBtn[profile="informal"]{
+    background: rgba(23, 24, 24, 0.33) !important;
+    color: white;
+}
+
+.viewBtn[profile="informal"] a{
+    color: rgba(116, 161, 254, 1);
 }

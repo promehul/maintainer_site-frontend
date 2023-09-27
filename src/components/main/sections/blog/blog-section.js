@@ -1,37 +1,122 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Container, Grid, Image, Segment } from 'semantic-ui-react'
+import React, { Component, Fragment } from 'react'
+import { Card, Container, Segment, Icon, Loader, Grid } from 'semantic-ui-react'
 
-import { BLOG_SECTION_LINE_1, BLOG_SECTION_LINE_2 } from '../../../../consts'
-
-import { urlStaticBase } from '../../../../urls'
+import BlogDetail from '../../../blog/blog-post-card'
+import { urlApiBlog } from '../../../../urls'
+import { MEDIUM_URL } from '../../../../consts'
+import { isMobile } from 'react-device-detect'
 
 import styles from '../../../../css/sections/blog/blog-section.css'
-import common from '../../../../css/sections/common-styles.css'
+import common from '../../../../css/page-common-styles.css'
+class BlogSection extends Component {
+  constructor(props) {
+    super(props)
 
-const BlogSection = () => (
-  <div styleName="styles.container">
-    <Container textAlign="center">
-      <h1 styleName="common.header">Blog</h1>
-      <Grid verticalAlign="middle" centered stackable padded>
-        <Grid.Column width={8} textAlign="center">
-          <Image src={`${urlStaticBase()}blog.png`} size="medium" inline />
-        </Grid.Column>
-        <Grid.Column width={8} textAlign="center">
-          <p styleName="styles.description">
-            {BLOG_SECTION_LINE_1}
-            <br />
-            {BLOG_SECTION_LINE_2}
-          </p>
-        </Grid.Column>
-      </Grid>
-      <Segment basic>
-        <Link to="./blog">
-          <div styleName="common.button">Read</div>
-        </Link>
-      </Segment>
-    </Container>
-  </div>
-)
+    this.state = {
+      windowWidth: window.innerWidth,
+      column: 1,
+    }
+    this.handleResize = this.handleResize.bind(this)
+  }
 
+  handleResize() {
+    this.setState({
+      windowWidth: window.innerWidth,
+    })
+    if (this.state.windowWidth >= '590' && this.state.windowWidth <= '990') {
+      this.setState({
+        column: 2
+      })
+    }
+    else {
+      this.setState({
+        column: 1
+      })
+    }
+  }
+  componentDidMount() {
+    const URL = urlApiBlog()
+    this.props.requestBlogData(URL)
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize)
+  }
+
+  render() {
+    if (this.props.apiBlogData.loaded) {
+      if (this.props.apiBlogData.data && this.props.apiBlogData.data.length) {
+        let MEDIUM_PUBLICATION = this.props.apiInfoData.footerData.mediumSlug
+        const tagWiseBlogs = this.props.apiBlogData.data
+        if (!isMobile) {
+          tagWiseBlogs.sort((a, b) => {
+            if (a.category < b.category) return 1
+            if (a.category > b.category) return -1
+            return 0
+          })
+        }
+
+
+        return (
+          <div styleName="styles.container">
+            <div styleName="styles.heading">
+              <h1 styleName="styles.blogHead">
+                Blogs
+              </h1>
+            </div>
+            <Grid columns={2} style={{ width: "100%", margin: 0, }} stackable>
+              <Grid columns={2} styleName="common.margin styles.horizontalGrid" style={{ width: "64.7%", paddingBottom: 0 }}>
+                {tagWiseBlogs.slice(0, 2).map((tag, index) => (
+                  <Fragment key={index}>
+                    <div styleName="styles.blog" style={{ padding: 0 }} >
+                      <div styleName="styles.category">
+                        {tag["category"]}
+                      </div>
+                      <div styleName="styles.category-btn"
+                        onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
+                        View more
+                      </div>
+                    </div>
+                    <Grid.Row styleName="styles.horizontalCategory">
+                      {tag["blogsList"].slice(0, 2).map((info, id) => (
+                        <BlogDetail info={info} key={id} />
+                      ))}
+                    </Grid.Row>
+                  </Fragment>
+                ))}
+              </Grid>
+              <Grid columns={this.state.column} style={{ width: "31%", marginLeft: "auto", marginTop: 0, paddingBottom: 0 }} styleName="styles.horizontalGrid">
+                <div styleName="styles.blog" style={{ padding: 0 }}>
+                  <div styleName="styles.category">
+                    {tagWiseBlogs[2]["category"]}
+                  </div>
+                  <div styleName="styles.category-btn"
+                    onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
+                    View more
+                  </div>
+                </div>
+                <Grid.Row styleName="styles.verticalCategory">
+                  {tagWiseBlogs[2]["blogsList"].slice(0, 2).map((info, id) => (
+                    <BlogDetail info={info} key={id} />
+                  ))}
+                </Grid.Row>
+              </Grid>
+            </Grid>
+          </div>
+        )
+      } else {
+        return (
+          <Container styleName="common.margin">
+            <Segment basic padded textAlign="center">
+              This group doesn't have any blogs as of now. Check back later.
+            </Segment>
+          </Container>
+        )
+      }
+    } else {
+      return <Loader active size="large" />
+    }
+  }
+}
 export default BlogSection

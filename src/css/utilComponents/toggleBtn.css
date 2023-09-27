@@ -1,0 +1,17 @@
+.bar{
+    position: relative;
+    width: 4.5rem;
+    height: 2rem;
+    border-radius: 30px;
+}
+
+.circle{
+    padding: 0.1rem;
+    position: absolute;
+    transition: 1s;
+    top: 0.22rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+}

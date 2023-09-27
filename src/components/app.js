@@ -11,15 +11,15 @@ import { requestMaintainerAccess } from '../actions/apiAuthCall'
 import ScrollToTop from './scroll-to-top'
 import AppHeader from '../containers/header/appHeader'
 import MainPage from '../components/main/main-page'
-import Team from '../containers/team/teamPageLoader'
-import TeamIndividualView from './team-individual-view'
+import Member from '../containers/member/memberPageLoader'
+import MemberIndividualView from '../containers/member/informalThemeLoader'
+import { MemberDetails, ProjectDetails } from '../containers/member/memberFormLoader'
 
+import AddProjectDetails from './projects/add-update-project-details'
+import { Blogs } from '../containers/blog/blogPageLoader'
+import { ProjectGallery } from '../containers/project/projectPageLoader'
 import Alumni from '../containers/alumni/alumniPageLoader'
 import LifeAtImg from './lift-at-img/life-at-img-page'
-import AddMemberDetails from './team/add-member-details'
-import AddProjectDetails from './projects/add-project-details'
-import Blog from '../containers/blog/blogPageLoader'
-import Projects from '../containers/project/projectPageLoader'
 import ProjectDetailView from '../containers/project/projectIndividualLoader'
 import Sidebar from '../containers/sidebar'
 import NoMatch from './404/404'
@@ -42,7 +42,6 @@ import {
   urlAppBlog,
   urlAppProjects,
   urlAppTeam,
-  urlLifeAtImg,
 } from '../urls'
 
 import blocks from '../css/app.css'
@@ -101,7 +100,6 @@ class App extends Component {
           <Route exact path={urlAppProjects()} component={Projects} />
           <Route exact path={urlAppTeam()} component={Team} />
           <Route exact path={urlAppAlumni()} component={Alumni} />
-          <Route exact path={urlLifeAtImg()} component={LifeAtImg} />
           <Route
             exact
             path={`${urlAppProjects()}/:slug`}
@@ -110,12 +108,12 @@ class App extends Component {
           <Route
             exact
             path={`${urlAppTeam()}/:handle`}
-            render={props => <TeamIndividualView {...props} isActive={true} />}
+            render={props => <MemberIndividualView {...props} isActive={true} />}
           />
           <Route
             exact
             path={`${urlAppAlumni()}/:handle`}
-            render={props => <TeamIndividualView {...props} isActive={false} />}
+            render={props => <MemberIndividualView {...props} isActive={false} />}
           />
           {this.props.isAuthed.loaded && (
             <Switch>
@@ -124,17 +122,17 @@ class App extends Component {
                   <Route
                     exact
                     path={urlAppAddProjectDetails()}
-                    component={AddProjectDetails}
+                    component={ProjectDetails}
                   />
                   <Route
                     exact
                     path={urlAppAddMemberDetails()}
-                    component={AddMemberDetails}
+                    component={MemberDetails}
                   />
                   <Route
                     exact
                     path={`${urlAppAddProjectDetails()}/:slug`}
-                    component={AddProjectDetails}
+                    component={ProjectDetails}
                   />
                   <Route component={NoMatch} />
                 </Switch>
@@ -161,22 +159,23 @@ class App extends Component {
             title={apiInfoData.footerData.name}
             dummy={[]}
           />
-          {isBrowser ? (
-            <React.Fragment>
-              <div styleName="blocks.content-div">
-                <Switcher />
-              </div>
-              <AppFooter info={apiInfoData.footerData} />
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <div styleName="blocks.content-div" onClick={this.handleHide}>
-                <Switcher />
-              </div>
-              <Sidebar />
-              <AppFooter info={apiInfoData.footerData} />
-            </React.Fragment>
-          )}
+          {
+            isBrowser ? (
+              <React.Fragment>
+                <div styleName="blocks.content-div">
+                  <Switcher />
+                </div>
+                <AppFooter info={apiInfoData.footerData} />
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <div styleName="blocks.content-div" onClick={this.handleHide}>
+                  <Switcher />
+                </div>
+                <Sidebar />
+                <AppFooter info={apiInfoData.footerData} />
+              </React.Fragment>
+            )}
         </div>
       )
     } else {
@@ -189,6 +188,7 @@ const mapStateToProps = state => {
   return {
     apiInfoData: state.apiInfoData,
     isAuthed: state.isAuthed,
+    setTheme: state.setTheme,
   }
 }
 

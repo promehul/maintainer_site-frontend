@@ -1,4 +1,5 @@
 import { getCookie } from 'formula_one'
+import { urlStaticBase } from './urls'
 
 export const PATHNAME = '/maintainer_site/'
 
@@ -32,12 +33,59 @@ export const IMAGE_STYLE = {
 export const backgroundImageStyle = image => {
   return {
     width: '100%',
-    height: '200px',
     backgroundImage: `url('${image}')`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
+    borderRadius: '1.1rem'
   }
 }
+
+export const memberImageStyle = (image, height = "auto") => {
+  return {
+    width: '100%',
+    height: `${height}`,
+    backgroundImage: `url('${image}')`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    borderRadius: '12px',
+  }
+}
+
+export const validateLink = (link) => {
+  const linkRegex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/i
+  return linkRegex.test(link)
+}
+
+const personalityTypes = [
+  'Adventurer',
+  'Advocate',
+  'Architect',
+  'Campaigner',
+  'Commander',
+  'Consul',
+  'Debater',
+  'Defender',
+  'Entertainer',
+  'Entrepreneur',
+  'Executive',
+  'Logician',
+  'Logistician',
+  'Mediator',
+  'Protagonist',
+  'Vistuoso',
+]
+
+export const personalityTypeOptions = personalityTypes.map((personalityType) => ({
+  key: personalityType.toLowerCase(),
+  text: personalityType,
+  value: personalityType.toLowerCase(),
+  image: { src: `${urlStaticBase()}personality_types/${personalityType.toLowerCase()}.png` },
+  style: {
+    color: '#D5DEF2',
+    backgroundColor: '#373838',
+    border: 'none',
+  }
+}))
 
 export const headers = {
   'X-CSRFToken': getCookie('csrftoken'),
