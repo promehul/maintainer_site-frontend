@@ -199,14 +199,14 @@ class GridLayout extends Component {
         return (
             <div>
                 <Grid columns={7} styleName="styles.container">
-                    <Grid.Row style={{ padding: 0 }} styleName="styles.firstRow">
+                    <Grid.Row key={1} style={{ padding: 0 }} styleName="styles.firstRow">
                         {apps.slice(0, 7).map((app) => (
                             <Grid.Column key={app.id} style={{ padding: 0 }}>
                                 {app}
                             </Grid.Column>
                         ))}
                     </Grid.Row>
-                    <Grid.Row styleName="styles.midRow common.noPadding">
+                    <Grid.Row key={2} styleName="styles.midRow common.noPadding">
                         <Grid.Column styleName="common.noPadding styles.middleLeftRow" style={{ width: APP_BOX_WIDTH }} >
                             {apps.slice(7, 9).map((app) => (
                                 <Grid.Row key={app.id} styleName="common.noPadding">
@@ -222,7 +222,7 @@ class GridLayout extends Component {
                             ))}
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row styleName="common.noPadding styles.lastRow" >
+                    <Grid.Row key={3} styleName="common.noPadding styles.lastRow" >
                         {apps.slice(11, 18).map((app) => (
                             <Grid.Column key={app.id} styleName="common.noPadding">
                                 {app}

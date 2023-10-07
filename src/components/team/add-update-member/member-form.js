@@ -478,7 +478,6 @@ class AddMemberDetails extends Component {
                         that.finishUpdate(that, isAlumni, handleName)
                     })
                     .catch(function (response) {
-                        console.log(response)
                         if (response.response.data.informalBiography != null) {
                             that.setState({ error: { ...that.state.error, shortFunBio: true } })
                         }

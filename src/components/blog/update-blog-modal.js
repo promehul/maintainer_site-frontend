@@ -41,7 +41,7 @@ class BlogUpdateModal extends Component {
                 ...currentState[id],
                 open: false,
             }
-        }), () => { console.log(this.state) })
+        }))
     }
 
     handleBlogUpdate = (guid) => {
@@ -72,12 +72,6 @@ class BlogUpdateModal extends Component {
                 data: formData,
                 headers: { ...headers, 'Content-Type': 'multipart/form-data' },
             })
-                .then(function (response) {
-                    console.log(response)
-                })
-                .catch(function (error) {
-                    console.log(error)
-                })
         }
     }
 

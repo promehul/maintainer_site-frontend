@@ -128,14 +128,14 @@ class AppHeader extends Component {
                             backgroundColor: currentTheme === 'formal' ? '#DEE8FF' : '#101111',
                         }}
                     >
-                        <div styleName="styles.btn styles.grpName" verticalAlign="center">
+                        <div styleName="styles.btn styles.grpName">
                             <Link to={`${urlAppBase()}`}
                                 style={{ color: !formalTheme ? '#DEE8FF' : '#171818' }}
                             >
                                 IMG
                             </Link>
                         </div>
-                        <div styleName="styles.hamburger styles.btn" verticalAlign="center" onClick={this.handleToggleSidebar}
+                        <div styleName="styles.hamburger styles.btn" onClick={this.handleToggleSidebar}
                             ref={this.ref}>
                             <Icon name="bars" styleName="styles.noMargin" />
                         </div>
@@ -195,7 +195,7 @@ class AppHeader extends Component {
                                 backgroundColor: currentTheme === 'formal' ? '#DEE8FF' : '#101111',
                             }}
                         >
-                            <div styleName="styles.btn styles.grpName" verticalAlign="center">
+                            <div styleName="styles.btn styles.grpName">
                                 <Link to={`${urlAppBase()}`}
                                     style={{ color: !formalTheme ? '#DEE8FF' : '#171818' }}
                                 >

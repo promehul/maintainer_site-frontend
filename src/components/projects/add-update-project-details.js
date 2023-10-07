@@ -68,8 +68,6 @@ class AddProjectDetails extends Component {
             ])
                 .then(axios.spread((initialData, teamMembers, alumni) => {
                     initialData = initialData.data
-                    console.log(teamMembers)
-                    console.log(alumni)
                     const allMembersData = [...teamMembers.data, ...alumni.data.results]
                     this.setState({
                         method: 'patch',
@@ -85,8 +83,7 @@ class AddProjectDetails extends Component {
                             shortDescription: initialData.shortDescription,
                         },
                         prevUploadedImage: initialData.image,
-                    }, () => console.log("FKDJFDKFJ\n\n"));
-
+                    })
                 }))
         }
         else {
@@ -104,10 +101,6 @@ class AddProjectDetails extends Component {
                         loaded: true,
                     });
                 }))
-                .catch(error => {
-                    console.error("Error fetching data: ", error);
-                });
-
         }
     }
 
@@ -323,7 +316,6 @@ class AddProjectDetails extends Component {
                                         </Button>
 
                                         <ImageUploader
-                                            aspect={1 / 1}
                                             open={this.state.uploadImage.open}
                                             id={this.state.uploadImage.id}
                                             close={this.closeModal}

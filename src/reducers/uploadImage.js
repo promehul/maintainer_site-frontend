@@ -5,7 +5,6 @@ const initialState = {
 const uploadImage = (state = initialState, action) => {
     switch (action.type) {
         case 'UPLOAD_CROPPED_IMAGE':
-            console.log(action.payload)
             return {
                 uploadedImage: {
                     ...state.uploadedImage,

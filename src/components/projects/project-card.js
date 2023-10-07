@@ -8,7 +8,7 @@ import styles from '../../css/projects/project-card.css'
 
 const ProjectDetail = ({ info, profile }) => {
     return (
-        <div styleName="styles.project-card" appSlug={info.slug} profile={profile}>
+        <div styleName="styles.project-card" appslug={info.slug} profile={profile}>
             <div styleName="styles.logo" >
                 <img styleName="styles.logoImg" src={info.image} />
             </div>

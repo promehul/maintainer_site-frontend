@@ -44,10 +44,7 @@ class Blog extends Component {
                                 Blogs
                             </h2>
                         </div>
-                        <div
-                            textAlign="center"
-                            styleName="styles.margin"
-                        >
+                        <div styleName="styles.margin">
                             {tagWiseBlogs.map((tag, index) => (
                                 <div key={index} styleName="styles.blogCategory">
                                     <div styleName="styles.category">
