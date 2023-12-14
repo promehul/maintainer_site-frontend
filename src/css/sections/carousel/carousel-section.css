@@ -1,0 +1,103 @@
+.container{
+    background-color: #171818;
+    text-align: left;
+    width: 100vw;
+    color : #DEE8FF;
+}
+
+.sub-container{
+    padding-top: 4rem;
+    padding-bottom: 10rem;
+}
+
+.icon-column{
+    /* margin-top: 1rem; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+.carousel-image-description{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.carousel-image-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.carousel-image-icon{
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+
+}
+
+.carousel-menu{
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.carousel-menu-scroll{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   white-space: nowrap;
+}
+
+.carousel-menu-images{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 15rem;
+    animation-name: image;
+    animation-duration: 1s;
+}
+
+.carousel-menu-images:hover{
+    box-shadow: 5px 2px 10px grey;
+    animation-name: image-hover;
+    width: 17rem;
+    animation-duration: 1s;
+}
+
+@keyframes image{
+    from {width: 17rem;}
+    to {width: 15rem;}
+}
+
+@keyframes image-hover{
+    from {width: 15rem;}
+    to {width: 17rem;}
+}
+
+.carousel-menu-selected-image{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 20rem;
+}
+
+.carousel-menu-small-images{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 10rem;
+    /* animation-name: small-image;
+    animation-duration: 1s; */
+}
+
+.carousel-menu-small-images:hover{
+    box-shadow: 5px 2px 10px grey;
+    /* animation-name: small-image-hover; */
+    /* width: 12rem; */
+    /* animation-duration: 1s; */
+}
+
+/* @keyframes small-image{
+    from {width: 12rem;}
+    to {width: 10rem ;}
+} */
+
+@keyframes small-image-hover{
+    from {width: 10rem;}
+    to {width: 12rem;}
+}

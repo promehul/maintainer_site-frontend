@@ -6,90 +6,90 @@ import { urlApiProjects } from '../../urls'
 
 import styles from '../../css/projects/projects-page.css'
 import common from '../../css/page-common-styles.css'
+
 class Projects extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      current: 1,
+    constructor(props) {
+        super(props)
+        this.state = {
+            current: 1,
+            projectData: [],
+        }
     }
-  }
 
-  componentDidMount() {
-    this.paginating(1)
-  }
-
-  paginating = page => {
-    const URL = `${urlApiProjects()}?page=${page}`
-    this.props.requestProjectData(URL)
-    this.setState({
-      current: page,
-    })
-    window.scrollTo(0, 0)
-  }
-
-  leftButtonClick = () => {
-    if (this.state.current > 1) {
-      let change = this.state.current
-      this.setState({ current: change - 1 }, () => {
-        this.paginating(this.state.current)
-      })
+    componentDidMount() {
+        this.props.requestProjectData(`${urlApiProjects()}?page=${1}`)
+        window.addEventListener('scroll', this.handleScroll)
     }
-  }
 
-  rightButtonClick = () => {
-    if (this.state.current < this.props.apiProjectData.count) {
-      let change = this.state.current
-      this.setState({ current: change + 1 }, () => {
-        this.paginating(this.state.current)
-      })
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
     }
-  }
 
-  render() {
-    let menu = []
-    for (let index = 1; index <= this.props.apiProjectData.count; index++) {
-      menu[index] = (
-        <Menu.Item
-          active={this.state.current == index}
-          onClick={() => {
-            this.paginating(index)
-          }}
-        >
-          {index}
-        </Menu.Item>
-      )
+    componentDidUpdate(prevProps) {
+        if ((this.props.apiProjectData.data !== prevProps.apiProjectData.data) && (JSON.stringify(this.state.projectData) !== JSON.stringify(this.props.apiProjectData.data.results))) {
+            this.setState({
+                ...this.state,
+                projectData: this.state.projectData.concat(this.props.apiProjectData.data.results)
+            })
+        }
     }
-    if (this.props.apiProjectData.loaded) {
-      return (
-        <Container
-          textAlign="center"
-          styleName="common.margin styles.project-container"
-        >
-          <div styleName="styles.project-group-container">
-            <Card.Group itemsPerRow={4} stackable doubling>
-              {this.props.apiProjectData.data.results.map(info => (
-                <ProjectDetail info={info} key={info.slug} />
-              ))}
-            </Card.Group>
-          </div>
-          {this.props.apiProjectData.count > 1 && (
-            <Segment padded basic textAlign="center">
-              <Menu pagination>
-                <Menu.Item onClick={this.leftButtonClick} icon>
-                  <Icon name="chevron left" />
+
+    handleScroll = () => {
+        const { scrollHeight, scrollTop, clientHeight } = document.documentElement
+        if (scrollTop + clientHeight >= scrollHeight) {
+            const nextPage = this.state.current + 1
+            this.paginating(nextPage)
+        }
+    }
+
+    paginating = (page) => {
+        const URL = `${urlApiProjects()}?page=${page}`
+        if (this.state.current !== page) {
+            if (!this.props.apiProjectData.data || this.props.apiProjectData.data.next) {
+                this.props.requestProjectData(URL)
+            }
+            this.setState({
+                ...this.state,
+                current: page,
+            })
+        }
+    }
+
+    render() {
+        let menu = []
+        for (let index = 0; index <= this.props.apiProjectData.count; index++) {
+            menu[index] = (
+                <Menu.Item
+                    active={this.state.current == index + 1}
+                    onClick={() => {
+                        this.paginating(index + 1)
+                    }}
+                >
+                    {index}
                 </Menu.Item>
-                {menu}
-                <Menu.Item onClick={this.rightButtonClick} icon>
-                  <Icon name="chevron right" />
-                </Menu.Item>
-              </Menu>
-            </Segment>
-          )}
-        </Container>
-      )
-    } else {
-      return <Loader active size="large" />
+            )
+        }
+        if (this.props.apiProjectData.loaded) {
+            return (
+                <div
+                    textAlign="center"
+                    styleName="styles.project-container"
+                >
+                    <div styleName="styles.project-group-container">
+                        <h2 styleName="styles.head">Projects</h2>
+                        <div styleName="styles.project-grid">
+                            <div styleName="styles.projectGrp">
+                                {this.state.projectData.map(info => (
+                                    <ProjectDetail info={info} key={info.slug} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div >
+            )
+        } else {
+            return <Loader active size="large" />
+        }
     }
-  }
 }
 export default Projects

@@ -3,24 +3,37 @@
     background-color: #171818;
     text-align: left;
     height: fit-content;
-    padding: 0.7rem 1.3rem;
 }
 
+.infoSection{
+    padding-top: 3rem !important;
+    margin: 0 14.75rem !important;
+    transition: 'transform 1s linear';
+    border-bottom: 1px solid #F0F0F0;
+}
 .icons:hover{
     background-color: #95A6C4;
     border: none;
 }
 .icons:hover .icon{
     color: #171818 !important;
-
 }
 
+.icon{
+    font-size: 1.8rem !important  ;
+}
 .iconsBar{
     display: flex;
+    margin: 3.5rem 0 7rem;
 }
+
+.icons2Bar{
+    padding: 1.8rem 0 7rem;
+}
+
 .icons{
     display: inline-block;
-    padding: 8px 7px 7px 10px;
+    padding: 1.3rem 0.8rem 1rem 1rem;
     border-radius: 60%;
     border: 1px solid white;
     margin-right: 12px;
@@ -31,25 +44,22 @@
 .icons2
 {
     display: inline-block;
-    padding: 7px 11px;
+    padding:1.3rem 1.2rem 0.8rem 1.3rem;
     border-radius: 60%;
     border: 1px solid white;
-    margin-right: 12px;
+    margin: 0 1rem 2rem 0;
     color: white;
     cursor: pointer;
-}
-
-hr{
-    margin-top: 55px;
+    font-size: 2rem;
 }
 
 .column2
 {
-    margin-left: auto;  
+    width: 29.5rem !important;
 }
 .footer-text {
-    font-size: 1.5rem;
-    line-height: 2;
+    font-size: 2.3rem;
+    line-height: 4.5rem;
     font-family: "Archivo";
     font-weight: 600;
     color: #fff;
@@ -57,12 +67,67 @@ hr{
 }
 
 .footer-text-content {
-    color: #DEE8FF;;
-    line-height: 1.5;
+    color: #DEE8FF;
+    font-size: 1.4rem;
 }
 
 h5 {
     font-size: 1.64rem;
     line-height: 110%;
     margin: 0.82rem 0 0.656rem 0;
+}
+
+@media (max-width: 1760px) {
+  .infoSection{
+    margin: 0 12rem !important;
+  }
+}
+
+@media (max-width: 1650px) {
+  .infoSection{
+    margin: 0 7.6rem !important;
+  }
+}
+
+@media (max-width: 1550px) {
+  .infoSection{
+    margin: 0px 2.2rem !important;
+    padding-top: 1rem !important;
+  }
+}
+
+@media (max-width: 830px) {
+  .infoSection{
+    margin: 0 4.3rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container{
+    padding: 0 4rem !important;
+  }
+  .container{
+    padding-top: 0rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .container{
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .container{
+    padding: 0 1rem !important;
+  }
+  .infoSection{
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 300px) {
+  .container{
+    padding: 0 !important;
+  }
 }

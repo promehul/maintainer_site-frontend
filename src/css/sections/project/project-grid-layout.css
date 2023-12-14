@@ -1,35 +1,95 @@
 .container {
-    padding: 4rem 1rem 6rem 1rem;
+    border: 0.45rem solid #222125;
+    border-radius: 0.6rem;
+    margin: 0 !important;
+    margin-top: 3.6rem !important;
 }
+
+.tagLineGrid{
+    border-left: 0.45rem solid #222125;
+}
+
 .tagLine{
-    font-family: Archivo;
+    font-family: 'Archivo';
     font-weight: 500;
     color: white;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.6rem;
-    line-height: 2.7rem;
-    padding: 4rem;
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    padding: 9rem;
 }
 
-.gridLayout{
+.tagLine {
+    opacity: 1;
+}
+
+.changed {
+    animation: fadeIn 0.7s;
+}
+
+.default {
+    opacity: 1;
+    animation: fadeInOut 0.5s;
+}
+
+.gridBox{
     padding: 0 !important;
-    border: 3px solid #1E1E1E;
+    aspect-ratio: 1/1;
+    height: 100%;
+}
+
+div:has(> .presentApp){
+    position: relative;
+    z-index: 1 !important;
+    transition: transform ease-in-out 0.5s;
+}
+
+div:has(> .presentApp):hover{
+    transform: scale(1.15) !important;
+    transition: transform ease-in-out 0.5s !important;
+    z-index: 1000 !important;
+}
+
+.firstRow > *:not(:first-child), .lastRow > *:not(:first-child){
+    border-left: 0.45rem solid #222125;
+}
+.firstRow >*{
+    border-bottom: 0.45rem solid #222125;
+}
+.lastRow >*{
+    border-top: 0.45rem solid #222125;
+}
+.middleRightRow{
+    border-left: 0.45rem solid #222125;
+}
+.middleLeftRow >:first-child, .middleRightRow >:first-child{
+    border-bottom: 0.45rem solid #222125;
+}
+
+.middleRightRow > :last-child{
+  height: 50.1%;
 }
 
 .app{
-    height: 11rem;
     display: flex !important;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     margin: 0;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     backdrop-filter: blur(18px);
     color: #F6F7FC;
     transition: opacity 7s linear;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 42px 4px rgba(93, 150, 255, 0.15);
+    position: relative;
+    border: 0.3rem solid transparent; 
+    border-image-slice: 1;  
+    background-clip: padding-box;  
 }
 
 .appDetails{
@@ -40,25 +100,76 @@
 }
 
 .appTitle{
-    font-family: Archivo;
+    font-family: 'Archivo';
+    padding: 0 1.5rem;
     font-weight: 500;
     font-size: 1.2rem;
-    margin-top: 12px;
+    margin-top: 1.8rem;
     text-align: center;
 }
 
-.noPadding{
-    padding: 0 !important;
-}
 .logoDiv{
-    padding: 15px;
+    padding: 1.9rem 2.4rem 1.7rem 2.3rem;
     border-radius: 50%;
 }
 .logo{
-    width: 40px;
-    height: 34px;
+    width: 2.4rem;
+    height: 2.7rem;
 }
 .midRow{
     display: flex !important;
     justify-content: space-between !important;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.75;
+  }
+  50%{
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.25;
+  }
+  50%{
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.disappearAnimation{
+    animation: disappear 0.5s ease forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.entering {
+    animation: appear 1s ease forwards;
 }

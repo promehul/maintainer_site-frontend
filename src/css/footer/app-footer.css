@@ -2,11 +2,6 @@
     width: 100%;
     background-color: #171818;
     color: #ffffff;
-    padding-bottom: 1em;
-    min-height: 6%;
-    display: flex;
-    align-items: center;
-    padding: 0.7rem 1.3rem 1.75rem 1.3rem;
 }
 
 .heart {
@@ -21,4 +16,48 @@
 .center {
     display: flex;
     justify-content: center;
+    text-align: center;
+}
+
+.grpInfo{
+    font-size: 1.4rem;
+    margin: 0 14.55rem;
+    line-height: 2.5rem;
+    padding: 1em 0;
+}
+
+@media (max-width: 1760px) {
+  .grpInfo{
+    margin-left: 11.4rem;
+  }
+}
+
+@media (max-width: 1650px) {
+  .grpInfo{
+    margin-left: 7.35rem;
+  }
+}
+
+@media (max-width: 1550px) {
+  .grpInfo{
+    margin: 0 2.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grpInfo{
+    margin: 0 4.3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .grpInfo{
+    margin: 0 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .grpInfo{
+    margin: 0 1.2rem;
+  }
 }

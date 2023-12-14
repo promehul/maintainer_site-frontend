@@ -1,0 +1,249 @@
+.container {
+  background-color: #171818;
+  text-align: left;
+  width: 100vw;
+  z-index: -1;
+  font-family: "Archivo";
+  font-weight: 500;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  font-size: 2rem;
+}
+
+.sub-container {
+  padding-top: 4rem;
+  padding-bottom: 8rem;
+}
+
+.we-are-heading {
+  background: linear-gradient(90deg, #dee8ff 0%, rgba(222, 232, 255, 0.8) 100%);
+}
+
+.we-are-not-active-heading {
+  animation: remove-active 1s 1;
+  animation-timing-function: ease;
+  background: linear-gradient(
+    90deg,
+    rgba(222, 232, 255, 0.24) 0%,
+    rgba(222, 232, 255, 0.3) 100%
+  );
+}
+
+.we-are-not-heading {
+  background: linear-gradient(90deg, rgba(222, 232, 255, 0.8) 0%, #dee8ff 100%);
+}
+
+@keyframes sub-heading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sub-heading {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(90deg, #dee8ff 0%, rgba(222, 232, 255, 0.8) 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-family: "Archivo";
+  font-style: "normal";
+  font-weight: 700;
+  font-size: "4rem";
+  padding: "2rem";
+}
+
+.sub-heading-animation {
+  animation: sub-heading 1s 1;
+  animation-timing-function: ease;
+}
+
+.heading {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-family: "Archivo";
+  font-style: "normal";
+  font-weight: 700;
+  font-size: "4rem";
+  padding: "2rem";
+  cursor: pointer;
+}
+
+.right-align {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3rem;
+}
+
+.gradient-border {
+  border-bottom: 1px solid rgba(240, 240, 240, 0.4);
+}
+
+.content {
+  padding-top: 2rem;
+}
+
+.paddingTop {
+  padding-top: 20px;
+}
+
+@keyframes partial-fade-in {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes partial-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+.red-circle {
+  position: relative;
+  width: 200px;
+  left: 10.5rem;
+  opacity: 0.3;
+  animation: partial-fade-out 1s 1;
+  animation-timing-function: ease;
+}
+
+.red-circle-hover {
+  animation: partial-fade-in 1s 1;
+  animation-timing-function: ease;
+  opacity: 1;
+}
+
+@keyframes bring-active {
+  from {
+    background: linear-gradient(
+      90deg,
+      rgba(222, 232, 255, 0.24) 0%,
+      rgba(222, 232, 255, 0.3) 100%
+    );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  to {
+    background: linear-gradient(
+      90deg,
+      rgba(222, 232, 255, 0.8) 0%,
+      #dee8ff 100%
+    );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+}
+
+@keyframes remove-active {
+  from {
+    background: linear-gradient(
+      90deg,
+      rgba(222, 232, 255, 0.8) 0%,
+      #dee8ff 100%
+    );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  to {
+    background: linear-gradient(
+      90deg,
+      rgba(222, 232, 255, 0.24) 0%,
+      rgba(222, 232, 255, 0.3) 100%
+    );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+}
+
+.bring-active {
+  animation: bring-active 1s 1;
+  animation-timing-function: ease;
+  background: linear-gradient(90deg, rgba(222, 232, 255, 0.8) 0%, #dee8ff 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.red-arrow {
+  position: relative;
+  height: 20px;
+  top: 30px;
+  left: 25px;
+  opacity: 0;
+  animation: fade-out 1s 1;
+  animation-timing-function: ease;
+}
+
+.red-arrow-hover {
+  animation: fade-in 1s 1;
+  animation-timing-function: ease;
+  position: relative;
+  height: 20px;
+  top: 30px;
+  left: 25px;
+  opacity: 1;
+}
+
+.green-circle {
+  position: relative;
+  width: 200px;
+  top: 4rem;
+  left: 3rem;
+  opacity: 0.3;
+  animation: partial-fade-out 1s 1;
+  animation-timing-function: ease;
+}
+
+.green-circle-hover {
+  animation: partial-fade-in 1s 1;
+  animation-timing-function: ease;
+  opacity: 1;
+}
+
+.green-arrow {
+  position: relative;
+  height: 20px;
+  top: 110px;
+  opacity: 0;
+  animation: fade-out 1s 1;
+  animation-timing-function: ease;
+}
+
+.green-arrow-hover {
+  animation: fade-in 1s 1;
+  animation-timing-function: ease;
+  position: relative;
+  height: 20px;
+  top: 110px;
+  opacity: 1;
+}
+
+.paddingLeft {
+  padding-left: 4.5rem;
+}

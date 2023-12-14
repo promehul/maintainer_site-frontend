@@ -1,0 +1,305 @@
+.container{
+    display: flex;
+    min-height: 100vh;
+    padding: 7.1em 4.5em 2.1em;
+}
+
+.grid {
+    display: flex;
+    padding-bottom: 1em !important;
+    width: 100% !important;
+}
+
+.profile{
+  flex-grow: 1;
+  width: 100%;
+}
+
+.pro-image {
+    min-height: 15rem;
+    gap: 3rem !important;
+    max-width: 19.4em;
+    min-width: 19em;
+}
+
+.memberDetails{
+  width: 100%;
+    margin: 0 10.5rem 0 4.5rem;
+}
+
+.techSkills{
+    font-family: 'Archivo';
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1.8rem;
+}
+
+.role-designation {
+    color: rgba(0, 0, 0, 0.4);
+    margin-top: -2%;
+    padding-bottom: 1em;
+}
+
+.short-biography {
+    margin-bottom: 2.5rem;
+    font-family: 'Open Sans';
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left;
+    line-height: 1.8rem;
+}
+
+.social-links {
+    margin: 1.5rem 0 1.7rem;
+    cursor: pointer;
+}
+
+.options {
+    padding-bottom: 1.2rem !important;
+    font-family: 'Poppins';
+    font-size: 1.7rem;
+    font-weight: 600 !important;
+}
+
+.active{
+    font-weight: 600;
+    transition: 10s linear ease-out;
+    border-bottom: 2px solid !important;
+}
+
+.tabs{
+    text-align: center;
+}
+
+.memberInputs{
+    margin-top: 4.5rem;
+    width: 87% !important;
+}
+
+.fullName{
+    display: inline-block;
+    font-family: 'Archivo';
+    margin-right: 1.4rem;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 4rem;
+    text-align: left;
+}
+
+.fav{
+    font-family: 'Open Sans';
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: left;
+}
+
+.favType{
+  display: grid;
+  grid-template-columns: 8rem auto;
+}
+
+.favRow{
+    display: inline-block;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem 0 0 0 !important;
+}
+
+.values{
+  display: inline-block;
+}
+
+.avatar{
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #acacac;
+    margin-right: 0.8rem;
+}
+
+.personality{
+    display: inline-flex;
+    border: 1px solid #DEE8FF;
+    border-radius: 3.4rem;
+    padding: 0.4rem 1.3rem 0.4rem 0.4rem;
+}
+
+.personalityType{
+    display: inline-flex; 
+    align-items: center;
+    font-family: 'Open Sans';
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 2rem;
+    text-align: left;
+}
+
+.toggle{
+    margin-left: 1.3rem;
+}
+
+.backArrow{
+    margin-right: 16.5em;
+}
+
+.projectGrp{
+    columns: 4;
+    gap: 2.5rem;
+}
+
+.projectGrp > * > div, .projectGrp > div{
+    break-inside: avoid;
+}
+
+.projectGrp > div {
+    margin-bottom: 2.4rem;
+}
+
+.blogGrp{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  gap: 2rem;
+}
+
+.blogGrp > * > div{
+  max-width: 30rem;
+}
+
+@media (max-width: 1700px) {
+  .projectGrp{
+    gap: 4.5rem;
+  }
+}
+
+@media (max-width: 1600px) {  
+  .backArrow{
+    margin-right: 9em;
+  }
+
+  .memberInputs{
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 1500px) {
+  .memberDetails{
+      margin-right: 3rem;
+  }
+    .projectGrp{
+    columns: 3;
+  }
+}
+
+@media (max-width: 1370px) {
+  .backArrow{
+    margin-right: 5em;
+  }
+}
+
+@media (max-width: 1080px) {
+  .backArrow{
+    margin-right: 4rem;
+  }
+  .memberDetails{
+    margin-right: 0;
+    margin-left: 3rem;
+  }
+  .profile{
+    flex-grow: 0;
+  }
+}
+
+@media (max-width: 1150px) {
+  .container{
+    padding: 6.1em 1em 2.1em;
+   }
+  .toggle{
+    margin-right: 0.5rem;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 1000px) {
+  .projectGrp{
+    columns: 2;
+    padding: 0 5rem;
+  }
+}
+
+@media (max-width: 910px) {
+  .backArrow{
+    margin-right: 1.5rem;
+  }
+  .memberDetails{
+    margin-left: 2rem;
+  }
+}
+
+@media(max-width: 820px){
+  .projectGrp{
+    padding: 0;
+  }
+  .blogGrp > * {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 700px) {
+  .container{
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    order: 1;
+   }
+  .toggle{
+      align-self: flex-end;
+      position: absolute;
+   }
+   .backArrow{
+      position: absolute;
+      align-self: flex-start;
+    }
+   .profile{
+    margin-top: 3.5rem;
+    padding: 0 1.3rem;
+   }
+}
+
+@media (max-width: 590px) {
+  .grid{
+    flex-direction: column;
+  }
+  .projectGrp > *{
+    margin: 0 auto;
+  }
+  .pro-image{
+    margin: auto;
+  }
+  .memberDetails{
+    margin: 0;
+    margin-top: 2rem;
+    padding-left: 1.1rem;
+   }
+  .projectGrp{
+    columns: 1;
+  }
+}
+
+@media (max-width: 390px){
+   .blogGrp{
+    grid-template-columns: none;
+   }
+  }
+
+@media (max-width: 350px){
+   .container{
+    padding: 5.1em 0 2.1em;
+   }
+   .profile{
+    margin-top: 3.5rem;
+    padding: 0;
+   }
+   .blogGrp{
+    padding: 0 1.5rem 0 0.5rem;
+   }
+}

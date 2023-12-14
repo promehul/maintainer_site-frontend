@@ -1,0 +1,61 @@
+.container{
+    background-color: #171818;
+    text-align: left;
+    width: 100vw;
+    z-index: -1;
+    font-family: 'Archivo';
+    font-weight: 500;
+}
+
+.sub-container{
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+
+}
+
+.joinus{
+    font-family: 'Archivo';
+    color : #DEE8FF;
+    margin-bottom: 5rem;
+    font-weight: 700;
+    font-size: 2.4rem;
+}
+
+.recruitment-text-heading{
+    color: #DEE8FF;
+    font-family: "Poppins";
+}
+
+.recruitment-text-description{
+    font-family: 'Open Sans';
+    color: rgba(222, 232, 255, 0.5);
+    line-height: 2rem;
+}
+
+.announcement-text{
+    color: rgba(222, 232, 255, 0.75);
+    font-family: 'Poppins'
+}
+
+.follow-us-section{
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-media-icons{
+    margin-right: 1rem;
+    width: 3rem;
+}
+
+.hello-channeli-button{
+    padding: 1rem;
+    background: #BAD4FE;
+    font-family: 'Open Sans';
+    color: #171818;
+    border-radius: 5px;
+    border: 2px solid #171818 ;
+}
+
+.hello-channeli-text{
+    margin-right: 0.8rem;
+}
