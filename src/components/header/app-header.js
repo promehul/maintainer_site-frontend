@@ -4,7 +4,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import axios from 'axios'
 
-import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlApiLoggedMaintainer, urlStaticBase, urlAppMember, urlAppTeam, urlAppAlumni, whoAmI } from '../../urls'
+import { urlAppBase, urlAppBlog, urlAppProjects, urlAppAddMemberDetails, urlApiLoggedMaintainer, urlStaticBase, urlAppMember, urlAppTeam, urlAppAlumni, whoAmI, urlLifeAtImg } from '../../urls'
 import {
     getThemeObject,
     DefaultDP
@@ -222,7 +222,7 @@ class AppHeader extends Component {
                                         </NavLink>
                                     </div>
                                     <div name="culture" styleName="styles.btn">
-                                        <NavLink styleName={formalTheme ? "styles.links" : "styles.darkLinks"} to={`${urlAppBase()}`}
+                                        <NavLink styleName={formalTheme ? "styles.links" : "styles.darkLinks"} to={`${urlLifeAtImg()}`}
                                             style={{ color: '#7D69FF', }}
                                             activeStyle={ACTIVE_STYLE.culture} exact >
                                             Life at IMG

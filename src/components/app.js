@@ -18,7 +18,7 @@ import { MemberDetails, ProjectDetails } from '../containers/member/memberFormLo
 import AddProjectDetails from './projects/add-update-project-details'
 import { Blogs } from '../containers/blog/blogPageLoader'
 import { ProjectGallery } from '../containers/project/projectPageLoader'
-import Alumni from '../containers/alumni/alumniPageLoader'
+// import Alumni from '../containers/alumni/alumniPageLoader'
 import LifeAtImg from './lift-at-img/life-at-img-page'
 import ProjectDetailView from '../containers/project/projectIndividualLoader'
 import Sidebar from '../containers/sidebar'
@@ -42,6 +42,7 @@ import {
   urlAppBlog,
   urlAppProjects,
   urlAppTeam,
+  urlLifeAtImg,
 } from '../urls'
 
 import blocks from '../css/app.css'
@@ -96,10 +97,15 @@ class App extends Component {
               <MainPage {...routeProps} {...this.props} />
             )}
           />
-          <Route exact path={urlAppBlog()} component={Blog} />
-          <Route exact path={urlAppProjects()} component={Projects} />
-          <Route exact path={urlAppTeam()} component={Team} />
-          <Route exact path={urlAppAlumni()} component={Alumni} />
+          <Route exact path={urlAppBlog()} component={Blogs} />
+          <Route exact path={urlAppProjects()} component={ProjectGallery} />
+          <Route 
+            exact 
+            path={`${urlLifeAtImg()}`}
+            component={LifeAtImg}
+          />
+          {/* <Route exact path={urlAppTeam()} component={Team} /> */}
+          {/* <Route exact path={urlAppAlumni()} component={Alumni} /> */}
           <Route
             exact
             path={`${urlAppProjects()}/:slug`}
