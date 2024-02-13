@@ -478,7 +478,6 @@ class AddMemberDetails extends Component {
                         that.finishUpdate(that, isAlumni, handleName)
                     })
                     .catch(function (response) {
-                        console.log(response)
                         if (response.response.data.informalBiography != null) {
                             that.setState({ error: { ...that.state.error, shortFunBio: true } })
                         }
@@ -849,33 +848,34 @@ class AddMemberDetails extends Component {
                                                 )}
 
 
-                                                <Form.Field required styleName="styles.labels">
-                                                    <label>
-                                                        Add blog link
-                                                    </label>
-                                                    <input
-                                                        styleName={`styles.inputs`}
-                                                        placeholder={this.state.method === 'post'
-                                                            ? "Add blog link"
-                                                            : "Add new blog link"}
-                                                        name="newBlog"
-                                                        onChange={event => {
-                                                            this.setState({
-                                                                newBlog: {
-                                                                    ...this.state.newBlog,
-                                                                    url: event.target.value,
-                                                                    error: false
-                                                                }
-                                                            })
-                                                        }}
-                                                        value={this.state.newBlog.url}
-                                                    />
-                                                    {this.state.newBlog.error && (
-                                                        <Message size="mini" attached='bottom' color="red" >
-                                                            Please enter a valid link.
-                                                        </Message>
-                                                    )}
-                                                </Form.Field>
+                                                {this.state.method === 'patch' &&
+                                                    <Form.Field required styleName="styles.labels">
+                                                        <label>
+                                                            Add blog link
+                                                        </label>
+                                                        <input
+                                                            styleName={`styles.inputs`}
+                                                            placeholder={this.state.method === 'post'
+                                                                ? "Add blog link"
+                                                                : "Add new blog link"}
+                                                            name="newBlog"
+                                                            onChange={event => {
+                                                                this.setState({
+                                                                    newBlog: {
+                                                                        ...this.state.newBlog,
+                                                                        url: event.target.value,
+                                                                        error: false
+                                                                    }
+                                                                })
+                                                            }}
+                                                            value={this.state.newBlog.url}
+                                                        />
+                                                        {this.state.newBlog.error && (
+                                                            <Message size="mini" attached='bottom' color="red" >
+                                                                Please enter a valid link.
+                                                            </Message>
+                                                        )}
+                                                    </Form.Field>}
 
                                                 <Transition visible={this.state.newBlog.url} animation='fade up' duration={2000}>
                                                     <Form.Field required styleName="styles.labels">

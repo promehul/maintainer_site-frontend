@@ -69,8 +69,8 @@ div:has(> .presentApp):hover{
     border-bottom: 0.45rem solid #222125;
 }
 
-.middleRightRow > :last-child{
-  height: 50.1%;
+.middleRightRow > :first-child, .middleRightRow > :last-child{
+  height: 50%;
 }
 
 .app{
@@ -109,7 +109,7 @@ div:has(> .presentApp):hover{
 }
 
 .logoDiv{
-    padding: 1.9rem 2.4rem 1.7rem 2.3rem;
+    padding: 1.4rem 1.6rem;
     border-radius: 50%;
 }
 .logo{

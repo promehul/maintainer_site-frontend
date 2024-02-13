@@ -24,7 +24,7 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
                             {roleOptions.map(
                                 role =>
                                     info.maintainer.role === role.value && (
-                                        <React.Fragment key={role.displayName}>
+                                        <React.Fragment key={role.id}>
                                             {role.displayName === 'Developer' ? (
                                                 <Image src={`${urlStaticBase()}developer.svg`} alt="Developer" />
                                             ) : (
@@ -42,7 +42,7 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
                                 {designationOptions.map(
                                     designation =>
                                         info.maintainer.designation === designation.value && (
-                                            <div key={designation.displayName} styleName="styles.designation">
+                                            <div key={designation.id} styleName="styles.designation">
                                                 {designation.displayName}
                                             </div>))}
                             </div>
@@ -56,7 +56,7 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
                                 {roleOptions.map(
                                     role =>
                                         info.maintainer.role === role.value && (
-                                            <React.Fragment key={role.displayName}>
+                                            <React.Fragment key={role.id}>
                                                 {role.displayName === 'Developer' ? (
                                                     <Image src={`${urlStaticBase()}developer.svg`} alt="Developer" />
                                                 ) : (
@@ -74,7 +74,7 @@ const MemberCard = ({ info, roleOptions, designationOptions, linkOptions, member
                                     {designationOptions.map(
                                         designation =>
                                             info.maintainer.designation === designation.value && (
-                                                <div key={designation.displayName} styleName="styles.designation">
+                                                <div key={designation.id} styleName="styles.designation">
                                                     {designation.displayName}
                                                 </div>))}
                                 </div>

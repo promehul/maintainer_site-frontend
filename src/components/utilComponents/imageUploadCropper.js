@@ -70,11 +70,18 @@ class ImageUploadCropper extends Component {
     }
 
     showPreview = async () => {
-        const croppedImage = await getCroppedImg(
-            this.state.imageSrc,
-            this.state.pixelCrop
-        )
-        var file = this.dataURLtoFile(croppedImage, 'image.png')
+        const { imageSrc, pixelCrop } = this.state
+        const isSVG = imageSrc.startsWith('data:image/svg+xmlbase64,')
+        let croppedImage
+        let file
+
+        if (isSVG) {
+            croppedImage = imageSrc
+            file = this.dataURLtoFile(croppedImage, 'image.svg')
+        } else {
+            croppedImage = await getCroppedImg(imageSrc, pixelCrop)
+            file = this.dataURLtoFile(croppedImage, 'image.png')
+        }
         this.setState({
             croppedImage: file,
             croppedImageSrc: croppedImage

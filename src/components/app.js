@@ -42,7 +42,8 @@ import {
   urlAppBlog,
   urlAppProjects,
   urlAppTeam,
-  urlLifeAtImg,
+  urlAppMember,
+  urlLifeAtImg
 } from '../urls'
 
 import blocks from '../css/app.css'
@@ -99,13 +100,12 @@ class App extends Component {
           />
           <Route exact path={urlAppBlog()} component={Blogs} />
           <Route exact path={urlAppProjects()} component={ProjectGallery} />
+          <Route exact path={urlAppMember()} component={Member} />
           <Route 
             exact 
             path={`${urlLifeAtImg()}`}
             component={LifeAtImg}
           />
-          {/* <Route exact path={urlAppTeam()} component={Team} /> */}
-          {/* <Route exact path={urlAppAlumni()} component={Alumni} /> */}
           <Route
             exact
             path={`${urlAppProjects()}/:slug`}
