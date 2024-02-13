@@ -171,7 +171,7 @@ class AppHeader extends Component {
                                     </NavLink>
                                 </div>
                                 <div name="culture" styleName="styles.btn">
-                                    <NavLink styleName={formalTheme ? "styles.links" : "styles.darkLinks"} to={`${urlAppBase()}`}
+                                    <NavLink styleName={formalTheme ? "styles.links" : "styles.darkLinks"} to={`${urlLifeAtImg()}`}
                                         style={{ color: '#7D69FF', }}
                                         activeStyle={ACTIVE_STYLE.culture} exact >
                                         Life at IMG
