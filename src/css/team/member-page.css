@@ -1,0 +1,203 @@
+.container{
+    margin: 4.5rem 11rem 2rem 7rem;
+}
+
+.head, .heading, .subheading, .options {
+  font-family: 'Archivo';
+  text-align: center;
+}
+
+.head{
+    margin: 5.2rem 0 3.5rem 0;
+}
+
+.heading {
+  font-size: 2.9rem;
+  font-weight: 600;
+  color: #171818;
+  margin-bottom: 0.7rem;
+}
+
+.subheading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.options {
+  font-size: 1.7rem;
+  font-weight: 600 !important;
+  margin: 1.5rem 0 !important;
+  text-align: left;
+}
+
+.memberCard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2.3rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-right: 23rem;
+  align-content: center;
+  text-align: center;
+}
+
+.grid{
+    margin-right: 10rem !important;
+}
+
+.tabChangeCol {
+  width: 22.5% !important;
+  margin-top: 18rem; 
+}
+
+.tabCol {
+  flex-grow: 1;
+  margin-bottom: 1rem !important;
+}
+
+.active{
+    color: #171818;
+    font-weight: 600;
+}
+
+.inactive{
+    color: #17181899 !important;
+}
+
+
+@media (max-width: 1750px) {
+  .container {
+    margin-right: 7rem !important;
+  }
+}
+
+@media (max-width: 1600px) {
+  .tabChangeCol{
+    width: 15% !important;
+  }
+}
+
+
+@media (max-width: 1450px) {
+  .container{
+    margin-left: 4.5rem !important;
+    margin-right: 7rem !important;
+  }
+  .memberCard{
+    gap: 2rem;
+  }
+  .tabChangeCol{
+    width: 30% !important;
+  }
+}
+
+@media (max-width: 1350px) {
+    .tabChangeCol{
+        width: 25% !important;
+    }
+}
+
+@media (max-width: 1270px) {
+    .container{
+        margin-right: 4.5rem !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .tabChangeCol{
+        width: 15% !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .tabChangeCol{
+        width: 35% !important;
+    }
+}
+
+@media (max-width: 990px) {
+    .container{
+        margin-right: 4.5rem !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .tabChangeCol{
+        width: 50% !important;
+    }
+    .container{
+        margin-right: 9.5rem !important;
+        margin-left: 5rem !important;
+    }
+    .memberCard{
+        justify-content: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .container{
+        margin-right: 6.5rem !important;
+    }
+}
+
+@media (max-width: 745px) {
+    .tabChangeCol{
+        width: 40% !important;
+        margin-top: 20rem !important;
+    }
+    .container{
+        margin-right: 5.5rem !important;
+    }
+}
+   
+@media (max-width: 640px) {
+    .tabChangeCol{
+        width: 30% !important;
+    }
+}
+
+.horizontalTabChange{
+    display: none;
+}
+
+@media (max-width: 530px) {
+    .container{
+        margin: 4.5rem 2rem !important;
+    }
+}
+
+@media (max-width: 468px) {
+    .tabChangeCol{
+        display: none !important;
+    }
+    .container  {
+        margin: 4.5rem 4.5rem !important;
+    }
+    .horizontalTabChange{
+        display: flex;
+        justify-content: center;
+    }
+    .head{
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 390px) {
+    .container{
+        margin: 4.5rem 2rem !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .container{
+        margin-left: 1rem !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .container{
+        margin: 4.5rem 2rem 4.5rem 0.1rem !important
+    }
+}

@@ -9,6 +9,7 @@ import {
   urlAppAlumni,
   urlAppAddMemberDetails,
   urlAppAddProjectDetails,
+  urlAppMember,
 } from '../urls'
 
 class Sidebar extends Component {
@@ -55,7 +56,7 @@ class Sidebar extends Component {
                   </button>
                 </Link>
                 <Link
-                  to={`${urlAppTeam()}`}
+                  to={`${urlAppMember()}`}
                   styleName="styles.link-color"
                   onClick={this.handleHide}
                 >
@@ -64,20 +65,7 @@ class Sidebar extends Component {
                     styleName="styles.sidebar-button"
                     onClick={this.handleClick}
                   >
-                    Team
-                  </button>
-                </Link>
-                <Link
-                  to={`${urlAppAlumni()}`}
-                  styleName="styles.link-color"
-                  onClick={this.handleHide}
-                >
-                  <button
-                    name="alumni"
-                    styleName="styles.sidebar-button"
-                    onClick={this.handleClick}
-                  >
-                    Alumni
+                    Members
                   </button>
                 </Link>
                 {this.props.isAuthed.auth && (

@@ -6,7 +6,7 @@ import { urlApiBlog } from '../../../../urls'
 import { MEDIUM_URL } from '../../../../consts'
 import { isMobile } from 'react-device-detect'
 
-import styles from '../../../../css/blog/blog-page.css'
+import styles from '../../../../css/sections/blog/blog-section.css'
 import common from '../../../../css/page-common-styles.css'
 class BlogSection extends Component {
   constructor(props) {
@@ -59,52 +59,50 @@ class BlogSection extends Component {
 
 
         return (
-          <div styleName="common.container">
-            <Container>
-              <div styleName="styles.heading">
-                <h1 styleName="styles.blogHead">
-                  Blogs
-                </h1>
-              </div>
-              <Grid columns={2} style={{ width: "100%", margin: 0, }} stackable>
-                <Grid columns={2} styleName="common.margin styles.horizontalGrid" style={{ width: "66.67%", paddingBottom: 0 }}>
-                  {tagWiseBlogs.slice(0, 2).map((tag, index) => (
-                    <Fragment key={index}>
-                      <div styleName="styles.blog" style={{ padding: 0 }} >
-                        <div styleName="styles.category">
-                          {tag["category"]}
-                        </div>
-                        <div styleName="styles.category-btn"
-                          onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
-                          View More
-                        </div>
+          <div styleName="styles.container">
+            <div styleName="styles.heading">
+              <h1 styleName="styles.blogHead">
+                Blogs
+              </h1>
+            </div>
+            <Grid columns={2} style={{ width: "100%", margin: 0, }} stackable>
+              <Grid columns={2} styleName="common.margin styles.horizontalGrid" style={{ width: "64.7%", paddingBottom: 0 }}>
+                {tagWiseBlogs.slice(0, 2).map((tag, index) => (
+                  <Fragment key={index}>
+                    <div styleName="styles.blog" style={{ padding: 0 }} >
+                      <div styleName="styles.category">
+                        {tag["category"]}
                       </div>
-                      <Grid.Row>
-                        {tag["blogsList"].slice(0, 2).map((info, id) => (
-                          <BlogDetail info={info} key={id} />
-                        ))}
-                      </Grid.Row>
-                    </Fragment>
-                  ))}
-                </Grid>
-                <Grid columns={this.state.column} style={{ width: "33.33%", marginLeft: "auto", marginTop: 0, paddingBottom: 0 }} styleName="styles.horizontalGrid">
-                  <div styleName="styles.blog" style={{ padding: 0 }}>
-                    <div styleName="styles.category">
-                      {tagWiseBlogs[2]["category"]}
+                      <div styleName="styles.category-btn"
+                        onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
+                        View more
+                      </div>
                     </div>
-                    <div styleName="styles.category-btn"
-                      onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
-                      View More
-                    </div>
-                  </div>
-                  <Grid.Row >
-                    {tagWiseBlogs[2]["blogsList"].slice(0, 2).map((info, id) => (
-                      <BlogDetail info={info} key={id} />
-                    ))}
-                  </Grid.Row>
-                </Grid>
+                    <Grid.Row styleName="styles.horizontalCategory">
+                      {tag["blogsList"].slice(0, 2).map((info, id) => (
+                        <BlogDetail info={info} key={id} />
+                      ))}
+                    </Grid.Row>
+                  </Fragment>
+                ))}
               </Grid>
-            </Container >
+              <Grid columns={this.state.column} style={{ width: "31%", marginLeft: "auto", marginTop: 0, paddingBottom: 0 }} styleName="styles.horizontalGrid">
+                <div styleName="styles.blog" style={{ padding: 0 }}>
+                  <div styleName="styles.category">
+                    {tagWiseBlogs[2]["category"]}
+                  </div>
+                  <div styleName="styles.category-btn"
+                    onClick={() => window.open(`${MEDIUM_URL}${MEDIUM_PUBLICATION}`, '_blank')}>
+                    View more
+                  </div>
+                </div>
+                <Grid.Row styleName="styles.verticalCategory">
+                  {tagWiseBlogs[2]["blogsList"].slice(0, 2).map((info, id) => (
+                    <BlogDetail info={info} key={id} />
+                  ))}
+                </Grid.Row>
+              </Grid>
+            </Grid>
           </div>
         )
       } else {

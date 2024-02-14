@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 
 import { requestProjectData } from '../../actions/apiProjectCall'
 import Project from '../../components/projects/projects-page'
+import ProjectsMobileView from '../../components/projects/projects-mobile-view'
 
 const mapStateToProps = state => {
   return {
@@ -17,4 +18,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Project)
+const ProjectGallery = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Project)
+
+const ProjectList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProjectsMobileView)
+
+export { ProjectGallery, ProjectList }

@@ -1,20 +1,23 @@
 .blog
 {
-    width: fit-content;
+    aspect-ratio: 16/9;
     display: block;
     cursor: pointer;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 .blogHead{
     display: flex;
     justify-content: space-between;
     font-size: 1rem;
     font-weight: 700;
-    padding: 0.8rem 0;
+    padding: 1.1rem 0 0.7rem 0;
     font-family: 'Open Sans';
 }
 
 .title{
     font-size: 1.8rem;
+    text-align: left;
     font-weight: 600;
     line-height: 32px;
     font-family: 'Archivo';
@@ -23,11 +26,24 @@
 .authorDetails {
     float: left;
 }
+
+.blogInfo{
+    width: 100%;
+}
+.blogInfo[profile="informal"]{
+    color: rgba(222, 232, 255, 1);
+}
+
 .blogDetails {
     float: right;
 }
 
-@media (max-width: 590px) {
+.blogGrid{
+    padding: 0 !important;
+    margin-top: 2.1rem !important;
+}
+
+@media (max-width: 830px) {
   .blogGrid {
     width: 100% !important;
   }
