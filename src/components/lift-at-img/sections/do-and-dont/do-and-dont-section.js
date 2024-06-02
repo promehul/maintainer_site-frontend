@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useState, useEffect , useRef} from "react";
 import styles from "../../../../css/life_at_img/sections/do-and-dont.css";
 import { Container } from "semantic-ui-react";
 import redCircle from "./red_circle.png";
@@ -23,12 +23,16 @@ const DoAndDontSection = () => {
     "Do the right thing",
     "Hello",
   ];
+  const scrollbarRef = useRef(null);
+  const contentRef = useRef(null);
 
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [activeOption, setActiveOption] = React.useState(1);
   const [displayJson, setDisplayJson] = React.useState(weAreJson);
   const [isRedHovered, setIsRedHovered] = React.useState(false);
   const [isGreenHovered, setIsGreenHovered] = React.useState(false);
-
+  const [showWeAreHeading, setShowWeAreHeading] = useState(true);
+  const [showWeAreNotHeading, setShowWeAreNotHeading] = useState(false);
   const handleOptionChange = (value) => {
     if (value == activeOption) {
     } else {
@@ -40,6 +44,34 @@ const DoAndDontSection = () => {
       setActiveOption(value);
     }
   };
+
+
+  const handleScroll = (event) => {
+    const scrollPosition = event.target.scrollLeft;
+    const scrollWidth = event.target.scrollWidth - event.target.clientWidth;
+  
+    if (scrollPosition > scrollWidth / 2) {
+      setShowWeAreHeading(false);
+      setShowWeAreNotHeading(true);
+      setDisplayJson(weAreNotJson);
+    } else {
+      setShowWeAreHeading(true);
+      setShowWeAreNotHeading(false);
+      setDisplayJson(weAreJson);
+    }
+  };
+
+  
+  useEffect(() => {
+    const scrollbar = scrollbarRef.current;
+    if (scrollbar) {
+      scrollbar.addEventListener("scroll", handleScroll);
+  
+      return () => {
+        scrollbar.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [weAreJson, weAreNotJson]);
 
   const triggerRedFadeIn = () => {
     setIsRedHovered(true);
@@ -57,7 +89,7 @@ const DoAndDontSection = () => {
   };
   return (
     <div styleName="styles.container">
-      <div>
+      <div class="heading">
         <Container>
           <img
             src={greenArrow}
@@ -103,7 +135,12 @@ const DoAndDontSection = () => {
           )}
         </Container>
       </div>
-      <div styleName="styles.content">
+      <div styleName="styles.mob-heading">
+    {showWeAreHeading && <h1>We Are</h1>}
+    {showWeAreNotHeading && <h1>We Are Not</h1>}
+    
+  </div>
+      <div styleName="styles.content" ref={contentRef}>
         {displayJson.map((value) => {
           return (
             <div
@@ -117,6 +154,10 @@ const DoAndDontSection = () => {
           );
         })}
       </div>
+      <div className={styles.scrollbarContainer} ref={scrollbarRef} onScroll={handleScroll}>
+      <div className={styles.scrollbar}></div>
+    </div>
+ 
       <div>
         <Container>
           <div styleName="styles.right-align">
@@ -167,6 +208,8 @@ const DoAndDontSection = () => {
       </div>
     </div>
   );
+  
+  
 };
 
 export default DoAndDontSection;

@@ -19,17 +19,49 @@
     font-family: "Archivo";
     font-weight: 700;
     margin-bottom: 3rem;
-    font-size: 2.4rem;
+    font-size: large;
+}
+.card-img img{
+ padding:2rem;
+}
+.card-img{
+    display: flex;
+    justify-content: center;
+    height: 15rem;
+    width: auto;
+    border-radius: 10px;
+}
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: none;
 }
 
-.card-container{
+.card-name{
+    display: flex;
+    color:black;
+    font-size: medium;
+    justify-content: center;
+    padding-top:1rem;
 
+}
+.card-text{
+    display: flex;
+    justify-content: center;
 }
 
 .card-heading{
     color:  #171818;
     font-weight: 600;
 }
+.card {
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+  }
 
 .card-text{
     font-weight: 400;
@@ -52,4 +84,13 @@
 
 .card{
     color: red;
+}
+@media screen and (max-width: 1000px) {
+    .cards{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+  
 }

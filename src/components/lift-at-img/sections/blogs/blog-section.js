@@ -61,56 +61,22 @@ const BlogCard = (props) =>{
 }
 
 const BlogSection=()=>{
-    const [blogDetail,setBlogDetail] = useState([
-        {
-          "profileSrc": "https://wallpapers.com/images/hd/naruto-profile-pictures-sa1tekghfajrr928.jpg",
-          "imgSrc": "https://pcf.gallery/assets/images/jsonformat.png",
-          "name": "Nikhil Nagar",
-          "time": "5 min read",
-          "description": "Why Underground Printing Switched from Gmail to Help Why Underground Printing Switched from Gmail to Help hello"
-        },
-        {
-          "profileSrc": "https://wallpapers.com/images/hd/naruto-profile-pictures-sa1tekghfajrr928.jpg",
-          "imgSrc": "https://pcf.gallery/assets/images/jsonformat.png",
-          "name": "Nikhil Nagar",
-          "time": "5 min read",
-          "description": "Why Underground Printing Switched from Gmail to Help Why Underground Printing Switched from Gmail to Help hello1"
-        },
-        {
-            "profileSrc": "https://wallpapers.com/images/hd/naruto-profile-pictures-sa1tekghfajrr928.jpg",
-            "imgSrc": "https://pcf.gallery/assets/images/jsonformat.png",
-            "name": "Nikhil Nagar",
-            "time": "5 min read",
-            "description": "Why Underground Printing Switched from Gmail to Help Why Underground Printing Switched from Gmail to Help"
-        },
-        {
-            "profileSrc": "https://wallpapers.com/images/hd/naruto-profile-pictures-sa1tekghfajrr928.jpg",
-            "imgSrc": "https://pcf.gallery/assets/images/jsonformat.png",
-            "name": "Nikhil Nagar",
-            "time": "5 min read",
-            "description": "Why Underground Printing Switched from Gmail to Help Why Underground Printing Switched from Gmail to Help"
-        },
-        {
-            "profileSrc": "https://wallpapers.com/images/hd/naruto-profile-pictures-sa1tekghfajrr928.jpg",
-            "imgSrc": "https://pcf.gallery/assets/images/jsonformat.png",
-            "name": "Nikhil Nagar",
-            "time": "5 min read",
-            "description": "Why Underground Printing Switched from Gmail to Help Why Underground Printing Switched from Gmail to Help"
-        },
-        {
-          "imgSrc": "https://pcf.gallery/assets/images/jsonformat.png",
-          "name": "Nikhil Nagar",
-          "time": "5 min read",
-          "description": "Why Underground Printing Switched from Gmail to Help Why Underground Printing Switched from Gmail to Help"
-        },
-        {
-            "profileSrc": "https://wallpapers.com/images/hd/naruto-profile-pictures-sa1tekghfajrr928.jpg",
-            "imgSrc": "https://pcf.gallery/assets/images/jsonformat.png",
-            "name": "Nikhil Nagar",
-            "time": "5 min read",
-            "description": "Why Underground Printing Switched from Gmail to Help Why Underground Printing Switched from Gmail to Help"
-        }
-      ])
+    const [blogDetail,setBlogDetail] = useState([]) ;      useEffect(() => {
+            fetch('http://localhost:60000/api/maintainer_site/blog/')
+                .then(response => response.json())
+                .then(data => {
+                    const blogs = data.map(category => category.blogsList).flat();
+                    const formattedBlogs = blogs.map(blog => ({
+                        profileSrc: '', // replace with actual profile source
+                        imgSrc: blog.thumbnail,
+                        name: blog.author,
+                        time: blog.pubDate,
+                        description: blog.description
+                    }));
+                    setBlogDetail(formattedBlogs);
+                })
+                .catch(error => console.error(error));
+        }, []);
       useEffect(()=>{
         if(blogDetail.length > 3){
             let tempBlogDetail = blogDetail
