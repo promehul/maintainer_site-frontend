@@ -82,6 +82,8 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   padding-top: 2rem;
 }
 
@@ -110,7 +112,7 @@
 .red-circle {
   position: relative;
   width: 200px;
-  left: 10.5rem;
+  left: 11.5rem;
   opacity: 0.3;
   animation: partial-fade-out 1s 1;
   animation-timing-function: ease;
@@ -163,7 +165,9 @@
     -webkit-background-clip: text;
   }
 }
-
+.mob-heading{
+  display: none;
+}
 .bring-active {
   animation: bring-active 1s 1;
   animation-timing-function: ease;
@@ -194,7 +198,7 @@
   position: relative;
   height: 20px;
   top: 30px;
-  left: 25px;
+  left: 35px;
   opacity: 0;
   animation: fade-out 1s 1;
   animation-timing-function: ease;
@@ -206,15 +210,14 @@
   position: relative;
   height: 20px;
   top: 30px;
-  left: 25px;
+  left: 35px;
   opacity: 1;
 }
 
 .green-circle {
   position: relative;
   width: 200px;
-  top: 4rem;
-  left: 3rem;
+  top: 3.5rem;
   opacity: 0.3;
   animation: partial-fade-out 1s 1;
   animation-timing-function: ease;
@@ -229,7 +232,7 @@
 .green-arrow {
   position: relative;
   height: 20px;
-  top: 110px;
+  top: 20px;
   opacity: 0;
   animation: fade-out 1s 1;
   animation-timing-function: ease;
@@ -240,10 +243,61 @@
   animation-timing-function: ease;
   position: relative;
   height: 20px;
-  top: 110px;
+  top: 20px;
   opacity: 1;
 }
 
 .paddingLeft {
   padding-left: 4.5rem;
+}
+
+@media(max-width:500px){
+
+  .red-circle , .red-arrow,.green-circle, .green-arrow-hover {
+    display:none;
+  } 
+ .heading{
+  display: none;
+ }
+  .content{
+    align-self: flex-start;
+    padding-left: 1.5rem;
+    font-size: large !important;
+  }
+  .gradient-border {
+    border-bottom:none;
+  }
+  .sub-heading{
+    font-size: large;
+  }
+  .scrollbarContainer {
+    width: 25%;
+    height: 100px; 
+    overflow: auto;
+    margin-left: 12rem;
+  }
+
+  .scrollbar {
+    width: 200%; 
+  }
+  .scrollbarContainer::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 5px;
+    height: 5px;
+  }
+  
+  .scrollbarContainer::-webkit-scrollbar-thumb:hover {
+    background: white; 
+  }
+  .mob-heading{
+    display: block;
+    color: #dee8ff;
+    padding-left: 2.5rem;
+    padding-top: 5rem;
+  }
+  .ui.vertical.divider:before{
+    border-right:0px;
+}
+  
+
 }
