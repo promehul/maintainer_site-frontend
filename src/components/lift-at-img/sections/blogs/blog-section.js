@@ -50,12 +50,6 @@ const BlogCard = (props) =>{
                     </Grid>
                 </div>
             </Responsive>
-            <Responsive maxWidth={1000} minWidth={800}>
-
-            </Responsive>
-            <Responsive maxWidth={800}>
-
-            </Responsive>
         </div>
     )
 }
@@ -67,7 +61,7 @@ const BlogSection=()=>{
                 .then(data => {
                     const blogs = data.map(category => category.blogsList).flat();
                     const formattedBlogs = blogs.map(blog => ({
-                        profileSrc: '', // replace with actual profile source
+                        profileSrc: '', 
                         imgSrc: blog.thumbnail,
                         name: blog.author,
                         time: blog.pubDate,
